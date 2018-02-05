@@ -1,0 +1,87 @@
+#!/usr/bin/env node
+
+"use strict";
+
+var ApiService = require("../appSecConfig");
+var fs = require("fs");
+var apiService = new ApiService();
+
+require("sywac")
+  .command("configs", {
+    desc: "List configurations",
+    run: options => {
+      new ApiService().configs(options).then(res=>{
+        console.log(res.join("\n"));
+      }).catch(err=>{
+        console.error(err);
+      });
+    }
+  })
+  .command("create", {
+    desc: "Create config",
+    setup: sywac => {
+      sywac.file("--file <file>", {
+        desc: "Configuration details in json format, to create.",
+        group: "Options:",
+        required: true
+      });
+    },
+    run: options => {
+      var contents = fs.readFileSync(options.file, "utf8");
+      console.log(contents);
+    }
+  })
+  .command("versions", {
+    desc: "List all versions",
+    setup: sywac => {
+      sywac.number("--config <id>", {
+        desc: "Configuration id number",
+        group: "Options:",
+        required: true
+      });
+    },
+    run: options => {
+      apiService.list(options.config).then(data => {
+        console.log(data);
+      });
+    }
+  }).command("version", {
+    desc: "Read a config version",
+    setup: sywac => {
+      sywac.number("--config <id>", {
+        desc: "Configuration id number",
+        group: "Options:",
+        required: true
+      }).number("--version <id>", {
+        desc: "The version id number",
+        group: "Options:",
+        required: true
+      });
+    },
+    run: options => {
+      return options.config + ", " + options.version;
+    }
+  })
+  .showHelpByDefault()
+  .help("--help", {
+    group: "Command options:"
+  })
+  .version("--version", {
+    group: "Command options:"
+  })
+  .epilogue("Copyright (C) Akamai Technologies, Inc\nVisit http://github.com/akamai/cli-property for detailed documentation\n")
+  .outputSettings({
+    maxWidth: 75
+  })
+  .parse()
+  .then(result => {
+    if (result.errors.length) {
+      console.error("ERROR: ", result.errors[0] || JSON.stringify(result.errors[0]));
+      console.output = "";
+    }
+    // if help requested, log it and exit
+    if (result.output) {
+      console.log(result.output);
+      process.exit(result.code);
+    }
+  });
