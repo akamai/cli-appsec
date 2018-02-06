@@ -10,7 +10,7 @@ describe("AppSecConfig get configurations", function () {
   /* Mock the HTTPS call */
   before(function () {
     nock(/.*.akamaiapis.net/)
-                .get('/v1/configs')
+                .get('/appsec-configuration/v1/configs')
                 .reply(200, [{ configId: 1234 },{ configId: 5678 }]);
   });
 
@@ -26,7 +26,7 @@ describe("AppSecConfig get configurations", function () {
   /* Mock the HTTPS call */
   before(function () {
     nock(/.*.akamaiapis.net/)
-                .get('/v1/configs')
+                .get('/appsec-configuration/v1/configs')
                 .replyWithError({detail:"Some Error"});
   });
 
@@ -43,7 +43,7 @@ describe("AppSecConfig get configurations", function () {
   /* Mock the HTTPS call */
   before(function () {
     nock(/.*.akamaiapis.net/)
-                .get('/v1/configs')
+                .get('/appsec-configuration/v1/configs')
                 .reply(403, {detail:"Unauthorized"});
   });
 
