@@ -4,13 +4,14 @@ var expect = chai.expect;
 
 var AppSecConfig = require("../appSecConfig");
 var nock = require("nock");
+const CONFIGS_URL='/appsec-configuration/v1/configs';
 
 describe("AppSecConfig get configurations", function () {
   var appSecConfig = new AppSecConfig();
   /* Mock the HTTPS call */
   before(function () {
     nock(/.*.akamaiapis.net/)
-                .get('/appsec-configuration/v1/configs')
+                .get(CONFIGS_URL)
                 .reply(200, [{ configId: 1234 },{ configId: 5678 }]);
   });
 
@@ -26,7 +27,7 @@ describe("AppSecConfig get configurations", function () {
   /* Mock the HTTPS call */
   before(function () {
     nock(/.*.akamaiapis.net/)
-                .get('/appsec-configuration/v1/configs')
+                .get(CONFIGS_URL)
                 .replyWithError({detail:"Some Error"});
   });
 
@@ -43,7 +44,7 @@ describe("AppSecConfig get configurations", function () {
   /* Mock the HTTPS call */
   before(function () {
     nock(/.*.akamaiapis.net/)
-                .get('/appsec-configuration/v1/configs')
+                .get(CONFIGS_URL)
                 .reply(403, {detail:"Unauthorized"});
   });
 
