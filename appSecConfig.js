@@ -46,32 +46,52 @@ class AppSecConfig {
         reject(err);
       });
     });
-
   }
 
-  versions(providedConfigId) {
+    versions(providedConfigId) {
 
-    let configId = this._getConfigId(providedConfigId);
+      let configId = this._getConfigId(providedConfigId);
 
-    return new Promise((resolve, reject) => {
-      let versionsApi = URIs.GET_VERSIONS.format(configId);
-      logger.debug("Versions API: " + versionsApi);
-      let request = {
-        method: "GET",
-        path: versionsApi,
-        /*path: "/papi/v1/properties?groupId=grp_18385&contractId=ctr_1-3CV382",*/
-        followRedirect: false
-      };
-      this._edge.auth(request).send(function (data, response) {
-        if (response && response.statusCode >= 200 && response.statusCode < 400) {
-          let parsed = JSON.parse(response.body);
-          resolve(parsed);
-        } else {
-          reject(data);
-        }
+      return new Promise((resolve, reject) => {
+          let versionsApi = URIs.GET_VERSIONS.format(configId);
+          logger.debug("Versions API: " + versionsApi);
+          let request = {
+              method: "GET",
+              path: versionsApi,
+              followRedirect: false
+          };
+          this._edge.auth(request).send(function (data, response) {
+              if (response && response.statusCode >= 200 && response.statusCode < 400) {
+                  let parsed = JSON.parse(response.body);
+                  resolve(parsed);
+              } else {
+                  reject(data);
+              }
+          });
       });
-    });
-  }
+    }
+    rules(providedConfigId) {
+
+        let configId = this._getConfigId(providedConfigId);
+
+        return new Promise((resolve, reject) => {
+            let customRulesUrl = URIs.GET_CRB.format(configId);
+            logger.debug("Attempting to get all custom rules at: " + customRulesUrl);
+            let request = {
+                method: "GET",
+                path: customRulesUrl,
+                followRedirect: false
+            };
+            this._edge.auth(request).send(function (data, response) {
+                if (response && response.statusCode >= 200 && response.statusCode < 400) {
+                    let parsed = JSON.parse(response.body);
+                    resolve(parsed);
+                } else {
+                    reject(data);
+                }
+            });
+        });
+    }
 }
 
 module.exports = {

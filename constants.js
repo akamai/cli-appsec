@@ -7,7 +7,8 @@ function define(name, value) {
 
 var resources = {
     "GET_CONFIGS": '/appsec-configuration/v1/configs',
-    "GET_VERSIONS": 'appsec-configuration/v1/configs/{}/versions'
+    "GET_VERSIONS": 'appsec-configuration/v1/configs/{}/versions',
+    "GET_CRB": '/appsec-resource/v1/configs/{}/custom-rules'
   };
 
 define("URIS", resources);
