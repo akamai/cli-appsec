@@ -3,10 +3,21 @@
 "use strict";
 
 var ApiService = require("../appSecConfig").AppSecConfig;
+var CRB = require("../src/crb").CRBHandler;
 var fs = require("fs");
 var apiService = new ApiService();
 
 require("sywac")
+  .command("structured-rule-template", {
+    desc: "Prints sample JSON of a structured custom rule.",
+    run: options => {
+        new CRB().template().then(res=>{
+          console.log(res);
+        }).catch(err=>{
+          console.error(err);
+        });
+    }
+  })
   .command("configs", {
     desc: "List configurations",
     run: options => {
