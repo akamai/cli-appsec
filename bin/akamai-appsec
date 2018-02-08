@@ -9,11 +9,18 @@ var apiService = new ApiService();
 require("sywac")
   .command("configs", {
     desc: "List configurations",
+    setup: sywac => {
+      sywac.boolean("--json",{
+        desc: "Print the raw json response",
+        group: "Options:"
+      });
+    },
     run: options => {
       new ApiService().configs(options).then(res=>{
-        console.log(res.join("\n"));
+        console.log(res);
       }).catch(err=>{
         console.error(err);
+        process.exit(1);
       });
     }
   })
@@ -35,14 +42,17 @@ require("sywac")
     desc: "List all versions",
     setup: sywac => {
       sywac.number("--config <id>", {
-        desc: "Configuration id number",
+        desc: "Configuration id. Mandatory if you have more than one configuration.",
         group: "Options:",
-        required: true
+        required: false
       });
     },
     run: options => {
-      apiService.list(options.config).then(data => {
+      apiService.versions(options.config).then(data => {
         console.log(data);
+      }).catch(err=>{
+        console.error(err);
+        process.exit(1);
       });
     }
   }).command("version", {
