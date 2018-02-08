@@ -1,6 +1,6 @@
 "use strict";
 
-let Edge = process.env.MOCK_AKA_SEC_API == 'true' ? require("./mock/edgeClient") : require("./edgeClient");
+let Edge = process.env.MOCK_AKA_SEC_API == 'true' ? require("../mock/edgeClient") : require("./edgeClient");
 
 let util = require('util');
 let URIs = require("./constants").URIS;

@@ -1,7 +1,7 @@
 'use strict';
 var fs = require("fs");
-var logger = require('../constants').logger("EdgeClient");
-var URIs = require("../constants").URIS;
+var logger = require('../src/constants').logger("EdgeClient");
+var URIs = require("../src/constants").URIS;
 
 var MOCK_DATA = {};
 MOCK_DATA[URIs.GET_CONFIGS] = './mock/configs.json';
