@@ -2,7 +2,7 @@
 var chai = require('chai');
 var expect = chai.expect;
 
-var AppSecConfig = require("../appSecConfig");
+var AppSecConfig = require("../appSecConfig").AppSecConfig;
 var nock = require("nock");
 const CONFIGS_URL='/appsec-configuration/v1/configs';
 
