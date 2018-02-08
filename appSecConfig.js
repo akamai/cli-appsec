@@ -1,19 +1,16 @@
 "use strict";
 
-let Edge = require("./edgeClient");
+let Edge = process.env.MOCK_AKA_SEC_API == 'true' ? require("./mock/edgeClient") : require("./edgeClient");
+
 //let untildify = require("untildify");
 require("string-format");
+var URIs = require("./constants").URIS;
 
 var logger = require('pino')({
   level: process.env.LOG_LEVEL ? process.env.LOG_LEVEL : "error",
   prettyPrint: true,
   name: "AppSecConfig"
 });
-
-
-const GET_CONFIGS = "/appsec-configuration/v1/configs";
-const GET_VERSIONS = "/appsec-configuration/v1/configs/{}/versions";
-const GET_CRB = "/appsec-resource/v1/configs/{}/custom-rules";
 
 class AppSecConfig {
 
@@ -32,10 +29,10 @@ class AppSecConfig {
   }
 
   configs() {
-    logger.debug("Versions API: " + GET_CONFIGS);
+    logger.debug("Versions API: " + URIs.GET_CONFIGS);
     let request = {
       method: "GET",
-      path: GET_CONFIGS,
+      path: URIs.GET_CONFIGS,
       followRedirect: false
     };
     return new Promise((resolve, reject) => {
@@ -56,7 +53,7 @@ class AppSecConfig {
       let configId = this._getConfigId(providedConfigId);
 
       return new Promise((resolve, reject) => {
-          let versionsApi = GET_VERSIONS.format(configId);
+          let versionsApi = URIs.GET_VERSIONS.format(configId);
           logger.debug("Versions API: " + versionsApi);
           let request = {
               method: "GET",
@@ -78,7 +75,7 @@ class AppSecConfig {
         let configId = this._getConfigId(providedConfigId);
 
         return new Promise((resolve, reject) => {
-            let customRulesUrl = GET_CRB.format(configId);
+            let customRulesUrl = URIs.GET_CRB.format(configId);
             logger.debug("Attempting to get all custom rules at: " + customRulesUrl);
             let request = {
                 method: "GET",
@@ -97,4 +94,6 @@ class AppSecConfig {
     }
 }
 
-module.exports = AppSecConfig;
+module.exports = {
+  AppSecConfig: AppSecConfig
+};
