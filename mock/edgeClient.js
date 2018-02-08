@@ -1,12 +1,7 @@
 'use strict';
 var fs = require("fs");
-var logger = require("pino")({
-  level: process.env.LOG_LEVEL ? process.env.LOG_LEVEL : "error",
-  prettyPrint:true,
-  name:"EdgeClient"
-});
-
-var URIs = require("../constants").URIS;
+var logger = require('../src/constants').logger("EdgeClient");
+var URIs = require("../src/constants").URIS;
 
 var MOCK_DATA = {};
 MOCK_DATA[URIs.GET_CONFIGS] = './mock/configs.json';
@@ -25,7 +20,10 @@ class Edge {
 
   get(request) {
     return new Promise((resolve, reject) => {
-        fs.readFile(MOCK_DATA[request.path], (err, data) => {
+        let path = request.path.replace('/appsec-configuration/v1/','');
+        path = __dirname + '/' + path + '.json';
+        logger.debug("replaced path: "+path);
+        fs.readFile(path, (err, data) => {
             if (err) {
                 reject(err);
             } else {
