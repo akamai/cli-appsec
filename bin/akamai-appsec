@@ -2,7 +2,7 @@
 
 "use strict";
 
-var ApiService = require("../appSecConfig");
+var ApiService = require("../appSecConfig").AppSecConfig;
 var fs = require("fs");
 var apiService = new ApiService();
 
