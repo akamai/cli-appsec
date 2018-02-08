@@ -13,9 +13,9 @@ require("sywac")
     run: options => {
         new CRB().template().then(res=>{
           console.log(res);
-          process.exit(1);
         }).catch(err=>{
           console.error(err);
+          process.exit(1);
         });
     }
   })
