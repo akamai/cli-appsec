@@ -2,73 +2,36 @@
 
 let Edge = process.env.MOCK_AKA_SEC_API == 'true' ? require("../mock/edgeClient") : require("./edgeClient");
 
-let util = require('util');
 let URIs = require("./constants").URIS;
-let ConfigProvider = require('./configProvider').configProvider;
 let logger = require("./constants").logger("AppSecConfig");
+let ConfigResourcesReader = require('./configResourcesUtil').resourceUtil;
 
 class AppSecConfig {
 
   constructor(auth) {
     this._edge = new Edge(auth);
-    this._configProvider = new ConfigProvider(this._edge);
+    this._configResourceReader = new ConfigResourcesReader(this._edge);
   }
 
   configs(options) {
-    return this._configProvider.configs(options);
+    logger.debug("Options: " + JSON.stringify(options));
+    return this._edge.get(URIs.GET_CONFIGS);
+  }
+
+  config(options) {
+    logger.debug("Options: " + JSON.stringify(options));
+    //TODO Optimize in case when the customer has only one config and he provides no id. This will make two calls to the same API in this use case.
+    return this._configResourceReader.readResource(options.config, URIs.GET_CONFIG, []);
   }
 
   versions(options) {
-    return this._configProvider.getConfigId(options.config)
-    .then((configId) => {
-        return new Promise((resolve) => {
-          let versionsApi = util.format(URIs.GET_VERSIONS, configId);
-          logger.debug("Versions API: " + versionsApi);
-          let request = {
-            method: "GET",
-            path: versionsApi,
-            followRedirect: false
-          };
-          this._edge.get(request).then((resp)=>{resolve(resp);});
-        });
-      })
-      .then(response => {
-        if (options.json) {
-          return JSON.stringify(response);
-        } else {
-          let versions = response.versionList;
-          let versionIds = [];
-          for (let i = 0; i < versions.length; i++) {
-            versionIds.push(versions[i].version);
-          }
-          return versionIds.join("\n");
-        }
-      })
-      .catch(err => {
-        throw err;
-      });
+    logger.debug("Options: " + JSON.stringify(options));
+    return this._configResourceReader.readResource(options.config, URIs.GET_VERSIONS, []);
   }
 
   version(options) {
-    return this._configProvider.getConfigId(options.config)
-    .then((configId) => {
-        return new Promise((resolve) => {
-          let versionsApi = util.format(URIs.GET_VERSION, configId, options['version-id']);
-          logger.debug("Version API: " + versionsApi);
-          let request = {
-            method: "GET",
-            path: versionsApi,
-            followRedirect: false
-          };
-          this._edge.get(request).then((resp)=>{resolve(resp);});
-        });
-      })
-      .then(response => {
-          return JSON.stringify(response);
-      })
-      .catch(err => {
-        throw err;
-      });
+    logger.debug("Options: " + JSON.stringify(options));
+    return this._configResourceReader.readResource(options.config, URIs.GET_VERSION, [options['version-id']]);
   }
 }
 

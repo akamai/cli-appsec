@@ -18,7 +18,13 @@ class Edge {
       console.log("::::: MOCK API ENABLED :::::");
   }
 
-  get(request) {
+  get(requestUri) {
+    logger.debug("URI: "+JSON.stringify(requestUri));
+    let request = {
+        method: "GET",
+        path: requestUri,
+        followRedirect: false
+      };
     return new Promise((resolve, reject) => {
         let path = request.path.replace('/appsec-configuration/v1/','');
         path = __dirname + '/' + path + '.json';
@@ -27,7 +33,7 @@ class Edge {
             if (err) {
                 reject(err);
             } else {
-                resolve(JSON.parse(data));
+                setTimeout(()=>resolve(JSON.parse(data)),2000);
             }
           });
     });

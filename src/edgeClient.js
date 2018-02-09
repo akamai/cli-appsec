@@ -24,7 +24,14 @@ class Edge {
     }
   }
 
-  get(request) {
+  get(requestUri) {
+
+    let request = {
+      method: "GET",
+      path: requestUri,
+      followRedirect: false
+    };
+
     return new Promise((resolve, reject) => {
       this._edge.auth(request);
       this._edge.send(function (data, response) {
