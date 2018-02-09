@@ -16,6 +16,7 @@ var logger = function (loggerName) {
 var resources = {
     "GET_CONFIGS": '/appsec-configuration/v1/configs',
     "GET_VERSIONS": '/appsec-configuration/v1/configs/%s/versions',
+    "GET_VERSION": '/appsec-configuration/v1/configs/%s/versions/%s',
     "GET_CRB": '/appsec-resource/v1/configs/%s/custom-rules'
 };
 

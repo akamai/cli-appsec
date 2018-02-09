@@ -9,7 +9,7 @@ var logger = require("pino")({
 class Edge {
   constructor(auth = {
     path: "~/.edgerc",
-    section: "appsec",
+    section: "papi",
     debug: false,
     default: true
   }) {

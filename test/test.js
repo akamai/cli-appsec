@@ -1,4 +1,4 @@
-/* global describe it before afterEach*/
+/* global describe it before after*/
 process.env.MOCK_AKA_SEC_API = 'false';
 var chai = require('chai');
 var expect = chai.expect;
@@ -16,7 +16,7 @@ describe("AppSecConfig get configurations", function () {
                 .get(CONFIGS_URL)
                 .reply(200, result);
   });
-  afterEach(function(){
+  after(function(){
     nock.cleanAll();
   });
   it("success resp should return all configuration ids only", function () {
@@ -39,7 +39,7 @@ describe("AppSecConfig get configurations", function () {
                 .get(CONFIGS_URL)
                 .replyWithError({detail:"Some Error"});
   });
-  afterEach(function(){
+  after(function(){
     nock.cleanAll();
   });
   it("connection problem should show error message", function () {
@@ -58,7 +58,7 @@ describe("AppSecConfig get configurations", function () {
                 .get(CONFIGS_URL)
                 .reply(403, {detail:"Unauthorized"});
   });
-  afterEach(function(){
+  after(function(){
     nock.cleanAll();
   });
   it("non-200 responses should show error message", function () {

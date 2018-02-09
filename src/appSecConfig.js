@@ -18,24 +18,59 @@ class AppSecConfig {
     return this._configProvider.configs(options);
   }
 
-  versions(providedConfigId) {
+  versions(options) {
 
-    let configId = this._configProvider.getConfigId(providedConfigId);
-
-    return new Promise((resolve, reject) => {
-      let versionsApi = util.format(URIs.GET_VERSIONS, configId);
-      logger.debug("Versions API: " + versionsApi);
-      let request = {
-        method: "GET",
-        path: versionsApi,
-        followRedirect: false
-      };
-      this._edge.get(request).then(response => {
-        resolve(response);
-      }).catch(err => {
-        reject(err);
+    return this._configProvider.getConfigId(options.config)
+    .then((configId) => {
+        return new Promise((resolve) => {
+          let versionsApi = util.format(URIs.GET_VERSIONS, configId);
+          logger.debug("Versions API: " + versionsApi);
+          let request = {
+            method: "GET",
+            path: versionsApi,
+            followRedirect: false
+          };
+          this._edge.get(request).then((resp)=>{resolve(resp);});
+        });
+      })
+      .then(response => {
+        if (options.json) {
+          return Promise.resolve(JSON.stringify(response));
+        } else {
+          let versions = response.versionList;
+          let versionIds = [];
+          for (let i = 0; i < versions.length; i++) {
+            versionIds.push(versions[i].version);
+          }
+          return Promise.resolve(versionIds.join("\n"));
+        }
+      })
+      .catch(err => {
+        return Promise.reject(err);
       });
-    });
+  }
+
+  version(options) {
+
+    return this._configProvider.getConfigId(options.config)
+    .then((configId) => {
+        return new Promise((resolve) => {
+          let versionsApi = util.format(URIs.GET_VERSION, configId, options['version-id']);
+          logger.debug("Version API: " + versionsApi);
+          let request = {
+            method: "GET",
+            path: versionsApi,
+            followRedirect: false
+          };
+          this._edge.get(request).then((resp)=>{resolve(resp);});
+        });
+      })
+      .then(response => {
+          return Promise.resolve(JSON.stringify(response));
+      })
+      .catch(err => {
+        return Promise.reject(err);
+      });
   }
 
   rules(providedConfigId) {
