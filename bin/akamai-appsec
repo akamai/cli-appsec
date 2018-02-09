@@ -69,8 +69,6 @@ require("sywac")
           });
         }
       })
-
-  .command("versions", {
   .command("config-versions", {
     desc: "List all versions",
     setup: sywac => {
