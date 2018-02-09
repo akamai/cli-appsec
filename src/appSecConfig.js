@@ -19,7 +19,6 @@ class AppSecConfig {
   }
 
   versions(options) {
-
     return this._configProvider.getConfigId(options.config)
     .then((configId) => {
         return new Promise((resolve) => {
@@ -51,7 +50,6 @@ class AppSecConfig {
   }
 
   version(options) {
-
     return this._configProvider.getConfigId(options.config)
     .then((configId) => {
         return new Promise((resolve) => {
@@ -71,29 +69,6 @@ class AppSecConfig {
       .catch(err => {
         throw err;
       });
-  }
-
-  rules(providedConfigId) {
-
-    let configId = this._getConfigId(providedConfigId);
-
-    return new Promise((resolve, reject) => {
-      let customRulesUrl = URIs.GET_CRB.format(configId);
-      logger.debug("Attempting to get all custom rules at: " + customRulesUrl);
-      let request = {
-        method: "GET",
-        path: customRulesUrl,
-        followRedirect: false
-      };
-      this._edge.auth(request).send(function (data, response) {
-        if (response && response.statusCode >= 200 && response.statusCode < 400) {
-          let parsed = JSON.parse(response.body);
-          resolve(parsed);
-        } else {
-          reject(data);
-        }
-      });
-    });
   }
 }
 
