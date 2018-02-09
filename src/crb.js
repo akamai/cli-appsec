@@ -33,11 +33,29 @@ class CRBHandler {
             resolve(fs.readFileSync(CRB_TEMPLATE_PATH, ENCODING));
         });
     }
-    rules(providedConfigId) {
+
+    getAllRules(providedConfigId) {
         let configId = this._configProvider.getConfigId(providedConfigId);
         return new Promise((resolve, reject) => {
                 let customRulesUrl  = util.format(URIs.GET_CRB_ALL, configId);
                 logger.debug("Attempting to get all custom rules at: " + customRulesUrl);
+            let request = {
+                method: "GET",
+                path: customRulesUrl,
+                followRedirect: false
+            };
+            this._edge.get(request).then(response => {
+                resolve(response);
+            }).catch(err => {
+                reject(err);
+            });
+        });
+    }
+    getRule(providedConfigId, ruleId) {
+        let configId = this._configProvider.getConfigId(providedConfigId);
+        return new Promise((resolve, reject) => {
+            let customRulesUrl  = util.format(URIs.GET_CRB, configId, ruleId);
+            logger.debug("Attempting to get custom rule at : " + customRulesUrl);
             let request = {
                 method: "GET",
                 path: customRulesUrl,
