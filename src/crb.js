@@ -36,7 +36,7 @@ class CRBHandler {
     rules(providedConfigId) {
         let configId = this._configProvider.getConfigId(providedConfigId);
         return new Promise((resolve, reject) => {
-                let customRulesUrl  = util.format(URIs.GET_CRB, configId);
+                let customRulesUrl  = util.format(URIs.GET_CRB_ALL, configId);
                 logger.debug("Attempting to get all custom rules at: " + customRulesUrl);
             let request = {
                 method: "GET",
