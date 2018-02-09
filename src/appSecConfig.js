@@ -35,18 +35,18 @@ class AppSecConfig {
       })
       .then(response => {
         if (options.json) {
-          return Promise.resolve(JSON.stringify(response));
+          return JSON.stringify(response);
         } else {
           let versions = response.versionList;
           let versionIds = [];
           for (let i = 0; i < versions.length; i++) {
             versionIds.push(versions[i].version);
           }
-          return Promise.resolve(versionIds.join("\n"));
+          return versionIds.join("\n");
         }
       })
       .catch(err => {
-        return Promise.reject(err);
+        throw err;
       });
   }
 
@@ -66,10 +66,10 @@ class AppSecConfig {
         });
       })
       .then(response => {
-          return Promise.resolve(JSON.stringify(response));
+          return JSON.stringify(response);
       })
       .catch(err => {
-        return Promise.reject(err);
+        throw err;
       });
   }
 

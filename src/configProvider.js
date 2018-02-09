@@ -13,9 +13,9 @@ class ConfigProvider {
     if(!configId) {
       return this.configs({json:true}).then((configsJson)=>{
         if(JSON.parse(configsJson).length == 1) {
-          return Promise.resolve(JSON.parse(configsJson)[0].configId);
+          return JSON.parse(configsJson)[0].configId;
         } else {
-          return Promise.reject("You have more than one configuration. Please provide a configuration id to work with.");
+           throw "You have more than one configuration. Please provide a configuration id to work with.";
         }
       });
     } else {
