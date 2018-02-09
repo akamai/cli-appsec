@@ -20,14 +20,9 @@ describe("AppSecConfig get configurations", function () {
   after(function(){
     nock.cleanAll();
   });
-  it("success resp should return all configuration ids only", function () {
-    return appSecConfig.configs({json:false}).then(configs=>{
-      expect(configs).to.deep.equal('1234\n5678');
-    });
-  });
-  it("success resp should return all configuration jsons", function () {
-    return appSecConfig.configs({json:true}).then(configs=>{
-      expect(configs).to.equal(JSON.stringify(result));
+  it("success resp should return all configurations", function () {
+    return appSecConfig.configs().then(configs=>{
+      expect(configs).to.deep.equal(result);
     });
   });
 });
@@ -48,7 +43,7 @@ describe("AppSecConfig get versions", function () {
     nock.cleanAll();
   });
   it("throw error when there are more than one configs and user did not supply config id", function () {
-    return appSecConfig.versions({json:false}).catch(err=>{
+    return appSecConfig.versions({}).catch(err=>{
       expect(err).to.equal('You have more than one configuration. Please provide a configuration id to work with.');
     });
   });

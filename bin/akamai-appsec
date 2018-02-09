@@ -6,31 +6,39 @@ var AppSecConfig = require("../src/appSecConfig").AppSecConfig;
 var CRB = require("../src/crb").CRBHandler;
 var fs = require("fs");
 
+function print(object, options, customPrinter) {
+  if (options.json == true) {
+    console.log(JSON.stringify(object));
+  } else {
+    console.log(customPrinter(options, object));
+  }
+}
+
 require("sywac")
   .command("structured-rule-template", {
     desc: "Prints sample JSON of a structured custom rule.",
-    aliases:["srt"],
+    aliases: ["srt"],
     run: options => {
-        new CRB().template().then(res=>{
-          console.log(res);
-        }).catch(err=>{
-          console.error(err);
-          process.exit(1);
-        });
+      new CRB().template().then(res => {
+        console.log(res);
+      }).catch(err => {
+        console.error(err);
+        process.exit(1);
+      });
     }
   })
   .command("configs", {
     desc: "List configurations",
     setup: sywac => {
-      sywac.boolean("--json",{
+      sywac.boolean("--json", {
         desc: "Print the raw json response",
         group: "Options:"
       });
     },
     run: options => {
-      new AppSecConfig().configs(options).then(res=>{
+      new AppSecConfig().configs(options).then(res => {
         console.log(res);
-      }).catch(err=>{
+      }).catch(err => {
         console.error(err);
         process.exit(1);
       });
@@ -61,8 +69,14 @@ require("sywac")
     },
     run: options => {
       new AppSecConfig().versions(options).then(data => {
-        console.log(data);
-      }).catch(err=>{
+        print(data, options, (options, versions) => {
+          let vids = [];
+          for (let i = 0; i < versions.versionList.length; i++) {
+            vids.push(versions.versionList[i].version);
+          }
+          return vids.join("\n");
+        });
+      }).catch(err => {
         console.error(err);
         process.exit(1);
       });
@@ -83,7 +97,7 @@ require("sywac")
     run: options => {
       new AppSecConfig().version(options).then(data => {
         console.log(data);
-      }).catch(err=>{
+      }).catch(err => {
         console.error(err);
         process.exit(1);
       });
