@@ -10,14 +10,17 @@ class ConfigProvider {
   }
 
   getConfigId(configId) {
-    if (!configId) {
-      if (this.configs().length == 1) {
-        configId = this.configs()[0].id;
-      } else {
-        throw "You have more than one configuration. Please provide a configuration id to work with.";
-      }
+    if(!configId) {
+      return this.configs({json:true}).then((configsJson)=>{
+        if(JSON.parse(configsJson).length == 1) {
+          return JSON.parse(configsJson)[0].configId;
+        } else {
+           throw "You have more than one configuration. Please provide a configuration id to work with.";
+        }
+      });
+    } else {
+      return Promise.resolve(configId);
     }
-    return configId;
   }
 
   configs(options) {

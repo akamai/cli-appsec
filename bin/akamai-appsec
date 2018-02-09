@@ -71,6 +71,7 @@ require("sywac")
       })
 
   .command("versions", {
+  .command("config-versions", {
     desc: "List all versions",
     setup: sywac => {
       sywac.number("--config <id>", {
@@ -80,7 +81,7 @@ require("sywac")
       });
     },
     run: options => {
-      new AppSecConfig().versions(options.config).then(data => {
+      new AppSecConfig().versions(options).then(data => {
         console.log(data);
       }).catch(err=>{
         console.error(err);
@@ -89,20 +90,26 @@ require("sywac")
     }
   })
   .command("version", {
+  }).command("config-version", {
     desc: "Read a config version",
     setup: sywac => {
       sywac.number("--config <id>", {
         desc: "Configuration id number",
         group: "Options:",
-        required: true
-      }).number("--version <id>", {
+        required: false
+      }).number("--version-id <id>", {
         desc: "The version id number",
         group: "Options:",
-        required: true
+        required: false
       });
     },
     run: options => {
-      return options.config + ", " + options.version;
+      new AppSecConfig().version(options).then(data => {
+        console.log(data);
+      }).catch(err=>{
+        console.error(err);
+        process.exit(1);
+      });
     }
   })
   .showHelpByDefault()

@@ -28,12 +28,12 @@ class Edge {
     return new Promise((resolve, reject) => {
       this._edge.auth(request);
       this._edge.send(function (data, response) {
-        logger.debug("Response from server: " + JSON.stringify(response));
+        logger.debug("Requesting: "+request.path+"\nResponse from server: " + JSON.stringify(response));
         if (response && response.statusCode >= 200 && response.statusCode < 400) {
           resolve(JSON.parse(response.body));
         } else if(!response) {
           logger.info("Error response from server: "+JSON.stringify(data));
-          reject("Could not get configurations at this time.");
+          reject("Could not get data at this time.");
         } else {
           logger.info("Error response from server: "+JSON.stringify(response));
           try  {
