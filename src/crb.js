@@ -4,7 +4,7 @@ let Edge = process.env.MOCK_AKA_SEC_API == 'true' ? require("../mock/edgeClient"
 
 let util = require('util');
 let URIs = require("./constants").URIS;
-let ConfigProvider = require('./configProvider').configProvider;
+//let ConfigProvider = require('./configProvider').configProvider;
 let logger = require("./constants").logger("AppSecConfig");
 
 require("string-format");

@@ -19,12 +19,7 @@ require("sywac")
     desc: "Prints sample JSON of a structured custom rule.",
     aliases: ["srt"],
     run: options => {
-      new CRB().template().then(res => {
-        console.log(res);
-      }).catch(err => {
-        console.error(err);
-        process.exit(1);
-      });
+      console.log(new CRB().template());
     }
   })
   .command("configs", {
@@ -59,46 +54,46 @@ require("sywac")
     }
   })
   .command("custom-rule", {
-        desc: "Display contents of custom rule",
-        setup: sywac => {
-          sywac.number("--config <id>", {
-            desc: "Configuration id. Mandatory if you have more than one configuration.",
-            group: "Options:",
-            required: false
-          })
-          .number("--ruleid <id>", {
-              desc: "Rule ID.",
-              group: "Options:",
-              required: true
-          });
-        },
-        run: options => {
-          new CRB().getRule(options.config, options.ruleid).then(data => {
-            console.log(data);
-          }).catch(err=>{
-            console.error(err);
-            process.exit(1);
-          });
-        }
-      })
-    .command("custom-rules", {
-        desc: "List all custom rules",
-        setup: sywac => {
-            sywac.number("--config <id>", {
-                desc: "Configuration id. Mandatory if you have more than one configuration.",
-                group: "Options:",
-                required: false
-            });
-        },
-        run: options => {
-            new CRB().getAllRules(options.config).then(data => {
-                console.log(data);
-            }).catch(err=>{
-                console.error(err);
-                process.exit(1);
-            });
-        }
-    })
+    desc: "Display contents of custom rule",
+    setup: sywac => {
+      sywac.number("--config <id>", {
+          desc: "Configuration id. Mandatory if you have more than one configuration.",
+          group: "Options:",
+          required: false
+        })
+        .number("--ruleid <id>", {
+          desc: "Rule ID.",
+          group: "Options:",
+          required: true
+        });
+    },
+    run: options => {
+      new CRB().getRule(options.config, options.ruleid).then(data => {
+        console.log(data);
+      }).catch(err => {
+        console.error(err);
+        process.exit(1);
+      });
+    }
+  })
+  .command("custom-rules", {
+    desc: "List all custom rules",
+    setup: sywac => {
+      sywac.number("--config <id>", {
+        desc: "Configuration id. Mandatory if you have more than one configuration.",
+        group: "Options:",
+        required: false
+      });
+    },
+    run: options => {
+      new CRB().getAllRules(options.config).then(data => {
+        console.log(data);
+      }).catch(err => {
+        console.error(err);
+        process.exit(1);
+      });
+    }
+  })
   .command("config-versions", {
     desc: "List all versions",
     setup: sywac => {
@@ -123,16 +118,15 @@ require("sywac")
       });
     }
   })
-  .command("version", {
-  }).command("config-version", {
+  .command("config-version", {
     desc: "Read a config version",
     setup: sywac => {
       sywac.number("--config <id>", {
         desc: "Configuration id number",
         group: "Options:",
         required: false
-      }).number("--version-id <id>", {
-        desc: "The version id number",
+      }).string("--version-id <id>", {
+        desc: "The version id number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, 'PROD' is assumed.",
         group: "Options:",
         required: false
       });
