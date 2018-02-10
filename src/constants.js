@@ -5,12 +5,13 @@ function define(name, value) {
     });
 }
 
+const LOG = require('pino')({
+    level: process.env.LOG_LEVEL ? process.env.LOG_LEVEL : "error",
+    prettyPrint: true,
+    name: "app-sec"
+});
 var logger = function (loggerName) {
-    return require('pino')({
-        level: process.env.LOG_LEVEL ? process.env.LOG_LEVEL : "error",
-        prettyPrint: true,
-        name: loggerName
-    });
+     return LOG.child({name:loggerName});
 };
 const CRB='/appsec-resource/v1/configs/%s/custom-rules';
 var resources = {

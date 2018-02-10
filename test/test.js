@@ -1,9 +1,9 @@
-/* global describe it before after beforeEach*/
+/* global describe it after beforeEach*/
 process.env.MOCK_AKA_SEC_API = 'false';
 var chai = require('chai');
 var expect = chai.expect;
 
-var AppSecConfig = require("../src/appSecConfig").AppSecConfig;
+var AppSecConfig = require("../src/config").AppSecConfig;
 var nock = require("nock");
 const CONFIGS_URL = '/appsec-configuration/v1/configs';
 const VERSIONS_URL = '/appsec-configuration/v1/configs/1234/versions';
@@ -102,85 +102,85 @@ describe("AppSecConfig get versions", function () {
   });
 });
 
-// describe("AppSecConfig get version", function () {
-//   var appSecConfig = new AppSecConfig();
-//   let expectedStageVersion = 1;
-//   let expectedProdVersion = 2;
-//   /* Mock the HTTPS call */
-//   beforeEach(function () {
-//     nock(/.*.akamaiapis.net/)
-//       .get(CONFIGS_URL)
-//       .reply(200, [{
-//         configId: 1234
-//       }]);
-//     nock(/.*.akamaiapis.net/)
-//       .get(VERSIONS_URL)
-//       .reply(200, {
-//         "configId": 17956,
-//         "configName": "jtigano.WAF.test",
-//         "lastCreatedVersion": 4,
-//         "links": [{
-//           "href": "/appsec-configuration/v1/configs/17956/versions?page=1&pagesize=4",
-//           "rel": "self"
-//         }],
-//         "page": 1,
-//         "pageSize": 4,
-//         "productionActiveVersion": 2,
-//         "stagingActiveVersion": 1,
-//         "totalSize": 4,
-//         "versionList": [{
-//             "production": {
-//               "status": "Deactivated",
-//               "time": 1493753405000
-//             },
-//             "staging": {
-//               "status": "Active",
-//               "time": 1493732705000
-//             },
-//             "version": 1
-//           },
-//           {
-//             "production": {
-//               "status": "Active",
-//               "time": 1493753405000
-//             },
-//             "staging": {
-//               "status": "Inactive"
-//             },
-//             "version": 2
-//           }
-//         ]
-//       });
-//     nock(/.*.akamaiapis.net/)
-//       .get(VERSION_URL)
-//       .reply(200, {version:1});
-//   });
-//   after(function () {
-//     nock.cleanAll();
-//   });
-//   it("should return the production version by default", function () {
-//     return appSecConfig.version({}).then(ver => {
-//       expect(ver.version).to.equal(expectedProdVersion);
-//     });
-//   });
-//   it("should return the production version when --version-id=PROD", function () {
-//     return appSecConfig.version({"version-id":"PROD"}).then(ver => {
-//       expect(ver.version).to.equal(expectedProdVersion);
-//     });
-//   });
-//   it("should return the production version when --version-id=PRODUCTION", function () {
-//     return appSecConfig.version({"version-id":"PRODUCTION"}).then(ver => {
-//       expect(ver.version).to.equal(expectedProdVersion);
-//     });
-//   });
-//   it("should return the production version when --version-id=STAGING", function () {
-//     return appSecConfig.version({"version-id":"STAGING"}).then(ver => {
-//       expect(ver.version).to.equal(expectedStageVersion);
-//     });
-//   });
-//   it("should return the proper version when --version-id is a number", function () {
-//     return appSecConfig.version({"version-id":"1"}).then(ver => {
-//       expect(ver.version).to.equal(expectedStageVersion);
-//     });
-//   });
-// });
+describe("AppSecConfig get version", function () {
+  var appSecConfig = new AppSecConfig();
+  let expectedStageVersion = 1;
+  let expectedProdVersion = 2;
+  /* Mock the HTTPS call */
+  beforeEach(function () {
+    nock(/.*.akamaiapis.net/)
+      .get(CONFIGS_URL)
+      .reply(200, [{
+        configId: 1234
+      }]);
+    nock(/.*.akamaiapis.net/)
+      .get(VERSIONS_URL)
+      .reply(200, {
+        "configId": 17956,
+        "configName": "jtigano.WAF.test",
+        "lastCreatedVersion": 4,
+        "links": [{
+          "href": "/appsec-configuration/v1/configs/17956/versions?page=1&pagesize=4",
+          "rel": "self"
+        }],
+        "page": 1,
+        "pageSize": 4,
+        "productionActiveVersion": 2,
+        "stagingActiveVersion": 1,
+        "totalSize": 4,
+        "versionList": [{
+            "production": {
+              "status": "Deactivated",
+              "time": 1493753405000
+            },
+            "staging": {
+              "status": "Active",
+              "time": 1493732705000
+            },
+            "version": 1
+          },
+          {
+            "production": {
+              "status": "Active",
+              "time": 1493753405000
+            },
+            "staging": {
+              "status": "Inactive"
+            },
+            "version": 2
+          }
+        ]
+      });
+    nock(/.*.akamaiapis.net/)
+      .get(VERSION_URL)
+      .reply(200, {version:1});
+  });
+  after(function () {
+    nock.cleanAll();
+  });
+  it("should return the production version by default", function () {
+    return appSecConfig.version({}).then(ver => {
+      expect(ver.version).to.equal(expectedProdVersion);
+    });
+  });
+  it("should return the production version when --version-id=PROD", function () {
+    return appSecConfig.version({"version-id":"PROD"}).then(ver => {
+      expect(ver.version).to.equal(expectedProdVersion);
+    });
+  });
+  it("should return the production version when --version-id=PRODUCTION", function () {
+    return appSecConfig.version({"version-id":"PRODUCTION"}).then(ver => {
+      expect(ver.version).to.equal(expectedProdVersion);
+    });
+  });
+  it("should return the production version when --version-id=STAGING", function () {
+    return appSecConfig.version({"version-id":"STAGING"}).then(ver => {
+      expect(ver.version).to.equal(expectedStageVersion);
+    });
+  });
+  it("should return the proper version when --version-id is a number", function () {
+    return appSecConfig.version({"version-id":"1"}).then(ver => {
+      expect(ver.version).to.equal(expectedStageVersion);
+    });
+  });
+});

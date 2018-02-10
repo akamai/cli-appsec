@@ -45,7 +45,7 @@ class Edge {
           logger.info("Error response from server: "+JSON.stringify(response));
           try  {
             let errJson = JSON.parse(response.body);
-            reject(errJson.detail);
+            reject(errJson.detail?errJson.detail:errJson.title);
           } catch(err) {
             reject(response.body);
           }

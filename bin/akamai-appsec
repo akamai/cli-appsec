@@ -2,7 +2,7 @@
 
 "use strict";
 
-var AppSecConfig = require("../src/appSecConfig").AppSecConfig;
+var AppSecConfig = require("../src/config").AppSecConfig;
 var CRB = require("../src/crb").CRBHandler;
 var fs = require("fs");
 
@@ -37,20 +37,6 @@ require("sywac")
         console.error(err);
         process.exit(1);
       });
-    }
-  })
-  .command("create", {
-    desc: "Create config",
-    setup: sywac => {
-      sywac.file("--file <file>", {
-        desc: "Configuration details in json format, to create.",
-        group: "Options:",
-        required: true
-      });
-    },
-    run: options => {
-      var contents = fs.readFileSync(options.file, "utf8");
-      console.log(contents);
     }
   })
   .command("custom-rule", {
@@ -142,10 +128,12 @@ require("sywac")
   })
   .showHelpByDefault()
   .help("--help", {
-    group: "Command options:"
+    group: "Command options:",
+    desc: "Prints help information."
   })
   .version("--version", {
-    group: "Command options:"
+    group: "Command options:",
+    desc: "Current version og the program."
   })
   .epilogue("Copyright (C) Akamai Technologies, Inc\nVisit http://github.com/akamai/cli-property for detailed documentation\n")
   .outputSettings({
