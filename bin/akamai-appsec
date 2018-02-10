@@ -112,7 +112,7 @@ require("sywac")
         group: "Options:",
         required: false
       }).string("--version <id>", {
-        desc: "The version id number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, 'PROD' is assumed.",
+        desc: "The version id number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
         group: "Options:",
         required: false
       });
