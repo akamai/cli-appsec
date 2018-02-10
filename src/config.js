@@ -34,7 +34,7 @@ class AppSecConfig {
    */
   version(options) {
     logger.debug("Options: " + JSON.stringify(options));
-    let version = options['version-id'];
+    let version = options['version'];
     let versionAttr;
     logger.debug("===" + version);
     if (!version || (version == 'PROD' || version == 'PRODUCTION')) {

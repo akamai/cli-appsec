@@ -80,7 +80,7 @@ require("sywac")
       });
     }
   })
-  .command("config-versions", {
+  .command("versions", {
     desc: "List all versions",
     setup: sywac => {
       sywac.number("--config <id>", {
@@ -104,14 +104,14 @@ require("sywac")
       });
     }
   })
-  .command("config-version", {
+  .command("version", {
     desc: "Read a config version",
     setup: sywac => {
       sywac.number("--config <id>", {
         desc: "Configuration id number",
         group: "Options:",
         required: false
-      }).string("--version-id <id>", {
+      }).string("--version <id>", {
         desc: "The version id number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, 'PROD' is assumed.",
         group: "Options:",
         required: false
@@ -131,7 +131,7 @@ require("sywac")
     group: "Command options:",
     desc: "Prints help information."
   })
-  .version("--version", {
+  .version("--v", {
     group: "Command options:",
     desc: "Current version og the program."
   })
