@@ -173,7 +173,7 @@ describe("AppSecConfig get version", function () {
       expect(ver.version).to.equal(expectedProdVersion);
     });
   });
-  it("should return the production version when --version-id=STAGING", function () {
+  it("should return the staging version when --version-id=STAGING", function () {
     return appSecConfig.version({"version-id":"STAGING"}).then(ver => {
       expect(ver.version).to.equal(expectedStageVersion);
     });
