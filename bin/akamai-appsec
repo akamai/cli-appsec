@@ -163,7 +163,7 @@ require("sywac")
             });
         },
         run: options => {
-            new CRB().createRule(options).then(data => {
+            new CRB().updateRule(options).then(data => {
                 //FIXME:  Remove text once this starts actually connecting to a live service.
                 console.log('data: ' + data);
             }).catch(err=>{
