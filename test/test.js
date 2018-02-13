@@ -3,7 +3,7 @@ process.env.MOCK_AKA_SEC_API = 'false';
 var chai = require('chai');
 var expect = chai.expect;
 
-var AppSecConfig = require("../src/config").AppSecConfig;
+var AppSecConfig = require("../src/appSecConfig").AppSecConfig;
 var nock = require("nock");
 const CONFIGS_URL = '/appsec-configuration/v1/configs';
 const VERSIONS_URL = '/appsec-configuration/v1/configs/1234/versions';

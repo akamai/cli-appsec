@@ -2,9 +2,8 @@
 
 "use strict";
 
-var AppSecConfig = require("../src/config").AppSecConfig;
+var AppSecConfig = require("../src/appSecConfig").AppSecConfig;
 var CRB = require("../src/crb").CRBHandler;
-var fs = require("fs");
 
 function print(object, options, customPrinter) {
   if (options.json == true) {
