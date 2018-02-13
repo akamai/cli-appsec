@@ -4,6 +4,7 @@
 
 var AppSecConfig = require("../src/appSecConfig").AppSecConfig;
 var CRB = require("../src/crb").CRBHandler;
+var SelectedHosts = require("../src/hosts").selectedHosts;
 
 function print(object, options, customPrinter) {
   if (options.json) {
@@ -218,6 +219,38 @@ require("sywac")
       });
     }
   })
+  .command("add-hostname", {
+    desc: "Add hostnames to selected list",
+    setup: sywac => {
+        sywac.number("--config <id>", {
+            desc: "Configuration id. Mandatory if you have more than one configuration.",
+            group: "Options:",
+            required: false
+        }).number("--version-id <id>", {
+          desc: "Version id.",
+          group: "Options:",
+          required: false
+       }).stringArray('--hosts <a.com, b.net, c.d.com>',{
+          desc: "Hostnames to add to the selected list.",
+          group: "Options:",
+          required: true
+      });
+    },
+    run: options => {
+        new SelectedHosts().addHosts(options).then(jsonData => {
+          print(jsonData, options, (options, data) => {
+            let hosts = [];
+            for (let i = 0; i < data.hostnameList.length; i++) {
+              hosts.push(data.hostnameList[i].hostName);
+            }
+            return hosts.join("\n");
+          });
+        }).catch(err=>{
+            console.error(err);
+            process.exit(1);
+        });
+    }
+})
   .showHelpByDefault()
   .help("--help", {
     group: "Command options:",

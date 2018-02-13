@@ -19,7 +19,8 @@ var resources = {
     "GET_VERSIONS": '/appsec-configuration/v1/configs/%s/versions',
     "GET_VERSION": '/appsec-configuration/v1/configs/%s/versions/%s',
     "GET_CRB_ALL": '/appsec-resource/v1/configs/%s/custom-rules',
-    "GET_CRB": '/appsec-resource/v1/configs/%s/custom-rules/%s'
+    "GET_CRB": '/appsec-resource/v1/configs/%s/custom-rules/%s',
+    "SELECTED_HOSTS_RESOURCE": "/appsec-configuration/v1/configs/%s/versions/%s/selected-hostnames"
 };
 
 define("URIS", resources);
