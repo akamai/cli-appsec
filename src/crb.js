@@ -17,11 +17,9 @@ class CRBHandler {
   }
 
   template() {
-    return new Promise(resolve => {
-      resolve(fs.readFileSync(CRB_TEMPLATE_PATH, ENCODING));
-    });
+    return fs.readFileSync(CRB_TEMPLATE_PATH, ENCODING);
   }
-
+ 
   getAllRules(options) {
     return this._configResourceReader.readResource(options.config, URIs.GET_CRB_ALL, []);
   }
