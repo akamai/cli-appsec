@@ -7,11 +7,22 @@ var CRB = require("../src/crb").CRBHandler;
 var SelectedHosts = require("../src/hosts").selectedHosts;
 
 function print(object, options, customPrinter) {
-  if (options.json == true) {
+  if (options.json) {
     console.log(JSON.stringify(object));
   } else {
     console.log(customPrinter(options, object));
   }
+}
+
+function errorOut(errJson, options, customPrinter=(opt,err)=>{
+  return err.detail ? err.detail:err.title;
+}) {
+  if(options.json) {
+    console.error(JSON.stringify(errJson));
+  } else {
+    console.error(customPrinter(options, errJson));
+  }
+  process.exit(1);
 }
 
 require("sywac")
@@ -32,10 +43,15 @@ require("sywac")
     },
     run: options => {
       new AppSecConfig().configs(options).then(res => {
-        console.log(res);
+        print(res, options, (options, object)=>{
+          let str = [];
+          for(let i=0;object&&i<object.length;i++) {
+            str.push(object[i].configId);
+          }
+          return str.join('\n');
+        });
       }).catch(err => {
-        console.error(err);
-        process.exit(1);
+        errorOut(err, options);
       });
     }
   })
@@ -57,8 +73,7 @@ require("sywac")
       new CRB().getRule(options.config, options.ruleid).then(data => {
         console.log(data);
       }).catch(err => {
-        console.error(err);
-        process.exit(1);
+        errorOut(err, options);
       });
     }
   })
@@ -75,8 +90,7 @@ require("sywac")
       new CRB().getAllRules(options).then(data => {
         console.log(data);
       }).catch(err => {
-        console.error(err);
-        process.exit(1);
+        errorOut(err, options);
       });
     }
   })
@@ -100,8 +114,7 @@ require("sywac")
             console.log('data' + data);
           }).catch(err=>{
               //FIXME:  Remove text once this starts actually connecting to a live service.
-            console.error('err:' + err);
-            process.exit(1);
+              errorOut(err, options);
           });
         }
       })
@@ -127,8 +140,7 @@ require("sywac")
                 console.log('data: ' + data);
             }).catch(err=>{
                 //FIXME:  Remove text once this starts actually connecting to a live service.
-                console.error('err: ' + err);
-                process.exit(1);
+                errorOut(err, options);
             });
         }
     })
@@ -156,31 +168,11 @@ require("sywac")
                 console.log('data: ' + data);
             }).catch(err=>{
                 //FIXME:  Remove text once this starts actually connecting to a live service.
-                console.error('err: ' + err);
-                process.exit(1);
+                errorOut(err, options);
             });
         }
     })
-    .command("custom-rules", {
-        desc: "List all custom rules",
-        setup: sywac => {
-            sywac.number("--config <id>", {
-                desc: "Configuration id. Mandatory if you have more than one configuration.",
-                group: "Options:",
-                required: false
-            });
-        },
-        run: options => {
-            new CRB().getAllRules(options).then(data => {
-                //FIXME:  Remove text once this starts actually connecting to a live service.
-                console.log('data: ' + data);
-            }).catch(err=>{
-                //FIXME:  Remove text once this starts actually connecting to a live service.
-                console.error('err: ' + err);
-                process.exit(1);
-            });
-        }
-    })
+
   .command("config-versions", {
     desc: "List all versions",
     setup: sywac => {
@@ -200,30 +192,30 @@ require("sywac")
           return vids.join("\n");
         });
       }).catch(err => {
-        console.error(err);
-        process.exit(1);
+        errorOut(err, options);
       });
     }
   })
-  .command("version", {
+  .command("config-version", {
     desc: "Read a config version",
     setup: sywac => {
       sywac.number("--config <id>", {
         desc: "Configuration id number",
         group: "Options:",
         required: false
-      }).string("--version <id>", {
+      }).string("--version-id <id>", {
         desc: "The version id number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
         group: "Options:",
         required: false
       });
     },
     run: options => {
-      new AppSecConfig().version(options).then(data => {
-        console.log(data);
+      new AppSecConfig().version(options).then(versionObject => {
+        print(versionObject, options, (options, data)=>{
+          return data.version;
+        });
       }).catch(err => {
-        console.error(err);
-        process.exit(1);
+        errorOut(err, options);
       });
     }
   })
@@ -264,11 +256,11 @@ require("sywac")
     group: "Command options:",
     desc: "Prints help information."
   })
-  .version("--v", {
+  .version("--version", {
     group: "Command options:",
-    desc: "Current version og the program."
+    desc: "Current version of the program."
   })
-  .epilogue("Copyright (C) Akamai Technologies, Inc\nVisit http://github.com/akamai/cli-property for detailed documentation\n")
+  .epilogue("Copyright (C) Akamai Technologies, Inc\nVisit http://github.com/akamai/cli-appsec for detailed documentation\n")
   .outputSettings({
     maxWidth: 75
   })
