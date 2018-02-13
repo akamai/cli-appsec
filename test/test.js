@@ -71,7 +71,9 @@ describe("AppSecConfig get configurations", function () {
   it("non-200 responses should show error message", function () {
     let resultPromise = appSecConfig.configs();
     return resultPromise.catch(err => {
-      expect(err).to.equal("Unauthorized");
+      expect(err).to.deep.equal({
+        detail: "Unauthorized"
+      });
     });
   });
 });
