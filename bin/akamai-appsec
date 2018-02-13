@@ -160,26 +160,6 @@ require("sywac")
             });
         }
     })
-    .command("custom-rules", {
-        desc: "List all custom rules",
-        setup: sywac => {
-            sywac.number("--config <id>", {
-                desc: "Configuration id. Mandatory if you have more than one configuration.",
-                group: "Options:",
-                required: false
-            });
-        },
-        run: options => {
-            new CRB().getAllRules(options).then(data => {
-                //FIXME:  Remove text once this starts actually connecting to a live service.
-                console.log('data: ' + data);
-            }).catch(err=>{
-                //FIXME:  Remove text once this starts actually connecting to a live service.
-                console.error('err: ' + err);
-                process.exit(1);
-            });
-        }
-    })
   .command("config-versions", {
     desc: "List all versions",
     setup: sywac => {

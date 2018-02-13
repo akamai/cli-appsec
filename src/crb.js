@@ -21,30 +21,31 @@ class CRBHandler {
   template() {
     return fs.readFileSync(CRB_TEMPLATE_PATH, ENCODING);
   }
- 
+
   getAllRules(options) {
-    logger.debug("======>>> 1 ");
-    return this._config.config(options)
-      .then((configObj)=>{
-        logger.debug("======>>> 2 "+JSON.stringify(configObj));
-        options.config = configObj.configId;
-        return this._configResourceReader.readResource(options.config, URIs.GET_CRB_ALL, []);
-      });
+    logger.debug('======>>> 1 ');
+    return this._config.config(options).then(configObj => {
+      logger.debug('======>>> 2 ' + JSON.stringify(configObj));
+      options.config = configObj.configId;
+      return this._configResourceReader.readResource(options.config, URIs.GET_CRB_ALL, []);
+    });
   }
 
   getRule(options) {
     return this._configResourceReader.readResource(options.config, URIs.GET_CRB, [options.ruleId]);
   }
   createRule(options) {
-    return this._configResourceReader.post(options.config, URIs.GET_CRB_ALL, [], options.file);
+    return this._configResourceReader.postResource(
+      options.config,
+      URIs.GET_CRB_ALL,
+      options.file,
+      []
+    );
   }
   updateRule(options) {
-    return this._configResourceReader.put(
-      options.config,
-      URIs.GET_CRB,
-      [options.ruleId],
-      options.file
-    );
+    return this._configResourceReader.putResource(options.config, URIs.GET_CRB, options.file, [
+      options.ruleId
+    ]);
   }
 }
 module.exports = {
