@@ -3,7 +3,7 @@
     "responses":[ {
         "httpStatus":200,
         "response": {
-            "configId": 17956,
+            "configId": 1234,
             "configName": "jtigano.WAF.test",
             "lastCreatedVersion": 4,
             "links": [

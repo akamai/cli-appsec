@@ -246,10 +246,35 @@ require("sywac")
             return hosts.join("\n");
           });
         }).catch(err=>{
-            console.error(err);
-            process.exit(1);
+          errorOut(err, options);
         });
     }
+}).command("selectable-hostnames", {
+  desc: "List all selectable host names",
+  setup: sywac => {
+      sywac.number("--config <id>", {
+          desc: "Configuration id. Mandatory if you have more than one configuration.",
+          group: "Options:",
+          required: false
+      }).number("--version-id <id>", {
+        desc: "Version id.",
+        group: "Options:",
+        required: false
+     });
+  },
+  run: options => {
+      new SelectedHosts().selectableHosts(options).then(jsonData => {
+        print(jsonData, options, (options, data) => {
+          let hosts = [];
+          for (let i = 0; i < data.availableSet.length; i++) {
+            hosts.push(data.availableSet[i].hostName);
+          }
+          return hosts.join("\n");
+        });
+      }).catch(err=>{
+        errorOut(err, options);
+      });
+  }
 })
   .showHelpByDefault()
   .help("--help", {
