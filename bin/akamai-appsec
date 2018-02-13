@@ -66,21 +66,79 @@ require("sywac")
             group: "Options:",
             required: false
           })
-          .number("--ruleid <id>", {
+          .number("--ruleId <id>", {
               desc: "Rule ID.",
               group: "Options:",
               required: true
           });
         },
         run: options => {
-          new CRB().getRule(options.config, options.ruleid).then(data => {
-            console.log(data);
+          new CRB().getRule(options).then(data => {
+              //FIXME:  Remove text once this starts actually connecting to a live service.
+            console.log('data' + data);
           }).catch(err=>{
-            console.error(err);
+              //FIXME:  Remove text once this starts actually connecting to a live service.
+            console.error('err:' + err);
             process.exit(1);
           });
         }
       })
+    .command("create-custom-rule", {
+        desc: "Create custom rule",
+        setup: sywac => {
+            sywac.number("--config <id>", {
+                desc: "Configuration id. Mandatory if you have more than one configuration.",
+                group: "Options:",
+                required: false
+            })
+
+            .file('--file <path>', {
+                desc: 'File with JSON rules',
+                group: "Options:",
+                required: true,
+                mustExist: true
+            });
+        },
+        run: options => {
+            new CRB().createRule(options).then(data => {
+                //FIXME:  Remove text once this starts actually connecting to a live service.
+                console.log('data: ' + data);
+            }).catch(err=>{
+                //FIXME:  Remove text once this starts actually connecting to a live service.
+                console.error('err: ' + err);
+                process.exit(1);
+            });
+        }
+    })
+    .command("modify-custom-rule", {
+        desc: "Update existing custom rule",
+        setup: sywac => {
+            sywac.number("--config <id>", {
+                desc: "Configuration id. Mandatory if you have more than one configuration.",
+                group: "Options:",
+                required: false
+            })
+            .number("--ruleId <id>", {
+                desc: "Rule ID.",
+                group: "Options:",
+                required: true
+            })
+            .file('--file <path>', {
+                desc: 'File with JSON rules',
+                mustExist: true
+            });
+        },
+        run: options => {
+            new CRB().createRule(options).then(data => {
+                //FIXME:  Remove text once this starts actually connecting to a live service.
+                console.log('data: ' + data);
+            }).catch(err=>{
+                //FIXME:  Remove text once this starts actually connecting to a live service.
+                console.error('err: ' + err);
+                process.exit(1);
+            });
+        }
+    })
     .command("custom-rules", {
         desc: "List all custom rules",
         setup: sywac => {
@@ -91,10 +149,12 @@ require("sywac")
             });
         },
         run: options => {
-            new CRB().getAllRules(options.config).then(data => {
-                console.log(data);
+            new CRB().getAllRules(options).then(data => {
+                //FIXME:  Remove text once this starts actually connecting to a live service.
+                console.log('data: ' + data);
             }).catch(err=>{
-                console.error(err);
+                //FIXME:  Remove text once this starts actually connecting to a live service.
+                console.error('err: ' + err);
                 process.exit(1);
             });
         }

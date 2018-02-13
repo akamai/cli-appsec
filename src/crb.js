@@ -1,74 +1,45 @@
-"use strict";
+'use strict';
+let Edge =
+  process.env.MOCK_AKA_SEC_API == 'true' ? require('../mock/edgeClient') : require('./edgeClient');
 
-let Edge = process.env.MOCK_AKA_SEC_API == 'true' ? require("../mock/edgeClient") : require("./edgeClient");
+let URIs = require('./constants').URIS;
+let logger = require('./constants').logger('CRBHandler');
+let ConfigResourcesReader = require('./configResourcesUtil').resourceUtil;
 
-let util = require('util');
-let URIs = require("./constants").URIS;
-let ConfigProvider = require('./configProvider').configProvider;
-let logger = require("./constants").logger("AppSecConfig");
-
-require("string-format");
-var fs = require("fs");
-const CRB_TEMPLATE_PATH=__dirname + '/../templates/crbTemplate.json';
-const ENCODING='utf8';
-
+require('string-format');
+var fs = require('fs');
+const CRB_TEMPLATE_PATH = __dirname + '/../templates/crbTemplate.json';
+const ENCODING = 'utf8';
 class CRBHandler {
+  constructor(auth) {
+    this._edge = new Edge(auth);
+    this._configResourceReader = new ConfigResourcesReader(this._edge);
+  }
 
-    constructor(auth) {
-        this._edge = new Edge(auth);
-        this._configProvider = new ConfigProvider(this._edge);
-    }
-    _getConfigId(configId) {
-        if (!configId) {
-            if (this.configs().length == 1) {
-                configId = this.configs()[0].id;
-            } else {
-                throw "You have more than one configuration. Please provide a configuration id to work with.";
-            }
-        }
-    }
+  template() {
+    return new Promise(resolve => {
+      resolve(fs.readFileSync(CRB_TEMPLATE_PATH, ENCODING));
+    });
+  }
 
-    template() {
-        return new Promise((resolve) => {
-            resolve(fs.readFileSync(CRB_TEMPLATE_PATH, ENCODING));
-        });
-    }
-
-    getAllRules(providedConfigId) {
-        let configId = this._configProvider.getConfigId(providedConfigId);
-        return new Promise((resolve, reject) => {
-                let customRulesUrl  = util.format(URIs.GET_CRB_ALL, configId);
-                logger.debug("Attempting to get all custom rules at: " + customRulesUrl);
-            let request = {
-                method: "GET",
-                path: customRulesUrl,
-                followRedirect: false
-            };
-            this._edge.get(request).then(response => {
-                resolve(response);
-            }).catch(err => {
-                reject(err);
-            });
-        });
-    }
-    getRule(providedConfigId, ruleId) {
-        let configId = this._configProvider.getConfigId(providedConfigId);
-        return new Promise((resolve, reject) => {
-            let customRulesUrl  = util.format(URIs.GET_CRB, configId, ruleId);
-            logger.debug("Attempting to get custom rule at : " + customRulesUrl);
-            let request = {
-                method: "GET",
-                path: customRulesUrl,
-                followRedirect: false
-            };
-            this._edge.get(request).then(response => {
-                resolve(response);
-            }).catch(err => {
-                reject(err);
-            });
-        });
-    }
+  getAllRules(options) {
+    return this._configResourceReader.readResource(options.config, URIs.GET_CRB_ALL, []);
+  }
+  getRule(options) {
+    return this._configResourceReader.readResource(options.config, URIs.GET_CRB, [options.ruleId]);
+  }
+  createRule(options) {
+    return this._configResourceReader.post(options.config, URIs.GET_CRB_ALL, [], options.file);
+  }
+  updateRule(options) {
+    return this._configResourceReader.put(
+      options.config,
+      URIs.GET_CRB,
+      [options.ruleId],
+      options.file
+    );
+  }
 }
 module.exports = {
-    CRBHandler: CRBHandler
+  CRBHandler: CRBHandler
 };
