@@ -245,8 +245,14 @@ require("sywac")
       });
     },
     run: options => {
-        new SelectedHosts().addHosts(options).then(data => {
-            console.log(data);
+        new SelectedHosts().addHosts(options).then(jsonData => {
+          print(jsonData, options, (options, data) => {
+            let hosts = [];
+            for (let i = 0; i < data.hostnameList.length; i++) {
+              hosts.push(data.hostnameList[i].hostName);
+            }
+            return hosts.join("\n");
+          });
         }).catch(err=>{
             console.error(err);
             process.exit(1);

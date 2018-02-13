@@ -17,12 +17,10 @@ class SelectedHosts {
 
   addHosts(options) {
     logger.debug("Adding hosts to selected list.");
-    return this._config.config(options)
-        .then((configObj)=>{
-            options.config = configObj.configId;
-            return this._config.version(options);
-        }).then((version)=>{
+    return this._config.version(options)
+        .then((version)=>{
             options["version-id"] = version.version;
+            options.config = version.configId;
             return this._configResourceReader.readResource(options.config, URIs.SELECTED_HOSTS_RESOURCE, [version.version]);
         }).then((selectedHosts)=>{
             let hosts = [];
