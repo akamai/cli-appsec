@@ -1,11 +1,8 @@
 'use strict';
 let untildify = require('untildify');
 var EdgeGrid = require('edgeGrid');
-var logger = require('pino')({
-  level: process.env.LOG_LEVEL ? process.env.LOG_LEVEL : 'error',
-  prettyPrint: true,
-  name: 'EdgeClient'
-});
+let util = require("util");
+let logger = require("./constants").logger("EdgeClient");
 class Edge {
   constructor(
     auth = {
@@ -32,107 +29,64 @@ class Edge {
     }
   }
 
-  get(requestUri) {
-    let request = {
-      method: 'GET',
-      path: requestUri,
-      followRedirect: false
-    };
-
-    return new Promise((resolve, reject) => {
-      this._edge.auth(request);
-      this._edge.send(function(data, response) {
-        logger.debug(
-          'Requesting: ' + request.path + '\nResponse from server: ' + JSON.stringify(response)
-        );
-        if (response && response.statusCode >= 200 && response.statusCode < 400) {
-          resolve(JSON.parse(response.body));
-        } else if (!response) {
-          logger.info('Error response from server: ' + JSON.stringify(data));
-          reject('Could not get data at this time.');
-        } else {
-          logger.info('Error response from server: ' + JSON.stringify(response));
-          try {
-            let errJson = JSON.parse(response.body);
-            reject(errJson.detail);
-          } catch (err) {
-            reject(response.body);
-          }
-        }
-      });
-    });
+  _resolveParams(uri,params) {
+    for (let i = 0; params && i < params.length; i++) {
+      uri = util.format(uri, params[i]);
+    }
+    return uri;
   }
-  post(requestUri, body) {
-    let request = {
-      method: 'POST',
-      path: requestUri,
-      followRedirect: false,
-      body: body
-    };
 
+  _send(request) {
     return new Promise((resolve, reject) => {
       this._edge.auth(request);
-      this._edge.send(function(data, response) {
-        logger.debug(
-          'Posting: ' +
-            request.path +
-            '\nbody: ' +
-            body +
-            '\nResponse from server: ' +
-            JSON.stringify(response)
-        );
+      this._edge.send(function (data, response) {
+        logger.debug(request.method + " : " + request.path 
+          + "; Body: "+ request.body
+          + "; Response : " + JSON.stringify(response));
         if (response && response.statusCode >= 200 && response.statusCode < 400) {
           resolve(JSON.parse(response.body));
-        } else if (!response) {
-          logger.info('Error response from server: ' + JSON.stringify(data));
-          reject('Could not get data at this time.');
+        } else if(!response) {
+          logger.info("No response from server: "+JSON.stringify(data));
+          reject("Could not get data at this time.");
         } else {
-          logger.info('Error response from server: ' + JSON.stringify(response));
-          try {
-            let errJson = JSON.parse(response.body);
-            reject(errJson.detail);
-          } catch (err) {
-            reject(response.body);
-          }
-        }
-      });
-    });
-  }
-  put(requestUri, body) {
-    let request = {
-      method: 'PUT',
-      path: requestUri,
-      followRedirect: false,
-      body: body
-    };
-
-    return new Promise((resolve, reject) => {
-      this._edge.auth(request);
-      this._edge.send(function(data, response) {
-        logger.debug(
-          'PUT call to : ' +
-            request.path +
-            '\nbody: ' +
-            body +
-            '\nResponse from server: ' +
-            JSON.stringify(response)
-        );
-        if (response && response.statusCode >= 200 && response.statusCode < 400) {
-          resolve(JSON.parse(response.body));
-        } else if (!response) {
-          logger.info('Error response from server: ' + JSON.stringify(data));
-          reject('Could not get data at this time.');
-        } else {
-          logger.info('Error response from server: ' + JSON.stringify(response));
-          try {
+          logger.info("Error response from server: "+JSON.stringify(response));
+          try  {
             let errJson = JSON.parse(response.body);
             reject(errJson.detail?errJson.detail:errJson.title);
-          } catch (err) {
+          } catch(err) {
             reject(response.body);
           }
         }
       });
     });
+  }
+
+  get(requestUri, params) {
+
+    let request = {
+      method: "GET",
+      path: this._resolveParams(requestUri, params)
+    };
+    return this._send(request);
+  }
+
+  post(requestUri, body, params) {
+    let request = {
+      method: 'POST',
+      path: this._resolveParams(requestUri, params),
+      followRedirect: false,
+      body: body
+    };
+    return this._send(request);
+  }
+
+  put(requestUri, payload, params) {
+    let request = {
+      method: "PUT",
+      path: this._resolveParams(requestUri, params),
+      body: JSON.stringify(payload)
+    };
+    return this._send(request);
   }
 }
 

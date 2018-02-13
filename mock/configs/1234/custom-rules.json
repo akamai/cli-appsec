@@ -1,0 +1,35 @@
+{
+    "responseToChoose": 0,
+    "responses":[ {
+        "httpStatus":200,
+        "response": [
+            {
+                "link": "/appsec-resource/v1/configs/99999/customRules/111111",
+                "name": "Example 1",
+                "status": "activated",
+                "ruleId": 111111,
+                "version": 1
+            },
+            {
+                "link": "/appsec-resource/v1/configs/99999/customRules/111112",
+                "name": "Example 2",
+                "status": "published",
+                "ruleId": 111112,
+                "version": 1
+            },
+            {
+                "link": "/appsec-resource/v1/configs/99999/customRules/111113",
+                "name": "Example 3",
+                "status": "unused",
+                "ruleId": 111113,
+                "version": 2
+            }
+        ]
+    }, {
+        "httpStatus":403,
+        "response": {
+            "title": "Unauthorized",
+            "detail": "You are not authorized to perform this operation"
+        }
+    } ]
+}

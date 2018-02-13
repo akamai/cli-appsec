@@ -13,13 +13,13 @@ const LOG = require('pino')({
 var logger = function (loggerName) {
      return LOG.child({name:loggerName});
 };
-const CRB='/appsec-resource/v1/configs/%s/custom-rules';
 var resources = {
     "GET_CONFIGS": '/appsec-configuration/v1/configs',
+    "GET_CONFIG": '/appsec-configuration/v1/configs/%s',
     "GET_VERSIONS": '/appsec-configuration/v1/configs/%s/versions',
     "GET_VERSION": '/appsec-configuration/v1/configs/%s/versions/%s',
-    "GET_CRB_ALL": CRB,
-    "GET_CRB": CRB + '/%s'
+    "GET_CRB_ALL": '/appsec-resource/v1/configs/%s/custom-rules',
+    "GET_CRB": '/appsec-resource/v1/configs/%s/custom-rules/%s'
 };
 
 define("URIS", resources);

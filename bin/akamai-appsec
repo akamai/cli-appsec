@@ -71,7 +71,7 @@ require("sywac")
       });
     },
     run: options => {
-      new CRB().getAllRules(options.config).then(data => {
+      new CRB().getAllRules(options).then(data => {
         console.log(data);
       }).catch(err => {
         console.error(err);

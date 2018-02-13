@@ -5,6 +5,7 @@ let Edge =
 let URIs = require('./constants').URIS;
 let logger = require('./constants').logger('CRBHandler');
 let ConfigResourcesReader = require('./configResourcesUtil').resourceUtil;
+let Config = require('./appSecConfig').AppSecConfig;
 
 require('string-format');
 var fs = require('fs');
@@ -14,6 +15,7 @@ class CRBHandler {
   constructor(auth) {
     this._edge = new Edge(auth);
     this._configResourceReader = new ConfigResourcesReader(this._edge);
+    this._config = new Config();
   }
 
   template() {
@@ -21,8 +23,15 @@ class CRBHandler {
   }
  
   getAllRules(options) {
-    return this._configResourceReader.readResource(options.config, URIs.GET_CRB_ALL, []);
+    logger.debug("======>>> 1 ");
+    return this._config.config(options)
+      .then((configObj)=>{
+        logger.debug("======>>> 2 "+JSON.stringify(configObj));
+        options.config = configObj.configId;
+        return this._configResourceReader.readResource(options.config, URIs.GET_CRB_ALL, []);
+      });
   }
+
   getRule(options) {
     return this._configResourceReader.readResource(options.config, URIs.GET_CRB, [options.ruleId]);
   }

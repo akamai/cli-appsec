@@ -15,17 +15,20 @@ class AppSecConfig {
 
   configs(options) {
     logger.debug("Options: " + JSON.stringify(options));
+    logger.info("Fetching all available configurations..");
     return this._edge.get(URIs.GET_CONFIGS);
   }
 
   config(options) {
     logger.debug("Options: " + JSON.stringify(options));
+    logger.info("Fetching configuration " + options.config?options.config:'');
     //TODO Optimize in case when the customer has only one config and he provides no id. This will make two calls to the same API in this use case.
     return this._configResourceReader.readResource(options.config, URIs.GET_CONFIG, []);
   }
 
   versions(options) {
     logger.debug("Options: " + JSON.stringify(options));
+    logger.info("Fetching version list..");
     return this._configResourceReader.readResource(options.config, URIs.GET_VERSIONS, []);
   }
   /**
@@ -36,7 +39,7 @@ class AppSecConfig {
     logger.debug("Options: " + JSON.stringify(options));
     let version = options['version-id'];
     let versionAttr;
-    logger.debug("===" + version);
+    logger.info("Fetching version: " + version);
 
     //If version is not provided, select the latest version
     if(!version) {

@@ -1,44 +1,34 @@
 'use strict';
 
 let logger = require('./constants').logger('ResourceUtil');
-let util = require('util');
 let URIs = require('./constants').URIS;
-const untildify = require('untildify');
-var fs = require('fs');
+
 class ResourceUtil {
   constructor(edge) {
     this._edge = edge;
     this._config = new Config(this._edge);
   }
 
-  readResource(confId, uri, params) {
+  readResource(confId, uri, params=[]) {
+    logger.debug("uri 1==>"+uri);
     return this._config.getConfigId(confId).then(configId => {
-      let uriWithConfigId = util.format(uri, configId);
-      for (let i = 0; params && i < params.length; i++) {
-        uriWithConfigId = util.format(uriWithConfigId, params[i]);
-      }
-      logger.debug('URI: ' + uriWithConfigId);
-      return this._edge.get(uriWithConfigId); //returns a promise
+      params.unshift(configId);
+      logger.debug("uri 2==>"+uri);
+      return this._edge.get(uri, params); //returns a promise
     });
   }
-  post(confId, uri, params, body) {
+
+  putResource(confId, uri, payload, params=[]) {
     return this._config.getConfigId(confId).then(configId => {
-      let postBodyString = fs.readFileSync(untildify(body));
-      let uriWithConfigId = util.format(uri, configId);
-      for (let i = 0; params && i < params.length; i++) {
-        uriWithConfigId = util.format(uriWithConfigId, params[i]);
-      }
-      return this._edge.post(uriWithConfigId, postBodyString); //returns a promise
+      params.unshift(configId);
+      return this._edge.put(uri, payload, params); //returns a promise
     });
   }
-  put(confId, uri, params, body) {
+
+  postResource(confId, uri, payload, params=[]) {
     return this._config.getConfigId(confId).then(configId => {
-      let putBodyString = fs.readFileSync(untildify(body));
-      let uriWithConfigId = util.format(uri, configId);
-      for (let i = 0; params && i < params.length; i++) {
-        uriWithConfigId = util.format(uriWithConfigId, params[i]);
-      }
-      return this._edge.put(uriWithConfigId, putBodyString); //returns a promise
+      params.unshift(configId);
+      return this._edge.post(uri, payload, params); //returns a promise
     });
   }
 }
@@ -57,6 +47,7 @@ class Config {
         if (configs.length == 1) {
           return configs[0].configId;
         } else {
+          logger.error("You have more than one configuration. Please provide a configuration id to work with.");
           throw 'You have more than one configuration. Please provide a configuration id to work with.';
         }
       });
