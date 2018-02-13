@@ -30,6 +30,26 @@ Then install nodejs and download all dependencies for this project by issuing th
 `./bin/akamai-appsec`
 
 # Mocking the server
-If for some reason the {OPEN} APIs are not accessible/available, there is a way to easily switch to mocks. Set the environment variable `MOCK_AKA_SEC_API` to `true` and place the mock jsons in the 'mock' directory. For example, if you need to mock the API `/appsec-configuration/v1/configs/1234/versions`, create the directory `mock/configs/1234` and place a file named `versions.json` in it. Now the API will return the contents of that json.
+If for some reason the {OPEN} APIs are not accessible/available, there is a way to easily switch to mocks. Set the environment variable `MOCK_AKA_SEC_API` to `true` and place the mock jsons in the 'mock' directory. For example, if you need to mock the API `/appsec-configuration/v1/configs/1234/versions`, create the directory `mock/configs/1234` and place a file named `versions.json` in it. The json has the following format:
+`
+{
+    "responseToChoose": 0,
+    "responses":[{
+        "httpStatus":200,
+        "response": [
+            {
+                "configId": 1234
+            }
+        ]
+    }, {
+        "httpStatus":403,
+        "response": {
+            "status": 403,
+            "title":"Unauthorized",
+            "detail":"You are not authorized to do this!"
+        }
+    }]
+}
+`
 
-Mocking exceptions are not yet supported. Contributions welcome.
+Now the API will return the contents of that json based on the attribute `responseToChoose`. This variable determines which response is chosen from the array `responses`. Any `httpStatus` other than 2xx and 3xx will be considered an error from the server.
