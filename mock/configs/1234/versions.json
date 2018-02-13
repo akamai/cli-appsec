@@ -1,91 +1,97 @@
 {
-    "configId": 17956,
-    "configName": "jtigano.WAF.test",
-    "lastCreatedVersion": 4,
-    "links": [
-        {
-            "href": "/appsec-configuration/v1/configs/17956/versions?page=1&pagesize=4",
-            "rel": "self"
-        }
-    ],
-    "page": 1,
-    "pageSize": 4,
-    "productionActiveVersion": 2,
-    "stagingActiveVersion": 1,
-    "totalSize": 4,
-    "versionList": [
-        {
+    "responseToChoose": 0,
+    "responses":[ {
+        "httpStatus":200,
+        "response": {
+            "configId": 17956,
+            "configName": "jtigano.WAF.test",
+            "lastCreatedVersion": 4,
             "links": [
                 {
-                    "href": "http:createVersionFrom.placeholder/url/configs/17956/versions/1",
-                    "rel": "createVersionFrom"
-                },
-                {
-                    "href": "http:deactivate.placeholder/url/configs/17956/versions/1",
-                    "rel": "deactivate"
-                },
-                {
-                    "href": "http:viewMetadata.placeholder/url/configs/17956/versions/1",
-                    "rel": "viewMetadata"
-                },
-                {
-                    "href": "http:activate.placeholder/url/configs/17956/versions/1",
-                    "rel": "activate"
-                },
-                {
-                    "enabled": false,
-                    "rel": "edit"
-                },
-                {
-                    "enabled": false,
-                    "rel": "delete"
+                    "href": "/appsec-configuration/v1/configs/17956/versions?page=1&pagesize=4",
+                    "rel": "self"
                 }
             ],
-            "production": {
-                "status": "Deactivated",
-                "time": 1493753405000
-            },
-            "staging": {
-                "status": "Active",
-                "time": 1493732705000
-            },
-            "version": 1
-        },
-        {
-            "links": [
+            "page": 1,
+            "pageSize": 4,
+            "productionActiveVersion": 2,
+            "stagingActiveVersion": 1,
+            "totalSize": 4,
+            "versionList": [
                 {
-                    "href": "http:activate.placeholder/url/configs/17956/versions/2",
-                    "rel": "activate"
+                    "links": [
+                        {
+                            "href": "http:createVersionFrom.placeholder/url/configs/17956/versions/1",
+                            "rel": "createVersionFrom"
+                        },
+                        {
+                            "href": "http:deactivate.placeholder/url/configs/17956/versions/1",
+                            "rel": "deactivate"
+                        },
+                        {
+                            "href": "http:viewMetadata.placeholder/url/configs/17956/versions/1",
+                            "rel": "viewMetadata"
+                        },
+                        {
+                            "href": "http:activate.placeholder/url/configs/17956/versions/1",
+                            "rel": "activate"
+                        },
+                        {
+                            "enabled": false,
+                            "rel": "edit"
+                        },
+                        {
+                            "enabled": false,
+                            "rel": "delete"
+                        }
+                    ],
+                    "production": {
+                        "status": "Deactivated",
+                        "time": 1493753405000
+                    },
+                    "staging": {
+                        "status": "Active",
+                        "time": 1493732705000
+                    },
+                    "version": 1
                 },
                 {
-                    "href": "http:viewMetadata.placeholder/url/configs/17956/versions/2",
-                    "rel": "viewMetadata"
-                },
-                {
-                    "href": "http:deactivate.placeholder/url/configs/17956/versions/2",
-                    "rel": "deactivate"
-                },
-                {
-                    "href": "http:createVersionFrom.placeholder/url/configs/17956/versions/2",
-                    "rel": "createVersionFrom"
-                },
-                {
-                    "enabled": false,
-                    "rel": "delete"
-                },
-                {
-                    "enabled": false,
-                    "rel": "edit"
+                    "links": [
+                        {
+                            "href": "http:activate.placeholder/url/configs/17956/versions/2",
+                            "rel": "activate"
+                        },
+                        {
+                            "href": "http:viewMetadata.placeholder/url/configs/17956/versions/2",
+                            "rel": "viewMetadata"
+                        },
+                        {
+                            "href": "http:deactivate.placeholder/url/configs/17956/versions/2",
+                            "rel": "deactivate"
+                        },
+                        {
+                            "href": "http:createVersionFrom.placeholder/url/configs/17956/versions/2",
+                            "rel": "createVersionFrom"
+                        },
+                        {
+                            "enabled": false,
+                            "rel": "delete"
+                        },
+                        {
+                            "enabled": false,
+                            "rel": "edit"
+                        }
+                    ],
+                    "production": {
+                        "status": "Active",
+                        "time": 1493753405000
+                    },
+                    "staging": {
+                        "status": "Inactive"
+                    },
+                    "version": 2
                 }
-            ],
-            "production": {
-                "status": "Active",
-                "time": 1493753405000
-            },
-            "staging": {
-                "status": "Inactive"
-            },
-            "version": 2
+            ]
         }
-    ]
+    } ]
 }

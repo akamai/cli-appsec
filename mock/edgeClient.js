@@ -33,7 +33,16 @@ class Edge {
             if (err) {
                 reject(err);
             } else {
-                setTimeout(()=>resolve(JSON.parse(data)),2000);
+              logger.debug(JSON.stringify(JSON.parse(data)));
+                setTimeout(()=>{
+                  let jsonData = JSON.parse(data);
+                  let chosenData = jsonData.responses[jsonData.responseToChoose];
+                  if(chosenData.httpStatus >= 200 && chosenData.httpStatus < 400 ) {
+                    resolve(chosenData.response);
+                  } else {
+                    reject(chosenData.response);
+                  }
+                },2000);
             }
           });
     });

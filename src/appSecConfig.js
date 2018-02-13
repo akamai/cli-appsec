@@ -28,10 +28,47 @@ class AppSecConfig {
     logger.debug("Options: " + JSON.stringify(options));
     return this._configResourceReader.readResource(options.config, URIs.GET_VERSIONS, []);
   }
-
+  /**
+   * Returns the version asked for. If the version-id is not provided, the latest version is assumed.
+   * @param {object} options the options passed in the command line
+   */
   version(options) {
     logger.debug("Options: " + JSON.stringify(options));
-    return this._configResourceReader.readResource(options.config, URIs.GET_VERSION, [options['version-id']]);
+    let version = options['version-id'];
+    let versionAttr;
+    logger.debug("===" + version);
+
+    //If version is not provided, select the latest version
+    if(!version) {
+      return this.versions(options).then((allVersions) => {
+        let maxVersion = 0;
+        let resultVersion;
+        for (let i = 0; allVersions && i < allVersions.versionList.length; i++) {
+          if (allVersions.versionList[i].version > maxVersion) {
+            resultVersion = allVersions.versionList[i];
+            maxVersion = allVersions.versionList[i].version;
+          }
+        }
+        return resultVersion;
+      });
+    } else {
+      if (version == 'PROD' || version == 'PRODUCTION') {
+        versionAttr = 'production';
+      } else if (version == 'STAGING') {
+        versionAttr = 'staging';
+      }
+      if (versionAttr) {
+        return this.versions(options).then((allVersions) => {
+          for (let i = 0; allVersions && i < allVersions.versionList.length; i++) {
+            if (allVersions.versionList[i][versionAttr].status == 'Active') {
+              return allVersions.versionList[i];
+            }
+          }
+        });
+      } else {
+        return this._configResourceReader.readResource(options.config, URIs.GET_VERSION, [version]);
+      }
+    }
   }
 }
 

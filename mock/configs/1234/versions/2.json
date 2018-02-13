@@ -34,14 +34,14 @@
                 }
             ],
             "production": {
-                "status": "Deactivated",
+                "status": "Active",
                 "time": 1493753405000
             },
             "staging": {
-                "status": "Active",
+                "status": "Deactivated",
                 "time": 1493732705000
             },
-            "version": 1
+            "version": 2
         }
     } ]
 }

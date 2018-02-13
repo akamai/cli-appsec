@@ -4,7 +4,6 @@
 
 var AppSecConfig = require("../src/appSecConfig").AppSecConfig;
 var CRB = require("../src/crb").CRBHandler;
-var fs = require("fs");
 
 function print(object, options, customPrinter) {
   if (options.json == true) {
@@ -19,12 +18,7 @@ require("sywac")
     desc: "Prints sample JSON of a structured custom rule.",
     aliases: ["srt"],
     run: options => {
-      new CRB().template().then(res => {
-        console.log(res);
-      }).catch(err => {
-        console.error(err);
-        process.exit(1);
-      });
+      console.log(new CRB().template());
     }
   })
   .command("configs", {
@@ -44,18 +38,45 @@ require("sywac")
       });
     }
   })
-  .command("create", {
-    desc: "Create config",
+  .command("custom-rule", {
+    desc: "Display contents of custom rule",
     setup: sywac => {
-      sywac.file("--file <file>", {
-        desc: "Configuration details in json format, to create.",
+      sywac.number("--config <id>", {
+          desc: "Configuration id. Mandatory if you have more than one configuration.",
+          group: "Options:",
+          required: false
+        })
+        .number("--ruleid <id>", {
+          desc: "Rule ID.",
+          group: "Options:",
+          required: true
+        });
+    },
+    run: options => {
+      new CRB().getRule(options.config, options.ruleid).then(data => {
+        console.log(data);
+      }).catch(err => {
+        console.error(err);
+        process.exit(1);
+      });
+    }
+  })
+  .command("custom-rules", {
+    desc: "List all custom rules",
+    setup: sywac => {
+      sywac.number("--config <id>", {
+        desc: "Configuration id. Mandatory if you have more than one configuration.",
         group: "Options:",
-        required: true
+        required: false
       });
     },
     run: options => {
-      var contents = fs.readFileSync(options.file, "utf8");
-      console.log(contents);
+      new CRB().getAllRules(options.config).then(data => {
+        console.log(data);
+      }).catch(err => {
+        console.error(err);
+        process.exit(1);
+      });
     }
   })
   .command("custom-rule", {
@@ -184,15 +205,14 @@ require("sywac")
     }
   })
   .command("version", {
-  }).command("config-version", {
     desc: "Read a config version",
     setup: sywac => {
       sywac.number("--config <id>", {
         desc: "Configuration id number",
         group: "Options:",
         required: false
-      }).number("--version-id <id>", {
-        desc: "The version id number",
+      }).string("--version <id>", {
+        desc: "The version id number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
         group: "Options:",
         required: false
       });
@@ -208,10 +228,12 @@ require("sywac")
   })
   .showHelpByDefault()
   .help("--help", {
-    group: "Command options:"
+    group: "Command options:",
+    desc: "Prints help information."
   })
-  .version("--version", {
-    group: "Command options:"
+  .version("--v", {
+    group: "Command options:",
+    desc: "Current version og the program."
   })
   .epilogue("Copyright (C) Akamai Technologies, Inc\nVisit http://github.com/akamai/cli-property for detailed documentation\n")
   .outputSettings({
