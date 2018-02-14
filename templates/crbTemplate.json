@@ -1,10 +1,10 @@
 {
-  "tag": ["changeme"],
+  "name": "Custom Rule Example",
+  "description": "This is a giant custom rule with most of the available conditions. Please delete all conditions but the ones you need.  Most rules only have 1 or 2 conditions.  Some conditions, like cookieMatch, requestHeaderMatch and uriQueryMatch can be declared more than once.",
+  "tag": ["ChangeMe"],
   "conditions": {
     "groups": [
       {
-        "groups": [
-        ],
         "conditions": [
           {
             "className": "requestMethodMatch",
@@ -24,16 +24,16 @@
             "className": "pathMatch",
             "positiveMatch": true,
             "value": [
-              "/changeme",
-              "/changeme"
+              "/ChangeMe",
+              "/ChangeMe"
             ]
           },
           {
             "className": "extensionMatch",
             "positiveMatch": true,
             "value": [
-              "changeme",
-              "changeme"
+              "ChangeMe",
+              "ChangeMe"
             ],
             "valueWildcard": true,
             "valueCase": true
@@ -42,8 +42,8 @@
             "className": "filenameMatch",
             "positiveMatch": true,
             "value": [
-              "changeme",
-              "changeme"
+              "ChangeMe",
+              "ChangeMe"
             ],
             "valueWildcard": false,
             "valueCase": false
@@ -58,10 +58,10 @@
           {
             "className": "requestHeaderMatch",
             "positiveMatch": true,
-            "name": ["changeme", "changeme"],
+            "name": ["ChangeMe", "ChangeMe"],
             "value": [
-              "changeme",
-              "changeme"
+              "ChangeMe",
+              "ChangeMe"
             ],
             "valueCase": true,
             "valueWildcard": true,
@@ -70,10 +70,10 @@
           {
             "className": "requestHeaderMatch",
             "positiveMatch": true,
-            "name": ["changeme", "changeme"],
+            "name": ["ChangeMe", "ChangeMe"],
             "value": [
-              "changeme",
-              "changeme"
+              "ChangeMe",
+              "ChangeMe"
             ],
             "valueCase": true,
             "valueWildcard": true,
@@ -82,17 +82,17 @@
           {
             "className": "headerOrderMatch",
             "positiveMatch": true,
-            "value": "changeme:changemee"
+            "value": "ChangeMe:ChangeMee"
           },
           {
             "className": "cookieMatch",
             "positiveMatch": true,
-            "name": "changeme",
+            "name": "ChangeMe",
             "nameWildcard": true,
             "nameCase": true,
             "value": [
-              "changeme",
-              "changeme"
+              "ChangeMe",
+              "ChangeMe"
             ],
             "valueCase": true,
             "valueWildcard": true
@@ -100,12 +100,12 @@
           {
             "className": "cookieMatch",
             "positiveMatch": true,
-            "name": "changeme",
+            "name": "ChangeMe",
             "nameWildcard": true,
             "nameCase": true,
             "value": [
-              "changeme",
-              "changeme"
+              "ChangeMe",
+              "ChangeMe"
             ],
             "valueCase": true,
             "valueWildcard": true
@@ -113,12 +113,12 @@
           {
             "className": "uriQueryMatch",
             "positiveMatch": true,
-            "name": "changeme",
+            "name": "ChangeMe",
             "nameCase": true,
             "nameWildcard": true,
             "value": [
-              "changeme",
-              "changeme"
+              "ChangeMe",
+              "ChangeMe"
             ],
             "valueWildcard": true,
             "valueCase": true
@@ -126,12 +126,12 @@
           {
             "className": "uriQueryMatch",
             "positiveMatch": true,
-            "name": "changeme",
+            "name": "ChangeMe",
             "nameCase": false,
             "nameWildcard": false,
             "value": [
-              "changeme",
-              "changeme"
+              "ChangeMe",
+              "ChangeMe"
             ],
             "valueWildcard": false,
             "valueCase": false
@@ -139,27 +139,27 @@
           {
             "className": "argsPostMatch",
             "positiveMatch": true,
-            "name": "changeme",
+            "name": "ChangeMe",
             "value": [
-              "changeme",
-              "changeme"
+              "ChangeMe",
+              "ChangeMe"
             ]
           },
           {
             "className": "argsPostMatch",
             "positiveMatch": true,
-            "name": "changeme",
+            "name": "ChangeMe",
             "value": [
-              "changeme",
-              "changeme"
+              "ChangeMe",
+              "ChangeMe"
             ]
           },
           {
             "className": "argsPostNamesMatch",
             "positiveMatch": true,
             "value": [
-              "changeme",
-              "changeme"
+              "ChangeMe",
+              "ChangeMe"
             ]
           }
         ],
@@ -167,15 +167,10 @@
         "operation": "AND"
       }
     ],
-    "conditions": [
-    ],
     "positiveMatch": true,
     "operation": "AND"
   },
-  "name": "Change me",
-  "description": "Change me",
   "inspectRequest": false,
   "inspectResponse": false,
-  "re2": true,
   "structured": true
 }
