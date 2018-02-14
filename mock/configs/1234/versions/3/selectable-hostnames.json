@@ -8,6 +8,14 @@
         "configVersion": 2,
         "protectARLInclusionHost": true,
         "availableSet":[
+          {
+            "arlInclusion":false,
+            "activeInProduction":true,
+            "activeInStaging":true,
+            "configIdInProduction":11887,
+            "configNameInProduction":"Rbac Test Config",
+            "hostName":"www.kona-ghost-api.com"
+           },
            {
               "arlInclusion":true,
               "activeInProduction":true,
@@ -15,14 +23,6 @@
               "configIdInProduction":5443,
               "configNameInProduction":"WAF Security File",
               "hostName":"test-uvm-sec.amazonaws.com.edgesuite.net"
-           },
-           {
-            "arlInclusion":false,
-            "activeInProduction":true,
-            "activeInStaging":true,
-            "configIdInProduction":null,
-            "configNameInProduction":null,
-            "hostName":"rbac.mtosches.wix.com"
            },
            {
               "arlInclusion":true,
@@ -38,9 +38,9 @@
               "arlInclusion":false,
               "activeInProduction":true,
               "activeInStaging":true,
-              "configIdInProduction":11887,
-              "configNameInProduction":"Rbac Test Config",
-              "hostName":"www.kona-ghost-api.com"
+              "configIdInProduction":null,
+              "configNameInProduction":null,
+              "hostName":"rbac.mtosches.wix.com"
              }
           ],
         "errorSet":[
