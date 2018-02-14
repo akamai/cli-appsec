@@ -25,6 +25,14 @@ function errorOut(errJson, options, customPrinter=(opt,err)=>{
   process.exit(1);
 }
 
+function handle(handlerOptions) {
+  handlerOptions.promise.then(res=>{
+    print(res, handlerOptions.args, handlerOptions.success);
+  }).catch(err=>{
+    errorOut(err, handlerOptions.args, handlerOptions.error);
+  });
+}
+
 require("sywac")
   .command("structured-rule-template", {
     desc: "Prints sample JSON of a structured custom rule.",
@@ -42,38 +50,16 @@ require("sywac")
       });
     },
     run: options => {
-      new AppSecConfig().configs(options).then(res => {
-        print(res, options, (options, object)=>{
+      handle({
+        promise: new AppSecConfig().configs(options),
+        args:options,
+        success:(args, data)=>{
           let str = [];
-          for(let i=0;object&&i<object.length;i++) {
-            str.push(object[i].configId);
+          for(let i=0;data&&i<data.length;i++) {
+            str.push(data[i].configId);
           }
           return str.join('\n');
-        });
-      }).catch(err => {
-        errorOut(err, options);
-      });
-    }
-  })
-  .command("custom-rule", {
-    desc: "Display contents of custom rule",
-    setup: sywac => {
-      sywac.number("--config <id>", {
-          desc: "Configuration id. Mandatory if you have more than one configuration.",
-          group: "Options:",
-          required: false
-        })
-        .number("--ruleid <id>", {
-          desc: "Rule ID.",
-          group: "Options:",
-          required: true
-        });
-    },
-    run: options => {
-      new CRB().getRule(options.config, options.ruleid).then(data => {
-        console.log(data);
-      }).catch(err => {
-        errorOut(err, options);
+        }
       });
     }
   })
@@ -87,10 +73,16 @@ require("sywac")
       });
     },
     run: options => {
-      new CRB().getAllRules(options).then(data => {
-        console.log(data);
-      }).catch(err => {
-        errorOut(err, options);
+      handle({
+        promise: new CRB().getAllRules(options),
+        args:options,
+        success:(args, data)=>{
+          let str = [];
+          for(let i=0;data&&i<data.length;i++) {
+            str.push(data[i].ruleId);
+          }
+          return str.join('\n');
+        }
       });
     }
   })
@@ -109,12 +101,12 @@ require("sywac")
           });
         },
         run: options => {
-          new CRB().getRule(options).then(data => {
-              //FIXME:  Remove text once this starts actually connecting to a live service.
-            console.log('data' + data);
-          }).catch(err=>{
-              //FIXME:  Remove text once this starts actually connecting to a live service.
-              errorOut(err, options);
+          handle({
+            promise: new CRB().getRule(options),
+            args:options,
+            success:(args, data)=>{
+              return data;
+            }
           });
         }
       })
@@ -135,13 +127,13 @@ require("sywac")
             });
         },
         run: options => {
-            new CRB().createRule(options).then(data => {
-                //FIXME:  Remove text once this starts actually connecting to a live service.
-                console.log('data: ' + data);
-            }).catch(err=>{
-                //FIXME:  Remove text once this starts actually connecting to a live service.
-                errorOut(err, options);
-            });
+          handle({
+            promise: new CRB().createRule(options),
+            args:options,
+            success:(args, data)=>{
+              return data;
+            }
+          });
         }
     })
     .command("modify-custom-rule", {
@@ -163,13 +155,13 @@ require("sywac")
             });
         },
         run: options => {
-            new CRB().updateRule(options).then(data => {
-                //FIXME:  Remove text once this starts actually connecting to a live service.
-                console.log('data: ' + data);
-            }).catch(err=>{
-                //FIXME:  Remove text once this starts actually connecting to a live service.
-                errorOut(err, options);
-            });
+          handle({
+            promise: new CRB().updateRule(options),
+            args:options,
+            success:(args, data)=>{
+              return data;
+            }
+          });
         }
     })
 
@@ -183,16 +175,16 @@ require("sywac")
       });
     },
     run: options => {
-      new AppSecConfig().versions(options).then(data => {
-        print(data, options, (options, versions) => {
+      handle({
+        promise: new AppSecConfig().versions(options),
+        args:options,
+        success:(args, data)=>{
           let vids = [];
-          for (let i = 0; i < versions.versionList.length; i++) {
-            vids.push(versions.versionList[i].version);
+          for (let i = 0; i < data.versionList.length; i++) {
+            vids.push(data.versionList[i].version);
           }
           return vids.join("\n");
-        });
-      }).catch(err => {
-        errorOut(err, options);
+        }
       });
     }
   })
@@ -210,12 +202,12 @@ require("sywac")
       });
     },
     run: options => {
-      new AppSecConfig().version(options).then(versionObject => {
-        print(versionObject, options, (options, data)=>{
+      handle({
+        promise: new AppSecConfig().version(options),
+        args:options,
+        success:(args, data)=>{
           return data.version;
-        });
-      }).catch(err => {
-        errorOut(err, options);
+        }
       });
     }
   })
@@ -237,19 +229,44 @@ require("sywac")
       });
     },
     run: options => {
-        new SelectedHosts().addHosts(options).then(jsonData => {
-          print(jsonData, options, (options, data) => {
-            let hosts = [];
+      handle({
+        promise: new SelectedHosts().addHosts(options),
+        args:options,
+        success:(args, data)=>{
+          let hosts = [];
             for (let i = 0; i < data.hostnameList.length; i++) {
               hosts.push(data.hostnameList[i].hostName);
             }
             return hosts.join("\n");
-          });
-        }).catch(err=>{
-            console.error(err);
-            process.exit(1);
-        });
+        }
+      });
     }
+}).command("selectable-hostnames", {
+  desc: "List all selectable host names",
+  setup: sywac => {
+      sywac.number("--config <id>", {
+          desc: "Configuration id. Mandatory if you have more than one configuration.",
+          group: "Options:",
+          required: false
+      }).number("--version-id <id>", {
+        desc: "Version id.",
+        group: "Options:",
+        required: false
+     });
+  },
+  run: options => {
+    handle({
+      promise: new SelectedHosts().selectableHosts(options),
+      args:options,
+      success:(args, data)=>{
+        let hosts = [];
+        for (let i = 0; i < data.availableSet.length; i++) {
+          hosts.push(data.availableSet[i].hostName);
+        }
+        return hosts.join("\n");
+      }
+    });
+  }
 })
   .showHelpByDefault()
   .help("--help", {
