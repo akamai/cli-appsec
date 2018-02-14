@@ -63,30 +63,6 @@ require("sywac")
       });
     }
   })
-  .command("custom-rule", {
-    desc: "Display contents of custom rule",
-    setup: sywac => {
-      sywac.number("--config <id>", {
-          desc: "Configuration id. Mandatory if you have more than one configuration.",
-          group: "Options:",
-          required: false
-        })
-        .number("--ruleid <id>", {
-          desc: "Rule ID.",
-          group: "Options:",
-          required: true
-        });
-    },
-    run: options => {
-      handle({
-        promise: new CRB().getRule(options),
-        args:options,
-        success:(args, data)=>{
-          return data;
-        }
-      });
-    }
-  })
   .command("custom-rules", {
     desc: "List all custom rules",
     setup: sywac => {
