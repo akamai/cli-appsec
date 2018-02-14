@@ -2,30 +2,35 @@
 
 let logger = require('./constants').logger('ResourceUtil');
 let URIs = require('./constants').URIS;
-
+//needed to pass files to PUT/POST
+let fs = require('fs');
+//Ensures user can add paths like '~/foo'
+let untildify = require('untildify');
 class ResourceUtil {
   constructor(edge) {
     this._edge = edge;
     this._config = new Config(this._edge);
   }
 
-  readResource(confId, uri, params=[]) {
-    logger.debug("uri 1==>"+uri);
+  readResource(confId, uri, params = []) {
+    logger.debug('uri 1==>' + uri);
     return this._config.getConfigId(confId).then(configId => {
       params.unshift(configId);
-      logger.debug("uri 2==>"+uri);
+      logger.debug('uri 2==>' + uri);
       return this._edge.get(uri, params); //returns a promise
     });
   }
 
-  putResource(confId, uri, payload, params=[]) {
+  putResource(confId, uri, payloadPath, params = []) {
+    let payload = fs.readFileSync(untildify(payloadPath), 'utf8');
     return this._config.getConfigId(confId).then(configId => {
       params.unshift(configId);
       return this._edge.put(uri, payload, params); //returns a promise
     });
   }
 
-  postResource(confId, uri, payload, params=[]) {
+  postResource(confId, uri, payloadPath, params = []) {
+    let payload = fs.readFileSync(untildify(payloadPath), 'utf8');
     return this._config.getConfigId(confId).then(configId => {
       params.unshift(configId);
       return this._edge.post(uri, payload, params); //returns a promise
@@ -47,7 +52,9 @@ class Config {
         if (configs.length == 1) {
           return configs[0].configId;
         } else {
-          logger.error("You have more than one configuration. Please provide a configuration id to work with.");
+          logger.error(
+            'You have more than one configuration. Please provide a configuration id to work with.'
+          );
           throw 'You have more than one configuration. Please provide a configuration id to work with.';
         }
       });

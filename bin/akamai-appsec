@@ -79,7 +79,7 @@ require("sywac")
     },
     run: options => {
       handle({
-        promise: new CRB().getRule(options.config, options.ruleid),
+        promise: new CRB().getRule(options),
         args:options,
         success:(args, data)=>{
           return data;
@@ -180,7 +180,7 @@ require("sywac")
         },
         run: options => {
           handle({
-            promise: new CRB().createRule(options),
+            promise: new CRB().updateRule(options),
             args:options,
             success:(args, data)=>{
               return data;
