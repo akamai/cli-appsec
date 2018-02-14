@@ -17,14 +17,6 @@
               "hostName":"test-uvm-sec.amazonaws.com.edgesuite.net"
            },
            {
-            "arlInclusion":false,
-            "activeInProduction":true,
-            "activeInStaging":true,
-            "configIdInProduction":null,
-            "configNameInProduction":null,
-            "hostName":"rbac.mtosches.wix.com"
-           },
-           {
               "arlInclusion":true,
               "activeInProduction":false,
               "activeInStaging":true,
@@ -41,6 +33,14 @@
               "configIdInProduction":11887,
               "configNameInProduction":"Rbac Test Config",
               "hostName":"www.kona-ghost-api.com"
+             },
+             {
+              "arlInclusion":false,
+              "activeInProduction":true,
+              "activeInStaging":true,
+              "configIdInProduction":null,
+              "configNameInProduction":null,
+              "hostName":"rbac.mtosches.wix.com"
              }
           ],
         "errorSet":[

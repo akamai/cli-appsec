@@ -90,6 +90,41 @@
                         "status": "Inactive"
                     },
                     "version": 2
+                },
+                {
+                    "links": [
+                        {
+                            "href": "http:activate.placeholder/url/configs/17956/versions/2",
+                            "rel": "activate"
+                        },
+                        {
+                            "href": "http:viewMetadata.placeholder/url/configs/17956/versions/2",
+                            "rel": "viewMetadata"
+                        },
+                        {
+                            "href": "http:deactivate.placeholder/url/configs/17956/versions/2",
+                            "rel": "deactivate"
+                        },
+                        {
+                            "href": "http:createVersionFrom.placeholder/url/configs/17956/versions/2",
+                            "rel": "createVersionFrom"
+                        },
+                        {
+                            "enabled": false,
+                            "rel": "delete"
+                        },
+                        {
+                            "enabled": false,
+                            "rel": "edit"
+                        }
+                    ],
+                    "production": {
+                        "status": "Inactive"
+                    },
+                    "staging": {
+                        "status": "Inactive"
+                    },
+                    "version": 3
                 }
             ]
         }
