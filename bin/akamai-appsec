@@ -101,7 +101,11 @@ require("sywac")
         promise: new CRB().getAllRules(options),
         args:options,
         success:(args, data)=>{
-          return data;
+          let str = [];
+          for(let i=0;data&&i<data.length;i++) {
+            str.push(data[i].ruleId);
+          }
+          return str.join('\n');
         }
       });
     }
