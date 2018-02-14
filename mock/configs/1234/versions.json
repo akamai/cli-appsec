@@ -93,5 +93,12 @@
                 }
             ]
         }
-    } ]
+    },{
+        "httpStatus":403,
+        "response": {
+            "status": 403,
+            "title":"Unauthorized",
+            "detail":"You are not authorized to do this!"
+        }
+    }]
 }
