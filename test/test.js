@@ -178,23 +178,23 @@ describe('AppSecConfig get version', function() {
       expect(ver.version).to.equal(expectedProdVersion);
     });
   });
-  it('should return the production version when --version-id=PROD', function() {
-    return appSecConfig.version({ 'version-id': 'PROD' }).then(ver => {
+  it('should return the production version when --version=PROD', function() {
+    return appSecConfig.version({ version: 'PROD' }).then(ver => {
       expect(ver.version).to.equal(expectedProdVersion);
     });
   });
-  it('should return the production version when --version-id=PRODUCTION', function() {
-    return appSecConfig.version({ 'version-id': 'PRODUCTION' }).then(ver => {
+  it('should return the production version when --version=PRODUCTION', function() {
+    return appSecConfig.version({ version: 'PRODUCTION' }).then(ver => {
       expect(ver.version).to.equal(expectedProdVersion);
     });
   });
-  it('should return the staging version when --version-id=STAGING', function() {
-    return appSecConfig.version({ 'version-id': 'STAGING' }).then(ver => {
+  it('should return the staging version when --version=STAGING', function() {
+    return appSecConfig.version({ version: 'STAGING' }).then(ver => {
       expect(ver.version).to.equal(expectedStageVersion);
     });
   });
-  it('should return the proper version when --version-id is a number', function() {
-    return appSecConfig.version({ 'version-id': '1' }).then(ver => {
+  it('should return the proper version when --version is a number', function() {
+    return appSecConfig.version({ version: '1' }).then(ver => {
       expect(ver.version).to.equal(expectedStageVersion);
     });
   });
