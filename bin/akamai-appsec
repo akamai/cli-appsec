@@ -195,7 +195,7 @@ require("sywac")
         desc: "Configuration id number",
         group: "Options:",
         required: false
-      }).string("--version-id <id>", {
+      }).string("--version <id>", {
         desc: "The version id number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
         group: "Options:",
         required: false
@@ -218,7 +218,7 @@ require("sywac")
             desc: "Configuration id. Mandatory if you have more than one configuration.",
             group: "Options:",
             required: false
-        }).number("--version-id <id>", {
+        }).number("--version <id>", {
           desc: "Version id.",
           group: "Options:",
           required: false
@@ -248,7 +248,7 @@ require("sywac")
           desc: "Configuration id. Mandatory if you have more than one configuration.",
           group: "Options:",
           required: false
-      }).number("--version-id <id>", {
+      }).number("--version <id>", {
         desc: "Version id.",
         group: "Options:",
         required: false
@@ -273,7 +273,7 @@ require("sywac")
     group: "Command options:",
     desc: "Prints help information."
   })
-  .version("--version", {
+  .version("--ver", {
     group: "Command options:",
     desc: "Current version of the program."
   })
