@@ -3,7 +3,7 @@
     "responses":[ {
         "httpStatus":200,
         "response": {
-            "configId": 17956,
+            "configId": 1234,
             "configName": "jtigano.WAF.test",
             "lastCreatedVersion": 4,
             "links": [
@@ -90,8 +90,50 @@
                         "status": "Inactive"
                     },
                     "version": 2
+                },
+                {
+                    "links": [
+                        {
+                            "href": "http:activate.placeholder/url/configs/17956/versions/2",
+                            "rel": "activate"
+                        },
+                        {
+                            "href": "http:viewMetadata.placeholder/url/configs/17956/versions/2",
+                            "rel": "viewMetadata"
+                        },
+                        {
+                            "href": "http:deactivate.placeholder/url/configs/17956/versions/2",
+                            "rel": "deactivate"
+                        },
+                        {
+                            "href": "http:createVersionFrom.placeholder/url/configs/17956/versions/2",
+                            "rel": "createVersionFrom"
+                        },
+                        {
+                            "enabled": false,
+                            "rel": "delete"
+                        },
+                        {
+                            "enabled": false,
+                            "rel": "edit"
+                        }
+                    ],
+                    "production": {
+                        "status": "Inactive"
+                    },
+                    "staging": {
+                        "status": "Inactive"
+                    },
+                    "version": 3
                 }
             ]
         }
-    } ]
+    },{
+        "httpStatus":403,
+        "response": {
+            "status": 403,
+            "title":"Unauthorized",
+            "detail":"You are not authorized to do this!"
+        }
+    }]
 }
