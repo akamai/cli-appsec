@@ -5,6 +5,7 @@
 var AppSecConfig = require("../src/appSecConfig").AppSecConfig;
 var CRB = require("../src/crb").CRBHandler;
 var SelectedHosts = require("../src/hosts").selectedHosts;
+var fs = require('fs');
 
 function print(object, options, customPrinter) {
   if (options.json) {
@@ -43,12 +44,6 @@ require("sywac")
   })
   .command("configs", {
     desc: "List configurations",
-    setup: sywac => {
-      sywac.boolean("--json", {
-        desc: "Print the raw json response",
-        group: "Options:"
-      });
-    },
     run: options => {
       handle({
         promise: new AppSecConfig().configs(options),
@@ -165,8 +160,8 @@ require("sywac")
         }
     })
 
-  .command("config-versions", {
-    desc: "List all versions",
+  .command("versions", {
+    desc: "List all config versions",
     setup: sywac => {
       sywac.number("--config <id>", {
         desc: "Configuration id. Mandatory if you have more than one configuration.",
@@ -188,15 +183,15 @@ require("sywac")
       });
     }
   })
-  .command("config-version", {
+  .command("version", {
     desc: "Read a config version",
     setup: sywac => {
       sywac.number("--config <id>", {
         desc: "Configuration id number",
         group: "Options:",
         required: false
-      }).string("--version <id>", {
-        desc: "The version id number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
+      }).string("--version <num>", {
+        desc: "The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
         group: "Options:",
         required: false
       });
@@ -206,7 +201,8 @@ require("sywac")
         promise: new AppSecConfig().version(options),
         args:options,
         success:(args, data)=>{
-          return data.version;
+          //we want the whole json irrespective of the json flag
+          return data;
         }
       });
     }
@@ -218,8 +214,8 @@ require("sywac")
             desc: "Configuration id. Mandatory if you have more than one configuration.",
             group: "Options:",
             required: false
-        }).number("--version <id>", {
-          desc: "Version id.",
+        }).number("--version <num>", {
+          desc: "The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
           group: "Options:",
           required: false
        }).stringArray('--hosts <a.com, b.net, c.d.com>',{
@@ -249,7 +245,7 @@ require("sywac")
           group: "Options:",
           required: false
       }).number("--version <id>", {
-        desc: "Version id.",
+        desc: "The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
         group: "Options:",
         required: false
      });
@@ -268,18 +264,23 @@ require("sywac")
     });
   }
 })
+  .boolean("--json", {
+    desc: "Print the raw json response. All commands respect this option.",
+    group: "Command options:",
+    required: false
+  })
   .showHelpByDefault()
   .help("--help", {
     group: "Command options:",
     desc: "Prints help information."
   })
-  .version("--ver", {
+  .boolean("--version", {
     group: "Command options:",
     desc: "Current version of the program."
   })
   .epilogue("Copyright (C) Akamai Technologies, Inc\nVisit http://github.com/akamai/cli-appsec for detailed documentation\n")
   .outputSettings({
-    maxWidth: 75
+    maxWidth: 100
   })
   .parse()
   .then(result => {
@@ -288,7 +289,15 @@ require("sywac")
       console.output = "";
     }
     // if help requested, log it and exit
-    if (result.output) {
+    
+    //console.log("---"+JSON.stringify(result));
+    if(result.argv.version && result.details.args.length == 1) {
+      //print version info
+      let s = fs.readFileSync(__dirname+'/../package.json', 'utf8');
+      console.log(JSON.parse(s).version);
+      process.exit(0);
+    }
+    else if (result.output) {
       console.log(result.output);
       process.exit(result.code);
     }
