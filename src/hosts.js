@@ -5,52 +5,37 @@ let Edge =
 
 let URIs = require('./constants').URIS;
 let logger = require('./constants').logger('HostSelection');
-let ConfigResource = require('./configResourcesUtil').resourceUtil;
-let Config = require('./appSecConfig').AppSecConfig;
+let Version = require('./versionsprovider').versionProvider;
 
 class SelectedHosts {
-  constructor(auth) {
+  constructor(auth, options) {
     this._edge = new Edge(auth);
-    this._configResource = new ConfigResource(this._edge);
-    this._config = new Config();
+    this._version = new Version(auth, options);
+    this._options = options;
   }
 
-  addHosts(options) {
+  addHosts() {
     logger.debug('Adding hosts to selected list.');
-    return this._config
-      .version(options)
-      .then(version => {
-        options.version = version.version;
-        options.config = version.configId;
-        return this._configResource.readResource(options.config, URIs.SELECTED_HOSTS_RESOURCE, [
-          version.version
-        ]);
-      })
-      .then(selectedHosts => {
-        let hosts = [];
-        if (!selectedHosts || !selectedHosts.hostnameList) {
-          selectedHosts = { hostnameList: [] };
-        }
-        logger.info('Adding hosts to the list: ' + JSON.stringify(selectedHosts.hostnameList));
-        hosts = selectedHosts.hostnameList;
-        for (let i = 0; i < options.hosts.length; i++) {
-          hosts.push({ hostName: options.hosts[i] });
-        }
-        return this._edge.put(URIs.SELECTED_HOSTS_RESOURCE, JSON.stringify(selectedHosts), [
-          options.config,
-          options.version
-        ]);
-      });
+    return this._version.readResource(URIs.SELECTED_HOSTS_RESOURCE, []).then(selectedHosts => {
+      let hosts = [];
+      if (!selectedHosts || !selectedHosts.hostnameList) {
+        selectedHosts = { hostnameList: [] };
+      }
+      logger.info('Adding hosts to the list: ' + JSON.stringify(selectedHosts.hostnameList));
+      hosts = selectedHosts.hostnameList;
+      for (let i = 0; i < this._options.hosts.length; i++) {
+        hosts.push({ hostName: this._options.hosts[i] });
+      }
+      return this._version.updateResource(
+        URIs.SELECTED_HOSTS_RESOURCE,
+        [],
+        JSON.stringify(selectedHosts)
+      );
+    });
   }
 
-  selectableHosts(options) {
-    return this._config.version(options).then(version => {
-      options.version = version.version;
-      options.config = version.configId;
-      return this._configResource.readResource(options.config, URIs.SELECTABLE_HOSTS_RESOURCE, [
-        version.version
-      ]);
-    });
+  selectableHosts() {
+    return this._version.readResource(URIs.SELECTABLE_HOSTS_RESOURCE, []);
   }
 }
 

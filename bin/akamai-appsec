@@ -2,10 +2,11 @@
 
 "use strict";
 
-var AppSecConfig = require("../src/appSecConfig").AppSecConfig;
+var Config = require("../src/configprovider").configProvider;
 var CRB = require("../src/crb").CRBHandler;
 var SelectedHosts = require("../src/hosts").selectedHosts;
 var fs = require('fs');
+let Version = require('../src/versionsprovider').versionProvider;
 
 function print(object, options, customPrinter) {
   if (options.json) {
@@ -16,7 +17,7 @@ function print(object, options, customPrinter) {
 }
 
 function errorOut(errJson, options, customPrinter=(opt,err)=>{
-  return err.detail ? err.detail:err.title;
+  return typeof err=='string'? err: (err.detail ? err.detail : err.title);
 }) {
   if(options.json) {
     console.error(JSON.stringify(errJson));
@@ -39,14 +40,14 @@ require("sywac")
     desc: "Prints sample JSON of a structured custom rule.",
     aliases: ["srt"],
     run: options => {
-      console.log(new CRB().template());
+      console.log(new CRB(undefined, options).template());
     }
   })
   .command("configs", {
     desc: "List configurations",
     run: options => {
       handle({
-        promise: new AppSecConfig().configs(options),
+        promise: new Config(undefined, options).configs(),
         args:options,
         success:(args, data)=>{
           let str = [];
@@ -69,7 +70,7 @@ require("sywac")
     },
     run: options => {
       handle({
-        promise: new CRB().getAllRules(options),
+        promise: new CRB(undefined, options).getAllRules(),
         args:options,
         success:(args, data)=>{
           let str = [];
@@ -89,7 +90,7 @@ require("sywac")
             group: "Options:",
             required: false
           })
-          .number("--ruleId <id>", {
+          .number("--custom-rule <id>", {
               desc: "Rule ID.",
               group: "Options:",
               required: true
@@ -97,7 +98,7 @@ require("sywac")
         },
         run: options => {
           handle({
-            promise: new CRB().getRule(options),
+            promise: new CRB(undefined, options).getRule(),
             args:options,
             success:(args, data)=>{
               return data;
@@ -123,7 +124,7 @@ require("sywac")
         },
         run: options => {
           handle({
-            promise: new CRB().createRule(options),
+            promise: new CRB(undefined, options).createRule(),
             args:options,
             success:(args, data)=>{
               return data;
@@ -151,7 +152,7 @@ require("sywac")
         },
         run: options => {
           handle({
-            promise: new CRB().updateRule(options),
+            promise: new CRB(undefined, options).updateRule(),
             args:options,
             success:(args, data)=>{
               return data;
@@ -171,7 +172,7 @@ require("sywac")
     },
     run: options => {
       handle({
-        promise: new AppSecConfig().versions(options),
+        promise: new Version(undefined, options).versions(),
         args:options,
         success:(args, data)=>{
           let vids = [];
@@ -198,7 +199,7 @@ require("sywac")
     },
     run: options => {
       handle({
-        promise: new AppSecConfig().version(options),
+        promise: new Version(undefined, options).version(),
         args:options,
         success:(args, data)=>{
           //we want the whole json irrespective of the json flag
@@ -226,7 +227,7 @@ require("sywac")
     },
     run: options => {
       handle({
-        promise: new SelectedHosts().addHosts(options),
+        promise: new SelectedHosts(undefined, options).addHosts(),
         args:options,
         success:(args, data)=>{
           let hosts = [];
@@ -252,7 +253,7 @@ require("sywac")
   },
   run: options => {
     handle({
-      promise: new SelectedHosts().selectableHosts(options),
+      promise: new SelectedHosts(undefined,options).selectableHosts(),
       args:options,
       success:(args, data)=>{
         let hosts = [];
