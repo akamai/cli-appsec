@@ -22,11 +22,7 @@ class SelectedHosts {
       for (let i = 0; i < this._options.hosts.length; i++) {
         hosts.push({ hostName: this._options.hosts[i] });
       }
-      return this._version.updateResource(
-        URIs.SELECTED_HOSTS_RESOURCE,
-        [],
-        JSON.stringify(selectedHosts)
-      );
+      return this._version.updateResource(URIs.SELECTED_HOSTS_RESOURCE, [], selectedHosts);
     });
   }
 
