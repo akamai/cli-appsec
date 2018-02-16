@@ -114,7 +114,7 @@ describe('AppSecConfig get versions', function() {
 });
 
 describe('AppSecConfig get version', function() {
-  var appSecConfig = new Version(undefined, {});
+  let appSecConfig = new Version(undefined, {});
   let expectedStageVersion = 1;
   let expectedProdVersion = 2;
   let latestVersion = 2;
@@ -181,30 +181,31 @@ describe('AppSecConfig get version', function() {
     });
   });
 
-  appSecConfig = new Version(undefined, { version: 'PROD' });
+  let v1 = new Version(undefined, { version: 'PROD' });
   it('should return the production version when --version=PROD', function() {
-    return appSecConfig.version().then(ver => {
+    return v1.version().then(ver => {
+      console.log(JSON.stringify(ver));
       expect(ver.version).to.equal(expectedProdVersion);
     });
   });
 
-  appSecConfig = new Version(undefined, { version: 'PRODUCTION' });
+  let v2 = new Version(undefined, { version: 'PRODUCTION' });
   it('should return the production version when --version=PRODUCTION', function() {
-    return appSecConfig.version().then(ver => {
+    return v2.version().then(ver => {
       expect(ver.version).to.equal(expectedProdVersion);
     });
   });
 
-  appSecConfig = new Version(undefined, { version: 'STAGING' });
+  let v3 = new Version(undefined, { version: 'STAGING' });
   it('should return the staging version when --version=STAGING', function() {
-    return appSecConfig.version().then(ver => {
+    return v3.version().then(ver => {
       expect(ver.version).to.equal(expectedStageVersion);
     });
   });
 
-  appSecConfig = new Version(undefined, { version: '1' });
+  let v4 = new Version(undefined, { version: '1' });
   it('should return the proper version when --version is a number', function() {
-    return appSecConfig.version().then(ver => {
+    return v4.version().then(ver => {
       expect(ver.version).to.equal(expectedStageVersion);
     });
   });
