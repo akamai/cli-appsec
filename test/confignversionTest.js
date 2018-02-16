@@ -11,7 +11,7 @@ const VERSIONS_URL = '/appsec-configuration/v1/configs/1234/versions';
 const VERSION_URL = '/appsec-configuration/v1/configs/1234/versions/1';
 
 describe('AppSecConfig get configurations', function() {
-  var appSecConfig = new AppSecConfig(undefined, {});
+  var appSecConfig = new AppSecConfig({});
   let result = [
     {
       configId: 1234
@@ -37,7 +37,7 @@ describe('AppSecConfig get configurations', function() {
 });
 
 describe('AppSecConfig get configurations', function() {
-  var appSecConfig = new AppSecConfig(undefined, {});
+  var appSecConfig = new AppSecConfig({});
   /* Mock the HTTPS call */
   beforeEach(function() {
     nock(/.*.akamaiapis.net/)
@@ -60,7 +60,7 @@ describe('AppSecConfig get configurations', function() {
 });
 
 describe('AppSecConfig get configurations', function() {
-  var appSecConfig = new AppSecConfig(undefined, {});
+  var appSecConfig = new AppSecConfig({});
   /* Mock the HTTPS call */
   beforeEach(function() {
     nock(/.*.akamaiapis.net/)
@@ -83,7 +83,7 @@ describe('AppSecConfig get configurations', function() {
 });
 
 describe('AppSecConfig get versions', function() {
-  var appSecConfig = new Version(undefined, {});
+  var appSecConfig = new Version({});
   let result = [
     {
       configId: 1234
@@ -114,7 +114,7 @@ describe('AppSecConfig get versions', function() {
 });
 
 describe('AppSecConfig get version', function() {
-  let appSecConfig = new Version(undefined, {});
+  let appSecConfig = new Version({});
   let expectedStageVersion = 1;
   let expectedProdVersion = 2;
   let latestVersion = 2;
@@ -122,22 +122,15 @@ describe('AppSecConfig get version', function() {
   beforeEach(function() {
     nock(/.*.akamaiapis.net/)
       .get(CONFIGS_URL)
-      .reply(200, [
-        {
-          configId: 1234
-        }
-      ]);
+      .reply(200, [{ configId: 1234 }]);
     nock(/.*.akamaiapis.net/)
       .get(VERSIONS_URL)
       .reply(200, {
-        configId: 17956,
+        configId: 1234,
         configName: 'jtigano.WAF.test',
         lastCreatedVersion: 4,
         links: [
-          {
-            href: '/appsec-configuration/v1/configs/17956/versions?page=1&pagesize=4',
-            rel: 'self'
-          }
+          { href: '/appsec-configuration/v1/configs/17956/versions?page=1&pagesize=4', rel: 'self' }
         ],
         page: 1,
         pageSize: 4,
@@ -146,24 +139,13 @@ describe('AppSecConfig get version', function() {
         totalSize: 4,
         versionList: [
           {
-            production: {
-              status: 'Deactivated',
-              time: 1493753405000
-            },
-            staging: {
-              status: 'Active',
-              time: 1493732705000
-            },
+            production: { status: 'Deactivated', time: 1493753405000 },
+            staging: { status: 'Active', time: 1493732705000 },
             version: 1
           },
           {
-            production: {
-              status: 'Active',
-              time: 1493753405000
-            },
-            staging: {
-              status: 'Inactive'
-            },
+            production: { status: 'Active', time: 1493753405000 },
+            staging: { status: 'Inactive' },
             version: 2
           }
         ]
@@ -181,29 +163,28 @@ describe('AppSecConfig get version', function() {
     });
   });
 
-  let v1 = new Version(undefined, { version: 'PROD' });
+  let v1 = new Version({ version: 'PROD' });
   it('should return the production version when --version=PROD', function() {
     return v1.version().then(ver => {
-      console.log(JSON.stringify(ver));
       expect(ver.version).to.equal(expectedProdVersion);
     });
   });
 
-  let v2 = new Version(undefined, { version: 'PRODUCTION' });
+  let v2 = new Version({ version: 'PRODUCTION' });
   it('should return the production version when --version=PRODUCTION', function() {
     return v2.version().then(ver => {
       expect(ver.version).to.equal(expectedProdVersion);
     });
   });
 
-  let v3 = new Version(undefined, { version: 'STAGING' });
+  let v3 = new Version({ version: 'STAGING' });
   it('should return the staging version when --version=STAGING', function() {
     return v3.version().then(ver => {
       expect(ver.version).to.equal(expectedStageVersion);
     });
   });
 
-  let v4 = new Version(undefined, { version: '1' });
+  let v4 = new Version({ version: '1' });
   it('should return the proper version when --version is a number', function() {
     return v4.version().then(ver => {
       expect(ver.version).to.equal(expectedStageVersion);
