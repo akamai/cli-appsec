@@ -10,10 +10,10 @@ const LOG = require('pino')({
   prettyPrint: true,
   name: 'app-sec'
 });
-var logger = function(loggerName) {
+let logger = function(loggerName) {
   return LOG.child({ name: loggerName });
 };
-var resources = {
+const resources = {
   GET_CONFIGS: '/appsec-configuration/v1/configs',
   GET_CONFIG: '/appsec-configuration/v1/configs/%s',
   GET_VERSIONS: '/appsec-configuration/v1/configs/%s/versions',
@@ -21,7 +21,8 @@ var resources = {
   GET_CRB_ALL: '/appsec-resource/v1/configs/%s/custom-rules',
   GET_CRB: '/appsec-resource/v1/configs/%s/custom-rules/%s',
   SELECTED_HOSTS_RESOURCE: '/appsec-configuration/v1/configs/%s/versions/%s/selected-hostnames',
-  SELECTABLE_HOSTS_RESOURCE: '/appsec-configuration/v1/configs/%s/versions/%s/selectable-hostnames'
+  SELECTABLE_HOSTS_RESOURCE: '/appsec-configuration/v1/configs/%s/versions/%s/selectable-hostnames',
+  MATCH_TARGETS: '/appsec-configuration/v1/configs/%s/versions/%s/match-targets'
 };
 
 define('URIS', resources);
