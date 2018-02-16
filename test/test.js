@@ -3,14 +3,15 @@ process.env.MOCK_AKA_SEC_API = 'false';
 var chai = require('chai');
 var expect = chai.expect;
 
-var AppSecConfig = require('../src/appSecConfig').AppSecConfig;
+var AppSecConfig = require('../src/configprovider').configProvider;
+var Version = require('../src/versionsprovider').versionProvider;
 var nock = require('nock');
 const CONFIGS_URL = '/appsec-configuration/v1/configs';
 const VERSIONS_URL = '/appsec-configuration/v1/configs/1234/versions';
 const VERSION_URL = '/appsec-configuration/v1/configs/1234/versions/1';
 
 describe('AppSecConfig get configurations', function() {
-  var appSecConfig = new AppSecConfig();
+  var appSecConfig = new AppSecConfig(undefined, {});
   let result = [
     {
       configId: 1234
@@ -36,7 +37,7 @@ describe('AppSecConfig get configurations', function() {
 });
 
 describe('AppSecConfig get configurations', function() {
-  var appSecConfig = new AppSecConfig();
+  var appSecConfig = new AppSecConfig(undefined, {});
   /* Mock the HTTPS call */
   beforeEach(function() {
     nock(/.*.akamaiapis.net/)
@@ -59,7 +60,7 @@ describe('AppSecConfig get configurations', function() {
 });
 
 describe('AppSecConfig get configurations', function() {
-  var appSecConfig = new AppSecConfig();
+  var appSecConfig = new AppSecConfig(undefined, {});
   /* Mock the HTTPS call */
   beforeEach(function() {
     nock(/.*.akamaiapis.net/)
@@ -82,7 +83,7 @@ describe('AppSecConfig get configurations', function() {
 });
 
 describe('AppSecConfig get versions', function() {
-  var appSecConfig = new AppSecConfig();
+  var appSecConfig = new Version(undefined, {});
   let result = [
     {
       configId: 1234
@@ -113,9 +114,10 @@ describe('AppSecConfig get versions', function() {
 });
 
 describe('AppSecConfig get version', function() {
-  var appSecConfig = new AppSecConfig();
+  let appSecConfig = new Version(undefined, {});
   let expectedStageVersion = 1;
   let expectedProdVersion = 2;
+  let latestVersion = 2;
   /* Mock the HTTPS call */
   beforeEach(function() {
     nock(/.*.akamaiapis.net/)
@@ -173,28 +175,37 @@ describe('AppSecConfig get version', function() {
   after(function() {
     nock.cleanAll();
   });
-  it('should return the production version by default', function() {
+  it('should return the latest version by default', function() {
     return appSecConfig.version({}).then(ver => {
-      expect(ver.version).to.equal(expectedProdVersion);
+      expect(ver.version).to.equal(latestVersion);
     });
   });
+
+  let v1 = new Version(undefined, { version: 'PROD' });
   it('should return the production version when --version=PROD', function() {
-    return appSecConfig.version({ version: 'PROD' }).then(ver => {
+    return v1.version().then(ver => {
+      console.log(JSON.stringify(ver));
       expect(ver.version).to.equal(expectedProdVersion);
     });
   });
+
+  let v2 = new Version(undefined, { version: 'PRODUCTION' });
   it('should return the production version when --version=PRODUCTION', function() {
-    return appSecConfig.version({ version: 'PRODUCTION' }).then(ver => {
+    return v2.version().then(ver => {
       expect(ver.version).to.equal(expectedProdVersion);
     });
   });
+
+  let v3 = new Version(undefined, { version: 'STAGING' });
   it('should return the staging version when --version=STAGING', function() {
-    return appSecConfig.version({ version: 'STAGING' }).then(ver => {
+    return v3.version().then(ver => {
       expect(ver.version).to.equal(expectedStageVersion);
     });
   });
+
+  let v4 = new Version(undefined, { version: '1' });
   it('should return the proper version when --version is a number', function() {
-    return appSecConfig.version({ version: '1' }).then(ver => {
+    return v4.version().then(ver => {
       expect(ver.version).to.equal(expectedStageVersion);
     });
   });
