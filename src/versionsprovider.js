@@ -10,11 +10,16 @@ let ConfigProvider = require('./configprovider').configProvider;
 class VersionProvider {
   constructor(auth, options) {
     this._edge = new Edge(auth);
-    this._configProvider = new ConfigProvider(auth, options);
+    this._config = new ConfigProvider(auth, options);
     this._options = JSON.parse(JSON.stringify(options)); //clone
     this._version = options.version;
   }
 
+  /**
+   * Reads resources tied to config version.
+   * @param {*} uri The uri of the resource. Always starts with /configs/<id>/versions/<id>/
+   * @param {*} params the parameters that gets substituted in the uri in order(except config id and version id)
+   */
   readResource(uri, params) {
     let args = [];
     return this.getConfigId()
@@ -28,6 +33,11 @@ class VersionProvider {
       });
   }
 
+  /**
+   * Updates resources tied to config version.
+   * @param {*} uri The uri of the resource. Always starts with /configs/<id>/versions/<id>/
+   * @param {*} params the parameters that gets substituted in the uri in order(except config id and version id)
+   */
   updateResource(uri, params, payload) {
     let args = [];
     return this.getConfigId()
@@ -41,6 +51,11 @@ class VersionProvider {
       });
   }
 
+  /**
+   * Creates resources tied to config version.
+   * @param {*} uri The uri of the resource. Always starts with /configs/<id>/versions/<id>/
+   * @param {*} params the parameters that gets substituted in the uri in order(except config id and version id)
+   */
   createResource(uri, params, payload) {
     let args = [];
     return this.getConfigId()
@@ -55,16 +70,14 @@ class VersionProvider {
   }
 
   getConfigId() {
-    return this._configProvider.getConfigId();
+    return this._config.getConfigId();
   }
   /**
    * Returns all the versions.
    */
   versions() {
-    logger.info('Fetching version list..');
-    return this._configProvider.getConfigId().then(configId => {
-      return this._edge.get(URIs.GET_VERSIONS, [configId]);
-    });
+    logger.info('Fetching version list....ll');
+    return this._config.readResource(URIs.GET_VERSIONS, []);
   }
 
   /**

@@ -1,15 +1,11 @@
 'use strict';
 
-let Edge =
-  process.env.MOCK_AKA_SEC_API == 'true' ? require('../mock/edgeClient') : require('./edgeClient');
-
 let URIs = require('./constants').URIS;
 let logger = require('./constants').logger('HostSelection');
 let Version = require('./versionsprovider').versionProvider;
 
 class SelectedHosts {
   constructor(auth, options) {
-    this._edge = new Edge(auth);
     this._version = new Version(auth, options);
     this._options = options;
   }

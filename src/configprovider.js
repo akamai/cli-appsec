@@ -13,6 +13,45 @@ class ConfigProvider {
     this._configId = options.config;
   }
 
+  /**
+   * Method to read resources tied directly to configuration.
+   * @param {*} uri The URI of the resource.
+   * @param {*} params parameters other than the configId
+   */
+  readResource(uri, params = []) {
+    return this.getConfigId().then(configId => {
+      params.unshift(configId);
+      return this._edge.get(uri, params);
+    });
+  }
+
+  /**
+   * Method to update resources tied directly to configuration.
+   * @param {*} uri The URI of the resource.
+   * @param {*} params parameters other than the configId.
+   */
+  updateResource(uri, params = [], payload) {
+    return this.getConfigId().then(configId => {
+      params.unshift(configId);
+      return this._edge.put(uri, payload, params);
+    });
+  }
+
+  /**
+   * Method to update resources tied directly to configuration.
+   * @param {*} uri The URI of the resource.
+   * @param {*} params parameters other than the configId.
+   */
+  createResource(uri, params = [], payload) {
+    return this.getConfigId().then(configId => {
+      params.unshift(configId);
+      return this._edge.post(uri, payload, params);
+    });
+  }
+
+  /**
+   * Returns a promise that will provide all configurations.
+   */
   configs() {
     logger.info('Fetching all available configurations..');
     return this._edge.get(URIs.GET_CONFIGS);
