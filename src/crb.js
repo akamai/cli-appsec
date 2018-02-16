@@ -1,38 +1,34 @@
 'use strict';
-let Edge =
-  process.env.MOCK_AKA_SEC_API == 'true' ? require('../mock/edgeClient') : require('./edgeClient');
 
 let URIs = require('./constants').URIS;
-//let logger = require('./constants').logger('CRBHandler');
-let ConfigResourcesReader = require('./configResourcesUtil').resourceUtil;
-
-require('string-format');
 let fs = require('fs');
 const CRB_TEMPLATE_PATH = __dirname + '/../templates/crbTemplate.json';
+let Config = require('./configprovider').configProvider;
 
 class CRBHandler {
-  constructor(auth) {
-    this._client = new ConfigResourcesReader(new Edge(auth));
+  constructor(options) {
+    this._config = new Config(options);
+    this._options = options;
   }
 
   template() {
     return fs.readFileSync(CRB_TEMPLATE_PATH, 'utf8');
   }
 
-  getAllRules(options) {
-    return this._client.readResource(options.config, URIs.GET_CRB_ALL, []);
+  getAllRules() {
+    return this._config.readResource(URIs.GET_CRB_ALL, []);
   }
 
-  getRule(options) {
-    return this._client.readResource(options.config, URIs.GET_CRB, [options.ruleId]);
+  getRule() {
+    return this._config.readResource(URIs.GET_CRB, [this._options['custom-rule']]);
   }
 
-  createRule(options) {
-    return this._client.postResource(options.config, URIs.GET_CRB_ALL, options.file, []);
+  createRule() {
+    return this._config.createResource(URIs.GET_CRB_ALL, [this._options['custom-rule']], undefined);
   }
 
-  updateRule(options) {
-    return this._client.putResource(options.config, URIs.GET_CRB, options.file, [options.ruleId]);
+  updateRule() {
+    return this._config.updateResource(URIs.GET_CRB, [this._options['custom-rule']], undefined);
   }
 }
 module.exports = {
