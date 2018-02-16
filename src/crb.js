@@ -30,6 +30,13 @@ class CRBHandler {
   updateRule() {
     return this._config.updateResource(URIs.GET_CRB, [this._options['custom-rule']], undefined);
   }
+
+  assign() {
+    let ruleId = this._options['custom-rule'];
+    let policyId = this._options['custom-rule'];
+    let action = this._options['custom-rule'];
+    return this._config.updateResource(URIs.CRB_ACTION, [ruleId], undefined);
+  }
 }
 module.exports = {
   CRBHandler: CRBHandler
