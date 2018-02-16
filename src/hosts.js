@@ -5,9 +5,9 @@ let logger = require('./constants').logger('HostSelection');
 let Version = require('./versionsprovider').versionProvider;
 
 class SelectedHosts {
-  constructor(auth, options) {
-    this._version = new Version(auth, options);
-    this._options = options;
+  constructor(options) {
+    this._version = new Version(options);
+    this._options = JSON.parse(JSON.stringify(options)); //clone
   }
 
   addHosts() {

@@ -4,21 +4,20 @@ var EdgeGrid = require('edgeGrid');
 let util = require('util');
 let logger = require('./constants').logger('EdgeClient');
 class Edge {
-  constructor(
-    auth = {
-      path: '~/.edgerc',
-      section: 'appsec',
+  constructor(options) {
+    let auth = {
+      path: options.edgerc ? options.edgerc : '~/.edgerc',
+      section: options.section ? options.section : 'appsec',
       debug: false,
       default: true
-    }
-  ) {
-    if (auth.clientToken && auth.clientSecret && auth.accessToken && auth.host) {
+    };
+    if (options.clientToken && options.clientSecret && options.accessToken && options.host) {
       this._edge = new EdgeGrid(
-        auth.clientToken,
-        auth.clientSecret,
-        auth.accessToken,
-        auth.host,
-        auth.debug
+        options.clientToken,
+        options.clientSecret,
+        options.accessToken,
+        options.host,
+        options.debug
       );
     } else {
       this._edge = new EdgeGrid({

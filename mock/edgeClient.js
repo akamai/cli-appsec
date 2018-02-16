@@ -9,14 +9,13 @@ MOCK_DATA[URIs.GET_CONFIGS] = './mock/configs.json';
 MOCK_DATA[URIs.GET_VERSIONS] = './mock/versions.json';
 
 class Edge {
-  constructor(
-    auth = {
-      path: '~/.edgerc',
-      section: 'appsec',
+  constructor(options) {
+    let auth = {
+      path: options.edgerc ? options.edgerc : '~/.edgerc',
+      section: options.section ? options.section : 'appsec',
       debug: false,
       default: true
-    }
-  ) {
+    };
     logger.debug(JSON.stringify(auth));
     console.log('::::: MOCK API ENABLED :::::');
   }

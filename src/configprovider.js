@@ -7,8 +7,8 @@ let URIs = require('./constants').URIS;
 let logger = require('./constants').logger('ConfigProvider');
 
 class ConfigProvider {
-  constructor(auth, options) {
-    this._edge = new Edge(auth);
+  constructor(options) {
+    this._edge = new Edge(options);
     this._options = options;
     this._configId = options.config;
   }

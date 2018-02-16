@@ -6,8 +6,8 @@ const CRB_TEMPLATE_PATH = __dirname + '/../templates/crbTemplate.json';
 let Config = require('./configprovider').configProvider;
 
 class CRBHandler {
-  constructor(auth, options) {
-    this._config = new Config(auth, options);
+  constructor(options) {
+    this._config = new Config(options);
     this._options = options;
   }
 

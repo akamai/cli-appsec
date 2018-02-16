@@ -8,9 +8,9 @@ let logger = require('./constants').logger('VersionProvider');
 let ConfigProvider = require('./configprovider').configProvider;
 
 class VersionProvider {
-  constructor(auth, options) {
-    this._edge = new Edge(auth);
-    this._config = new ConfigProvider(auth, options);
+  constructor(options) {
+    this._edge = new Edge(options);
+    this._config = new ConfigProvider(options);
     this._options = JSON.parse(JSON.stringify(options)); //clone
     this._version = options.version;
   }

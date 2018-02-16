@@ -40,14 +40,14 @@ require("sywac")
     desc: "Prints sample JSON of a structured custom rule.",
     aliases: ["srt"],
     run: options => {
-      console.log(new CRB(undefined, options).template());
+      console.log(new CRB(options).template());
     }
   })
   .command("configs", {
     desc: "List configurations",
     run: options => {
       handle({
-        promise: new Config(undefined, options).configs(),
+        promise: new Config(options).configs(),
         args:options,
         success:(args, data)=>{
           let str = [];
@@ -70,7 +70,7 @@ require("sywac")
     },
     run: options => {
       handle({
-        promise: new CRB(undefined, options).getAllRules(),
+        promise: new CRB(options).getAllRules(),
         args:options,
         success:(args, data)=>{
           let str = [];
@@ -98,7 +98,7 @@ require("sywac")
         },
         run: options => {
           handle({
-            promise: new CRB(undefined, options).getRule(),
+            promise: new CRB(options).getRule(),
             args:options,
             success:(args, data)=>{
               return data;
@@ -124,7 +124,7 @@ require("sywac")
         },
         run: options => {
           handle({
-            promise: new CRB(undefined, options).createRule(),
+            promise: new CRB(options).createRule(),
             args:options,
             success:(args, data)=>{
               return data;
@@ -152,7 +152,7 @@ require("sywac")
         },
         run: options => {
           handle({
-            promise: new CRB(undefined, options).updateRule(),
+            promise: new CRB(options).updateRule(),
             args:options,
             success:(args, data)=>{
               return data;
@@ -172,7 +172,7 @@ require("sywac")
     },
     run: options => {
       handle({
-        promise: new Version(undefined, options).versions(),
+        promise: new Version(options).versions(),
         args:options,
         success:(args, data)=>{
           let vids = [];
@@ -199,7 +199,7 @@ require("sywac")
     },
     run: options => {
       handle({
-        promise: new Version(undefined, options).version(),
+        promise: new Version(options).version(),
         args:options,
         success:(args, data)=>{
           //we want the whole json irrespective of the json flag
@@ -227,7 +227,7 @@ require("sywac")
     },
     run: options => {
       handle({
-        promise: new SelectedHosts(undefined, options).addHosts(),
+        promise: new SelectedHosts(options).addHosts(),
         args:options,
         success:(args, data)=>{
           let hosts = [];
@@ -267,6 +267,16 @@ require("sywac")
 })
   .boolean("--json", {
     desc: "Print the raw json response. All commands respect this option.",
+    group: "Command options:",
+    required: false
+  })
+  .string("--edgerc", {
+    desc: "The full path to the .edgerc file.",
+    group: "Command options:",
+    required: false
+  })
+  .string("--section", {
+    desc: "The section of .edgerc to use.",
     group: "Command options:",
     required: false
   })
