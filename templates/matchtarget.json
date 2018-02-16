@@ -6,34 +6,8 @@
     "hostnames": [],
     "filePaths": [],
     "isNegativePathMatch": false,
-    "fileExtensions": [
-      "wmls",
-      "jpeg",
-      "pws",
-      "carb",
-      "pdf",
-      "js",
-      "hdml",
-      "cct",
-      "swf",
-      "pct"
-    ],
-    "isNegativeFileExtensionMatch": true,
-    "defaultFile": "BASE_MATCH",
-    "bypassNetworkLists": [
-      {"id": "5825_CPFBYPASSLIST"},
-      {"id": "16566_SILVERSUPPORTWAFBYPASSL"},
-      {"id": "7054_FEOSERVERS"},
-      {"id": "7518_ACCOUNTCHECKERS"},
-      {"id": "13027_WAFBYPASSLIST"}
-    ],
-    "targetSecurityControls": {
-      "applyApiConstraints": false,
-      "applyApplicationLayerControls": true,
-      "applyNetworkLayerControls": true,
-      "applyRateControls": true,
-      "applyReputationControls": false,
-      "applySlowPostControls": true,
-      "applyUserValidationControls": false
-    }
-  }
+    "fileExtensions": [],
+    "isNegativeFileExtensionMatch": false,
+    "defaultFile": "NO_MATCH",
+    "bypassNetworkLists": []
+}
