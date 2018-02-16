@@ -253,7 +253,7 @@ require("sywac")
   },
   run: options => {
     handle({
-      promise: new SelectedHosts(undefined,options).selectableHosts(),
+      promise: new SelectedHosts(options).selectableHosts(),
       args:options,
       success:(args, data)=>{
         let hosts = [];
