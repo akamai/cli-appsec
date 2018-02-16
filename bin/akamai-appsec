@@ -7,6 +7,7 @@ var CRB = require("../src/crb").CRBHandler;
 var SelectedHosts = require("../src/hosts").selectedHosts;
 var fs = require('fs');
 let Version = require('../src/versionsprovider').versionProvider;
+let Policy = require('../src/policy').policy;
 
 function print(object, options, customPrinter) {
   if (options.json) {
@@ -215,7 +216,7 @@ require("sywac")
             desc: "Configuration id. Mandatory if you have more than one configuration.",
             group: "Options:",
             required: false
-        }).number("--version <num>", {
+        }).string("--version <num>", {
           desc: "The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
           group: "Options:",
           required: false
@@ -245,7 +246,7 @@ require("sywac")
           desc: "Configuration id. Mandatory if you have more than one configuration.",
           group: "Options:",
           required: false
-      }).number("--version <id>", {
+      }).string("--version <id>", {
         desc: "The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
         group: "Options:",
         required: false
@@ -261,6 +262,32 @@ require("sywac")
           hosts.push(data.availableSet[i].hostName);
         }
         return hosts.join("\n");
+      }
+    });
+  }
+}).command("policies", {
+  desc: "List all policies",
+  setup: sywac => {
+      sywac.number("--config <id>", {
+          desc: "Configuration id. Mandatory if you have more than one configuration.",
+          group: "Options:",
+          required: false
+      }).string("--version <id>", {
+        desc: "The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
+        group: "Options:",
+        required: false
+     });
+  },
+  run: options => {
+    handle({
+      promise: new Policy(options).policies(),
+      args:options,
+      success:(args, data)=>{
+        let s = [];
+        for (let i = 0; i < data.policies.length; i++) {
+          s.push(data.policies[i].policyId);
+        }
+        return s.join("\n");
       }
     });
   }

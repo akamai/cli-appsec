@@ -21,7 +21,8 @@ var resources = {
   GET_CRB_ALL: '/appsec-resource/v1/configs/%s/custom-rules',
   GET_CRB: '/appsec-resource/v1/configs/%s/custom-rules/%s',
   SELECTED_HOSTS_RESOURCE: '/appsec-configuration/v1/configs/%s/versions/%s/selected-hostnames',
-  SELECTABLE_HOSTS_RESOURCE: '/appsec-configuration/v1/configs/%s/versions/%s/selectable-hostnames'
+  SELECTABLE_HOSTS_RESOURCE: '/appsec-configuration/v1/configs/%s/versions/%s/selectable-hostnames',
+  FIREWALL_POLICIES: '/appsec-configuration/v1/configs/%s/versions/%s/firewall-policies'
 };
 
 define('URIS', resources);
