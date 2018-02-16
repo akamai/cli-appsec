@@ -296,7 +296,14 @@ require("sywac")
       promise: new MatchTarget(options).createMatchTarget(),
       args:options,
       success:(args, data)=>{
-        return data;
+        let s = [];
+        for(let i=0; data.matchTargets.apiTargets && i<data.matchTargets.apiTargets.length; i++) {
+          s.push(data.matchTargets.apiTargets[i].targetId);
+        }
+        for(let i=0; data.matchTargets.websiteTargets && i<data.matchTargets.websiteTargets.length; i++) {
+          s.push(data.matchTargets.websiteTargets[i].targetId);
+        }
+        return s.join('\n');
       }
     });
   }
