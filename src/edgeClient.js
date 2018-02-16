@@ -11,21 +11,12 @@ class Edge {
       debug: false,
       default: true
     };
-    if (options.clientToken && options.clientSecret && options.accessToken && options.host) {
-      this._edge = new EdgeGrid(
-        options.clientToken,
-        options.clientSecret,
-        options.accessToken,
-        options.host,
-        options.debug
-      );
-    } else {
-      this._edge = new EdgeGrid({
-        path: untildify(auth.path),
-        section: auth.section,
-        debug: auth.debug
-      });
-    }
+    logger.debug('Auth details: ' + JSON.stringify(auth));
+    this._edge = new EdgeGrid({
+      path: untildify(auth.path),
+      section: auth.section,
+      debug: auth.debug
+    });
   }
 
   _resolveParams(uri, params) {
