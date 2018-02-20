@@ -1,13 +1,9 @@
 {
     "firewallPolicy": {
-      "policyId": ""
+      "policyId": null
     },
     "type": "website",
     "hostnames": [],
     "filePaths": [],
-    "isNegativePathMatch": false,
-    "fileExtensions": [],
-    "isNegativeFileExtensionMatch": false,
-    "defaultFile": "NO_MATCH",
-    "bypassNetworkLists": []
+    "isNegativePathMatch": false
 }
