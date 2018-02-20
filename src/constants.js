@@ -23,6 +23,7 @@ const resources = {
   SELECTED_HOSTS_RESOURCE: '/appsec-configuration/v1/configs/%s/versions/%s/selected-hostnames',
   SELECTABLE_HOSTS_RESOURCE: '/appsec-configuration/v1/configs/%s/versions/%s/selectable-hostnames',
   MATCH_TARGETS: '/appsec-configuration/v1/configs/%s/versions/%s/match-targets',
+  MATCH_TARGET_SEQUENCE: '/appsec-configuration/v1/configs/%s/versions/%s/match-targets/sequence',
   FIREWALL_POLICIES: '/appsec-configuration/v1/configs/%s/versions/%s/firewall-policies'
 };
 
