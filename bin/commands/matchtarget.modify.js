@@ -45,7 +45,7 @@ class ModifyMatchTargetCommand {
           promise: new MatchTarget(options).addHostnames(),
           args: options,
           success: (args, data) => {
-            return data;
+            return data.targetId;
           }
         });
       }

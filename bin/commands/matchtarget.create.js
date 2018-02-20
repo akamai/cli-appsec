@@ -44,7 +44,7 @@ class CreateMatchTargetCommand {
       promise: new MatchTarget(options).createMatchTarget(),
       args: options,
       success: (args, data) => {
-        return data;
+        return data.targetId;
       }
     });
   }
