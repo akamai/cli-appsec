@@ -12,10 +12,6 @@ class MatchTarget {
     this._options = JSON.parse(JSON.stringify(options)); //clone
     this._matchTarget = JSON.parse(fs.readFileSync(TEMPLATE_PATH, 'utf8'));
     this._matchTargetType = this._options.type ? this._options.type : 'website';
-    this._matchTargetToChange =
-      this._matchTargetType == 'website' ? 'websiteTargets' : 'apiTargets';
-    this._targetIdsInOrder = this._options.order ? this._options.order : this.options._;
-    this._insert = this._options.insert;
   }
 
   createMatchTarget() {
@@ -26,10 +22,27 @@ class MatchTarget {
     return this._version.createResource(URIs.MATCH_TARGETS, [], this._matchTarget);
   }
 
-  _updateOrder() {
+  addHostnames() {
+    return this._version
+      .readResource(URIs.MATCH_TARGET, [this._options['match-target']])
+      .then(matchTarget => {
+        matchTarget.hostnames = [].concat(matchTarget.hostnames);
+        for (let i = 0; i < this._options.hostnames.length; i++) {
+          matchTarget.hostnames.push(this._options.hostnames[i]);
+        }
+        logger.debug('Updated match target: ' + JSON.stringify(matchTarget));
+        return this._version.updateResource(
+          URIs.MATCH_TARGET,
+          [this._options['match-target']],
+          matchTarget
+        );
+      });
+  }
+
+  _updateOrder(targetIdsInOrder) {
     let targetSequence = [];
-    for (let i = 0; i < this._targetIdsInOrder.length; i++) {
-      targetSequence.push({ targetId: this._targetIdsInOrder[i], sequence: i + 1 });
+    for (let i = 0; i < targetIdsInOrder.length; i++) {
+      targetSequence.push({ targetId: targetIdsInOrder[i], sequence: i + 1 });
     }
     logger.debug('Result sequence: ' + JSON.stringify(targetSequence));
     return this._version.updateResource(URIs.MATCH_TARGET_SEQUENCE, [], {
@@ -43,7 +56,9 @@ class MatchTarget {
     return this._version.readResource(URIs.MATCH_TARGETS, []).then(allMatchTargets => {
       //collect all existing match targets
       let targetSequence = [];
-      let existingMatchTargets = allMatchTargets.matchTargets[this._matchTargetToChange]; //fetch only the requested type. i.e, website or api
+      let matchTargetToChange =
+        this._matchTargetType == 'website' ? 'websiteTargets' : 'apiTargets';
+      let existingMatchTargets = allMatchTargets.matchTargets[matchTargetToChange]; //fetch only the requested type. i.e, website or api
       for (let i = 0; i < existingMatchTargets.length; i++) {
         targetSequence.push({
           targetId: existingMatchTargets[i].targetId,
@@ -67,10 +82,12 @@ class MatchTarget {
       });
     });
   }
+
   changeSequence() {
-    if (this._targetIdsInOrder.length) {
-      return this._updateOrder(); // this is a request for changing the order of match targets
-    } else if (this._insert) {
+    let targetIdsInOrder = this._options.order ? this._options.order : this.options._;
+    if (targetIdsInOrder.length) {
+      return this._updateOrder(targetIdsInOrder); // this is a request for changing the order of match targets
+    } else if (this._options.insert) {
       return this._insertBeginning();
     }
   }
