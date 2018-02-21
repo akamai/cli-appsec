@@ -60,14 +60,15 @@ class Edge {
     return this._send(request);
   }
 
-  post(requestUri, body, params) {
+  post(requestUri, payload, params) {
     let request = {
       method: 'POST',
       path: this._resolveParams(requestUri, params),
       followRedirect: false,
-      body: body
+      body: payload
     };
-    return this._send(request);
+    logger.debug(JSON.stringify(request));
+    return payload;
   }
 
   put(requestUri, payload, params) {
@@ -77,7 +78,7 @@ class Edge {
       body: JSON.stringify(payload)
     };
     logger.debug(JSON.stringify(request));
-    return JSON.parse(payload);
+    return payload;
   }
 
   _sendUpdate(request) {

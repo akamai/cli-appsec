@@ -1,0 +1,171 @@
+{
+  "responseToChoose": 0,
+  "responses": [
+    {
+      "httpStatus": 200,
+      "response": {
+        "matchTargets": {
+          "apiTargets": [
+            {
+              "apis": [
+                { "id": 2332, "name": "API Endpoint 1" },
+                { "id": 33434, "name": "API Endpoint 2" }
+              ],
+              "bypassNetworkLists": [
+                {
+                  "id": "1024_AMAZONELASTICCOMPUTECLOU",
+                  "name": "Amazon bypass network list"
+                }
+              ],
+              "configId": 17027,
+              "configVersion": 25,
+              "effectiveSecurityControls": {
+                "applyApiConstraints": true,
+                "applyApplicationLayerControls": true,
+                "applyBotmanControls": true,
+                "applyNetworkLayerControls": true,
+                "applyRateControls": true,
+                "applyReputationControls": true,
+                "applySlowPostControls": false,
+                "applyUserValidationControls": false
+              },
+              "firewallPolicy": {
+                "policyId": "qik1_36553",
+                "policyName": "Tet-a-Tet",
+                "policySecurityControls": {
+                  "applyApiConstraints": true,
+                  "applyApplicationLayerControls": true,
+                  "applyBotmanControls": true,
+                  "applyNetworkLayerControls": true,
+                  "applyRateControls": true,
+                  "applyReputationControls": true,
+                  "applySlowPostControls": false,
+                  "applyUserValidationControls": false
+                }
+              },
+              "isTargetSecurityControlsEditable": false,
+              "sequence": 3,
+              "targetId": 1222208,
+              "targetSecurityControls": {
+                "applyApiConstraints": true,
+                "applyApplicationLayerControls": true,
+                "applyBotmanControls": false,
+                "applyNetworkLayerControls": true,
+                "applyRateControls": true,
+                "applyReputationControls": true,
+                "applySlowPostControls": false,
+                "applyUserValidationControls": false
+              },
+              "type": "api"
+            }
+          ],
+          "websiteTargets": [
+            {
+              "bypassNetworkLists": [
+                {
+                  "id": "1283_MICROSOFTWINDOWSAZUREDAT",
+                  "name": "Microsoft bypass network list"
+                }
+              ],
+              "configId": 17027,
+              "configVersion": 25,
+              "defaultFile": "NO_MATCH",
+              "effectiveSecurityControls": {
+                "applyApiConstraints": false,
+                "applyApplicationLayerControls": true,
+                "applyBotmanControls": true,
+                "applyNetworkLayerControls": true,
+                "applyRateControls": true,
+                "applyReputationControls": true,
+                "applySlowPostControls": false,
+                "applyUserValidationControls": false
+              },
+              "fileExtensions": ["html"],
+              "filePaths": ["/*"],
+              "firewallPolicy": {
+                "policyId": "qik1_36553",
+                "policyName": "Tet-a-Tet",
+                "policySecurityControls": {
+                  "applyApiConstraints": true,
+                  "applyApplicationLayerControls": true,
+                  "applyBotmanControls": true,
+                  "applyNetworkLayerControls": true,
+                  "applyRateControls": true,
+                  "applyReputationControls": true,
+                  "applySlowPostControls": false,
+                  "applyUserValidationControls": false
+                }
+              },
+              "hostnames": [],
+              "isNegativeFileExtensionMatch": false,
+              "isNegativePathMatch": false,
+              "isTargetSecurityControlsEditable": true,
+              "sequence": 1,
+              "targetId": 1221059,
+              "targetSecurityControls": {
+                "applyApiConstraints": false,
+                "applyApplicationLayerControls": true,
+                "applyBotmanControls": false,
+                "applyNetworkLayerControls": true,
+                "applyRateControls": true,
+                "applyReputationControls": true,
+                "applySlowPostControls": true,
+                "applyUserValidationControls": false
+              },
+              "type": "website"
+            },
+            {
+              "bypassNetworkLists": [],
+              "configId": 17027,
+              "configVersion": 25,
+              "defaultFile": "NO_MATCH",
+              "effectiveSecurityControls": {
+                "applyApiConstraints": false,
+                "applyApplicationLayerControls": true,
+                "applyBotmanControls": true,
+                "applyNetworkLayerControls": false,
+                "applyRateControls": true,
+                "applyReputationControls": true,
+                "applySlowPostControls": false,
+                "applyUserValidationControls": false
+              },
+              "fileExtensions": [],
+              "filePaths": ["/path"],
+              "firewallPolicy": {
+                "policyId": "9898_41458",
+                "policyName": "yctest",
+                "policySecurityControls": {
+                  "applyApiConstraints": false,
+                  "applyApplicationLayerControls": true,
+                  "applyBotmanControls": true,
+                  "applyNetworkLayerControls": false,
+                  "applyRateControls": true,
+                  "applyReputationControls": true,
+                  "applySlowPostControls": false,
+                  "applyUserValidationControls": false
+                }
+              },
+              "hostnames": ["www.google", "www.google.com"],
+              "isNegativeFileExtensionMatch": false,
+              "isNegativePathMatch": false,
+              "isTargetSecurityControlsEditable": false,
+              "sequence": 2,
+              "targetId": 1222207,
+              "targetSecurityControls": {
+                "applyApiConstraints": false,
+                "applyApplicationLayerControls": true,
+                "applyBotmanControls": false,
+                "applyNetworkLayerControls": false,
+                "applyRateControls": true,
+                "applyReputationControls": true,
+                "applySlowPostControls": false,
+                "applyUserValidationControls": false
+              },
+              "type": "website"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
