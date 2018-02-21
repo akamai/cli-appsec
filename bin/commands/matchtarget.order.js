@@ -22,11 +22,6 @@ class MatchTargetOrderCommand {
         group: 'Options:',
         required: false
       })
-      .enumeration('--type <type>', {
-        desc: 'The match target type.',
-        choices: ['website', 'api'],
-        required: true
-      })
       .number('--insert <id>', {
         desc: 'Match target id to insert at the beginning.',
         group: 'Options:',
