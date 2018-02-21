@@ -1,10 +1,10 @@
 let out = require('./lib/out');
 let MatchTarget = require('../../src/matchtarget').matchTarget;
 
-class CreateMatchTargetCommand {
+class MatchTargetOrderCommand {
   constructor() {
-    this.flags = 'create-match-target';
-    this.desc = 'Creates a match target.';
+    this.flags = 'match-target-order';
+    this.desc = 'Change the match target sequence.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -12,42 +12,42 @@ class CreateMatchTargetCommand {
   setup(sywac) {
     sywac
       .number('--config <id>', {
-        desc: 'Configuration id. Mandatory if you have more than one configuration.',
+        desc: 'Configuration id number',
         group: 'Options:',
         required: false
       })
-      .string('--version <id>', {
+      .string('--version <num>', {
         desc:
           "The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
         group: 'Options:',
         required: false
       })
-      .stringArray('--hostnames <a.com, b.net, c.d.com>', {
-        desc: 'Hostnames to add.',
-        group: 'Options:',
+      .enumeration('--type <type>', {
+        desc: 'The match target type.',
+        choices: ['website', 'api'],
         required: true
       })
-      .stringArray('--paths <x,y,z>', {
-        desc: 'The file paths',
+      .number('--insert <id>', {
+        desc: 'Match target id to insert at the beginning.',
         group: 'Options:',
-        required: true
+        required: false
       })
-      .string('--policy <id>', {
-        desc: 'The policy id.',
+      .numberArray('--order <300,100,200>', {
+        desc: 'The list of match target ids in desired order.',
         group: 'Options:',
-        required: true
+        required: false
       });
   }
 
   run(options) {
     out.print({
-      promise: new MatchTarget(options).createMatchTarget(),
+      promise: new MatchTarget(options).changeSequence(),
       args: options,
       success: (args, data) => {
-        return data.targetId;
+        return data;
       }
     });
   }
 }
 
-module.exports = new CreateMatchTargetCommand();
+module.exports = new MatchTargetOrderCommand();
