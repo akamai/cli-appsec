@@ -24,11 +24,6 @@ class ModifyMatchTargetCommand {
             group: 'Options:',
             required: false
           })
-          .enumeration('--type <type>', {
-            desc: 'The match target type.',
-            choices: ['website', 'api'],
-            required: true
-          })
           .number('--match-target <id>', {
             desc: 'Match target id to update.',
             group: 'Options:',

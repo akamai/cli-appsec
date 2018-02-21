@@ -11,7 +11,8 @@ class MatchTarget {
     this._version = new Version(options);
     this._options = JSON.parse(JSON.stringify(options)); //clone
     this._matchTarget = JSON.parse(fs.readFileSync(TEMPLATE_PATH, 'utf8'));
-    this._matchTargetType = this._options.type ? this._options.type : 'website';
+    //this._matchTargetType = this._options.type ? this._options.type : 'website';
+    this._matchTargetType = 'website';
   }
 
   createMatchTarget() {
