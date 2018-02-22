@@ -38,12 +38,11 @@ class CRBHandler {
   }
 
   assign() {
-    let version = this._options['version'];
     let policyId = this._options['policy'];
     let ruleId = this._options['custom-rule'];
     let action = this._options['action'];
     let payload = { action: action };
-    return this._version.updateResource(URIs.CRB_ACTION, [version, policyId, ruleId], payload);
+    return this._version.updateResource(URIs.CRB_ACTION, [policyId, ruleId], payload);
   }
 }
 
