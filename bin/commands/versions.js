@@ -23,7 +23,7 @@ class VersionsCommand {
         required: false
       })
       .boolean('--verbose', {
-        desc: 'Provides a more details about each version.',
+        desc: 'Provides more details about each version.',
         group: 'Options:',
         required: false
       });
