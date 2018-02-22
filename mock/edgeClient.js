@@ -31,6 +31,10 @@ class Edge {
     return new Promise((resolve, reject) => {
       let path = request.path.replace('/appsec-configuration/v1/', '');
       path = path.replace('/appsec-resource/v1/', '');
+      logger.debug('replaced path: ' + path);
+      if (path.indexOf('?') !== -1) {
+        path = path.substring(0, path.indexOf('?'));
+      }
       path = __dirname + '/' + path + '.json';
       logger.debug('replaced path: ' + path);
       fs.readFile(path, (err, data) => {

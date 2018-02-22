@@ -1,6 +1,6 @@
 let out = require('./lib/out');
 let Version = require('../../src/versionsProvider').versionProvider;
-
+let util = require('util');
 class VersionsCommand {
   constructor() {
     this.flags = 'versions';
@@ -10,11 +10,23 @@ class VersionsCommand {
   }
 
   setup(sywac) {
-    sywac.number('--config <id>', {
-      desc: 'Configuration id. Mandatory if you have more than one configuration.',
-      group: 'Options:',
-      required: false
-    });
+    sywac
+      .number('--config <id>', {
+        desc: 'Configuration id. Mandatory if you have more than one configuration.',
+        group: 'Options:',
+        required: false
+      })
+      .number('--limit <num>', {
+        desc:
+          'Specifies the number of most recent versions of the selected configuration to be fetched.',
+        group: 'Options:',
+        required: false
+      })
+      .boolean('--verbose', {
+        desc: 'Provides more details about each version.',
+        group: 'Options:',
+        required: false
+      });
   }
 
   run(options) {
@@ -22,11 +34,56 @@ class VersionsCommand {
       promise: new Version(options).versions(),
       args: options,
       success: (args, data) => {
-        let vids = [];
-        for (let i = 0; i < data.versionList.length; i++) {
-          vids.push(data.versionList[i].version);
+        let nl = require('os').EOL;
+        let res = [];
+        if (args.verbose) {
+          //prepare the verbose output
+          for (let i = 0; i < data.versionList.length; i++) {
+            if (data.versionList[i].basedOn) {
+              res.push(
+                util.format(
+                  '%s.%s -> %s - %s',
+                  data.configId,
+                  data.versionList[i].version,
+                  data.versionList[i].basedOn || '',
+                  data.configName
+                )
+              );
+            } else {
+              res.push(
+                util.format(
+                  '%s.%s - %s',
+                  data.configId,
+                  data.versionList[i].version,
+                  data.configName
+                )
+              );
+            }
+            res.push(
+              util.format(
+                '%s at %s',
+                data.versionList[i].createdBy,
+                new Date(Number(data.versionList[i].createDate)).toISOString()
+              )
+            );
+            res.push(
+              util.format(
+                'Staging: %s Production: %s',
+                data.versionList[i].staging.status,
+                data.versionList[i].production.status
+              )
+            );
+            if (data.versionList[i].versionNotes) {
+              res.push(util.format('Notes: %s', data.versionList[i].versionNotes));
+            }
+            res.push(''); //for an empty line
+          }
+        } else {
+          for (let i = 0; i < data.versionList.length; i++) {
+            res.push(data.versionList[i].version);
+          }
         }
-        return vids.join('\n');
+        return res.join(nl);
       }
     });
   }
