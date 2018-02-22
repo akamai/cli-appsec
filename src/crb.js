@@ -7,11 +7,12 @@ let fs = require('fs');
 let untildify = require('untildify');
 const CRB_TEMPLATE_PATH = __dirname + '/../templates/crbTemplate.json';
 let Config = require('./configprovider').configProvider;
-
+let Version = require('./versionsprovider').versionProvider;
 class CRBHandler {
   constructor(options) {
     this._config = new Config(options);
     this._options = options;
+    this._version = new Version(options);
   }
 
   template() {
@@ -42,7 +43,7 @@ class CRBHandler {
     let ruleId = this._options['custom-rule'];
     let action = this._options['action'];
     let payload = { action: action };
-    return this._config.updateResource(URIs.CRB_ACTION, [version, policyId, ruleId], payload);
+    return this._version.updateResource(URIs.CRB_ACTION, [version, policyId, ruleId], payload);
   }
 }
 
