@@ -3,6 +3,7 @@
 "use strict";
 
 var fs = require('fs');
+let logger = require('../src/constants').logger('main');
 
 require("sywac")
   .commandDirectory('./commands')
@@ -37,12 +38,14 @@ require("sywac")
   .parse()
   .then(result => {
     if (result.errors.length) {
-      console.error("ERROR: ", result.errors[0] || JSON.stringify(result.errors[0]));
-      console.output = "";
+      logger.error("ERROR: ", result.errors[0] || JSON.stringify(result.errors[0]));
+      let err = result.errors[0] + '';
+      if(err && err.indexOf('.edgerc') !== -1) {
+        err = err.substring(0,err.indexOf('name.')+5);
+      }
+      console.error(err);
+      process.exit(result.code);
     }
-    // if help requested, log it and exit
-    
-    //console.log("---"+JSON.stringify(result));
     if(result.argv.version && result.details.args.length == 1) {
       //print version info
       let s = fs.readFileSync(__dirname+'/../package.json', 'utf8');

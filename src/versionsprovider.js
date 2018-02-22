@@ -77,7 +77,14 @@ class VersionProvider {
    */
   versions() {
     logger.info('Fetching version list....ll');
-    return this._config.readResource(URIs.GET_VERSIONS, []);
+    //&page=1&pageSize=%s
+    let uri = URIs.GET_VERSIONS;
+    let params = [];
+    if (this._options.limit && !isNaN(this._options.limit)) {
+      uri = uri + '&page=1&pageSize=%s';
+      params.push(this._options.limit);
+    }
+    return this._config.readResource(uri, params);
   }
 
   /**
