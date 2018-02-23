@@ -28,7 +28,7 @@ class CustomRuleCommand {
       promise: new CRB(options).getRule(),
       args: options,
       success: (args, data) => {
-        return data;
+        return JSON.stringify(data, null, 2);
       }
     });
   }
