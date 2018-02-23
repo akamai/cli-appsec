@@ -45,7 +45,7 @@ class Edge {
           logger.info('No response from server: ' + JSON.stringify(data));
           reject('Could not get data at this time.');
         } else {
-          logger.info('Error response from server: ' + JSON.stringify(response));
+          logger.error('Error response from server: ' + JSON.stringify(response, null, 2));
           try {
             let errJson = JSON.parse(response.body);
             reject(errJson);

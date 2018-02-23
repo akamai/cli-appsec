@@ -16,7 +16,7 @@ class ModifyCustomRuleCommand {
         group: 'Options:',
         required: false
       })
-      .number('--ruleId <id>', {
+      .number('--custom-rule <id>', {
         desc: 'Rule ID.',
         group: 'Options:',
         required: true
