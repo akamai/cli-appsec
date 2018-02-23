@@ -12,7 +12,8 @@ class VersionCommand {
   setup(sywac) {
     sywac
       .number('--config <id>', {
-        desc: 'Configuration id number',
+        desc:
+          "Configuration id number. If not provided, assumes there is only one configuration and chooses it. If there's more, an error is thrown.",
         group: 'Options:',
         required: false
       })
@@ -25,6 +26,10 @@ class VersionCommand {
   }
 
   run(options) {
+    //if version is provided without the parameter name, try to recognize it
+    if (!options.version && options._ && !isNaN(options._[0])) {
+      options.version = options._[0];
+    }
     out.print({
       promise: new Version(options).version(),
       args: options,
