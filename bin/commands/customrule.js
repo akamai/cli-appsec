@@ -24,6 +24,10 @@ class CustomRuleCommand {
   }
 
   run(options) {
+    //if custom-rule id is provided without the parameter name, try to recognize it
+    if (!options['custom-rule'] && options._ && !isNaN(options._[0])) {
+      options['custom-rule'] = options._[0];
+    }
     out.print({
       promise: new CRB(options).getRule(),
       args: options,
