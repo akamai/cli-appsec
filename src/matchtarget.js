@@ -60,7 +60,15 @@ class MatchTarget {
       let matchTargetToChange =
         this._matchTargetType == 'website' ? 'websiteTargets' : 'apiTargets';
       let existingMatchTargets = allMatchTargets.matchTargets[matchTargetToChange]; //fetch only the requested type. i.e, website or api
-      logger.debug('Existing sequence: %s', JSON.stringify(existingMatchTargets));
+
+      existingMatchTargets = existingMatchTargets.sort((a, b) => {
+        return a.sequence > b.sequence ? 1 : b.sequence > a.sequence ? -1 : 0;
+      }); //sort ascendingly on sequence.
+
+      logger.debug(
+        'Existing sequence(ordered by sequence): %s',
+        JSON.stringify(existingMatchTargets)
+      );
       let targetToMoveToFront;
       for (let i = 0; i < existingMatchTargets.length; i++) {
         if (this._options.insert == existingMatchTargets[i].targetId) {
