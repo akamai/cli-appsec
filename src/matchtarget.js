@@ -1,7 +1,7 @@
 'use strict';
 
 let URIs = require('./constants').URIS;
-let logger = require('./constants').logger('HostSelection');
+let logger = require('./constants').logger('MatchTarget');
 let Version = require('./versionsprovider').versionProvider;
 let fs = require('fs');
 const TEMPLATE_PATH = __dirname + '/../templates/matchtarget.json';
@@ -31,7 +31,7 @@ class MatchTarget {
         for (let i = 0; i < this._options.hostnames.length; i++) {
           matchTarget.hostnames.push(this._options.hostnames[i]);
         }
-        logger.debug('Updated match target: ' + JSON.stringify(matchTarget));
+        logger.debug('Updated match target: %s', JSON.stringify(matchTarget));
         return this._version.updateResource(
           URIs.MATCH_TARGET,
           [this._options['match-target']],
@@ -45,7 +45,7 @@ class MatchTarget {
     for (let i = 0; i < targetIdsInOrder.length; i++) {
       targetSequence.push({ targetId: targetIdsInOrder[i], sequence: i + 1 });
     }
-    logger.debug('Result sequence: ' + JSON.stringify(targetSequence));
+    logger.debug('Result sequence: %s', JSON.stringify(targetSequence));
     return this._version.updateResource(URIs.MATCH_TARGET_SEQUENCE, [], {
       targetSequence: targetSequence,
       type: this._matchTargetType
@@ -60,23 +60,33 @@ class MatchTarget {
       let matchTargetToChange =
         this._matchTargetType == 'website' ? 'websiteTargets' : 'apiTargets';
       let existingMatchTargets = allMatchTargets.matchTargets[matchTargetToChange]; //fetch only the requested type. i.e, website or api
+      logger.debug('Existing sequence: %s', JSON.stringify(existingMatchTargets));
+      let targetToMoveToFront;
       for (let i = 0; i < existingMatchTargets.length; i++) {
-        targetSequence.push({
-          targetId: existingMatchTargets[i].targetId,
-          sequence: existingMatchTargets[i].sequence
+        if (this._options.insert == existingMatchTargets[i].targetId) {
+          targetToMoveToFront = existingMatchTargets[i].targetId;
+        } else {
+          targetSequence.push({
+            targetId: existingMatchTargets[i].targetId
+          });
+        }
+      }
+      //create new list of match targets
+      let seq = 1;
+      let result = [];
+      if (targetToMoveToFront) {
+        result.push({
+          targetId: targetToMoveToFront,
+          sequence: seq++
         });
       }
-      logger.debug('Existing sequence: ' + JSON.stringify(targetSequence));
-      //create new list of match targets
-      let result = [];
-      result.push({ targetId: this._insert, sequence: 1 });
       for (let i = 0; i < targetSequence.length; i++) {
         result.push({
           targetId: targetSequence[i].targetId,
-          sequence: targetSequence[i].sequence + 1
+          sequence: seq++
         });
       }
-      logger.debug('REsult sequence: ' + JSON.stringify(targetSequence));
+      logger.debug('Result sequence: %s', JSON.stringify(targetSequence));
       return this._version.updateResource(URIs.MATCH_TARGET_SEQUENCE, [], {
         targetSequence: result,
         type: this._matchTargetType

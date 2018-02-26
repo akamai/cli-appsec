@@ -31,6 +31,11 @@ class MatchTargetOrderCommand {
         desc: 'The list of match target ids in desired order.',
         group: 'Options:',
         required: false
+      })
+      .check((argv, context) => {
+        if (!argv.insert && argv.order.length == 0) {
+          return context.cliMessage('Missing match target id parameters.');
+        }
       });
   }
 
