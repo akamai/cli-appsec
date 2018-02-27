@@ -1,0 +1,176 @@
+{
+  "name": "Custom Rule Example",
+  "description": "This is a giant custom rule with most of the available conditions. Please delete all conditions but the ones you need.  Most rules only have 1 or 2 conditions.  Some conditions, like cookieMatch, requestHeaderMatch and uriQueryMatch can be declared more than once.  Please replace this text with a description of your custom rule.",
+  "tag": ["ChangeMe"],
+  "conditions": {
+    "groups": [
+      {
+        "conditions": [
+          {
+            "className": "requestMethodMatch",
+            "positiveMatch": true,
+            "value": [
+              "GET",
+              "CONNECT",
+              "TRACE",
+              "PUT",
+              "POST",
+              "OPTIONS",
+              "HTTP_DELETE",
+              "HEAD"
+            ]
+          },
+          {
+            "className": "pathMatch",
+            "positiveMatch": true,
+            "value": [
+              "/Please/change/me/to/a/valid/URL/path",
+              "/Please/change/me/to/a/valid/URL/path"
+            ]
+          },
+          {
+            "className": "extensionMatch",
+            "positiveMatch": true,
+            "value": [
+              "ChangeMe",
+              "ChangeMe"
+            ],
+            "valueWildcard": true,
+            "valueCase": true
+          },
+          {
+            "className": "filenameMatch",
+            "positiveMatch": true,
+            "value": [
+              "ChangeMe",
+              "ChangeMe"
+            ],
+            "valueWildcard": false,
+            "valueCase": false
+          },
+          {
+            "className": "requestProtocolVersionMatch",
+            "positiveMatch": true,
+            "value": [
+              "HTTP/0.9"
+            ]
+          },
+          {
+            "className": "requestHeaderMatch",
+            "positiveMatch": true,
+            "name": ["ChangeMe", "ChangeMe"],
+            "value": [
+              "ChangeMe",
+              "ChangeMe"
+            ],
+            "valueCase": true,
+            "valueWildcard": true,
+            "nameWildcard": true
+          },
+          {
+            "className": "requestHeaderMatch",
+            "positiveMatch": true,
+            "name": ["ChangeMe", "ChangeMe"],
+            "value": [
+              "ChangeMe",
+              "ChangeMe"
+            ],
+            "valueCase": true,
+            "valueWildcard": true,
+            "nameWildcard": true
+          },
+          {
+            "className": "headerOrderMatch",
+            "positiveMatch": true,
+            "value": "ChangeMe:ChangeMee"
+          },
+          {
+            "className": "cookieMatch",
+            "positiveMatch": true,
+            "name": "ChangeMe",
+            "nameWildcard": true,
+            "nameCase": true,
+            "value": [
+              "ChangeMe",
+              "ChangeMe"
+            ],
+            "valueCase": true,
+            "valueWildcard": true
+          },
+          {
+            "className": "cookieMatch",
+            "positiveMatch": true,
+            "name": "ChangeMe",
+            "nameWildcard": true,
+            "nameCase": true,
+            "value": [
+              "ChangeMe",
+              "ChangeMe"
+            ],
+            "valueCase": true,
+            "valueWildcard": true
+          },
+          {
+            "className": "uriQueryMatch",
+            "positiveMatch": true,
+            "name": "ChangeMe",
+            "nameCase": true,
+            "nameWildcard": true,
+            "value": [
+              "ChangeMe",
+              "ChangeMe"
+            ],
+            "valueWildcard": true,
+            "valueCase": true
+          },
+          {
+            "className": "uriQueryMatch",
+            "positiveMatch": true,
+            "name": "ChangeMe",
+            "nameCase": false,
+            "nameWildcard": false,
+            "value": [
+              "ChangeMe",
+              "ChangeMe"
+            ],
+            "valueWildcard": false,
+            "valueCase": false
+          },
+          {
+            "className": "argsPostMatch",
+            "positiveMatch": true,
+            "name": "ChangeMe",
+            "value": [
+              "ChangeMe",
+              "ChangeMe"
+            ]
+          },
+          {
+            "className": "argsPostMatch",
+            "positiveMatch": true,
+            "name": "ChangeMe",
+            "value": [
+              "ChangeMe",
+              "ChangeMe"
+            ]
+          },
+          {
+            "className": "argsPostNamesMatch",
+            "positiveMatch": true,
+            "value": [
+              "ChangeMe",
+              "ChangeMe"
+            ]
+          }
+        ],
+        "positiveMatch": true,
+        "operation": "AND"
+      }
+    ],
+    "positiveMatch": true,
+    "operation": "AND"
+  },
+  "inspectRequest": false,
+  "inspectResponse": false,
+  "structured": true
+}
