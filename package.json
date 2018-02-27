@@ -1,15 +1,18 @@
 {
-  "name": "myapp",
+  "name": "akamaicliappsec",
   "version": "1.0.0",
-  "description": "Learning nodejs",
-  "main": "index.js",
+  "description": "A wrapping development kit to interface common tasks with akamai's Security {OPEN} API.",
+  "repository": "https://github.com/akamai/cli-appsec",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=7.0.0"
+  },
   "scripts": {
     "lint": "eslint src",
     "test": "mocha",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "build": "pkg bin/akamai-appsec --target node8-linux-x86,node8-linux-x64,node8-win-x86,node8-win-x64,node8-macos-x64 --output akamai-appsec-1.0.0"
   },
-  "author": "arul",
-  "license": "ISC",
   "dependencies": {
     "edgegrid": "*",
     "pino": "^4.10.4",
@@ -36,3 +39,4 @@
     ]
   }
 }
+
