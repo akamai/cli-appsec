@@ -29,12 +29,16 @@ class CRBHandler {
 
   createRule() {
     let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
-    return this._config.createResource(URIs.GET_CRB_ALL, [], payload);
+    return this._config.createResource(URIs.GET_CRB_ALL, [], JSON.parse(payload));
   }
 
   updateRule() {
     let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
-    return this._config.updateResource(URIs.GET_CRB, [this._options['custom-rule']], payload);
+    return this._config.updateResource(
+      URIs.GET_CRB,
+      [this._options['custom-rule']],
+      JSON.parse(payload)
+    );
   }
 
   assign() {
