@@ -1,7 +1,7 @@
 let out = require('./lib/out');
 let MatchTarget = require('../../src/matchtarget').matchTarget;
 
-class MatchTargetOrderCommand {
+class MatchTargetsCommand {
   constructor() {
     this.flags = 'match-targets';
     this.desc = 'List all match targets.';
@@ -39,4 +39,4 @@ class MatchTargetOrderCommand {
   }
 }
 
-module.exports = new MatchTargetOrderCommand();
+module.exports = new MatchTargetsCommand();
