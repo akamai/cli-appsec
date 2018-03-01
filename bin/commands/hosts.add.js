@@ -38,7 +38,7 @@ class AddHostsCommand {
         for (let i = 0; i < data.hostnameList.length; i++) {
           hosts.push(data.hostnameList[i].hostName);
         }
-        return hosts.join('\n');
+        return hosts.join(require('os').EOL);
       }
     });
   }

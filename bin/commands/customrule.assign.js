@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class ModifyCustomRuleCommand {
   constructor() {
     this.flags = 'enable-custom-rule';
-    this.desc = 'Update existing custom rule.';
+    this.desc = 'Enable custom rule.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

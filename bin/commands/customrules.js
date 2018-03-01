@@ -25,7 +25,7 @@ class ListCustomRulesCommand {
         for (let i = 0; data && i < data.length; i++) {
           str.push(data[i].ruleId);
         }
-        return str.join('\n');
+        return str.join(require('os').EOL);
       }
     });
   }
