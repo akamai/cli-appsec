@@ -17,7 +17,7 @@ class ConfigsCommand {
         for (let i = 0; data && i < data.length; i++) {
           str.push(data[i].configId);
         }
-        return str.join('\n');
+        return str.join(require('os').EOL);
       }
     });
   }

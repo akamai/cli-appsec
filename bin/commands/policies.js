@@ -33,7 +33,7 @@ class PoliciesCommand {
         for (let i = 0; i < data.policies.length; i++) {
           s.push(data.policies[i].policyId);
         }
-        return s.join('\n');
+        return s.join(require('os').EOL);
       }
     });
   }

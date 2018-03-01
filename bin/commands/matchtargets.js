@@ -29,7 +29,14 @@ class MatchTargetOrderCommand {
       promise: new MatchTarget(options).matchtargets(),
       args: options,
       success: (args, data) => {
-        return JSON.stringify(data);
+        let targetSequence = [];
+        for (let i = 0; i < data.length; i++) {
+          targetSequence.push({
+            targetId: data[i].targetId,
+            sequence: data[i].sequence
+          });
+        }
+        return JSON.stringify(targetSequence);
       }
     });
   }

@@ -24,17 +24,7 @@ class MatchTarget {
         'Existing sequence(ordered by sequence): %s',
         JSON.stringify(existingMatchTargets)
       );
-      let result = [];
-      existingMatchTargets = existingMatchTargets.sort((a, b) => {
-        return a.sequence > b.sequence ? 1 : b.sequence > a.sequence ? -1 : 0;
-      }); //sort ascendingly on sequence.
-      for (let i = 0; i < existingMatchTargets.length; i++) {
-        result.push({
-          targetId: existingMatchTargets[i].targetId,
-          sequence: existingMatchTargets[i].sequence
-        });
-      }
-      return result;
+      return existingMatchTargets;
     });
   }
 
