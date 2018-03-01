@@ -31,12 +31,9 @@ class MatchTargetOrderCommand {
       success: (args, data) => {
         let targetSequence = [];
         for (let i = 0; i < data.length; i++) {
-          targetSequence.push({
-            targetId: data[i].targetId,
-            sequence: data[i].sequence
-          });
+          targetSequence.push(data[i].targetId);
         }
-        return JSON.stringify(targetSequence);
+        return targetSequence.join(require('os').EOL);
       }
     });
   }
