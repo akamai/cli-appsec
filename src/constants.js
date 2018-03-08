@@ -14,16 +14,15 @@ let logger = function(loggerName) {
   return LOG.child({ name: loggerName });
 };
 const resources = {
-  GET_CONFIGS: '/appsec-configuration/v1/configs',
-  GET_CONFIG: '/appsec-configuration/v1/configs/%s',
+  GET_CONFIGS: '/appsec/v1/configs',
+  GET_CONFIG: '/appsec/v1/configs/%s',
   GET_VERSIONS: '/appsec/v1/configs/%s/versions?detail=true',
   GET_VERSION: '/appsec/v1/configs/%s/versions/%s',
-  GET_CRB_ALL: '/appsec-resource/v1/configs/%s/custom-rules',
-  GET_CRB: '/appsec-resource/v1/configs/%s/custom-rules/%s',
-  CRB_ACTION:
-    '/appsec-configuration/v1/configs/%s/versions/%s/firewall-policies/%s/custom-rules/%s/action',
-  SELECTED_HOSTS_RESOURCE: '/appsec-configuration/v1/configs/%s/versions/%s/selected-hostnames',
-  SELECTABLE_HOSTS_RESOURCE: '/appsec-configuration/v1/configs/%s/versions/%s/selectable-hostnames',
+  GET_CRB_ALL: '/appsec/v1/configs/%s/custom-rules',
+  GET_CRB: '/appsec/v1/configs/%s/custom-rules/%s',
+  CRB_ACTION: '/appsec/v1/configs/%s/versions/%s/firewall-policies/%s/custom-rules/%s/action',
+  SELECTED_HOSTS_RESOURCE: '/appsec/v1/configs/%s/versions/%s/selected-hostnames',
+  SELECTABLE_HOSTS_RESOURCE: '/appsec/v1/configs/%s/versions/%s/selectable-hostnames',
   MATCH_TARGETS: '/appsec/v1/configs/%s/versions/%s/match-targets',
   MATCH_TARGET: '/appsec/v1/configs/%s/versions/%s/match-targets/%s',
   MATCH_TARGET_SEQUENCE: '/appsec/v1/configs/%s/versions/%s/match-targets/sequence',
