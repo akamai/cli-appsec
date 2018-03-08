@@ -20,7 +20,7 @@ const resources = {
   GET_VERSION: '/appsec/v1/configs/%s/versions/%s',
   GET_CRB_ALL: '/appsec/v1/configs/%s/custom-rules',
   GET_CRB: '/appsec/v1/configs/%s/custom-rules/%s',
-  CRB_ACTION: '/appsec/v1/configs/%s/versions/%s/firewall-policies/%s/custom-rules/%s/action',
+  CRB_ACTION: '/appsec/v1/configs/%s/versions/%s/firewall-policies/%s/custom-rules/%s',
   SELECTED_HOSTS_RESOURCE: '/appsec/v1/configs/%s/versions/%s/selected-hostnames',
   SELECTABLE_HOSTS_RESOURCE: '/appsec/v1/configs/%s/versions/%s/selectable-hostnames',
   MATCH_TARGETS: '/appsec/v1/configs/%s/versions/%s/match-targets',
