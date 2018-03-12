@@ -23,7 +23,12 @@ class MatchTargetOrderCommand {
         required: false
       })
       .number('--insert <id>', {
-        desc: 'Match target id to insert at the beginning.',
+        desc: 'Match target id to move to the start.',
+        group: 'Options:',
+        required: false
+      })
+      .number('--append <id>', {
+        desc: 'Match target id to move to the end.',
         group: 'Options:',
         required: false
       })
@@ -33,13 +38,17 @@ class MatchTargetOrderCommand {
         required: false
       })
       .check((argv, context) => {
-        if (!argv.insert && argv.order.length == 0) {
-          return context.cliMessage('Missing match target id parameters.');
+        console.log(JSON.stringify(argv));
+        let order = argv.order || argv._[0];
+        if (!argv.insert && !argv.append && !order.length) {
+          return context.cliMessage('Error: Specify an explicit order or append or insert option.');
         }
       });
   }
 
   run(options) {
+    //consider the comma separated list of numbers as target ids if there is no explicit order param
+    options.order = options.order || options._[0].split(',');
     out.print({
       promise: new MatchTarget(options).changeSequence(),
       args: options,
