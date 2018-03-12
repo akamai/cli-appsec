@@ -1,10 +1,10 @@
 let out = require('./lib/out');
-let Policy = require('../../src/policy').policy;
+let MatchTarget = require('../../src/matchtarget').matchTarget;
 
-class PoliciesCommand {
+class MatchTargetsCommand {
   constructor() {
-    this.flags = 'policies';
-    this.desc = 'List all firewall policies.';
+    this.flags = 'match-targets';
+    this.desc = 'List all match targets.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -12,11 +12,11 @@ class PoliciesCommand {
   setup(sywac) {
     sywac
       .number('--config <id>', {
-        desc: 'Configuration id. Mandatory if you have more than one configuration.',
+        desc: 'Configuration id number',
         group: 'Options:',
         required: false
       })
-      .string('--version <id>', {
+      .string('--version <num>', {
         desc:
           "The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
         group: 'Options:',
@@ -26,17 +26,17 @@ class PoliciesCommand {
 
   run(options) {
     out.print({
-      promise: new Policy(options).policies(),
+      promise: new MatchTarget(options).matchtargets(),
       args: options,
       success: (args, data) => {
-        let s = [];
-        for (let i = 0; i < data.policies.length; i++) {
-          s.push(data.policies[i].policyId);
+        let targetSequence = [];
+        for (let i = 0; i < data.length; i++) {
+          targetSequence.push(data[i].targetId);
         }
-        return s.join(require('os').EOL);
+        return targetSequence.join(require('os').EOL);
       }
     });
   }
 }
 
-module.exports = new PoliciesCommand();
+module.exports = new MatchTargetsCommand();

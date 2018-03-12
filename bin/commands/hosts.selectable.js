@@ -33,7 +33,7 @@ class SelectableHostsCommand {
         for (let i = 0; i < data.availableSet.length; i++) {
           hosts.push(data.availableSet[i].hostName);
         }
-        return hosts.join('\n');
+        return hosts.join(require('os').EOL);
       }
     });
   }

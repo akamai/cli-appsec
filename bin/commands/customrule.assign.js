@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class ModifyCustomRuleCommand {
   constructor() {
     this.flags = 'enable-custom-rule';
-    this.desc = 'Update existing custom rule.';
+    this.desc = 'Assigns an action (such as alert or deny) to an existing custom rule in a policy.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

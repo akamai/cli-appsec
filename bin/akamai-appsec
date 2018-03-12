@@ -38,11 +38,8 @@ require("sywac")
   .parse()
   .then(result => {
     if (result.errors.length) {
-      logger.error("ERROR: ", result.errors[0] || JSON.stringify(result.errors[0]));
-      let err = result.errors[0] + '';
-      if(err && err.indexOf('.edgerc') !== -1) {
-        err = err.substring(0,err.indexOf('name.')+5);
-      }
+      let err = result.errors[0]+'' || JSON.stringify(result.errors[0]);
+      logger.error("ERROR: ", err);
       console.error(err);
       process.exit(result.code);
     }
@@ -53,7 +50,7 @@ require("sywac")
       process.exit(0);
     }
     else if (result.output) {
-      console.log(result.output.replace(/akamai-appsec/,'appsec'));
+      console.log(result.output.replace(/akamai-appsec/,'akamai appsec'));
       process.exit(result.code);
     }
   });

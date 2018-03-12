@@ -13,11 +13,12 @@ class ConfigsCommand {
       promise: new Config(options).configs(),
       args: options,
       success: (args, data) => {
+        data = data.configurations;
         let str = [];
         for (let i = 0; data && i < data.length; i++) {
-          str.push(data[i].configId);
+          str.push(data[i].id);
         }
-        return str.join('\n');
+        return str.join(require('os').EOL);
       }
     });
   }
