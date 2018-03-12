@@ -1,6 +1,4 @@
-// build.js
-// Very simple build script to run angular build
-// Needed because all the cross platform things I tried didn't work
+#!/usr/bin/env node
 
 // No command line arguments, we're just going to use the env vars
 let fs = require('fs');
@@ -8,6 +6,10 @@ let source = '.';
 let target = 'akamai-appsec-' + JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
 
 var exec = require('child-process-promise').exec;
+//delete existing binaries.
+exec(`ls | grep -e "akamai-appsec-.*-linux\\|mac\\|windows-.*" | xargs rm`).catch(err => {
+  console.error('ERROR: Delete failed: ' + err);
+});
 
 exec(
   `pkg ${source} --target node8-linux-x86,node8-linux-x64,node8-win-x86,node8-win-x64,node8-macos-x64 --output ${target}`

@@ -20,10 +20,7 @@ class MatchTarget {
       let matchTargetToChange =
         this._matchTargetType == 'website' ? 'websiteTargets' : 'apiTargets';
       let existingMatchTargets = allMatchTargets.matchTargets[matchTargetToChange]; //fetch only the requested type. i.e, website or api
-      logger.debug(
-        'Existing sequence(ordered by sequence): %s',
-        JSON.stringify(existingMatchTargets)
-      );
+      logger.debug('Existing sequence: %s', JSON.stringify(existingMatchTargets));
       return existingMatchTargets;
     });
   }
@@ -65,50 +62,57 @@ class MatchTarget {
     });
   }
 
-  _insertBeginning() {
+  _move(targetId, moveFunc) {
     logger.debug('Inserting the match target at the beginning.');
     return this.matchtargets().then(existingMatchTargets => {
-      let targetSequence = [];
-      let targetToMoveToFront;
-      for (let i = 0; i < existingMatchTargets.length; i++) {
-        if (this._options.insert == existingMatchTargets[i].targetId) {
-          targetToMoveToFront = existingMatchTargets[i].targetId;
-        } else {
-          targetSequence.push({
-            targetId: existingMatchTargets[i].targetId
-          });
-        }
-      }
-      //create new list of match targets
-      let seq = 1;
-      let result = [];
-      if (targetToMoveToFront) {
-        result.push({
-          targetId: targetToMoveToFront,
-          sequence: seq++
-        });
-      }
-      for (let i = 0; i < targetSequence.length; i++) {
-        result.push({
-          targetId: targetSequence[i].targetId,
-          sequence: seq++
-        });
-      }
-      logger.debug('Result sequence: %s', JSON.stringify(targetSequence));
-      return this._version.updateResource(URIs.MATCH_TARGET_SEQUENCE, [], {
-        targetSequence: result,
-        type: this._matchTargetType
+      existingMatchTargets.sort((a, b) => {
+        return a.sequence - b.sequence;
       });
+      logger.debug('Match targets ordered by sequence: %s', JSON.stringify(existingMatchTargets));
+      let targetSequence = [];
+      for (let i = 0; i < existingMatchTargets.length; i++) {
+        targetSequence.push(existingMatchTargets[i].targetId);
+      }
+
+      targetSequence = moveFunc(targetId, targetSequence);
+      logger.debug('Result sequence: %s', JSON.stringify(targetSequence));
+
+      return this._updateOrder(targetSequence);
     });
   }
-
+  /**
+   * Does ordering mased on the parameter passed.
+   */
   changeSequence() {
-    let targetIdsInOrder = this._options.order ? this._options.order : this.options._;
-    if (targetIdsInOrder.length) {
-      return this._updateOrder(targetIdsInOrder); // this is a request for changing the order of match targets
+    if (this._options.order.length) {
+      return this._updateOrder(this._options.order); // this is a request for changing the order of match targets
     } else if (this._options.insert) {
-      return this._insertBeginning();
+      return this._move(this._options.insert, this._moveToStart.bind(this));
+    } else if (this._options.append) {
+      return this._move(this._options.append, this._moveToEnd.bind(this));
     }
+  }
+
+  /**
+   * Helper to move the target id to the start
+   * @param {*} targetId
+   * @param {*} targetList
+   */
+  _moveToStart(targetId, targetList) {
+    let result = targetList.filter(item => item != targetId);
+    result.unshift(targetId);
+    return result;
+  }
+
+  /**
+   * Helper to move the target id to the end
+   * @param {*} targetId
+   * @param {*} targetList
+   */
+  _moveToEnd(targetId, targetList) {
+    let result = targetList.filter(item => item != targetId);
+    result.push(targetId);
+    return result;
   }
 }
 
