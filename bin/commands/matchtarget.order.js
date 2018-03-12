@@ -38,7 +38,6 @@ class MatchTargetOrderCommand {
         required: false
       })
       .check((argv, context) => {
-        console.log(JSON.stringify(argv));
         let order = argv.order || argv._[0];
         if (!argv.insert && !argv.append && !order.length) {
           return context.cliMessage('Error: Specify an explicit order or append or insert option.');
