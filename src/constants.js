@@ -18,6 +18,7 @@ const resources = {
   GET_CONFIG: '/appsec-configuration/v1/configs/%s',
   GET_VERSIONS: '/appsec-configuration/v1/configs/%s/versions?detail=true',
   GET_VERSION: '/appsec-configuration/v1/configs/%s/versions/%s',
+  GET_ACTIVATION: '/appsec-configuration/v1/configs/%s/activations/%s',
   GET_CRB_ALL: '/appsec-resource/v1/configs/%s/custom-rules',
   GET_CRB: '/appsec-resource/v1/configs/%s/custom-rules/%s',
   CRB_ACTION:
