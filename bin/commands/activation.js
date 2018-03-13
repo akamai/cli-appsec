@@ -1,5 +1,5 @@
 let out = require('./lib/out');
-let Config = require('../../src/activation').activation;
+let Activation = require('../../src/activation').activation;
 
 class ActivationStatusCommand {
   constructor() {
@@ -15,7 +15,7 @@ class ActivationStatusCommand {
           group: 'Options:',
           required: false
         })
-        .number('--activation <id>', {
+        .number('--activation-id <id>', {
           desc: 'Activation request id.',
           group: 'Options:',
           required: true
