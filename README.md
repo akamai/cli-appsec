@@ -25,14 +25,15 @@ Usage: akamai appsec <command> [options]
 
 Commands:
   configs                   List all available configurations.
-  enable-custom-rule        Update existing custom rule.
+  enable-custom-rule        Assigns an action (such as alert or deny) to an existing custom rule in a policy.
   create-custom-rule        Create a custom rule.
   custom-rule               Display contents of custom rule.
   modify-custom-rule        Update existing custom rule.
-  structured-rule-template  Prints sample JSON of a structured custom rule.           [aliases: srt]
+  structured-rule-template  Prints sample JSON of a structured custom rule.                     [aliases: srt]
   custom-rules              List all custom rules.
   add-hostname              Add hostnames to selected list
   selectable-hostnames      List all selectable hostnames.
+  selected-hostnames        List all currently chosen hostnames.
   create-match-target       Creates a match target.
   modify-match-target       Updates a match target.
   match-target-order        Change the match target sequence.
@@ -42,11 +43,11 @@ Commands:
   versions                  List all config versions
 
 Command options:
-  --json     Print the raw json response. All commands respect this option.                [boolean]
-  --edgerc   The full path to the .edgerc file.                                             [string]
-  --section  The section of .edgerc to use.                                                 [string]
-  --help     Prints help information.                                     [commands: help] [boolean]
-  --version  Current version of the program.                                               [boolean]
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
 
 Copyright (C) Akamai Technologies, Inc
 Visit http://github.com/akamai/cli-appsec for detailed documentation
