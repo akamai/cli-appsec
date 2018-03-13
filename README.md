@@ -41,6 +41,8 @@ Commands:
   policies                  List all firewall policies.
   version                   Read a config version
   versions                  List all config versions
+  activate                  Activate a config version
+  activation                Read an activation status
 
 Command options:
   --json     Print the raw json response. All commands respect this option.                          [boolean]
