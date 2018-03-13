@@ -19,8 +19,8 @@ class SelectedHosts {
       }
       logger.info('Adding hosts to the list: ' + JSON.stringify(selectedHosts.hostnameList));
       hosts = selectedHosts.hostnameList;
-      for (let i = 0; i < this._options.hosts.length; i++) {
-        hosts.push({ hostName: this._options.hosts[i] });
+      for (let i = 0; i < this._options.hostnames.length; i++) {
+        hosts.push({ hostName: this._options.hostnames[i] });
       }
       return this._version.updateResource(URIs.SELECTED_HOSTS_RESOURCE, [], selectedHosts);
     });

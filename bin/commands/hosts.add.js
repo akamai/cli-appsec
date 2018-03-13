@@ -22,11 +22,20 @@ class AddHostsCommand {
         group: 'Options:',
         required: false
       })
-      .stringArray('--hosts <a.com, b.net, c.d.com>', {
-        desc: 'Hostnames to add to the selected list.',
-        group: 'Options:',
-        required: true
+      .positional('<hostnames>', {
+        params: [
+          {
+            desc: 'The comma separated list of hostnames to add.',
+            group: 'Options:',
+            type: 'array:string'
+          }
+        ]
       });
+    // .stringArray('--hosts <a.com, b.net, c.d.com>', {
+    //   desc: 'Hostnames to add to the selected list.',
+    //   group: 'Options:',
+    //   required: true
+    // });
   }
 
   run(options) {
