@@ -29,6 +29,10 @@ class SelectedHosts {
   selectableHosts() {
     return this._version.readResource(URIs.SELECTABLE_HOSTS_RESOURCE, []);
   }
+
+  selectedHosts() {
+    return this._version.readResource(URIs.SELECTED_HOSTS_RESOURCE, []);
+  }
 }
 
 module.exports = {

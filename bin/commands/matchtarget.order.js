@@ -11,6 +11,7 @@ class MatchTargetOrderCommand {
 
   setup(sywac) {
     sywac
+      .usage('akamai appsec match-target-order [options]')
       .number('--config <id>', {
         desc: 'Configuration id number',
         group: 'Options:',
@@ -32,22 +33,38 @@ class MatchTargetOrderCommand {
         group: 'Options:',
         required: false
       })
-      .numberArray('--order <300,100,200>', {
-        desc: 'The list of match target ids in desired order.',
-        group: 'Options:',
-        required: false
+      .positional('[order]', {
+        params: [
+          {
+            desc: 'The comma separated list of numeric match target ids in desired order.',
+            group: 'Options:',
+            type: 'array:number'
+          }
+        ]
       })
       .check((argv, context) => {
-        let order = argv.order || argv._[0];
-        if (!argv.insert && !argv.append && !order.length) {
+        //console.log(JSON.stringify(argv));
+        if (!argv.insert && !argv.append && !argv.order[0]) {
           return context.cliMessage('Error: Specify an explicit order or append or insert option.');
+        }
+        let paramCount = 0;
+        if (argv.insert) {
+          paramCount++;
+        }
+        if (argv.append) {
+          paramCount++;
+        }
+        if (argv.order) {
+          paramCount++;
+        }
+        if (paramCount > 1) {
+          return context.cliMessage('Error: Specify any one of order or append or insert option.');
         }
       });
   }
 
   run(options) {
-    //consider the comma separated list of numbers as target ids if there is no explicit order param
-    options.order = options.order || options._[0].split(',');
+    //consider the comma separated list of numbers as target ids.
     out.print({
       promise: new MatchTarget(options).changeSequence(),
       args: options,

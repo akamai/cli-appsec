@@ -33,7 +33,7 @@ require("sywac")
   })
   .epilogue("Copyright (C) Akamai Technologies, Inc\nVisit http://github.com/akamai/cli-appsec for detailed documentation\n")
   .outputSettings({
-    maxWidth: 100
+    maxWidth: 110
   })
   .parse()
   .then(result => {
