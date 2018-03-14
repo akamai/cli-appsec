@@ -22,7 +22,28 @@ class ActivationStatusCommand {
       promise: new Activation(options).getStatus(),
       args: options,
       success: (args, data) => {
-        return data.status;
+        if (args.verbose) {
+          let nl = require('os').EOL;
+          let result = 'Job ' + data.activationId + ' ' + data.status;
+          result =
+            result +
+            nl +
+            'Config: ' +
+            data.activationConfigs[0].configId +
+            ' Version: ' +
+            data.activationConfigs[0].configVersion +
+            ' ' +
+            data.network;
+          if (data.note) {
+            result = result + nl + 'Note: ' + data.note;
+          }
+          if (data.notificationEmails && data.notificationEmails.length) {
+            result = result + nl + 'Notify: ' + data.notificationEmails;
+          }
+          return result;
+        } else {
+          return data.status;
+        }
       }
     });
   }
