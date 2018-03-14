@@ -2,8 +2,6 @@
     "network": "",
     "action": "ACTIVATE",
     "method": "UMP",
-    "note": null,
-    "notificationEmails": null,
     "activationConfigs": [
         {
             "configId": -1,
