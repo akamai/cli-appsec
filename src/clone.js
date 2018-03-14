@@ -1,7 +1,6 @@
 'use strict';
 
 let URIs = require('./constants').URIS;
-//needed to pass files to PUT/POST
 let Config = require('./configprovider').configProvider;
 
 class CloneHandler {

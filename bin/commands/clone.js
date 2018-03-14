@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class CloneCommand {
   constructor() {
     this.flags = 'clone';
-    this.desc = 'Assigns an action (such as alert or deny) to an existing custom rule in a policy.';
+    this.desc = 'Clone a config.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
