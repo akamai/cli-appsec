@@ -141,6 +141,7 @@ class VersionProvider {
               return allVersions.versionList[i];
             }
           }
+          throw 'The requested configuration version does not exist.';
         });
       } else {
         logger.info('Fetching version:' + this._version);
