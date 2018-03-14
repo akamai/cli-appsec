@@ -1,5 +1,11 @@
 {
     "network": "",
     "action": "ACTIVATE",
-    "method": "UMP"
+    "method": "UMP",
+    "activationConfigs": [
+        {
+            "configId": -1,
+            "configVersion": -1
+        }
+    ]
 }
