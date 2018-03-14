@@ -5,30 +5,25 @@ class ActivationStatusCommand {
   constructor() {
     this.flags = 'activation';
     this.desc = 'Get activation status.';
+    this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
 
   setup(sywac) {
-    sywac
-        .number('--config <id>', {
-          desc: 'Configuration id. Mandatory if you have more than one configuration.',
-          group: 'Options:',
-          required: false
-        })
-        .number('--activation-id <id>', {
-          desc: 'Activation request id.',
-          group: 'Options:',
-          required: true
-        });
+    sywac.number('--activation-id <id>', {
+      desc: 'Activation request id.',
+      group: 'Options:',
+      required: true
+    });
   }
 
   run(options) {
     out.print({
       promise: new Activation(options).getStatus(),
       args: options,
-       success: (args, data) => {
-          return data.status;
-       }
+      success: (args, data) => {
+        return data.status;
+      }
     });
   }
 }

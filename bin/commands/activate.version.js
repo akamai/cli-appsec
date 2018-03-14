@@ -11,23 +11,26 @@ class ActivateVersionCommand {
 
   setup(sywac) {
     sywac
-        .number('--config <id>', {
-          desc: 'Configuration id. Mandatory if you have more than one configuration.',
-          group: 'Options:',
-          required: false
-        })
-        .string('--version <id>', {
-          desc:
-              "The version number.",
-          group: 'Options:',
-          required: true
-        })
-        .string('--network <id>', {
-          desc:
-              "The network where this version will be activated, PROD or STAGING.",
-          group: 'Options:',
-          required: true
-        })
+      .number('--config <id>', {
+        desc: 'Configuration id.',
+        group: 'Options:',
+        required: false
+      })
+      .string('--version <id>', {
+        desc: 'The version number.',
+        group: 'Options:',
+        required: false
+      })
+      .string('--note <notes>', {
+        desc: 'The activation notes.',
+        group: 'Options:',
+        required: false
+      })
+      .stringArray('--notify <emails>', {
+        desc: 'The comma separated email ids to get notification.',
+        group: 'Options:',
+        required: false
+      });
   }
 
   run(options) {
@@ -35,7 +38,7 @@ class ActivateVersionCommand {
       promise: new Activation(options).activate(),
       args: options,
       success: (args, data) => {
-        return data;
+        return data.activationId;
       }
     });
   }
