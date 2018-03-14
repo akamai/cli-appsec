@@ -16,6 +16,7 @@ let logger = function(loggerName) {
 const resources = {
   GET_CONFIGS: '/appsec/v1/configs',
   GET_CONFIG: '/appsec/v1/configs/%s',
+  CLONE: '/appsec/v1/configs/%s/versions',
   GET_VERSIONS: '/appsec/v1/configs/%s/versions?detail=true',
   GET_VERSION: '/appsec/v1/configs/%s/versions/%s',
   GET_CRB_ALL: '/appsec/v1/configs/%s/custom-rules',
