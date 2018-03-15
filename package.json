@@ -22,7 +22,7 @@
     "templates"
   ],
   "dependencies": {
-    "edgegrid": "*",
+    "edgegrid": "^3.0.4",
     "pino": "^4.10.4",
     "string-format": "^0.5.0",
     "sywac": "^1.2.0",

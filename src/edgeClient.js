@@ -1,6 +1,6 @@
 'use strict';
 let untildify = require('untildify');
-var EdgeGrid = require('edgeGrid');
+var EdgeGrid = require('edgegrid');
 let util = require('util');
 let logger = require('./constants').logger('EdgeClient');
 let version = require('../package.json').version;
