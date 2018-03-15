@@ -2,8 +2,8 @@
 
 "use strict";
 
-var fs = require('fs');
 let logger = require('../src/constants').logger('main');
+let version = require('../package.json').version;
 
 require("sywac")
   .commandDirectory('./commands')
@@ -45,8 +45,7 @@ require("sywac")
     }
     if(result.argv.version && result.details.args.length == 1) {
       //print version info
-      let s = fs.readFileSync(__dirname+'/../package.json', 'utf8');
-      console.log(JSON.parse(s).version);
+      console.log(version);
       process.exit(0);
     }
     else if (result.output) {
