@@ -63,9 +63,9 @@ class ConfigProvider {
   getConfigId() {
     if (!this._configId) {
       logger.info('Config id not provided. Will attempt fetching the configuration.');
-      return this.configs().then(configs => {
-        if (configs.length == 1) {
-          this._configId = configs[0].configId;
+      return this.configs().then(configsObject => {
+        if (configsObject.configurations.length == 1) {
+          this._configId = configsObject.configurations[0].id;
           logger.info('Config id chosen: ' + this._configId);
           return this._configId;
         } else {
