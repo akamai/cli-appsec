@@ -1,5 +1,5 @@
 let out = require('./lib/out');
-let Version = require('../../src/versionsProvider').versionProvider;
+let Version = require('../../src/versionsprovider').versionProvider;
 
 class VersionCommand {
   constructor() {
