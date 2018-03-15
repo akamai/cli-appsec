@@ -1,7 +1,7 @@
 {
     "network": "",
     "action": "ACTIVATE",
-    "method": "UMP",
+    "method": "FAST",
     "activationConfigs": [
         {
             "configId": -1,
