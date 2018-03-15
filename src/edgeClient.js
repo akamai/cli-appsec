@@ -3,6 +3,7 @@ let untildify = require('untildify');
 var EdgeGrid = require('edgeGrid');
 let util = require('util');
 let logger = require('./constants').logger('EdgeClient');
+let version = require('../package.json').version;
 class Edge {
   constructor(options) {
     let auth = {
@@ -27,7 +28,11 @@ class Edge {
   }
 
   _send(request) {
+    let headers = request.headers || {};
+    headers['Client-App'] = 'appsec-cli-' + version;
+    request.headers = headers;
     return new Promise((resolve, reject) => {
+      logger.debug('Request: %s', JSON.stringify(request));
       this._edge.auth(request);
       this._edge.send(function(data, response) {
         logger.debug(
