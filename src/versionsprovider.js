@@ -96,7 +96,7 @@ class VersionProvider {
       logger.info('Version number:' + this._version);
       return Promise.resolve(this._version);
     } else if (this._version) {
-      // if string or not provided
+      // if string
       logger.debug(
         'Version number is not provided. Checking whether you asked the version in PRODUCTION / STAGING'
       );
@@ -120,6 +120,7 @@ class VersionProvider {
         throw 'The requested configuration version does not exist.';
       }
     } else {
+      //if no version is provided
       logger.info(
         'Version number is not provided. Will attempt to fetch the latest from the server.'
       );
