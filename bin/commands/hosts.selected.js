@@ -31,7 +31,7 @@ class SelectableHostsCommand {
       success: (args, data) => {
         let hosts = [];
         for (let i = 0; i < data.hostnameList.length; i++) {
-          hosts.push(data.hostnameList[i].hostName);
+          hosts.push(data.hostnameList[i].hostname);
         }
         return hosts.join(require('os').EOL);
       }

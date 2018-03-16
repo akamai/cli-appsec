@@ -6,13 +6,13 @@
       "response": {
         "hostnameList": [
           {
-            "hostName": "*.mss.iss.dlr3.net"
+            "hostname": "*.mss.iss.dlr3.net"
           },
           {
-            "hostName": "b2c.div1.akamaniac.com"
+            "hostname": "b2c.div1.akamaniac.com"
           },
           {
-            "hostName": "test-uvm-97-qa.akamaifastdnsdemo.com"
+            "hostname": "test-uvm-97-qa.akamaifastdnsdemo.com"
           }
         ]
       }
