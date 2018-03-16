@@ -6,10 +6,10 @@
       "response": {
         "hostnameList": [
           {
-            "hostName": "b2c.div1.akamaniac.com"
+            "hostname": "b2c.div1.akamaniac.com"
           },
           {
-            "hostName": "test-uvm-97-qa.akamaifastdnsdemo.com"
+            "hostname": "test-uvm-97-qa.akamaifastdnsdemo.com"
           }
         ]
       }
