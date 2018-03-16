@@ -91,7 +91,7 @@ class VersionProvider {
    * Returns the version number. If the version is not provided, the latest version is assumed.
    */
   getVersionNumber() {
-    if (!isNaN(this._version)) {
+    if (!isNaN(parseInt(this._version))) {
       // if valid number
       logger.info('Version number:' + this._version);
       return Promise.resolve(this._version);
