@@ -91,16 +91,47 @@ class VersionProvider {
    * Returns the version number. If the version is not provided, the latest version is assumed.
    */
   getVersionNumber() {
-    if (!isNaN(this._version)) {
+    if (!isNaN(parseInt(this._version))) {
+      // if valid number
       logger.info('Version number:' + this._version);
       return Promise.resolve(this._version);
-    } else {
+    } else if (this._version) {
+      // if string
       logger.debug(
+        'Version number is not provided. Checking whether you asked the version in PRODUCTION / STAGING'
+      );
+      let versionAttr =
+        this._version == 'PROD' || this._version == 'PRODUCTION'
+          ? 'production'
+          : this._version == 'STAGING' ? 'staging' : undefined;
+      if (versionAttr) {
+        // if asked for staging or prod versions
+        return this.versions().then(allVersions => {
+          for (let i = 0; allVersions && i < allVersions.versionList.length; i++) {
+            if (allVersions.versionList[i][versionAttr].status == 'Active') {
+              return allVersions.versionList[i].version;
+            }
+          }
+          // if it comes to this, it means the versions is not in the env asked for
+          throw 'The requested configuration version does not exist.';
+        });
+      } else {
+        //invalid string passed for version
+        throw 'The requested configuration version does not exist.';
+      }
+    } else {
+      //if no version is provided
+      logger.info(
         'Version number is not provided. Will attempt to fetch the latest from the server.'
       );
-      return this.version().then(versionObj => {
-        this._version = versionObj.version;
-        return Promise.resolve(this._version);
+      return this.versions().then(allVersions => {
+        let maxVersion = 0;
+        for (let i = 0; allVersions && i < allVersions.versionList.length; i++) {
+          if (allVersions.versionList[i].version > maxVersion) {
+            maxVersion = allVersions.versionList[i].version;
+          }
+        }
+        return maxVersion;
       });
     }
   }
@@ -109,47 +140,9 @@ class VersionProvider {
    * Returns the version asked for. If the version is not provided, the latest version is assumed.
    */
   version() {
-    //If version is not provided, select the latest version
-    if (!this._version) {
-      logger.info(
-        'Version number is not provided. Will attempt to fetch the latest from the server.'
-      );
-      return this.versions().then(allVersions => {
-        let maxVersion = 0;
-        let resultVersion;
-        for (let i = 0; allVersions && i < allVersions.versionList.length; i++) {
-          if (allVersions.versionList[i].version > maxVersion) {
-            resultVersion = allVersions.versionList[i];
-            maxVersion = allVersions.versionList[i].version;
-          }
-        }
-        this._version = maxVersion;
-        logger.info('Choosing version:' + this._version);
-        return resultVersion;
-      });
-    } else {
-      let versionAttr =
-        this._version == 'PROD' || this._version == 'PRODUCTION'
-          ? 'production'
-          : this._version == 'STAGING' ? 'staging' : undefined;
-      if (versionAttr) {
-        return this.versions().then(allVersions => {
-          for (let i = 0; allVersions && i < allVersions.versionList.length; i++) {
-            if (allVersions.versionList[i][versionAttr].status == 'Active') {
-              this._version = allVersions.versionList[i].version;
-              logger.info('Choosing version:' + this._version);
-              return allVersions.versionList[i];
-            }
-          }
-          throw 'The requested configuration version does not exist.';
-        });
-      } else {
-        logger.info('Fetching version:' + this._version);
-        return this.getConfigId().then(configId => {
-          return this._edge.get(URIs.GET_VERSION, [configId, this._version]);
-        });
-      }
-    }
+    return this.getVersionNumber().then(version => {
+      return this._config.readResource(URIs.GET_VERSION, [version]);
+    });
   }
 }
 
