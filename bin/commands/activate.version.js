@@ -21,6 +21,11 @@ class ActivateVersionCommand {
         group: 'Options:',
         required: false
       })
+      .enumeration('--network <network>', {
+        desc: 'The network in which the configuration must be activated.',
+        choices: ['PROD', 'STAGING'],
+        required: true
+      })
       .string('--note <notes>', {
         desc: 'The activation notes.',
         group: 'Options:',
