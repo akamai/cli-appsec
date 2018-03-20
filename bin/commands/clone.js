@@ -29,7 +29,7 @@ class CloneCommand {
       promise: new Clone(options).clone(),
       args: options,
       success: (args, data) => {
-        return data;
+        return data.version;
       }
     });
   }
