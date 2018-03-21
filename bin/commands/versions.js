@@ -60,11 +60,7 @@ class VersionsCommand {
               );
             }
             res.push(
-              util.format(
-                '%s at %s',
-                data.versionList[i].createdBy,
-                new Date(Number(data.versionList[i].createDate)).toISOString()
-              )
+              util.format('%s at %s', data.versionList[i].createdBy, data.versionList[i].createDate)
             );
             res.push(
               util.format(
