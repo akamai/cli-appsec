@@ -7,7 +7,7 @@
       {
         "conditions": [
           {
-            "className": "requestMethodMatch",
+            "type": "requestMethodMatch",
             "positiveMatch": true,
             "value": [
               "GET",
@@ -16,150 +16,150 @@
               "PUT",
               "POST",
               "OPTIONS",
-              "HTTP_DELETE",
+              "DELETE",
               "HEAD"
             ]
           },
           {
-            "className": "pathMatch",
+            "type": "pathMatch",
             "positiveMatch": true,
             "value": [
               "/Please/change/me/to/a/valid/URL/path",
-              "/Please/change/me/to/a/valid/URL/path"
+              "/Please/change/me/to/a/valid/URL/path2"
             ]
           },
           {
-            "className": "extensionMatch",
+            "type": "extensionMatch",
             "positiveMatch": true,
             "value": [
               "ChangeMe",
-              "ChangeMe"
+              "ChangeMe2"
             ],
             "valueWildcard": true,
             "valueCase": true
           },
           {
-            "className": "filenameMatch",
+            "type": "filenameMatch",
             "positiveMatch": true,
             "value": [
               "ChangeMe",
-              "ChangeMe"
+              "ChangeMe2"
             ],
             "valueWildcard": false,
             "valueCase": false
           },
           {
-            "className": "requestProtocolVersionMatch",
+            "type": "requestProtocolVersionMatch",
             "positiveMatch": true,
             "value": [
               "HTTP/0.9"
             ]
           },
           {
-            "className": "requestHeaderMatch",
+            "type": "requestHeaderMatch",
             "positiveMatch": true,
             "name": ["ChangeMe", "ChangeMe"],
             "value": [
               "ChangeMe",
-              "ChangeMe"
+              "ChangeMe2"
             ],
             "valueCase": true,
             "valueWildcard": true,
             "nameWildcard": true
           },
           {
-            "className": "requestHeaderMatch",
+            "type": "requestHeaderMatch",
             "positiveMatch": true,
             "name": ["ChangeMe", "ChangeMe"],
             "value": [
               "ChangeMe",
-              "ChangeMe"
+              "ChangeMe2"
             ],
             "valueCase": true,
             "valueWildcard": true,
             "nameWildcard": true
           },
           {
-            "className": "headerOrderMatch",
+            "type": "headerOrderMatch",
             "positiveMatch": true,
-            "value": "ChangeMe:ChangeMee"
+            "value": "ChangeMe:ChangeMe2"
           },
           {
-            "className": "cookieMatch",
+            "type": "cookieMatch",
             "positiveMatch": true,
             "name": "ChangeMe",
             "nameWildcard": true,
             "nameCase": true,
             "value": [
               "ChangeMe",
-              "ChangeMe"
+              "ChangeMe2"
             ],
             "valueCase": true,
             "valueWildcard": true
           },
           {
-            "className": "cookieMatch",
+            "type": "cookieMatch",
             "positiveMatch": true,
             "name": "ChangeMe",
             "nameWildcard": true,
             "nameCase": true,
             "value": [
               "ChangeMe",
-              "ChangeMe"
+              "ChangeMe2"
             ],
             "valueCase": true,
             "valueWildcard": true
           },
           {
-            "className": "uriQueryMatch",
+            "type": "uriQueryMatch",
             "positiveMatch": true,
             "name": "ChangeMe",
             "nameCase": true,
             "nameWildcard": true,
             "value": [
               "ChangeMe",
-              "ChangeMe"
+              "ChangeMe2"
             ],
             "valueWildcard": true,
             "valueCase": true
           },
           {
-            "className": "uriQueryMatch",
+            "type": "uriQueryMatch",
             "positiveMatch": true,
             "name": "ChangeMe",
             "nameCase": false,
             "nameWildcard": false,
             "value": [
               "ChangeMe",
-              "ChangeMe"
+              "ChangeMe2"
             ],
             "valueWildcard": false,
             "valueCase": false
           },
           {
-            "className": "argsPostMatch",
+            "type": "argsPostMatch",
             "positiveMatch": true,
             "name": "ChangeMe",
             "value": [
               "ChangeMe",
-              "ChangeMe"
+              "ChangeMe2"
             ]
           },
           {
-            "className": "argsPostMatch",
+            "type": "argsPostMatch",
             "positiveMatch": true,
             "name": "ChangeMe",
             "value": [
               "ChangeMe",
-              "ChangeMe"
+              "ChangeMe2"
             ]
           },
           {
-            "className": "argsPostNamesMatch",
+            "type": "argsPostNamesMatch",
             "positiveMatch": true,
             "value": [
               "ChangeMe",
-              "ChangeMe"
+              "ChangeMe2"
             ]
           }
         ],
@@ -169,8 +169,5 @@
     ],
     "positiveMatch": true,
     "operation": "AND"
-  },
-  "inspectRequest": false,
-  "inspectResponse": false,
-  "structured": true
+  }
 }
