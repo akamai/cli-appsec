@@ -76,7 +76,10 @@ class Edge {
       method: 'POST',
       path: this._resolveParams(requestUri, params),
       followRedirect: false,
-      body: body
+      body: body,
+      headers: {
+        'Content-Type': 'application/json'
+      }
     };
     return this._send(request);
   }
@@ -85,7 +88,10 @@ class Edge {
     let request = {
       method: 'PUT',
       path: this._resolveParams(requestUri, params),
-      body: JSON.stringify(payload)
+      body: payload,
+      headers: {
+        'Content-Type': 'application/json'
+      }
     };
     return this._send(request);
   }
