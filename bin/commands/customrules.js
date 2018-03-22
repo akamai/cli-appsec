@@ -21,9 +21,10 @@ class ListCustomRulesCommand {
       promise: new CRB(options).getAllRules(),
       args: options,
       success: (args, data) => {
+        data = data.customRules;
         let str = [];
         for (let i = 0; data && i < data.length; i++) {
-          str.push(data[i].ruleId);
+          str.push(data[i].id);
         }
         return str.join(require('os').EOL);
       }
