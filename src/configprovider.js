@@ -65,14 +65,19 @@ class ConfigProvider {
       logger.info('Config id not provided. Will attempt fetching the configuration.');
       return this.configs().then(configsObject => {
         if (configsObject && configsObject.configurations && configsObject.configurations.length) {
-          this._configId = configsObject.configurations[0].id;
-          logger.info('Config id chosen: ' + this._configId);
-          return this._configId;
+          if (configsObject.configurations.length > 1) {
+            logger.error(
+              'You have more than one configuration. Please provide a configuration id to work with.'
+            );
+            throw 'You have more than one configuration. Please provide a configuration id to work with.';
+          } else {
+            this._configId = configsObject.configurations[0].id;
+            logger.info('Config id chosen: ' + this._configId);
+            return this._configId;
+          }
         } else {
-          logger.error(
-            'You have more than one configuration. Please provide a configuration id to work with.'
-          );
-          throw 'You have more than one configuration. Please provide a configuration id to work with.';
+          logger.error('No security configurations exist.');
+          throw 'No security configurations exist.';
         }
       });
     } else {
