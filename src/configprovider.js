@@ -26,6 +26,17 @@ class ConfigProvider {
   }
 
   /**
+   * Method to delete resources tied directly to configuration.
+   * @param {*} uri The URI of the resource.
+   * @param {*} params parameters other than the configId
+   */
+  deleteResource(uri, params = []) {
+    return this.getConfigId().then(configId => {
+      params.unshift(configId);
+      return this._edge.delete(uri, params);
+    });
+  }
+  /**
    * Method to update resources tied directly to configuration.
    * @param {*} uri The URI of the resource.
    * @param {*} params parameters other than the configId.
