@@ -27,6 +27,10 @@ class CRBHandler {
     return this._config.readResource(URIs.GET_CRB, [this._options['custom-rule']]);
   }
 
+  deleteRule() {
+    return this._config.deleteResource(URIs.GET_CRB, [this._options['custom-rule']]);
+  }
+
   createRule() {
     let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
     return this._config.createResource(URIs.GET_CRB_ALL, [], JSON.parse(payload));
