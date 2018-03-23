@@ -26,7 +26,7 @@ class ConfigProvider {
   }
 
   /**
-   * Method to read resources tied directly to configuration.
+   * Method to delete resources tied directly to configuration.
    * @param {*} uri The URI of the resource.
    * @param {*} params parameters other than the configId
    */
