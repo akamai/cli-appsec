@@ -29,7 +29,7 @@ class CreateCustomRuleCommand {
       promise: new CRB(options).createRule(),
       args: options,
       success: (args, data) => {
-        return data;
+        return data.id;
       }
     });
   }
