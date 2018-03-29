@@ -84,7 +84,7 @@ class MatchTarget {
    * Does ordering mased on the parameter passed.
    */
   changeSequence() {
-    if (this._options.order && this._options.order.length) {
+    if (this._options.order && this._options.order[0]) {
       return this._updateOrder(this._options.order); // this is a request for changing the order of match targets
     } else if (this._options.insert) {
       return this._move(this._options.insert, this._moveToStart.bind(this));
