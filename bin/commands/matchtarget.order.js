@@ -54,7 +54,7 @@ class MatchTargetOrderCommand {
         if (argv.append) {
           paramCount++;
         }
-        if (argv.order) {
+        if (argv.order && argv.order[0]) {
           paramCount++;
         }
         if (paramCount > 1) {
