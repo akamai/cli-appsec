@@ -41,8 +41,6 @@ Commands:
   policies                  List all firewall policies.
   version                   Read a config version
   versions                  List all config versions
-  activate                  Activate a config version
-  activation                Read an activation status
 
 Command options:
   --json     Print the raw json response. All commands respect this option.                          [boolean]
@@ -56,248 +54,276 @@ Visit http://github.com/akamai/cli-appsec for detailed documentation
 ```
 
 ## akamai-appsec
-This script wraps all of the functionality from the [library](#library) into a command line utility which can be used to support the following use cases.  All of the functions expect the config name.
-* [Create property](#create)
-* [Retrieve property rules](#retrieve)
-* [Update a property](#update)
-* [Activate or deactivate](#activate)
-* [Modify a property](#modify)
+This script wraps all of the functionality from the [library](#library) into a command line utility which can be used to support the following use cases. All of the functions expect the config name.
+* [Retrieve available configurations](#list-configurations)
+* [Retrieve available configuration versions](#list-configuration-versions)
+* [Retrieve a configuration version](#retrieve-configuration-version)
+* [Retrieve hostnames available for protection](#list-selectable-hostnames)
+* [Retrieve hostnames that are protected](#list-selected-hostnames)
+* [Add hostname(s) to protect](#add-hostnames)
+* [Retrieve Security policies](#list-security-policies)
+* [Create a Website Match target](#create-website-match-target)
+* [Retrieve Website Match targets](#list-website-match-targets)
+* [Modify a Website Match target](#modify-website-match-target)
+* [Change Website Match target order](#change-website-match-target-order)
 
-### Create
+### List Configurations
 ```
-Usage: akamai property create <property> [options]
+Usage: akamai appsec configs [options]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file. Defaults to ~/.edgrrc                                 [string]
+  --section  The section of .edgerc to use. Defaults to 'default'                                     [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+
+```
+
+### List Configuration versions
+```
+Usage: akamai appsec versions [options]
+
+Options:
+  --config <id>  Configuration id. Mandatory if you have more than one configuration.                       [number]
+  --limit <num>  Specifies the number of most recent versions of the selected configuration to be fetched.  [number]
+  --verbose      Provides more details about each version.                                                  [boolean]
+                 
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file. Defaults to ~/.edgrrc                                 [string]
+  --section  The section of .edgerc to use. Defaults to 'default'                                     [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+
+```
+
+### Retrieve Configuration version
+```
+Usage: akamai appsec version [options]
+
+Options:
+  --config <id>    Configuration id number. If not provided, assumes there is only one configuration and
+                   chooses it. If there's more, an error is thrown.
+                   [number]
+
+  --version <num>  The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If
+                   not provided, latest version is assumed.
+                   [string]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file. Defaults to ~/.edgrrc                                 [string]
+  --section  The section of .edgerc to use. Defaults to 'default'                                     [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+
+```
+
+### List Selectable Hostnames
+These are the hostnames that the user can choose from, to add to the configuration version for protection.
+
+```
+Usage: akamai appsec selectable-hostnames [options]
+
+Options:
+  --config <id>   Configuration id. Mandatory if you have more than one configuration.
+                  [number]
+
+  --version <id>  The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not
+                  provided, latest version is assumed.
+                  [string]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+
+```
+
+### List Selected hostnames
+These are the hostnames that the user is already protecting as part of this configuration version.
+```
+
+Usage: akamai appsec selected-hostnames [options]
+
+Options:
+  --config <id>   Configuration id. Mandatory if you have more than one configuration.
+                  [number]
+
+  --version <id>  The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not
+                  provided, latest version is assumed.
+                  [string]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+
+```
+
+### Add hostnames
+Adds a new hostname to the protected list(selected hostnames). The hostnames chosen here should be from the selectable hostnames list.
+
+```
+Usage: akamai appsec add-hostname <hostnames> [options]
 
 Arguments:
-  <property>                                                           [required] [string]
+  <hostnames>      The comma separated list of hostnames to add.
+                   [required] [array:string]
 
-Source options:
-  --clone <from>      Source property to clone from                               [string]
-  --srcver <version>  Version for source property                                 [string]
-  --file <path>       Source file for new property rules               [file] [must exist]
-  --nocopy            Do not copy cloned hostnames                               [boolean]
+Options:
+  --config <id>    Configuration id. Mandatory if you have more than one configuration.
+                   [number]
 
-Hostname options:
-  --hostnames <list>             Comma delimited list of hostnames for property
-                                 [array:string]
-
-  --origin <origin>              Origin to set for property
-                                 [string]
-
-  --edgehostname <edgehostname>  Edge hostname to use
-                                 [string]
-
-  --forward <value>              Forward host header (origin|incoming|<host>)
-                                 [string]
-
-Location options:
-  --cpcode <cpcode>      Use specified cpcode for new property                    [number]
-  --contract <contract>  Contract for new property                                [string]
-  --group <group>        Group for new property                                   [string]
-
-General options:
-  --ruleformat <format>  Use specified rule format                                [string]
-  --notes <notes>        Version notes for the property version                   [string]
-  --retrieve             Retrieve rules for created property                     [boolean]
+  --version <num>  The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If
+                   not provided, latest version is assumed.
+                   [string]
 
 Command options:
-  --config <config>    Config file                [file] [default: /Users/khunter/.edgerc]
-  --section <section>  Config section                             [string] [default: papi]
-  --debug <debug>      Turn on debugging.                                        [boolean]
-  --help               Show help                                [commands: help] [boolean]
-  --version            Show version number                   [commands: version] [boolean]
-
-Copyright (C) Akamai Technologies, Inc
-Visit http://github.com/akamai/cli-property for detailed documentation
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
 ```
 
-### Retrieve
+### List Security policies
+Retrieves the list of security policies present in this configuration version.
+
 ```
-Usage: akamai property retrieve <property> [options]
+Usage: akamai appsec policies [options]
+
+Options:
+  --config <id>   Configuration id. Mandatory if you have more than one configuration.
+                  [number]
+
+  --version <id>  The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not
+                  provided, latest version is assumed.
+                  [string]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+```
+
+### Create website match target
+
+```
+Usage: akamai appsec create-match-target [options]
+
+Options:
+  --config <id>                        Configuration id. Mandatory if you have more than one configuration.
+                                       [number]
+
+  --version <id>                       The version number. It can also take the values 'PROD' or 'PRODUCTION'
+                                       or 'STAGING'. If not provided, latest version is assumed.
+                                       [string]
+
+  --hostnames <a.com, b.net, c.d.com>  Hostnames to add.
+                                       [required] [array:string]
+
+  --paths <x,y,z>                      The file paths
+                                       [required] [array:string]
+
+  --policy <id>                        The policy id.
+                                       [required] [string]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+```
+
+### List website match targets
+
+```
+Usage: akamai appsec match-targets [options]
+
+Options:
+  --config <id>    Configuration id. Mandatory if you have more than one configuration.
+                   [number]
+
+  --version <num>  The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If
+                   not provided, latest version is assumed.
+                   [string]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+```
+### Modify website match target
+Updates an existing match target. As of now, the only supported operation is to add a hostname to the existing match target.
+
+```
+Usage: akamai appsec modify-match-target <match-target> <subcommand> <hostname> [options]
 
 Arguments:
-  <property>                                                           [required] [string]
+  <match-target>  The match target id.                                                     [required] [string]
+  <hostname>      The hostname to add to the match target.                                 [required] [string]
 
-General options:
-  --format       Rules format only                                               [boolean]
-  --hostnames    Retrieve hostnames for property                                 [boolean]
-  --variables    Retrieve user variables                                         [boolean]
-  --propver      Retrieve specified version                                      [boolean]
-  --file <path>  Output file                                                        [file]
+Sub Commands:
+  <subcommand>  The subcommand. [add-hostname]                                             [required] [string]
 
-Command options:
-  --config <config>    Config file                [file] [default: /Users/khunter/.edgerc]
-  --section <section>  Config section                             [string] [default: papi]
-  --debug <debug>      Turn on debugging.                                        [boolean]
-  --help               Show help                                [commands: help] [boolean]
-  --version            Show version number                   [commands: version] [boolean]
+Options:
+  --config <id>    Configuration id. Mandatory if you have more than one configuration.
+                   [number]
 
-Copyright (C) Akamai Technologies, Inc
-Visit http://github.com/akamai/cli-property for detailed documentation
-```
-
-### Update
-Update the current property version with the rules from a local file, or copy from another property.
-
-```
-Usage: akamai property update <property> [options]
-
-Arguments:
-  <property>                                                           [required] [string]
-
-General options:
-  --srcprop <property>  Source property                                           [string]
-  --srcver <version>    Source version                                            [string]
-  --file <path>         File with JSON rules                           [file] [must exist]
+  --version <num>  The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If
+                   not provided, latest version is assumed.
+                   [string]
 
 Command options:
-  --config <config>    Config file                [file] [default: /Users/khunter/.edgerc]
-  --section <section>  Config section                             [string] [default: papi]
-  --debug <debug>      Turn on debugging.                                        [boolean]
-  --help               Show help                                [commands: help] [boolean]
-  --version            Show version number                   [commands: version] [boolean]
-
-Copyright (C) Akamai Technologies, Inc
-Visit http://github.com/akamai/cli-property for detailed documentation
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
 ```
-
-### Activate
-Activate the specified property version on staging, production or both.
+### Change website match target order
+Updates the order of the website match targets
 
 ```
-Usage: akamai property activate <property> [options]
+Usage: akamai appsec match-target-order [options]
 
-General options:
-  --network <network>  Network for activation      [required] [enum] [PROD, STAGING, BOTH]
-  --propver <version>  Source version to activate                                 [string]
-  --email <address>    Email for confirmation                                     [string]
+Options:
+  --config <id>    Configuration id number
+                   [number]
+
+  --version <num>  The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If
+                   not provided, latest version is assumed.
+                   [string]
+
+  --insert <id>    Match target id to move to the start.
+                   [number]
+
+  --append <id>    Match target id to move to the end.
+                   [number]
+
+  [order]          The comma separated list of numeric match target ids in desired order.
+                   [array:number]
 
 Command options:
-  --config <config>    Config file                [file] [default: /Users/khunter/.edgerc]
-  --section <section>  Config section                             [string] [default: papi]
-  --debug <debug>      Turn on debugging.                                        [boolean]
-  --help               Show help                                [commands: help] [boolean]
-  --version            Show version number                   [commands: version] [boolean]
-
-Copyright (C) Akamai Technologies, Inc
-Visit http://github.com/akamai/cli-property for detailed documentation
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
 ```
-
-### Modify
-```
-
-Usage: akamai property modify <property> [options]
-
-General options:
-  --propver <propver>        Property version - LATEST/STAG/PROD/<number>         [string]
-  --ruleformat <ruleformat>  Switch property to specified rule format             [string]
-  --notes <notes>            Version notes for the property version               [string]
-  --new                      Create new property version.                        [boolean]
-  --variables <file>         File with user variables. Format should be:
-                             [
-                               {
-                                 "name": "PMUSER_TEST",
-                                 "value": "Foobar",
-                                 "description": "This is my test variable",
-                                 "hidden": false,
-                                 "sensitive": false,
-                                 "action": [
-                                   "delete",
-                                   "update",
-                                   "create"
-                                 ]
-                               }
-                             ]                                           [file]
-
-Hostname options:
-  --addhosts <addhosts>          Comma delimited list of hostnames          [array:string]
-  --delhosts <delhosts>          Comma delimited list of hostnames          [array:string]
-  --edgehostname <edgehostname>  Edge hostname to use                             [string]
-  --origin <origin>              Host for origin                                  [string]
-  --forward <forward>            Forward host header (origin|incoming|<host>)     [string]
-
-SureRoute options:
-  --sureroutemap <sureroutemap>        Map for SureRoute                          [string]
-  --surerouteto <surerouteto>          "To" entry for SureRoute                   [string]
-  --sureroutetohost <sureroutetohost>  Target host entry for SureRoute            [string]
-
-Location options:
-  --cpcode <cpcode>  Use specified cpcode for new property                        [number]
-  --move <move>      Group to move the property to (User Admin perms)             [string]
-
-Command options:
-  --config <config>    Config file                [file] [default: /Users/khunter/.edgerc]
-  --section <section>  Config section                             [string] [default: papi]
-  --debug <debug>      Turn on debugging.                                        [boolean]
-  --help               Show help                                [commands: help] [boolean]
-  --version            Show version number                   [commands: version] [boolean]
-
-```
-
-## Gulp
-
-Download the Gulp integration project from https://github.com/akamai-open/gulp-akamaiconfigkit
-
-In your gulpfile, include the library and define your build targets.
-
-```
-let gulp = require('gulp'),
-    akamaiconfig = require('gulp-akamaiconfigkit');
-
-const localConfig = {
-    host: 'www.example.com',
-    smokeTestUrls: ['/'],
-    emailNotification: 'nobody@akamai.com',
-
-};
-
-const credConfig = {
-    path: "~/.edgerc",
-    section: "papi"
-}
-
-
-let akamai = new akamaiconfig(credConfig);
-
-gulp.task('deploy-akamai', () => {
-    return gulp.src("src/akamai/rules.json")
-        .pipe(akamai.deployStaging(localConfig))
-        .pipe(akamai.testStaging(localConfig.host, localConfig.smokeTestUrls))
-        .pipe(akamai.promoteStagingToProduction(localConfig));
-})
-```
-
-This integration can be used to have a CD tool such as Jenkins push changes to Akamai whenever a rules file changes in your SCM.  This allows you to treat your configuration as code and keep your own rules locally.
-
-## Library
-
-Start with creating the WebSite object:
-
-```
-let WebSite = require('akamaiconfigkit').WebSite;
-let exampleDotCom = new WebSite();
-
-exampleDotCom.copy("qa-www.example.com", "sage-www.example.com")
-  .then(data -> { console.log("Rules copied accross Akamai configurations!")});
-```
-
-This will use the [default] credentials in the ~/.edgerc file. Alternate object creations include:
-
-Specifying to use the `[continuous_delivery]` section in the file `/cyberark/edgerc`
-
-```
-let exampleDotCom = new WebSite({path:"/cyberark/edgerc", section: "[continuous_delivery]"});
-```
-
-You can alternatively specify the `clientToken`, `clientSecret`, `accessToken`, and `host` as properties of the
-constructor object
-
-```
-let exampleDotCom = new WebSite({clientToken:"a1b2", clientSecret: "c3d4", accessToken: "e5f6", host: "g7h8.luna.akamaiapis.net"});
-```
-
 ## Caveats
 The Akamai CLI is a new tool and as such we have made some design choices worth mentioning.
-* Edge Hostnames - if not specified, the system will create a new edge hostname, but cannot assign it as it will not yet be active.  You will need to run a 'modify' subsequently to assign the hostname.
-* CPCodes - there is currently a fairly strict limitation on creation of CPCodes.  To work around this, pass in a specific CPCode to use.  Your account team can create a bunch of CPCodes which you could then use with your properties.  Cloned properties will inherit the CPCode of the cloned property.
-* Credentials - the tool expects your credentials to be stored under a 'papi' section in your ~/.edgerc file.  If you are unfamiliar with the authentication and provisioning for OPEN APIs, see the "Get Started" section of https://developer.akamai.com
-* Move - in order to perform move functions, the credentials must have both property manager and user admin grants.  
+* Version number - if not specified, the utility will assume the latest version is editable and try to execute the actions on the version. If the version turns out to be uneditable, you will get an error.
+* Config ID - if not specified, the system will make an assumption that the user has only one configuration and try to execute the action on the latest version.
+* Credentials - the tool expects your credentials to be stored under a 'default' section in your ~/.edgerc file. Alternatively you can provide the section name using the --section option in every command. If you are unfamiliar with the authentication and provisioning for OPEN APIs, see the "Get Started" section of https://developer.akamai.com
