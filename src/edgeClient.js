@@ -45,7 +45,13 @@ class Edge {
             JSON.stringify(response)
         );
         if (response && response.statusCode >= 200 && response.statusCode < 400) {
-          resolve(JSON.parse(response.body));
+          if (response.body) {
+            //delete calls don't have a body and throw errors when parsing.
+            resolve(JSON.parse(response.body));
+          } else {
+            //promise needs to call resolve and resolve() returns "undefined"
+            resolve(response.body);
+          }
         } else if (!response) {
           logger.info('No response from server: ' + JSON.stringify(data));
           reject('Could not get data at this time.');
@@ -66,6 +72,14 @@ class Edge {
   get(requestUri, params) {
     let request = {
       method: 'GET',
+      path: this._resolveParams(requestUri, params)
+    };
+    return this._send(request);
+  }
+
+  delete(requestUri, params) {
+    let request = {
+      method: 'DELETE',
       path: this._resolveParams(requestUri, params)
     };
     return this._send(request);
