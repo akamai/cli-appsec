@@ -32,7 +32,7 @@ class ModifyCustomRuleCommand {
       promise: new CRB(options).updateRule(),
       args: options,
       success: (args, data) => {
-        return data;
+        return data.id;
       }
     });
   }

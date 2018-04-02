@@ -1,7 +1,7 @@
 let CRB = require('../../src/crb').CRBHandler;
 let out = require('./lib/out');
 
-class CreateCustomRuleCommand {
+class DeleteCustomRuleCommand {
   constructor() {
     this.flags = 'delete-custom-rule';
     this.desc = 'Delete a custom rule.';
@@ -34,4 +34,4 @@ class CreateCustomRuleCommand {
   }
 }
 
-module.exports = new CreateCustomRuleCommand();
+module.exports = new DeleteCustomRuleCommand();
