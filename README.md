@@ -61,8 +61,8 @@ Akamai customers can currently configure delivery of a new web property using th
 
 |#|Commands|
 |-|---------|
-|1|[akamai property create](#https://github.com/akamai/cli-property#create)|
-|2|[akamai property activate](#https://github.com/akamai/cli-property#activate)|
+|1|[akamai property create](https://github.com/akamai/cli-property#create)|
+|2|[akamai property activate](https://github.com/akamai/cli-property#activate)|
 |3|akamai-appsec configs|
 |4|akamai-appsec versions --config=`<config id>`|
 |5|akamai-appsec clone --config=`<config id>` --version=`<version number>`|
@@ -99,7 +99,7 @@ For details about individual commands, please look at [Commands](#commands)
 * [Retrieve Website Match targets](#list-website-match-targets)
 * [Modify a Website Match target](#modify-website-match-target)
 * [Change Website Match target order](#change-website-match-target-order)
-* [Custom rule template](#custom-rule-teplate)
+* [Custom rule template](#custom-rule-template)
 * [Create custom rule](#create-custom-rule)
 * [Modify a custom rule](#modify-custom-rule)
 * [Enable a custom rule](#enable-custom-rule)
