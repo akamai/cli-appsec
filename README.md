@@ -6,6 +6,7 @@
 * Node 7
 * npm install after *every* update
 * Ensure that the 'bin' subdirectory is in your path
+* Use `akamai-appsec` as the command name instead of `akamai appsec`.
 
 ### Credentials
 In order to use this configuration, you need to:
@@ -13,11 +14,7 @@ In order to use this configuration, you need to:
 * When working through this process you need to give grants for the Application Security API.  The section in your configuration file should be called 'default' unless you would like to pass the section name in every command using the `--section` option.
 
 ## Overview
-The Akamai Config Kit is a set of nodejs libraries that wraps Akamai's {OPEN} APIs to help simplify common configuration tasks.  
-
-This kit can be used in different ways:
-* [As a no-fuss command line utility](#akamai-appsec) to interact with the library.
-* [As a library](#library) you can integrate into your own Node.js application.
+The Akamai Appsec Kit is a set of nodejs libraries that wraps Akamai's {OPEN} APIs to help simplify protection to the properties delivered by Akamai. This kit can be used [as a no-fuss command line utility](#akamai-appsec) to interact with the library.
 
 ```
 $ akamai appsec
@@ -54,7 +51,42 @@ Visit http://github.com/akamai/cli-appsec for detailed documentation
 ```
 
 ## akamai-appsec
-This script wraps all of the functionality from the [library](#library) into a command line utility which can be used to support the following use cases. All of the functions expect the config name.
+This script wraps all of the functionality from the library into a command line utility which can be used to support the following use cases.
+
+* [Protect a new host](#Protect-hosts)
+* [Add/Update a custom rule](#custom-rule)
+
+## Protect Hosts
+Akamai customers can currently configure delivery of a new web property using the PAPI API/CLI. This use case enables protecting these new web properties. This protection is limited to adding the host to an existing security policy. The typical steps are listed in the following table:
+|#|Commands|
+|-|---------|
+|1|[akamai property create](#https://github.com/akamai/cli-property#create)|
+|2|[akamai property activate](#https://github.com/akamai/cli-property#activate)|
+|3|akamai appsec configs|
+|4|akamai appsec versions --config=<config id>|
+|5|akamai appsec clone --config=<config id> --version=<version number>|
+|6|akamai appsec selectable-hostnames  |
+|7|akamai appsec add-hostname <comma separated hostnames>|
+|8a|akamai appsec policies --config=<config id> --version=<version number>|
+|8b|akamai appsec create-match-target --hostnames=<comma separated hostnames> --paths=<comma separated paths> --policy=<security policy id>|
+|8c|akamai appsec match-target-order --insert=<match target id> --config=<config id> --version=<version number>  |
+|8d|akamai appsec modify-match-target <match target id> add-hostname <hostname>|
+|9|Activate the configuration version
+
+## Custom Rule
+Adding or updating a custom rule to the protection of a hostname requires a change to a policy.  The custom rule action API is used to enable the custom rule.
+
+|#|Commands|
+|-|---------|
+|1|akamai appsec clone --config=<config id> --version=<version number>|
+|2|akamai appsec structured-rule-template > structuredRule.json|
+|3|vim structuredRule.json|
+|4|akamai appsec create-custom-rule @structuredRule.json|
+|5|akamai appsec enable-custom-rule --custom-rule=<custom rule id> --policy=<security policy id> --action=<alert or deny>|
+|6|Activate the configuration version|
+
+For details about individual commands, please look at [Commands](#commands)
+### Commands
 * [Retrieve available configurations](#list-configurations)
 * [Retrieve available configuration versions](#list-configuration-versions)
 * [Retrieve a configuration version](#retrieve-configuration-version)
@@ -66,6 +98,12 @@ This script wraps all of the functionality from the [library](#library) into a c
 * [Retrieve Website Match targets](#list-website-match-targets)
 * [Modify a Website Match target](#modify-website-match-target)
 * [Change Website Match target order](#change-website-match-target-order)
+* [Create custom rule](#create-custom-rule)
+* [Modify a custom rule](#modify-custom-rule)
+* [Enable a custom rule](#enable-custom-rule)
+* [Retrieve all custom rules](#list-custom-rules)
+* [Retrieve a custom rule](#retrieve-custom-rule)
+* [Delete a custom rule](#delete-custom-rule)
 
 ### List Configurations
 ```
@@ -314,6 +352,112 @@ Options:
 
   [order]          The comma separated list of numeric match target ids in desired order.
                    [array:number]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+```
+### Create custom rule
+```
+Usage: akamai appsec create-custom-rule [options]
+
+Options:
+  --config <id>  Configuration id. Mandatory if you have more than one configuration.                 [number]
+  --file <path>  File with JSON rules                                           [required] [file] [must exist]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+
+```
+### Modify custom rule
+```
+Usage: akamai appsec modify-custom-rule [options]
+
+Options:
+  --config <id>       Configuration id. Mandatory if you have more than one configuration.            [number]
+  --custom-rule <id>  Rule ID.                                                             [required] [number]
+  --file <path>       File with JSON rules                                                 [file] [must exist]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+```
+### Enable custom rule
+```
+Usage: akamai appsec enable-custom-rule [options]
+
+Options:
+  --custom-rule <id>  Rule ID.
+                      [required] [number]
+
+  --policy <id>       Policy ID.
+                      [required] [string]
+
+  --action <id>       Action to assign.
+                      [required] [string]
+
+  --config <id>       Configuration id. Mandatory if you have more than one configuration.
+                      [number]
+
+  --version <num>     The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If
+                      not provided, latest version is assumed.
+                      [string]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+  ```
+### List custom rules
+```
+Usage: akamai appsec custom-rules [options]
+
+Options:
+  --config <id>  Configuration id. Mandatory if you have more than one configuration.                 [number]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+```
+
+### Retrieve custom rule
+```
+Usage: akamai appsec custom-rule [options]
+
+Options:
+  --config <id>       Configuration id. Mandatory if you have more than one configuration.            [number]
+  --custom-rule <id>  Rule ID.                                                             [required] [number]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+```
+
+### Delete custom rule
+```
+Usage: akamai appsec delete-custom-rule [options]
+
+Options:
+  --config <id>       Configuration id. Mandatory if you have more than one configuration.            [number]
+  --custom-rule <id>  Rule ID.                                                             [required] [number]
 
 Command options:
   --json     Print the raw json response. All commands respect this option.                          [boolean]
