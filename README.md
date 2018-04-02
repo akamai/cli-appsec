@@ -412,8 +412,8 @@ Options:
   --policy <id>       Policy ID.
                       [required] [string]
 
-  --action <id>       Action to assign.
-                      [required] [string]
+  --action <action>   Action to assign. If the action is "none", it is not associated with the policy
+                      [required] [enum] [alert, deny, none]
 
   --config <id>       Configuration id. Mandatory if you have more than one configuration.
                       [number]
