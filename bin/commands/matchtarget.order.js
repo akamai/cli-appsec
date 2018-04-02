@@ -11,7 +11,7 @@ class MatchTargetOrderCommand {
 
   setup(sywac) {
     sywac
-      .usage('Usage: akamai appsec match-target-order [options]')
+      .usage('Usage: akamai-appsec match-target-order [options]')
       .number('--config <id>', {
         desc: 'Configuration id number',
         group: 'Options:',
