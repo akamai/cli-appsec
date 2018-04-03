@@ -63,15 +63,15 @@ Akamai customers can currently configure delivery of a new web property using th
 |-|---------|--------|
 |1|[akamai property create](https://github.com/akamai/cli-property#create)||
 |2|[akamai property activate](https://github.com/akamai/cli-property#activate)||
-|3|akamai-appsec configs||
-|4|akamai-appsec versions --config=`<config id>`||
-|5|Clone configuration version _(comming soon)_|Optional. You can skip this step if you choose to use an existing editable<sup>[1](#References)</sup> configuration version|
-|6|akamai-appsec selectable-hostnames  ||
-|7|akamai-appsec add-hostname `<comma separated hostnames>`||
-|8a|akamai-appsec policies --config=`<config id>` --version=`<version number>`||
-|8b|akamai-appsec create-match-target --hostnames=`<comma separated hostnames>` --paths=`<comma separated paths>` --policy=`<security policy id>`||
-|8c|akamai-appsec match-target-order --insert=`<match target id>` --config=`<config id>` --version=`<version number>`  ||
-|8d|akamai-appsec modify-match-target `<match target id>` add-hostname `<hostname>`||
+|3|`akamai-appsec configs`||
+|4|`akamai-appsec versions --config=<config id>`||
+|5|Clone configuration version _(comming soon)_|Optional. You can skip this step if you choose to use an existing editable<sup>[1](#references)</sup> configuration version|
+|6|`akamai-appsec selectable-hostnames`  ||
+|7|`akamai-appsec add-hostname <comma separated hostnames>`||
+|8a|`akamai-appsec policies --config=<config id> --version=<version number>`||
+|8b|`akamai-appsec create-match-target --hostnames=<comma separated hostnames> --paths=<comma separated paths> --policy=<security policy id>`||
+|8c|`akamai-appsec match-target-order --insert=<match target id> --config=<config id> --version=<version number>`  ||
+|8d|`akamai-appsec modify-match-target <match target id> add-hostname <hostname>`||
 |9|Activate the configuration version _(comming soon)_||
 |10|Check activation status _(comming soon)_||
 
@@ -80,11 +80,11 @@ Adding or updating a custom rule to the protection of a hostname requires a chan
 
 |#|Commands|Comments|
 |-|---------|--------|
-|1|Clone configuration version _(comming soon)_|Optional. You can skip this step if you choose to use an existing editable<sup>[1](#References)</sup> configuration version|
-|2|akamai-appsec structured-rule-template > structuredRule.json|This prints a template json to the standard output. You must edit this template appropriately before creating the custom rule|
-|3|vim structuredRule.json||
-|4|akamai-appsec create-custom-rule @structuredRule.json||
-|5|akamai-appsec enable-custom-rule --custom-rule=`<custom rule id>` --policy=`<security policy id>` --action=`<alert or deny>`||
+|1|Clone configuration version _(comming soon)_|Optional. You can skip this step if you choose to use an existing editable<sup>[1](#references)</sup> configuration version|
+|2|`akamai-appsec structured-rule-template > structuredRule.json`|This prints a template json to the standard output. You must edit this template appropriately before creating the custom rule|
+|3|`vim structuredRule.json`||
+|4|`akamai-appsec create-custom-rule @structuredRule.json`||
+|5|`akamai-appsec enable-custom-rule --custom-rule=<custom rule id> --policy=<security policy id> --action=<alert or deny>`||
 |6|Activate the configuration version _(comming soon)_||
 |7|Check activation status _(comming soon)_||
 
