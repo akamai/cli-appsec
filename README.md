@@ -59,32 +59,34 @@ This script wraps all of the functionality from the library into a command line 
 ## Protect Hosts
 Akamai customers can currently configure delivery of a new web property using the PAPI API/CLI. This use case enables protecting these new web properties. This protection is limited to adding the host to an existing security policy. The typical steps are listed in the following table:
 
-|#|Commands|
-|-|---------|
-|1|[akamai property create](https://github.com/akamai/cli-property#create)|
-|2|[akamai property activate](https://github.com/akamai/cli-property#activate)|
-|3|akamai-appsec configs|
-|4|akamai-appsec versions --config=`<config id>`|
-|5|akamai-appsec clone --config=`<config id>` --version=`<version number>`|
-|6|akamai-appsec selectable-hostnames  |
-|7|akamai-appsec add-hostname `<comma separated hostnames>`|
-|8a|akamai-appsec policies --config=`<config id>` --version=`<version number>`|
-|8b|akamai-appsec create-match-target --hostnames=`<comma separated hostnames>` --paths=`<comma separated paths>` --policy=`<security policy id>`|
-|8c|akamai-appsec match-target-order --insert=`<match target id>` --config=`<config id>` --version=`<version number>`  |
-|8d|akamai-appsec modify-match-target `<match target id>` add-hostname `<hostname>`|
-|9|Activate the configuration version
+|#|Commands|Comments|
+|-|---------|--------|
+|1|[akamai property create](https://github.com/akamai/cli-property#create)||
+|2|[akamai property activate](https://github.com/akamai/cli-property#activate)||
+|3|akamai-appsec configs||
+|4|akamai-appsec versions --config=`<config id>`||
+|5|Clone configuration version _(comming soon)_|Optional. You can skip this step if you choose to use an existing editable<sup>[1](#References)</sup> configuration version|
+|6|akamai-appsec selectable-hostnames  ||
+|7|akamai-appsec add-hostname `<comma separated hostnames>`||
+|8a|akamai-appsec policies --config=`<config id>` --version=`<version number>`||
+|8b|akamai-appsec create-match-target --hostnames=`<comma separated hostnames>` --paths=`<comma separated paths>` --policy=`<security policy id>`||
+|8c|akamai-appsec match-target-order --insert=`<match target id>` --config=`<config id>` --version=`<version number>`  ||
+|8d|akamai-appsec modify-match-target `<match target id>` add-hostname `<hostname>`||
+|9|Activate the configuration version _(comming soon)_||
+|10|Check activation status _(comming soon)_||
 
 ## Custom Rule
 Adding or updating a custom rule to the protection of a hostname requires a change to a policy.  The custom rule action API is used to enable the custom rule.
 
-|#|Commands|
-|-|---------|
-|1|akamai-appsec clone --config=`<config id>` --version=``<version number>``|
-|2|akamai-appsec structured-rule-template > structuredRule.json|
-|3|vim structuredRule.json|
-|4|akamai-appsec create-custom-rule @structuredRule.json|
-|5|akamai-appsec enable-custom-rule --custom-rule=`<custom rule id>` --policy=`<security policy id>` --action=`<alert or deny>`|
-|6|Activate the configuration version|
+|#|Commands|Comments|
+|-|---------|--------|
+|1|Clone configuration version _(comming soon)_|Optional. You can skip this step if you choose to use an existing editable<sup>[1](#References)</sup> configuration version|
+|2|akamai-appsec structured-rule-template > structuredRule.json|This prints a template json to the standard output. You must edit this template appropriately before creating the custom rule|
+|3|vim structuredRule.json||
+|4|akamai-appsec create-custom-rule @structuredRule.json||
+|5|akamai-appsec enable-custom-rule --custom-rule=`<custom rule id>` --policy=`<security policy id>` --action=`<alert or deny>`||
+|6|Activate the configuration version _(comming soon)_||
+|7|Check activation status _(comming soon)_||
 
 For details about individual commands, please look at [Commands](#commands)
 ### Commands
@@ -480,3 +482,6 @@ The Akamai CLI is a new tool and as such we have made some design choices worth 
 * Version number - if not specified, the utility will assume the latest version is editable and try to execute the actions on the version. If the version turns out to be uneditable, you will get an error.
 * Config ID - if not specified, the system will make an assumption that the user has only one configuration and try to execute the action on the latest version.
 * Credentials - the tool expects your credentials to be stored under a 'default' section in your ~/.edgerc file. Alternatively you can provide the section name using the --section option in every command. If you are unfamiliar with the authentication and provisioning for OPEN APIs, see the "Get Started" section of https://developer.akamai.com
+
+## References
+<sup>1</sup>A configuration version is editable if it is not active currently or in the past in any of the environments(staging or production).
