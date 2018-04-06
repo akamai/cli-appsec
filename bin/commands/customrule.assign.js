@@ -17,9 +17,9 @@ class ModifyCustomRuleCommand {
         required: true
       })
       .string('--policy <id>', {
-        desc: 'Policy ID.',
+        desc: 'Policy ID. Mandatory if you have more than one policy.',
         group: 'Options:',
-        required: true
+        required: false
       })
       .enumeration('--action <action>', {
         desc: 'Action to assign. If the action is "none", it is not associated with the policy.',
