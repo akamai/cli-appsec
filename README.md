@@ -8,6 +8,12 @@
 * Ensure that the 'bin' subdirectory is in your path
 * Use `akamai-appsec` as the command name instead of `akamai appsec`.
 
+### Assumed Defaults
+* Version number - if not specified, the tool will assume the latest version is editable and try to execute the actions on the version. If the version is not editable<sup>1</sup>, you will get an error.
+* Config ID - if not specified, the tool will make an assumption that the user has only one configuration and try to execute the action on the editable<sup>1</sup> version.
+* Security policy id - if not provided in commands that required a security policy, the tool will assume that the editable<sup>1</sup> version has only one policy and try to use it. If the said version has more than one policy, an error will be thrown asking for the policy id.
+
+If left to these assumptions, the commands will perform slower than when these options are provided explicitly.
 ### Credentials
 In order to use this configuration, you need to:
 * Set up your credential files as described in the [authorization](https://developer.akamai.com/introduction/Prov_Creds.html) and [credentials](https://developer.akamai.com/introduction/Conf_Client.html) sections of the getting started guide on developer.akamai.com.  
@@ -24,6 +30,7 @@ Commands:
   configs                   List all available configurations.
   enable-custom-rule        Assigns an action (such as alert or deny) to an existing custom rule in a policy.
   create-custom-rule        Create a custom rule.
+  delete-custom-rule        Delete a custom rule.
   custom-rule               Display contents of custom rule.
   modify-custom-rule        Update existing custom rule.
   structured-rule-template  Prints sample JSON of a structured custom rule.                     [aliases: srt]
@@ -103,6 +110,7 @@ For details about individual commands, please look at [Commands](#commands)
 * [Change Website Match target order](#change-website-match-target-order)
 * [Custom rule template](#custom-rule-template)
 * [Create custom rule](#create-custom-rule)
+* [Delete custom rule](#delete-custom-rule)
 * [Modify a custom rule](#modify-custom-rule)
 * [Enable a custom rule](#enable-custom-rule)
 * [Retrieve all custom rules](#list-custom-rules)
@@ -275,8 +283,10 @@ Options:
   --paths <x,y,z>                      The file paths
                                        [required] [array:string]
 
-  --policy <id>                        The policy id.
-                                       [required] [string]
+  --policy <id>                        The policy id to use. If not provided, we try to use the policy
+                                       available on file(slow). If you have more than one policy, this option must
+                                       be provided.
+                                       [string]
 
 Command options:
   --json     Print the raw json response. All commands respect this option.                          [boolean]
@@ -387,6 +397,21 @@ Command options:
   --version  Current version of the program.                                                         [boolean]
 
 ```
+### Delete custom rule
+```
+Usage: akamai-appsec delete-custom-rule [options]
+
+Options:
+  --config <id>       Configuration id. Mandatory if you have more than one configuration.            [number]
+  --custom-rule <id>  Rule ID.                                                             [required] [number]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+  ```
 ### Modify custom rule
 ```
 Usage: akamai-appsec modify-custom-rule [options]
@@ -479,8 +504,6 @@ Command options:
 ```
 ## Caveats
 The Akamai CLI is a new tool and as such we have made some design choices worth mentioning.
-* Version number - if not specified, the utility will assume the latest version is editable and try to execute the actions on the version. If the version turns out to be uneditable, you will get an error.
-* Config ID - if not specified, the system will make an assumption that the user has only one configuration and try to execute the action on the latest version.
 * Credentials - the tool expects your credentials to be stored under a 'default' section in your ~/.edgerc file. Alternatively you can provide the section name using the --section option in every command. If you are unfamiliar with the authentication and provisioning for OPEN APIs, see the "Get Started" section of https://developer.akamai.com
 
 ## References

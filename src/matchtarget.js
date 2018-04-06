@@ -3,6 +3,8 @@
 let URIs = require('./constants').URIS;
 let logger = require('./constants').logger('MatchTarget');
 let Version = require('./versionsprovider').versionProvider;
+let PolicyProvider = require('./policy').policy;
+
 let fs = require('fs');
 const TEMPLATE_PATH = __dirname + '/../templates/matchtarget.json';
 
@@ -13,6 +15,7 @@ class MatchTarget {
     this._matchTarget = JSON.parse(fs.readFileSync(TEMPLATE_PATH, 'utf8'));
     //this._matchTargetType = this._options.type ? this._options.type : 'website';
     this._matchTargetType = 'website';
+    this._policyProvider = new PolicyProvider(options);
   }
 
   matchtargets() {
@@ -26,11 +29,13 @@ class MatchTarget {
   }
 
   createMatchTarget() {
-    this._matchTarget.firewallPolicy.policyId = this._options.policy;
-    this._matchTarget.hostnames = this._options.hostnames;
-    this._matchTarget.filePaths = this._options.paths;
+    return this._policyProvider.policyId().then(policyId => {
+      this._matchTarget.firewallPolicy.policyId = policyId;
+      this._matchTarget.hostnames = this._options.hostnames;
+      this._matchTarget.filePaths = this._options.paths;
 
-    return this._version.createResource(URIs.MATCH_TARGETS, [], this._matchTarget);
+      return this._version.createResource(URIs.MATCH_TARGETS, [], this._matchTarget);
+    });
   }
 
   addHostnames() {
