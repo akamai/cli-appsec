@@ -33,7 +33,7 @@ class FirewallPolicy {
   }
   /**
    * Reads resources tied to the security policy.
-   * @param {*} uri The uri of the resource. Always starts with /configs/<id>/versions/<id>/firewall-policies/<id>
+   * @param {*} uri The uri of the resource. Always starts with /configs/<id>/versions/<id>/security-policies/<id>
    * @param {*} params the parameters that gets substituted in the uri in order(except config id, version id and policy id)
    */
   readResource(uri, params) {
@@ -45,7 +45,7 @@ class FirewallPolicy {
 
   /**
    * Updates resources tied to the security policy.
-   * @param {*} uri The uri of the resource. Always starts with /configs/<id>/versions/<id>/firewall-policies/<id>
+   * @param {*} uri The uri of the resource. Always starts with /configs/<id>/versions/<id>/security-policies/<id>
    * @param {*} params the parameters that gets substituted in the uri in order(except config id, version id and policy id)
    */
   updateResource(uri, params, payload) {
@@ -57,7 +57,7 @@ class FirewallPolicy {
 
   /**
    * Creates resources tied to the security policy.
-   * @param {*} uri The uri of the resource. Always starts with /configs/<id>/versions/<id>/firewall-policies/<id>
+   * @param {*} uri The uri of the resource. Always starts with /configs/<id>/versions/<id>/security-policies/<id>
    * @param {*} params the parameters that gets substituted in the uri in order(except config id, version id and policy id)
    */
   createResource(uri, params, payload) {

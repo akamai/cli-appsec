@@ -42,7 +42,7 @@ Commands:
   modify-match-target       Updates a match target.
   match-target-order        Change the match target sequence.
   match-targets             List all match targets.
-  policies                  List all firewall policies.
+  policies                  List all security policies.
   version                   Read a config version
   versions                  List all config versions
 

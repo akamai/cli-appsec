@@ -5,19 +5,8 @@
       "httpStatus": 200,
       "response": {
         "targetId": 1212,
-        "firewallPolicy": {
-          "policyName": "App login Strict protection policy",
-          "policyId": "fwsf_32432",
-          "policySecurityControls": {
-            "applyApiConstraints": false,
-            "applyApplicationLayerControls": true,
-            "applyNetworkLayerControls": false,
-            "applyRateControls": true,
-            "applyReputationControls": false,
-            "applySlowPostControls": false,
-            "applyUserValidationControls": false,
-            "applyBotmanControls": false
-          }
+        "securityPolicy": {
+          "policyId": "fwsf_32432"
         },
         "configId": 1243,
         "configVersion": 3,
@@ -64,16 +53,6 @@
             "name": "web application firewall bypass network list"
           }
         ],
-        "targetSecurityControls": {
-          "applyApiConstraints": false,
-          "applyApplicationLayerControls": true,
-          "applyNetworkLayerControls": true,
-          "applyRateControls": true,
-          "applyReputationControls": false,
-          "applySlowPostControls": true,
-          "applyUserValidationControls": false
-        },
-        "isTargetSecurityControlsEditable": true,
         "effectiveSecurityControls": {
           "applyApiConstraints": false,
           "applyApplicationLayerControls": true,

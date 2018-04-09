@@ -24,7 +24,7 @@ class MatchTarget {
         this._matchTargetType == 'website' ? 'websiteTargets' : 'apiTargets';
       let existingMatchTargets = allMatchTargets.matchTargets[matchTargetToChange]; //fetch only the requested type. i.e, website or api
       logger.debug('Existing sequence: %s', JSON.stringify(existingMatchTargets));
-      return existingMatchTargets;
+      return { matchTargets: existingMatchTargets };
     });
   }
 
@@ -69,7 +69,8 @@ class MatchTarget {
 
   _move(targetId, moveFunc) {
     logger.debug('Inserting the match target at the beginning.');
-    return this.matchtargets().then(existingMatchTargets => {
+    return this.matchtargets().then(matchTargetsObj => {
+      let existingMatchTargets = matchTargetsObj.matchTargets;
       existingMatchTargets.sort((a, b) => {
         return a.sequence - b.sequence;
       });

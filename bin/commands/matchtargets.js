@@ -30,8 +30,9 @@ class MatchTargetsCommand {
       args: options,
       success: (args, data) => {
         let targetSequence = [];
-        for (let i = 0; i < data.length; i++) {
-          targetSequence.push(data[i].targetId);
+        let matchTargets = data.matchTargets;
+        for (let i = 0; i < matchTargets.length; i++) {
+          targetSequence.push(matchTargets[i].targetId);
         }
         return targetSequence.join(require('os').EOL);
       }
