@@ -50,7 +50,11 @@ require("sywac")
     }
     else if (result.output) {
       //console.log(result.output.replace(/akamai-appsec/,'akamai appsec'));
-      console.log(result.output);
+      if(result.code != 0) {
+        console.error(result.output);
+      } else {
+        console.log(result.output);
+      }
       process.exit(result.code);
     }
   });
