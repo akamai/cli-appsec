@@ -23,13 +23,13 @@ const resources = {
   GET_CRB: '/appsec/v1/configs/%s/custom-rules/%s',
   GET_ACTIVATION: '/appsec/v1/activations/%s',
   ACTIVATE_VERSION: '/appsec/v1/activations',
-  CRB_ACTION: '/appsec/v1/configs/%s/versions/%s/firewall-policies/%s/custom-rules/%s',
+  CRB_ACTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/custom-rules/%s',
   SELECTED_HOSTS_RESOURCE: '/appsec/v1/configs/%s/versions/%s/selected-hostnames',
   SELECTABLE_HOSTS_RESOURCE: '/appsec/v1/configs/%s/versions/%s/selectable-hostnames',
   MATCH_TARGETS: '/appsec/v1/configs/%s/versions/%s/match-targets',
   MATCH_TARGET: '/appsec/v1/configs/%s/versions/%s/match-targets/%s',
   MATCH_TARGET_SEQUENCE: '/appsec/v1/configs/%s/versions/%s/match-targets/sequence',
-  FIREWALL_POLICIES: '/appsec/v1/configs/%s/versions/%s/firewall-policies'
+  FIREWALL_POLICIES: '/appsec/v1/configs/%s/versions/%s/security-policies'
 };
 
 define('URIS', resources);

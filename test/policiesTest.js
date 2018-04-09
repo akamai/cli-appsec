@@ -6,11 +6,11 @@ var expect = chai.expect;
 var Policy = require('../src/policy').policy;
 var nock = require('nock');
 
-const FIREWALL_POLICIES = '/appsec-configuration/v1/configs/1234/versions/1/firewall-policies';
+const FIREWALL_POLICIES = '/appsec-configuration/v1/configs/1234/versions/1/security-policies';
 const PROD_VER_FIREWALL_POLICIES =
-  '/appsec-configuration/v1/configs/1234/versions/2/firewall-policies';
+  '/appsec-configuration/v1/configs/1234/versions/2/security-policies';
 const LATEST_VER_FIREWALL_POLICIES =
-  '/appsec-configuration/v1/configs/1234/versions/3/firewall-policies';
+  '/appsec-configuration/v1/configs/1234/versions/3/security-policies';
 const CONFIGS_URL = '/appsec-configuration/v1/configs';
 const VERSIONS_URL = '/appsec-configuration/v1/configs/1234/versions';
 const VERSION_URL = '/appsec-configuration/v1/configs/1234/versions/1';

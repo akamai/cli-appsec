@@ -4,7 +4,7 @@ let Policy = require('../../src/policy').policy;
 class PoliciesCommand {
   constructor() {
     this.flags = 'policies';
-    this.desc = 'List all firewall policies.';
+    this.desc = 'List all security policies.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
