@@ -28,7 +28,7 @@ class DeleteCustomRuleCommand {
       promise: new CRB(options).deleteRule(),
       args: options,
       success: (args, data) => {
-        return 'Custom rule deleted';
+        return data;
       }
     });
   }
