@@ -76,7 +76,7 @@ class VersionProvider {
    * Returns all the versions.
    */
   versions() {
-    logger.info('Fetching version list....ll');
+    logger.info('Fetching version list....');
     //&page=1&pageSize=%s
     let uri = URIs.GET_VERSIONS;
     let params = [];

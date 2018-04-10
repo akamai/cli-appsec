@@ -30,7 +30,7 @@ class MatchTarget {
 
   createMatchTarget() {
     return this._policyProvider.policyId().then(policyId => {
-      this._matchTarget.firewallPolicy.policyId = policyId;
+      this._matchTarget.securityPolicy.policyId = policyId;
       this._matchTarget.hostnames = this._options.hostnames;
       this._matchTarget.filePaths = this._options.paths;
 
