@@ -49,11 +49,11 @@ require("sywac")
       process.exit(0);
     }
     else if (result.output) {
-      //console.log(result.output.replace(/akamai-appsec/,'akamai appsec'));
+      let output = result.output.replace(/akamai-appsec/,'akamai appsec');
       if(result.code != 0) {
-        console.error(result.output);
+        console.error(output);
       } else {
-        console.log(result.output);
+        console.log(output);
       }
       process.exit(result.code);
     }
