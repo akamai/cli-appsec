@@ -50,9 +50,7 @@
     {
       "type": "requestProtocolVersionMatch",
       "positiveMatch": true,
-      "value": [
-        "HTTP/0.9"
-      ]
+      "value": "HTTP/0.9"
     },
     {
       "type": "requestHeaderMatch",
