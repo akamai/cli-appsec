@@ -1,6 +1,6 @@
 {
   "name": "akamaicliappsec",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A wrapping development kit to interface common tasks with akamai's Security {OPEN} API.",
   "repository": "https://github.com/akamai/cli-appsec",
   "license": "Apache-2.0",
