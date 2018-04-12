@@ -396,21 +396,6 @@ Command options:
   --version  Current version of the program.                                                         [boolean]
 
 ```
-### Delete custom rule
-```
-Usage: akamai appsec delete-custom-rule [options]
-
-Options:
-  --config <id>       Configuration id. Mandatory if you have more than one configuration.            [number]
-  --custom-rule <id>  Rule ID.                                                             [required] [number]
-
-Command options:
-  --json     Print the raw json response. All commands respect this option.                          [boolean]
-  --edgerc   The full path to the .edgerc file.                                                       [string]
-  --section  The section of .edgerc to use.                                                           [string]
-  --help     Prints help information.                                               [commands: help] [boolean]
-  --version  Current version of the program.                                                         [boolean]
-  ```
 ### Modify custom rule
 ```
 Usage: akamai appsec modify-custom-rule [options]
