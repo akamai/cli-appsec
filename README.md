@@ -1,3 +1,4 @@
+**__This is a Beta Software__**
 # Akamai CLI for Application Security
 
 *NOTE:* This tool is intended to be installed via the Akamai CLI package manager, which can be retrieved from the releases page of the [Akamai CLI](https://github.com/akamai/cli) tool.
@@ -8,9 +9,9 @@
 * Ensure that the 'bin' subdirectory is in your path
 
 ### Assumed Defaults
-* Version number - if not specified, the tool will assume the latest version is editable and try to execute the actions on the version. If the version is not editable<sup>1</sup>, you will get an error.
-* Config ID - if not specified, the tool will make an assumption that the user has only one configuration and try to execute the action on the editable<sup>1</sup> version.
-* Security policy id - if not provided in commands that required a security policy, the tool will assume that the editable<sup>1</sup> version has only one policy and try to use it. If the said version has more than one policy, an error will be thrown asking for the policy id.
+* Version number - if not specified, the tool will assume the latest version is editable and try to execute the actions on the version. If the version is not editable<sup>[1](#references)</sup>, you will get an error.
+* Config ID - if not specified, the tool will make an assumption that the user has only one configuration and try to execute the action on the editable<sup>[1](#references)</sup> version.
+* Security policy id - if not provided in commands that required a security policy, the tool will assume that the editable<sup>[1](#references)</sup> version has only one policy and try to use it. If the said version has more than one policy, an error will be thrown asking for the policy id.
 
 If left to these assumptions, the commands will perform slower than when these options are provided explicitly.
 ### Credentials
