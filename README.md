@@ -351,7 +351,7 @@ Updates the order of the website match targets
 Usage: akamai appsec match-target-order [options]
 
 Options:
-  --config <id>    Configuration id number
+  --config <id>    Configuration id. Mandatory if you have more than one configuration.
                    [number]
 
   --version <num>  The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If

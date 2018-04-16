@@ -12,7 +12,7 @@ class MatchTargetsCommand {
   setup(sywac) {
     sywac
       .number('--config <id>', {
-        desc: 'Configuration id number',
+        desc: 'Configuration id. Mandatory if you have more than one configuration.',
         group: 'Options:',
         required: false
       })

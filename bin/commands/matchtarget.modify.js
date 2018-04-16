@@ -25,7 +25,7 @@ class ModifyMatchTargetCommand {
       })
       //.usage('Usage: appsec modify-match-target <match-target-id> add-hostname <hostname> [options]')
       .number('--config <id>', {
-        desc: 'Configuration id number',
+        desc: 'Configuration id. Mandatory if you have more than one configuration.',
         group: 'Options:',
         required: false
       })

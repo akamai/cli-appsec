@@ -13,7 +13,7 @@ class MatchTargetOrderCommand {
     sywac
       .usage('Usage: akamai-appsec match-target-order [options]')
       .number('--config <id>', {
-        desc: 'Configuration id number',
+        desc: 'Configuration id. Mandatory if you have more than one configuration.',
         group: 'Options:',
         required: false
       })
