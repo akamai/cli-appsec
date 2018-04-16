@@ -1,5 +1,5 @@
 let out = require('./lib/out');
-let Version = require('../../src/versionsProvider').versionProvider;
+let Version = require('../../src/versionsprovider').versionProvider;
 
 class VersionCommand {
   constructor() {
@@ -35,7 +35,7 @@ class VersionCommand {
       args: options,
       success: (args, data) => {
         //we want the whole json irrespective of the json flag
-        return data;
+        return JSON.stringify(data);
       }
     });
   }

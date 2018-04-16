@@ -1,10 +1,10 @@
 let out = require('./lib/out');
-let Policy = require('../../src/policy').policy;
+let SelectedHosts = require('../../src/hosts').selectedHosts;
 
-class PoliciesCommand {
+class SelectableHostsCommand {
   constructor() {
-    this.flags = 'policies';
-    this.desc = 'List all security policies.';
+    this.flags = 'selected-hostnames';
+    this.desc = 'List all currently chosen hostnames.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -26,17 +26,17 @@ class PoliciesCommand {
 
   run(options) {
     out.print({
-      promise: new Policy(options).policies(),
+      promise: new SelectedHosts(options).selectedHosts(),
       args: options,
       success: (args, data) => {
-        let s = [];
-        for (let i = 0; i < data.policies.length; i++) {
-          s.push(data.policies[i].policyId);
+        let hosts = [];
+        for (let i = 0; i < data.hostnameList.length; i++) {
+          hosts.push(data.hostnameList[i].hostname);
         }
-        return s.join(require('os').EOL);
+        return hosts.join(require('os').EOL);
       }
     });
   }
 }
 
-module.exports = new PoliciesCommand();
+module.exports = new SelectableHostsCommand();

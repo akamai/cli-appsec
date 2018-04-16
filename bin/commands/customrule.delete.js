@@ -1,10 +1,10 @@
 let CRB = require('../../src/crb').CRBHandler;
 let out = require('./lib/out');
 
-class ModifyCustomRuleCommand {
+class DeleteCustomRuleCommand {
   constructor() {
-    this.flags = 'modify-custom-rule';
-    this.desc = 'Update existing custom rule.';
+    this.flags = 'delete-custom-rule';
+    this.desc = 'Delete a custom rule.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -20,22 +20,18 @@ class ModifyCustomRuleCommand {
         desc: 'Rule ID.',
         group: 'Options:',
         required: true
-      })
-      .file('--file <path>', {
-        desc: 'File with JSON rules',
-        mustExist: true
       });
   }
 
   run(options) {
     out.print({
-      promise: new CRB(options).updateRule(),
+      promise: new CRB(options).deleteRule(),
       args: options,
       success: (args, data) => {
-        return data.id;
+        return data;
       }
     });
   }
 }
 
-module.exports = new ModifyCustomRuleCommand();
+module.exports = new DeleteCustomRuleCommand();

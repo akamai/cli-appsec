@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class ModifyCustomRuleCommand {
   constructor() {
     this.flags = 'enable-custom-rule';
-    this.desc = 'Update existing custom rule.';
+    this.desc = 'Assigns an action (such as alert or deny) to an existing custom rule in a policy.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -17,12 +17,13 @@ class ModifyCustomRuleCommand {
         required: true
       })
       .string('--policy <id>', {
-        desc: 'Policy ID.',
+        desc: 'Policy ID. Mandatory if you have more than one policy.',
         group: 'Options:',
-        required: true
+        required: false
       })
-      .string('--action <id>', {
-        desc: 'Action to assign.',
+      .enumeration('--action <action>', {
+        desc: 'Action to assign. If the action is "none", it is not associated with the policy.',
+        choices: ['alert', 'deny', 'none'],
         group: 'Options:',
         required: true
       })

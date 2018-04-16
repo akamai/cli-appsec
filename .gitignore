@@ -61,3 +61,6 @@ typings/
 *.sh
 mock/**/*.json
 test
+akamai-appsec-*-linux-*
+akamai-appsec-*-mac-*
+akamai-appsec-*-windows-*

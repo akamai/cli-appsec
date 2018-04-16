@@ -1,0 +1,11 @@
+{
+    "network": "",
+    "action": "ACTIVATE",
+    "method": "FAST",
+    "activationConfigs": [
+        {
+            "configId": -1,
+            "configVersion": -1
+        }
+    ]
+}

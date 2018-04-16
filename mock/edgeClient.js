@@ -61,6 +61,7 @@ class Edge {
       method: 'GET',
       path: this._resolveParams(requestUri, params)
     };
+    logger.debug(JSON.stringify(request));
     return this._send(request);
   }
 

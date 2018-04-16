@@ -33,9 +33,10 @@ class CreateMatchTargetCommand {
         required: true
       })
       .string('--policy <id>', {
-        desc: 'The policy id.',
+        desc:
+          'The policy id to use. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
         group: 'Options:',
-        required: true
+        required: false
       });
   }
 

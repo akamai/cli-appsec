@@ -22,11 +22,20 @@ class AddHostsCommand {
         group: 'Options:',
         required: false
       })
-      .stringArray('--hosts <a.com, b.net, c.d.com>', {
-        desc: 'Hostnames to add to the selected list.',
-        group: 'Options:',
-        required: true
+      .positional('<hostnames>', {
+        params: [
+          {
+            desc: 'The comma separated list of hostnames to add.',
+            group: 'Options:',
+            type: 'array:string'
+          }
+        ]
       });
+    // .stringArray('--hosts <a.com, b.net, c.d.com>', {
+    //   desc: 'Hostnames to add to the selected list.',
+    //   group: 'Options:',
+    //   required: true
+    // });
   }
 
   run(options) {
@@ -36,9 +45,9 @@ class AddHostsCommand {
       success: (args, data) => {
         let hosts = [];
         for (let i = 0; i < data.hostnameList.length; i++) {
-          hosts.push(data.hostnameList[i].hostName);
+          hosts.push(data.hostnameList[i].hostname);
         }
-        return hosts.join('\n');
+        return hosts.join(require('os').EOL);
       }
     });
   }

@@ -1,8 +1,9 @@
 'use strict';
 let untildify = require('untildify');
-var EdgeGrid = require('edgeGrid');
+var EdgeGrid = require('edgegrid');
 let util = require('util');
 let logger = require('./constants').logger('EdgeClient');
+let version = require('../package.json').version;
 class Edge {
   constructor(options) {
     let auth = {
@@ -27,7 +28,11 @@ class Edge {
   }
 
   _send(request) {
+    let headers = request.headers || {};
+    headers['Client-App'] = 'appsec-cli-' + version;
+    request.headers = headers;
     return new Promise((resolve, reject) => {
+      logger.debug('Request: %s', JSON.stringify(request));
       this._edge.auth(request);
       this._edge.send(function(data, response) {
         logger.debug(
@@ -40,7 +45,13 @@ class Edge {
             JSON.stringify(response)
         );
         if (response && response.statusCode >= 200 && response.statusCode < 400) {
-          resolve(JSON.parse(response.body));
+          if (response.body) {
+            //delete calls don't have a body and throw errors when parsing.
+            resolve(JSON.parse(response.body));
+          } else {
+            //promise needs to call resolve and resolve() returns "undefined"
+            resolve(response.body);
+          }
         } else if (!response) {
           logger.info('No response from server: ' + JSON.stringify(data));
           reject('Could not get data at this time.');
@@ -66,12 +77,23 @@ class Edge {
     return this._send(request);
   }
 
+  delete(requestUri, params) {
+    let request = {
+      method: 'DELETE',
+      path: this._resolveParams(requestUri, params)
+    };
+    return this._send(request);
+  }
+
   post(requestUri, body, params) {
     let request = {
       method: 'POST',
       path: this._resolveParams(requestUri, params),
       followRedirect: false,
-      body: body
+      body: body,
+      headers: {
+        'Content-Type': 'application/json'
+      }
     };
     return this._send(request);
   }
@@ -80,7 +102,10 @@ class Edge {
     let request = {
       method: 'PUT',
       path: this._resolveParams(requestUri, params),
-      body: JSON.stringify(payload)
+      body: payload,
+      headers: {
+        'Content-Type': 'application/json'
+      }
     };
     return this._send(request);
   }

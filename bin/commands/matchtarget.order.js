@@ -11,8 +11,9 @@ class MatchTargetOrderCommand {
 
   setup(sywac) {
     sywac
+      .usage('Usage: akamai-appsec match-target-order [options]')
       .number('--config <id>', {
-        desc: 'Configuration id number',
+        desc: 'Configuration id. Mandatory if you have more than one configuration.',
         group: 'Options:',
         required: false
       })
@@ -23,23 +24,47 @@ class MatchTargetOrderCommand {
         required: false
       })
       .number('--insert <id>', {
-        desc: 'Match target id to insert at the beginning.',
+        desc: 'Match target id to move to the start.',
         group: 'Options:',
         required: false
       })
-      .numberArray('--order <300,100,200>', {
-        desc: 'The list of match target ids in desired order.',
+      .number('--append <id>', {
+        desc: 'Match target id to move to the end.',
         group: 'Options:',
         required: false
+      })
+      .positional('[order]', {
+        params: [
+          {
+            desc: 'The comma separated list of numeric match target ids in desired order.',
+            group: 'Options:',
+            type: 'array:number'
+          }
+        ]
       })
       .check((argv, context) => {
-        if (!argv.insert && argv.order.length == 0) {
-          return context.cliMessage('Missing match target id parameters.');
+        //console.log(JSON.stringify(argv));
+        if (!argv.insert && !argv.append && !argv.order[0]) {
+          return context.cliMessage('Error: Specify an explicit order or append or insert option.');
+        }
+        let paramCount = 0;
+        if (argv.insert) {
+          paramCount++;
+        }
+        if (argv.append) {
+          paramCount++;
+        }
+        if (argv.order && argv.order[0]) {
+          paramCount++;
+        }
+        if (paramCount > 1) {
+          return context.cliMessage('Error: Specify any one of order or append or insert option.');
         }
       });
   }
 
   run(options) {
+    //consider the comma separated list of numbers as target ids.
     out.print({
       promise: new MatchTarget(options).changeSequence(),
       args: options,
