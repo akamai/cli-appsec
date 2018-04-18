@@ -72,34 +72,35 @@ Akamai customers can currently configure delivery of a new web property using th
 |2|[akamai property activate](https://github.com/akamai/cli-property#activate)||
 |3|`akamai appsec configs`||
 |4|`akamai appsec versions --config=<config id>`||
-|5|Clone configuration version _(comming soon)_|Optional. You can skip this step if you choose to use an existing editable<sup>[1](#references)</sup> configuration version|
+|5|`akamai appsec clone --config=<config id>`|Optional. You can skip this step if you choose to use an existing editable<sup>[1](#references)</sup> configuration version|
 |6|`akamai appsec selectable-hostnames`  ||
 |7|`akamai appsec add-hostname <comma separated hostnames>`||
 |8a|`akamai appsec policies --config=<config id> --version=<version number>`||
 |8b|`akamai appsec create-match-target --hostnames=<comma separated hostnames> --paths=<comma separated paths> --policy=<security policy id>`||
 |8c|`akamai appsec match-target-order --insert=<match target id> --config=<config id> --version=<version number>`  ||
 |8d|`akamai appsec modify-match-target <match target id> add-hostname <hostname>`||
-|9|Activate the configuration version _(comming soon)_||
-|10|Check activation status _(comming soon)_||
+|9|`akamai appsec activate --network=<activation network> --notes=<activation notes> --notify=<emails>`||
+|10|`akamai appsec activation --activation-id=<activation id>`||
 
 ## Custom Rule
 Adding or updating a custom rule to the protection of a hostname requires a change to a policy.  The custom rule action API is used to enable the custom rule.
 
 |#|Commands|Comments|
 |-|---------|--------|
-|1|Clone configuration version _(comming soon)_|Optional. You can skip this step if you choose to use an existing editable<sup>[1](#references)</sup> configuration version|
+|1|`akamai appsec clone --config=<config id>`|Optional. You can skip this step if you choose to use an existing editable<sup>[1](#references)</sup> configuration version|
 |2|`akamai appsec structured-rule-template > structuredRule.json`|This prints a template json to the standard output. You must edit this template appropriately before creating the custom rule|
 |3|`vim structuredRule.json`||
 |4|`akamai appsec create-custom-rule @structuredRule.json`||
 |5|`akamai appsec enable-custom-rule --custom-rule=<custom rule id> --policy=<security policy id> --action=<alert or deny>`||
-|6|Activate the configuration version _(comming soon)_||
-|7|Check activation status _(comming soon)_||
+|6|`akamai appsec activate --network=<activation network> --notes=<activation notes> --notify=<emails>`||
+|7|`akamai appsec activation --activation-id=<activation id>`||
 
 For details about individual commands, please look at [Commands](#commands)
 ### Commands
 * [Retrieve available configurations](#list-configurations)
 * [Retrieve available configuration versions](#list-configuration-versions)
 * [Retrieve a configuration version](#retrieve-configuration-version)
+* [Clone a configuration version](#clone-configuration-version)
 * [Retrieve hostnames available for protection](#list-selectable-hostnames)
 * [Retrieve hostnames that are protected](#list-selected-hostnames)
 * [Add hostname(s) to protect](#add-hostnames)
@@ -116,6 +117,8 @@ For details about individual commands, please look at [Commands](#commands)
 * [Retrieve all custom rules](#list-custom-rules)
 * [Retrieve a custom rule](#retrieve-custom-rule)
 * [Delete a custom rule](#delete-custom-rule)
+* [Activate a configuration version](#activate-configuration-version)
+* [Check activation status](#check-activation-status)
 
 ### List Configurations
 ```
@@ -169,7 +172,28 @@ Command options:
   --version  Current version of the program.                                                         [boolean]
 
 ```
+### Clone Configuration version
 
+Clones the configuration version.
+
+```
+sage: akamai appsec clone [options]
+
+Options:
+  --config <id>    Configuration id. Mandatory if you have more than one configuration.               [number]
+  --version <num>  The version number to clone                                             [required] [string]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+
+Copyright (C) Akamai Technologies, Inc
+Visit http://github.com/akamai/cli-appsec for detailed documentation
+
+```
 ### List Selectable Hostnames
 These are the hostnames that the user can choose from, to add to the configuration version for protection.
 
@@ -472,6 +496,59 @@ Command options:
   --version  Current version of the program.                                                         [boolean]
 ```
 
+### Activate Configuration version
+
+Activates a configuration version and provides the activation id. This ID is required to monitor the activation status.
+
+```
+Usage: akamai appsec activate [options]
+
+Options:
+  --config <id>        Configuration id.
+                       [number]
+
+  --version <id>       The version number.
+                       [string]
+
+  --network <network>  The network in which the configuration must be activated.
+                       [required] [enum] [PROD, STAGING]
+
+  --note <notes>       The activation notes.
+                       [string]
+
+  --notify <emails>    The comma separated email ids to get notification.
+                       [array:string]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+
+Copyright (C) Akamai Technologies, Inc
+Visit http://github.com/akamai/cli-appsec for detailed documentation
+```
+### Check Activation status
+
+Prints the current state of the activation request. This command needs the activation id from the [activation](#activate-configuration-version) step.
+
+```
+Usage: akamai appsec activation [options]
+
+Options:
+  --activation-id <id>  Activation request id.                                             [required] [number]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+
+Copyright (C) Akamai Technologies, Inc
+Visit http://github.com/akamai/cli-appsec for detailed documentation
+```
 ### Delete custom rule
 ```
 Usage: akamai appsec delete-custom-rule [options]
