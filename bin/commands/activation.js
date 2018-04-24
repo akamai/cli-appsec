@@ -10,11 +10,17 @@ class ActivationStatusCommand {
   }
 
   setup(sywac) {
-    sywac.number('--activation-id <id>', {
-      desc: 'Activation request id.',
-      group: 'Options:',
-      required: true
-    });
+    sywac
+      .number('--activation-id <id>', {
+        desc: 'Activation request id.',
+        group: 'Options:',
+        required: true
+      })
+      .boolean('--verbose', {
+        desc: 'Provides more details about the activation status.',
+        group: 'Options:',
+        required: false
+      });
   }
 
   run(options) {

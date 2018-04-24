@@ -27,6 +27,9 @@ $ akamai appsec
 Usage: akamai appsec <command> [options]
 
 Commands:
+  activate                  Activate a version.
+  activation                Get activation status.
+  clone                     Clone a config.
   configs                   List all available configurations.
   enable-custom-rule        Assigns an action (such as alert or deny) to an existing custom rule in a policy.
   create-custom-rule        Create a custom rule.
@@ -511,13 +514,13 @@ Options:
                        [string]
 
   --network <network>  The network in which the configuration must be activated.
-                       [required] [enum] [PROD, STAGING]
+                       [required] [enum] [PRODUCTION, STAGING]
 
-  --note <notes>       The activation notes.
-                       [string]
+  --note <note>        The activation notes.
+                       [required] [string]
 
   --notify <emails>    The comma separated email ids to get notification.
-                       [array:string]
+                       [required] [array:string]
 
 Command options:
   --json     Print the raw json response. All commands respect this option.                          [boolean]
@@ -538,6 +541,7 @@ Usage: akamai appsec activation [options]
 
 Options:
   --activation-id <id>  Activation request id.                                             [required] [number]
+  --verbose             Provides more details about the activation status.                           [boolean]
 
 Command options:
   --json     Print the raw json response. All commands respect this option.                          [boolean]
