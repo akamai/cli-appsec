@@ -24,8 +24,8 @@ class Activation {
       fs.readFileSync(__dirname + '/../templates/activation.json', 'utf8')
     );
     activation.network = this._options.network;
-    if (this._options.notes) {
-      activation.note = this._options.notes;
+    if (this._options.note) {
+      activation.note = this._options.note;
     }
     if (this._options.notify) {
       activation.notificationEmails = this._options.notify;

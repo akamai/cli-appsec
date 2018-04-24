@@ -23,18 +23,18 @@ class ActivateVersionCommand {
       })
       .enumeration('--network <network>', {
         desc: 'The network in which the configuration must be activated.',
-        choices: ['PROD', 'STAGING'],
+        choices: ['PRODUCTION', 'STAGING'],
         required: true
       })
-      .string('--note <notes>', {
+      .string('--note <note>', {
         desc: 'The activation notes.',
         group: 'Options:',
-        required: false
+        required: true
       })
       .stringArray('--notify <emails>', {
         desc: 'The comma separated email ids to get notification.',
         group: 'Options:',
-        required: false
+        required: true
       });
   }
 
