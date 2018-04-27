@@ -23,7 +23,8 @@ class ModifyCustomRuleCommand {
       })
       .file('--file <path>', {
         desc: 'File with JSON rules',
-        mustExist: true
+        mustExist: true,
+        required: true
       });
   }
 
