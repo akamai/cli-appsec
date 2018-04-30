@@ -2,7 +2,7 @@
     "network": "",
     "action": "ACTIVATE",
     "method": "FAST",
-    "note":"",
+    "note":"Requested from CLI",
     "notificationEmails":[],
     "activationConfigs": [
         {
