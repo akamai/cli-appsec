@@ -29,7 +29,7 @@ class ActivateVersionCommand {
       .string('--note <note>', {
         desc: 'The activation notes.',
         group: 'Options:',
-        required: true
+        required: false
       })
       .stringArray('--notify <emails>', {
         desc: 'The comma separated email ids to get notification.',
