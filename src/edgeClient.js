@@ -8,7 +8,7 @@ class Edge {
   constructor(options) {
     let auth = {
       path: options.edgerc ? options.edgerc : '~/.edgerc',
-      section: options.section ? options.section : 'default',
+      section: options.section ? options.section : 'appsec',
       debug: false,
       default: true
     };
