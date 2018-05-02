@@ -5,9 +5,8 @@
   "commands": [
     {
       "name": "appsec",
-      "version": "1.0.0",
-      "description": "Akamai Security tools for protecting websites.",
-      "bin": "https://github.com/akamai/cli-appsec/releases/download/{{.Version}}/akamai-{{.Name}}-{{.Version}}-{{.OS}}-{{.Arch}}{{.BinSuffix}}"
+      "version": "1.1.0",
+      "description": "Akamai Security tools for protecting websites."
       }
     ]
 }

@@ -1,6 +1,6 @@
 {
   "name": "akamaicliappsec",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A wrapping development kit to interface common tasks with akamai's Security {OPEN} API.",
   "repository": "https://github.com/akamai/cli-appsec",
   "license": "Apache-2.0",
@@ -11,7 +11,7 @@
     "lint": "eslint src",
     "test": "mocha",
     "precommit": "lint-staged",
-    "build": "pkg . --target node8-linux-x86,node8-linux-x64,node8-win-x86,node8-win-x64,node8-macos-x64 --output akamai-appsec-1.0.0"
+    "build": "pkg . --target node8-linux-x86,node8-linux-x64,node8-win-x86,node8-win-x64,node8-macos-x64 --output akamai-appsec-1.1.0"
   },
   "bin": {
     "appsec": "bin/akamai-appsec"
