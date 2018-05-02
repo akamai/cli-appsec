@@ -18,7 +18,7 @@ If left to these assumptions, the commands will perform slower than when these o
 ### Credentials
 In order to use this configuration, you need to:
 * Set up your credential files as described in the [authorization](https://developer.akamai.com/introduction/Prov_Creds.html) and [credentials](https://developer.akamai.com/introduction/Conf_Client.html) sections of the getting started guide on developer.akamai.com.  
-* When working through this process you need to give grants for the Application Security API.  The section in your configuration file should be called 'default' unless you would like to pass the section name in every command using the `--section` option.
+* When working through this process you need to give grants for the Application Security API.  The section in your configuration file should be called `appsec` otherwise you must pass the section name in every command using the `--section` option.
 
 ## Overview
 The akamai appsec Kit is a set of nodejs libraries that wraps Akamai's {OPEN} APIs to help simplify protection to the properties delivered by Akamai. This kit can be used [as a no-fuss command line utility](#akamai-appsec) to interact with the library.
