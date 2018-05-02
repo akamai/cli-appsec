@@ -123,8 +123,8 @@ Usage: akamai appsec configs [options]
 
 Command options:
   --json     Print the raw json response. All commands respect this option.                          [boolean]
-  --edgerc   The full path to the .edgerc file. Defaults to ~/.edgrrc                                 [string]
-  --section  The section of .edgerc to use. Defaults to 'default'                                     [string]
+  --edgerc   The full path to the .edgerc file. Defaults to ~/.edgrc                                 [string]
+  --section  The section of .edgerc to use.                                                           [string]
   --help     Prints help information.                                               [commands: help] [boolean]
   --version  Current version of the program.                                                         [boolean]
 
@@ -141,8 +141,8 @@ Options:
                  
 Command options:
   --json     Print the raw json response. All commands respect this option.                          [boolean]
-  --edgerc   The full path to the .edgerc file. Defaults to ~/.edgrrc                                 [string]
-  --section  The section of .edgerc to use. Defaults to 'default'                                     [string]
+  --edgerc   The full path to the .edgerc file. Defaults to ~/.edgrc                                 [string]
+  --section  The section of .edgerc to use.                                                           [string]
   --help     Prints help information.                                               [commands: help] [boolean]
   --version  Current version of the program.                                                         [boolean]
 
@@ -163,8 +163,8 @@ Options:
 
 Command options:
   --json     Print the raw json response. All commands respect this option.                          [boolean]
-  --edgerc   The full path to the .edgerc file. Defaults to ~/.edgrrc                                 [string]
-  --section  The section of .edgerc to use. Defaults to 'default'                                     [string]
+  --edgerc   The full path to the .edgerc file. Defaults to ~/.edgrc                                 [string]
+  --section  The section of .edgerc to use.                                                           [string]
   --help     Prints help information.                                               [commands: help] [boolean]
   --version  Current version of the program.                                                         [boolean]
 
@@ -489,7 +489,7 @@ Command options:
 ```
 ## Caveats
 The Akamai CLI is a new tool and as such we have made some design choices worth mentioning.
-* Credentials - the tool expects your credentials to be stored under a 'default' section in your ~/.edgerc file. Alternatively you can provide the section name using the --section option in every command. If you are unfamiliar with the authentication and provisioning for OPEN APIs, see the "Get Started" section of https://developer.akamai.com
+* Credentials - the tool expects your credentials to be stored under a 'appsec' section in your 'edgerc' file. Alternatively you can provide the section name using the --section option in every command. If you are unfamiliar with the authentication and provisioning for OPEN APIs, see the "Get Started" section of https://developer.akamai.com
 
 ## References
 <sup>1</sup>A configuration version is editable if it is not active currently or in the past in any of the environments(staging or production).
