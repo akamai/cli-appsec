@@ -46,6 +46,7 @@ class MatchTarget {
         for (let i = 0; i < this._options.hostnames.length; i++) {
           matchTarget.hostnames.push(this._options.hostnames[i]);
         }
+        delete matchTarget.validations;
         logger.debug('Updated match target: %s', JSON.stringify(matchTarget));
         return this._version.updateResource(
           URIs.MATCH_TARGET,
