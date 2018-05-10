@@ -1,42 +1,38 @@
-let CRB = require('../../src/crb').CRBHandler;
+let Clone = require('../../src/clone').CloneHandler;
 let out = require('./lib/out');
 
-class ModifyCustomRuleCommand {
+class CloneCommand {
   constructor() {
-    this.flags = 'modify-custom-rule';
-    this.desc = 'Update existing custom rule.';
+    this.flags = 'clone';
+    this.desc = 'Clone a config.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
 
   setup(sywac) {
     sywac
+
       .number('--config <id>', {
         desc: 'Configuration id. Mandatory if you have more than one configuration.',
         group: 'Options:',
         required: false
       })
-      .number('--custom-rule <id>', {
-        desc: 'Rule ID.',
+      .string('--version <num>', {
+        desc: 'The version number to clone',
         group: 'Options:',
-        required: true
-      })
-      .file('--file <path>', {
-        desc: 'File with JSON rules',
-        mustExist: true,
         required: true
       });
   }
 
   run(options) {
     out.print({
-      promise: new CRB(options).updateRule(),
+      promise: new Clone(options).clone(),
       args: options,
       success: (args, data) => {
-        return data.id;
+        return data.version;
       }
     });
   }
 }
 
-module.exports = new ModifyCustomRuleCommand();
+module.exports = new CloneCommand();

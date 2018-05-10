@@ -53,16 +53,21 @@ class Edge {
             resolve(response.body);
           }
         } else if (!response) {
-          logger.info('No response from server: ' + JSON.stringify(data));
+          logger.info('No response from server: ', data);
           reject('Could not get data at this time.');
         } else {
-          logger.error('Error response from server: ' + JSON.stringify(response, null, 2));
-          logger.error('Body: ' + JSON.stringify(JSON.parse(response.body), null, 2));
+          try {
+            logger.error('Error response from server: ', JSON.stringify(response, null, 2));
+            logger.error('Body: ', JSON.stringify(JSON.parse(response.body), null, 2));
+          } catch (err) {
+            //do nothing
+          }
+
           try {
             let errJson = JSON.parse(response.body);
             reject(errJson);
           } catch (err) {
-            reject({ error: response.body });
+            reject({ detail: 'Unknown Error' });
           }
         }
       });
