@@ -52,6 +52,8 @@ class Edge {
             //promise needs to call resolve and resolve() returns "undefined"
             resolve(response.body);
           }
+        } else if (response && response.statusCode == 504) {
+          reject('The request is taking longer than expected.');
         } else if (!response) {
           logger.info('No response from server: ', data);
           reject('Could not get data at this time.');

@@ -38,6 +38,7 @@ Commands:
   modify-custom-rule        Update existing custom rule.
   structured-rule-template  Prints sample JSON of a structured custom rule.                     [aliases: srt]
   custom-rules              List all custom rules.
+  export                    Export a configuration version.
   add-hostname              Add hostnames to selected list
   selectable-hostnames      List all selectable hostnames.
   selected-hostnames        List all currently chosen hostnames.
@@ -122,6 +123,7 @@ For details about individual commands, please look at [Commands](#commands)
 * [Delete a custom rule](#delete-custom-rule)
 * [Activate a configuration version](#activate-configuration-version)
 * [Check activation status](#check-activation-status)
+* [Export a configuration version](#export-configuration-version)
 
 ### List Configurations
 ```
@@ -567,6 +569,24 @@ Command options:
   --section  The section of .edgerc to use.                                                           [string]
   --help     Prints help information.                                               [commands: help] [boolean]
   --version  Current version of the program.                                                         [boolean]
+```
+
+### Export Configuration Version
+Exports the complete details of a configuration version.
+```
+Usage: akamai appsec export [options]
+
+Options:
+  --config <id>    Configuration id. Mandatory if you have more than one configuration.               [number]
+  --version <num>  The version number to Export                                                       [string]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+
 ```
 ## Caveats
 The Akamai CLI is a new tool and as such we have made some design choices worth mentioning.
