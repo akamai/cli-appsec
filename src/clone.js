@@ -12,9 +12,6 @@ class CloneHandler {
   }
 
   clone() {
-    let version = this._options['version'];
-    let payload = { createFromVersion: version, ruleUpdate: false };
-    return this._config.createResource(URIs.CLONE, [], payload);
     return this._version.getVersionNumber().then(version => {
       let payload = { createFromVersion: version, ruleUpdate: false };
       return this._config.createResource(URIs.CLONE, [], payload);
