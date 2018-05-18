@@ -18,7 +18,8 @@ class CloneCommand {
         required: false
       })
       .string('--version <num>', {
-        desc: 'The version number to clone',
+        desc:
+          "The version to clone. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'.",
         group: 'Options:',
         required: true
       });
