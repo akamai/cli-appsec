@@ -29,7 +29,8 @@ const resources = {
   MATCH_TARGETS: '/appsec/v1/configs/%s/versions/%s/match-targets',
   MATCH_TARGET: '/appsec/v1/configs/%s/versions/%s/match-targets/%s',
   MATCH_TARGET_SEQUENCE: '/appsec/v1/configs/%s/versions/%s/match-targets/sequence',
-  FIREWALL_POLICIES: '/appsec/v1/configs/%s/versions/%s/security-policies'
+  FIREWALL_POLICIES: '/appsec/v1/configs/%s/versions/%s/security-policies',
+  EXPORT: '/appsec/v1/export/configs/%s/versions/%s'
 };
 
 define('URIS', resources);
