@@ -519,7 +519,7 @@ Options:
                        [required] [enum] [PRODUCTION, STAGING]
 
   --note <note>        The activation notes.
-                       [required] [string]
+                       [string]
 
   --notify <emails>    The comma separated email ids to get notification.
                        [required] [array:string]
