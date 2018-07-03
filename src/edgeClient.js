@@ -4,6 +4,7 @@ var EdgeGrid = require('edgegrid');
 let util = require('util');
 let logger = require('./constants').logger('EdgeClient');
 let version = require('../package.json').version;
+let fs = require('fs');
 class Edge {
   constructor(options) {
     let auth = {
@@ -13,6 +14,16 @@ class Edge {
       default: true
     };
     logger.debug('Auth details: ' + JSON.stringify(auth));
+    //If the user did not specify a section and if 'appsec' is missing, we use the 'default' section
+    if (!options.section) {
+      let exp = new RegExp('^\\s*\\[' + auth.section + '\\]\\s*$', 'm');
+      let authFileData = fs.readFileSync(untildify(auth.path), 'utf8');
+      if (!exp.test(authFileData)) {
+        logger.debug('Section not found. Defaulting to "default"');
+        auth.section = 'default';
+      }
+    }
+
     this._edge = new EdgeGrid({
       path: untildify(auth.path),
       section: auth.section,
