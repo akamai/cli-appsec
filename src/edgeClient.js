@@ -13,10 +13,9 @@ class Edge {
       debug: false,
       default: true
     };
-
+    logger.debug('Auth details: ' + JSON.stringify(auth));
     //If the user did not specify a section and if 'appsec' is missing, we use the 'default' section
     if (!options.section) {
-      logger.debug('Auth details: ' + JSON.stringify(auth));
       let exp = new RegExp('^\\s*\\[' + auth.section + '\\]\\s*$', 'm');
       let authFileData = fs.readFileSync(untildify(auth.path), 'utf8');
       if (!exp.test(authFileData)) {
