@@ -1,0 +1,44 @@
+{
+    "responseToChoose": 0,
+    "responses": [
+        {
+            "httpStatus": 200,
+            "response": {
+                "statusCode": 200,
+                "body": {
+                    "statusCode": 200,
+                    "statusId": "f81c92c5-b150-4c41-9b53-9cef7969150a",
+                    "createDate": "2018-06-19T11:27:55Z"
+                }
+            }
+        },
+        {
+            "httpStatus": 303,
+            "response": {
+                "headers": {
+                    "location": "configs/1234/versions/1/activations/1"
+                },
+                "statusCode": 303,
+                "body": {
+                    "statusCode": 303,
+                    "statusId": "f81c92c5-b150-4c41-9b53-9cef7969150a",
+                    "createDate": "2018-06-19T11:27:55Z",
+                    "links": {
+                        "check-status": {
+                            "href": "activations/status/f81c92c5-b150-4c41-9b53-9cef7969150a"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "httpStatus": 403,
+            "response": {
+                "statusCode": 403,
+                "status": 403,
+                "title": "Unauthorized",
+                "detail": "You are not authorized to do this!"
+            }
+        }
+    ]
+}

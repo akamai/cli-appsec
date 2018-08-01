@@ -1,0 +1,33 @@
+{
+    "responseToChoose": 0,
+    "responses":[{
+        "httpStatus":200,
+        "response": {
+            "statusCode":200,
+            "body":{
+                "activationId": 1234,
+                "action": "ACTIVATE",
+                "status": "RECEIVED",
+                "network": "PRODUCTION",
+                "estimate": "PTM5",
+                "activationConfigs": [
+                  {
+                    "configId": 1,
+                    "configName": "config 1",
+                    "configVersion": 4,
+                    "previousConfigVersion": 2
+                  }
+                ],
+                "createdBy": "user1",
+                "createDate": "2013-10-07T17:41:52+00:00"
+              }
+        }
+    }, {
+        "httpStatus":403,
+        "response": {
+            "status": 403,
+            "title":"Unauthorized",
+            "detail":"You are not authorized to do this!"
+        }
+    }]
+}
