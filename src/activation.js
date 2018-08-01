@@ -88,7 +88,7 @@ class ActivationResponseHandler {
             function(edge) {
               new ActivationResponseHandler(edge).handle(statusId, resolve, reject);
             },
-            2000,
+            10000,
             this._edge
           );
         } else {
