@@ -66,7 +66,8 @@ class ActivationResponseHandler {
     this._edge
       .get('/appsec/v1/activations/status/' + statusId, [])
       .then(response => {
-        if (response.statusCode == 303) {
+        if (!response.statusId) {
+          //means a redirect
           let loc = response.headers.location;
           logger.info('Activation id available. Trying to fetch the object from:', loc);
           this._edge
@@ -82,13 +83,13 @@ class ActivationResponseHandler {
             .catch(err => {
               reject(err);
             });
-        } else if (response.statusCode == 200) {
-          logger.info('Activation id not available yet. Will retry after 2 seconds');
+        } else if (response.statusId) {
+          logger.info('Activation id not available yet. Will retry after 20 seconds');
           setTimeout(
             function(edge) {
               new ActivationResponseHandler(edge).handle(statusId, resolve, reject);
             },
-            10000,
+            20000,
             this._edge
           );
         } else {
@@ -101,7 +102,7 @@ class ActivationResponseHandler {
   }
 
   error(response, reject) {
-    if (response && response.statusCode == 504) {
+    if (response && response.status == 504) {
       reject('The request is taking longer than expected.');
     } else if (!response) {
       logger.info('No response from server: ');

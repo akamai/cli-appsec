@@ -56,13 +56,21 @@ class Edge {
             JSON.stringify(response)
         );
         if (response && response.statusCode >= 200 && response.statusCode < 400) {
+          let body = response.body;
           if (response.body) {
             //delete calls don't have a body and throw errors when parsing.
-            resolve(JSON.parse(response.body));
+            body = JSON.parse(response.body);
           } else {
             //promise needs to call resolve and resolve() returns "undefined"
-            resolve(response.body);
+            body = response.body;
           }
+          //Temp fix for long activation. Remove when long activation is fixed
+          if (response.statusCode == 202 || response.statusCode == 303) {
+            body.statusCode = response.statusCode;
+            body.headers = response.headers;
+          }
+          /////
+          resolve(body);
         } else if (response && response.statusCode == 504) {
           reject('The request is taking longer than expected.');
         } else if (!response) {
