@@ -42,7 +42,9 @@ class MatchTarget {
     return this._version
       .readResource(URIs.MATCH_TARGET, [this._options['match-target']])
       .then(matchTarget => {
-        matchTarget.hostnames = [].concat(matchTarget.hostnames);
+        if (!matchTarget.hostnames) {
+          matchTarget.hostnames = [];
+        }
         for (let i = 0; i < this._options.hostnames.length; i++) {
           matchTarget.hostnames.push(this._options.hostnames[i]);
         }
