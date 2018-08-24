@@ -18,6 +18,7 @@ class Edge {
     };
     logger.debug(JSON.stringify(auth));
     console.log('::::: MOCK API ENABLED :::::');
+    this._activationStatusCallCount = 0;
   }
 
   _resolveParams(uri, params) {
@@ -29,8 +30,7 @@ class Edge {
 
   _send(request) {
     return new Promise((resolve, reject) => {
-      let path = request.path.replace('/appsec-configuration/v1/', '');
-      path = path.replace('/appsec-resource/v1/', '');
+      let path = request.path.replace('/appsec/v1/', '');
       logger.debug('replaced path: ' + path);
       if (path.indexOf('?') !== -1) {
         path = path.substring(0, path.indexOf('?'));
@@ -44,11 +44,20 @@ class Edge {
           logger.debug(JSON.stringify(JSON.parse(data)));
           setTimeout(() => {
             let jsonData = JSON.parse(data);
+
+            //temporary activation call-only logic
+            if (path.indexOf('/activations/status/') != -1) {
+              if (this._activationStatusCallCount > 1) {
+                jsonData.responseToChoose = 2;
+              }
+              this._activationStatusCallCount++;
+            }
+
             let chosenData = jsonData.responses[jsonData.responseToChoose];
             if (chosenData.httpStatus >= 200 && chosenData.httpStatus < 400) {
               resolve(chosenData.response);
             } else {
-              reject(chosenData.response);
+              reject(JSON.stringify(chosenData.response));
             }
           }, 1000);
         }
@@ -73,7 +82,7 @@ class Edge {
       body: payload
     };
     logger.debug(JSON.stringify(request));
-    return payload;
+    return this._send(request);
   }
 
   put(requestUri, payload, params) {
