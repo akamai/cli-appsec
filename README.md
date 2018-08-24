@@ -17,7 +17,7 @@ If left to these assumptions, the commands will perform slower than when these o
 ### Credentials
 In order to use this configuration, you need to:
 * Set up your credential files as described in the [authorization](https://developer.akamai.com/introduction/Prov_Creds.html) and [credentials](https://developer.akamai.com/introduction/Conf_Client.html) sections of the getting started guide on developer.akamai.com.  
-* When working through this process you need to give grants for the Application Security API.  The section in your configuration file should be called 'appsec' unless you would like to pass the section name in every command using the `--section` option.
+* When working through this process you need to give grants for the Application Security API.  The section in your configuration file should be called 'appsec' or 'default' unless you would like to pass the section name in every command using the `--section` option.
 
 ## Overview
 The akamai appsec Kit is a set of nodejs libraries that wraps Akamai's {OPEN} APIs to help simplify protection to the properties delivered by Akamai. This kit can be used [as a no-fuss command line utility](#akamai-appsec) to interact with the library.
@@ -132,7 +132,7 @@ Usage: akamai appsec configs [options]
 Command options:
   --json     Print the raw json response. All commands respect this option.                          [boolean]
   --edgerc   The full path to the .edgerc file. Defaults to ~/.edgrrc                                 [string]
-  --section  The section of .edgerc to use. Defaults to 'appsec'                                     [string]
+  --section  The section of .edgerc to use.                                                           [string]
   --help     Prints help information.                                               [commands: help] [boolean]
   --version  Current version of the program.                                                         [boolean]
 
@@ -150,7 +150,7 @@ Options:
 Command options:
   --json     Print the raw json response. All commands respect this option.                          [boolean]
   --edgerc   The full path to the .edgerc file. Defaults to ~/.edgrrc                                 [string]
-  --section  The section of .edgerc to use. Defaults to 'appsec'                                     [string]
+  --section  The section of .edgerc to use.                                                           [string]
   --help     Prints help information.                                               [commands: help] [boolean]
   --version  Current version of the program.                                                         [boolean]
 
@@ -172,7 +172,7 @@ Options:
 Command options:
   --json     Print the raw json response. All commands respect this option.                          [boolean]
   --edgerc   The full path to the .edgerc file. Defaults to ~/.edgrrc                                 [string]
-  --section  The section of .edgerc to use. Defaults to 'appsec'                                     [string]
+  --section  The section of .edgerc to use.                                                           [string]
   --help     Prints help information.                                               [commands: help] [boolean]
   --version  Current version of the program.                                                         [boolean]
 
@@ -590,7 +590,7 @@ Command options:
 ```
 ## Caveats
 The Akamai CLI is a new tool and as such we have made some design choices worth mentioning.
-* Credentials - the tool expects your credentials to be stored under a 'appsec' section in your ~/.edgerc file. Alternatively you can provide the section name using the --section option in every command. If you are unfamiliar with the authentication and provisioning for OPEN APIs, see the "Get Started" section of https://developer.akamai.com
+* Credentials - the tool looks for credentials in the 'appsec' section in your ~/.edgerc file. If not present, it will look for the section 'default'. Alternatively you can provide the section name using the --section option in every command. If you are unfamiliar with the authentication and provisioning for OPEN APIs, see the "Get Started" section of https://developer.akamai.com
 
 ## References
 <sup>1</sup>A configuration version is editable if it is not active currently or in the past in any of the environments(staging or production).

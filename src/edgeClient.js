@@ -4,6 +4,7 @@ var EdgeGrid = require('edgegrid');
 let util = require('util');
 let logger = require('./constants').logger('EdgeClient');
 let version = require('../package.json').version;
+let fs = require('fs');
 class Edge {
   constructor(options) {
     let auth = {
@@ -13,6 +14,16 @@ class Edge {
       default: true
     };
     logger.debug('Auth details: ' + JSON.stringify(auth));
+    //If the user did not specify a section and if 'appsec' is missing, we use the 'default' section
+    if (!options.section) {
+      let exp = new RegExp('^\\s*\\[' + auth.section + '\\]\\s*$', 'm');
+      let authFileData = fs.readFileSync(untildify(auth.path), 'utf8');
+      if (!exp.test(authFileData)) {
+        logger.debug('Section not found. Defaulting to "default"');
+        auth.section = 'default';
+      }
+    }
+
     this._edge = new EdgeGrid({
       path: untildify(auth.path),
       section: auth.section,
@@ -45,13 +56,21 @@ class Edge {
             JSON.stringify(response)
         );
         if (response && response.statusCode >= 200 && response.statusCode < 400) {
+          let body = response.body;
           if (response.body) {
             //delete calls don't have a body and throw errors when parsing.
-            resolve(JSON.parse(response.body));
+            body = JSON.parse(response.body);
           } else {
             //promise needs to call resolve and resolve() returns "undefined"
-            resolve(response.body);
+            body = response.body;
           }
+          //Temp fix for long activation. Remove when long activation is fixed
+          if (response.statusCode == 202 || response.statusCode == 303) {
+            body.statusCode = response.statusCode;
+            body.headers = response.headers;
+          }
+          /////
+          resolve(body);
         } else if (response && response.statusCode == 504) {
           reject('The request is taking longer than expected.');
         } else if (!response) {
