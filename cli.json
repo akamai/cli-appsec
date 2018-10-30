@@ -6,7 +6,8 @@
     {
       "name": "appsec",
       "version": "1.2.2",
-      "description": "Manage security configurations for Kona Site Defender and Client Reputation."
+      "description": "Manage security configurations for Kona Site Defender and Client Reputation.",
+      "bin": "https://github.com/akamai/cli-appsec/releases/download/{{.Version}}/akamai-{{.Name}}-{{.Version}}-{{.OS}}-{{.Arch}}{{.BinSuffix}}"
       }
     ]
 }
