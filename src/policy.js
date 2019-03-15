@@ -4,8 +4,6 @@ let URIs = require('./constants').URIS;
 //let logger = require('./constants').logger('FirewallPolicy');
 let Version = require('./versionsprovider').versionProvider;
 
-let fs = require('fs');
-
 class FirewallPolicy {
   constructor(options) {
     this._version = new Version(options);
