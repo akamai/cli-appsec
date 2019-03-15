@@ -4,6 +4,8 @@ let URIs = require('./constants').URIS;
 //let logger = require('./constants').logger('FirewallPolicy');
 let Version = require('./versionsprovider').versionProvider;
 
+let fs = require('fs');
+
 class FirewallPolicy {
   constructor(options) {
     this._version = new Version(options);
@@ -12,6 +14,17 @@ class FirewallPolicy {
 
   policies() {
     return this._version.readResource(URIs.FIREWALL_POLICIES, []);
+  }
+
+  clonePolicy() {
+    let payload = { createFromSecurityPolicy: this._options.policy };
+    if (this._options.name) {
+      payload.policyName = this._options.name;
+    }
+    if (this._options.prefix) {
+      payload.policyPrefix = this._options.prefix;
+    }
+    return this._version.createResource(URIs.FIREWALL_POLICIES, [], payload);
   }
 
   /**

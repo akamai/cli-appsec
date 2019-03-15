@@ -293,6 +293,38 @@ Command options:
   --version  Current version of the program.                                                         [boolean]
 ```
 
+### Create security policy from another policy
+Creates a new security policy by cloning another policy available within the same configuration version.
+
+```
+Usage: akamai appsec clone-policy <policy> [options]
+
+Arguments:
+  <policy>        The policyId of the policy to clone.                                     [required] [string]
+
+Options:
+  --config <id>       Configuration id. Mandatory if you have more than one configuration.
+                      [number]
+
+  --version <num>     The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If
+                      not provided, latest version is assumed.
+                      [string]
+  
+  --prefix  <prefix>  A 4 character alphanumeric prefix for the policy ID of the new security policy being created. If
+                      not provided, it will be auto-generated.
+                      [string]
+  
+  --name    <name>    Name of the security policy. Maximum 255 characters. If not provided, it will be auto-generated.
+                      [string]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+```
+
 ### Create website match target
 
 ```
