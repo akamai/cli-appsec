@@ -14,6 +14,17 @@ class FirewallPolicy {
     return this._version.readResource(URIs.FIREWALL_POLICIES, []);
   }
 
+  clonePolicy() {
+    let payload = { createFromSecurityPolicy: this._options.policy };
+    if (this._options.name) {
+      payload.policyName = this._options.name;
+    }
+    if (this._options.prefix) {
+      payload.policyPrefix = this._options.prefix;
+    }
+    return this._version.createResource(URIs.FIREWALL_POLICIES, [], payload);
+  }
+
   /**
    * Provides policy id. If the policy ID is not provided by the user, tries to fetch the policy from server.
    * If there are more than one policy, an error is thrown.
