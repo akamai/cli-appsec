@@ -47,6 +47,7 @@ Commands:
   match-target-order        Change the match target sequence.
   match-targets             List all match targets.
   policies                  List all security policies.
+  clone-policy              Clone security policy.
   version                   Read a config version
   versions                  List all config versions
 
