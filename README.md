@@ -626,4 +626,3 @@ The Akamai CLI is a new tool and as such we have made some design choices worth 
 
 ## References
 <sup>1</sup>A configuration version is editable if it is not active currently or in the past in any of the environments(staging or production).
-
