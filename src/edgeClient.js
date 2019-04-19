@@ -35,6 +35,7 @@ class Edge {
     if (!this._accountKey) {
       logger.debug('Account key not provided');
     } else {
+      this._accountKey = encodeURIComponent(this._accountKey);
       logger.debug('Account Key : ' + this._accountKey);
     }
   }
