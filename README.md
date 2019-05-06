@@ -57,7 +57,7 @@ Commands:
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
-  --edgerc      he full path to the .edgerc file.                                                     [string]
+  --edgerc      The full path to the .edgerc file.                                                    [string]
   --section     The section of .edgerc to use.                                                        [string]
   --help        Prints help information.                                            [commands: help] [boolean]
   --version     Current version of the program.                                                      [boolean]
