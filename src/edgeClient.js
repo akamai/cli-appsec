@@ -13,6 +13,7 @@ class Edge {
       debug: false,
       default: true
     };
+
     logger.debug('Auth details: ' + JSON.stringify(auth));
     //If the user did not specify a section and if 'appsec' is missing, we use the 'default' section
     if (!options.section) {
@@ -29,11 +30,26 @@ class Edge {
       section: auth.section,
       debug: auth.debug
     });
+
+    this._accountKey = options['account-key'];
+    if (!this._accountKey) {
+      logger.debug('Account key not provided');
+    } else {
+      this._accountKey = encodeURIComponent(this._accountKey);
+      logger.debug('Account Key : ' + this._accountKey);
+    }
   }
 
   _resolveParams(uri, params) {
     for (let i = 0; params && i < params.length; i++) {
       uri = util.format(uri, params[i]);
+    }
+    if (this._accountKey) {
+      if (uri.includes('?')) {
+        uri = uri.concat('&accountSwitchKey=' + this._accountKey);
+      } else {
+        uri = uri.concat('?accountSwitchKey=' + this._accountKey);
+      }
     }
     return uri;
   }
