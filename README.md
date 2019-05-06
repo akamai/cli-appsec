@@ -19,6 +19,10 @@ In order to use this configuration, you need to:
 * Set up your credential files as described in the [authorization](https://developer.akamai.com/introduction/Prov_Creds.html) and [credentials](https://developer.akamai.com/introduction/Conf_Client.html) sections of the getting started guide on developer.akamai.com.  
 * When working through this process you need to give grants for the Application Security API.  The section in your configuration file should be called 'appsec' or 'default' unless you would like to pass the section name in every command using the `--section` option.
 
+### Account Switching
+Account switching can be performed by providing the `--account-key` option with account ID as the value.
+* In order to use this capability, an API client needs to be setup. Detailed information is available here https://learn.akamai.com/en-us/learn_akamai/getting_started_with_akamai_developers/developer_tools/accountSwitch.html
+
 ## Overview
 The akamai appsec Kit is a set of nodejs libraries that wraps Akamai's {OPEN} APIs to help simplify protection to the properties delivered by Akamai. This kit can be used [as a no-fuss command line utility](#akamai-appsec) to interact with the library.
 
@@ -52,12 +56,12 @@ Commands:
   versions                  List all config versions
 
 Command options:
-  --json     Print the raw json response. All commands respect this option.                          [boolean]
-  --edgerc   The full path to the .edgerc file.                                                       [string]
-  --section  The section of .edgerc to use.                                                           [string]
-  --help     Prints help information.                                               [commands: help] [boolean]
-  --version  Current version of the program.                                                         [boolean]
-
+  --json        Print the raw json response. All commands respect this option.                       [boolean]
+  --edgerc      The full path to the .edgerc file.                                                    [string]
+  --section     The section of .edgerc to use.                                                        [string]
+  --help        Prints help information.                                            [commands: help] [boolean]
+  --version     Current version of the program.                                                      [boolean]
+  --account-key Account ID to switch to when performing the operation                                 [string]
 Copyright (C) Akamai Technologies, Inc
 Visit http://github.com/akamai/cli-appsec for detailed documentation
 ```
