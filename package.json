@@ -22,7 +22,7 @@
   ],
   "dependencies": {
     "child-process-promise": "^2.2.1",
-    "edgegrid": "^3.0.4",
+    "edgegrid": "^3.0.6",
     "pino": "^4.10.4",
     "string-format": "^0.5.0",
     "sywac": "^1.2.0",
