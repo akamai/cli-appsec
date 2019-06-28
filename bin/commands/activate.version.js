@@ -35,6 +35,12 @@ class ActivateVersionCommand {
         desc: 'The comma separated email ids to get notification.',
         group: 'Options:',
         required: true
+      })
+      .stringArray('--acknowledge-invalid-hosts <invalid hostnames>', {
+        desc:
+          'In some cases, you may wish to activate a security configuration which targets hosts to which protection cannot be applied (for example, hosts not managed as Akamai properties). This will block activation with a warning, which will include the names of the invalid hosts. If you want to activate anyway, use this parameter to provide a comma-separated list of invalid host names to acknowledge the warning.',
+        group: 'Options:',
+        required: false
       });
   }
 
