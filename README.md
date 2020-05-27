@@ -54,6 +54,12 @@ Commands:
   clone-policy              Clone security policy.
   version                   Read a config version
   versions                  List all config versions
+  create-rate-policy        Create a rate policy.
+  delete-rate-policy        Delete a rate policy.
+  rate-policy               Display contents of a rate policy.
+  modify-rate-policy        Update existing rate policy.
+  rate-policies             List all rate policies.
+  api-endpoints             List all api endpoints.
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
