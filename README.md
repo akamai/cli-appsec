@@ -60,6 +60,14 @@ Commands:
   modify-rate-policy        Update existing rate policy.
   rate-policies             List all rate policies.
   api-endpoints             List all api endpoints.
+  protections               List all protections of a security policy.
+  set-protections           Update protections of a security policy.
+  rate-policies-actions     List all enabled rate policies actions of a security policy.
+  enable-rate-policy        Assign a rate policy action in a security policy.
+  disable-rate-policy       Remove a rate policy action in a security policy.
+  slow-post                 Display contents of slow post in a security policy.
+  enable-slow-post          Enable slow post in a security policy.
+  disable-slow-post         Disable slow post in a security policy.
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
