@@ -34,7 +34,7 @@ const resources = {
   RATE_POLICIES_ACTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rate-policies',
   RATE_POLICY_ACTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rate-policies/%s',
   POLICY_PROTECTIONS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/protections',
-  SLOWPOST: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/slow-post',
+  SLOW_POST: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/slow-post',
   FIREWALL_POLICIES: '/appsec/v1/configs/%s/versions/%s/security-policies',
   API_ENDPOINTS: '/appsec/v1/configs/%s/versions/%s/api-endpoints',
   EXPORT: '/appsec/v1/export/configs/%s/versions/%s'

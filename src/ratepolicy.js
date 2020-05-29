@@ -40,6 +40,36 @@ class RatePolicy {
       JSON.parse(payload)
     );
   }
+
+  getAllRatePolicyActions() {
+    return this._version.readResource(URIs.RATE_POLICIES_ACTION, [this._options['policy']]);
+  }
+
+  enableRatePolicy() {
+    let action = JSON.parse(
+      fs.readFileSync(__dirname + '/../templates/ratepolicy-action.json', 'utf8')
+    );
+    action.ipv4Action = this._options['ipv4-action'];
+    action.ipv6Action = this._options['ipv6-action'];
+    return this._version.updateResource(
+      URIs.RATE_POLICY_ACTION,
+      [this._options['policy'], this._options['rate-policy']],
+      action
+    );
+  }
+
+  disableRatePolicy() {
+    let action = JSON.parse(
+      fs.readFileSync(__dirname + '/../templates/ratepolicy-action.json', 'utf8')
+    );
+    action.ipv4Action = 'none';
+    action.ipv6Action = 'none';
+    return this._version.updateResource(
+      URIs.RATE_POLICY_ACTION,
+      [this._options['policy'], this._options['rate-policy']],
+      action
+    );
+  }
 }
 
 module.exports = {
