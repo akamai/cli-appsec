@@ -68,6 +68,9 @@ Commands:
   slow-post                 Display contents of slow post in a security policy.
   enable-slow-post          Enable slow post in a security policy.
   disable-slow-post         Disable slow post in a security policy.
+  penalty-box               Display contents of penalty box in a security policy.
+  enable-penalty-box        Enable penalty box in a security policy.
+  disable-penalty-box       Disable penalty box in a security policy.
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
