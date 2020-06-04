@@ -8,6 +8,7 @@ let untildify = require('untildify');
 let Config = require('./configprovider').configProvider;
 let Version = require('./versionsprovider').versionProvider;
 let PolicyProvider = require('./policy').policy;
+
 class PenaltyBox {
   constructor(options) {
     this._config = new Config(options);
@@ -16,29 +17,25 @@ class PenaltyBox {
     this._policyProvider = new PolicyProvider(options);
   }
 
-  getPenaltyBox {
+  getPenaltyBox() {
     return this._version.readResource(URIs.PENALTY_BOX, [this._options['policy']]);
   }
 
   enablePenaltyBox() {
-    return this._version.updateResource(
-        URIs.PENALTY_BOX,
-        [this._options['policy']],
-        JSON.parse(payload)
+    let protection = JSON.parse(
+      fs.readFileSync(__dirname + '/../templates/penalty-box.json', 'utf8')
     );
+    protection.action = this._options['action'];
+    protection.penaltyBoxProtection = true;
+    return this._version.updateResource(URIs.PENALTY_BOX, [this._options['policy']], protection);
   }
 
   disablePenaltyBox() {
     let protection = JSON.parse(
-        fs.readFileSync(__dirname + '/../templates/penalty-box.json', 'utf8')
+      fs.readFileSync(__dirname + '/../templates/penalty-box.json', 'utf8')
     );
 
-    protection.applyPenaltyBox = false;
-    return this._version.updateResource(
-        URIs.POLICY_PROTECTIONS,
-        [this._options['policy']],
-        protection
-    );
+    return this._version.updateResource(URIs.PENALTY_BOX, [this._options['policy']], protection);
   }
 }
 

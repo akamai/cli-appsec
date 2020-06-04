@@ -1,7 +1,7 @@
 let SlowPost = require('../../src/slowpost').slowPost;
 let out = require('./lib/out');
 
-class SlowPostommand {
+class SlowPostCommand {
   constructor() {
     this.flags = 'disable-slow-post';
     this.desc = 'Disable slow post on the security policy.';
@@ -40,4 +40,4 @@ class SlowPostommand {
   }
 }
 
-module.exports = new SlowPostommand();
+module.exports = new SlowPostCommand();

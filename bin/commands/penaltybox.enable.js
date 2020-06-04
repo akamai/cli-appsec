@@ -24,14 +24,14 @@ class EnablePenaltyBoxCommand {
       })
       .string('--policy <id>', {
         desc:
-            'The policy id to use. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
-        group: 'Options:',
-        required: true
-      })
-      .string('--action <id>', {
-        desc: 'Penalty box action',
+          'The policy id to use. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
         group: 'Options:',
         required: false
+      })
+      .string('--action <id>', {
+        desc: 'Action to assign. ',
+        group: 'Options:',
+        required: true
       });
   }
 
