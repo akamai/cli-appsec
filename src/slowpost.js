@@ -17,29 +17,27 @@ class SlowPost {
   }
 
   getSlowPost() {
-    return this._version.readResource(URIs.SLOW_POST, [this._options['policy']]);
+    return this._policyProvider.policyId().then(policyId => {
+      return this._version.readResource(URIs.SLOW_POST, [policyId]);
+    });
   }
 
   enableSlowPost() {
-    let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
-    return this._version.updateResource(
-      URIs.SLOW_POST,
-      [this._options['policy']],
-      JSON.parse(payload)
-    );
+    return this._policyProvider.policyId().then(policyId => {
+      let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
+      return this._version.updateResource(URIs.SLOW_POST, [policyId], JSON.parse(payload));
+    });
   }
 
   disableSlowPost() {
-    let protection = JSON.parse(
-      fs.readFileSync(__dirname + '/../templates/protection.json', 'utf8')
-    );
+    return this._policyProvider.policyId().then(policyId => {
+      let protection = JSON.parse(
+        fs.readFileSync(__dirname + '/../templates/protection.json', 'utf8')
+      );
 
-    protection.applySlowPostControls = false;
-    return this._version.updateResource(
-      URIs.POLICY_PROTECTIONS,
-      [this._options['policy']],
-      protection
-    );
+      protection.applySlowPostControls = false;
+      return this._version.updateResource(URIs.POLICY_PROTECTIONS, [policyId], protection);
+    });
   }
 }
 
