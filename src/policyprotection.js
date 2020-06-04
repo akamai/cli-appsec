@@ -17,16 +17,16 @@ class PolicyProtections {
   }
 
   getProtections() {
-    return this._version.readResource(URIs.POLICY_PROTECTIONS, [this._options['policy']]);
+    return this._policyProvider.policyId().then(policyId => {
+      return this._version.readResource(URIs.POLICY_PROTECTIONS, [policyId]);
+    });
   }
 
   setProtections() {
-    let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
-    return this._version.updateResource(
-      URIs.POLICY_PROTECTIONS,
-      [this._options['policy']],
-      JSON.parse(payload)
-    );
+    return this._policyProvider.policyId().then(policyId => {
+      let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
+      return this._version.updateResource(URIs.POLICY_PROTECTIONS, [policyId], JSON.parse(payload));
+    });
   }
 }
 
