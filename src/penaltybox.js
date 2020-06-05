@@ -18,24 +18,30 @@ class PenaltyBox {
   }
 
   getPenaltyBox() {
-    return this._version.readResource(URIs.PENALTY_BOX, [this._options['policy']]);
+    return this._policyProvider.policyId().then(policyId => {
+      return this._version.readResource(URIs.PENALTY_BOX, [policyId]);
+    });
   }
 
   enablePenaltyBox() {
-    let protection = JSON.parse(
-      fs.readFileSync(__dirname + '/../templates/penalty-box.json', 'utf8')
-    );
-    protection.action = this._options['action'];
-    protection.penaltyBoxProtection = true;
-    return this._version.updateResource(URIs.PENALTY_BOX, [this._options['policy']], protection);
+    return this._policyProvider.policyId().then(policyId => {
+      let protection = JSON.parse(
+        fs.readFileSync(__dirname + '/../templates/penalty-box.json', 'utf8')
+      );
+      protection.action = this._options['action'];
+      protection.penaltyBoxProtection = true;
+      return this._version.updateResource(URIs.PENALTY_BOX, [policyId], protection);
+    });
   }
 
   disablePenaltyBox() {
-    let protection = JSON.parse(
-      fs.readFileSync(__dirname + '/../templates/penalty-box.json', 'utf8')
-    );
+    return this._policyProvider.policyId().then(policyId => {
+      let protection = JSON.parse(
+        fs.readFileSync(__dirname + '/../templates/penalty-box.json', 'utf8')
+      );
 
-    return this._version.updateResource(URIs.PENALTY_BOX, [this._options['policy']], protection);
+      return this._version.updateResource(URIs.PENALTY_BOX, [policyId], protection);
+    });
   }
 }
 
