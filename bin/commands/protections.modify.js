@@ -43,7 +43,7 @@ class ModifyProtectionsCommand {
         promise: new PolicyProtections(options).setProtections(),
         args: options,
         success: (args, data) => {
-          return data.id;
+          return JSON.stringify(data);
         }
       });
     } else {
