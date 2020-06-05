@@ -42,7 +42,9 @@ class RatePolicy {
   }
 
   getAllRatePolicyActions() {
-    return this._version.readResource(URIs.RATE_POLICIES_ACTION, [this._options['policy']]);
+    return this._policyProvider.policyId().then(policyId => {
+      return this._version.readResource(URIs.RATE_POLICIES_ACTION, [policyId]);
+    });
   }
 
   enableRatePolicy() {
