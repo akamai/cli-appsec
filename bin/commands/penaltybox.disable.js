@@ -1,10 +1,10 @@
-let SlowPost = require('../../src/slowpost').slowPost;
+let PenaltyBox = require('../../src/penaltybox').penaltyBox;
 let out = require('./lib/out');
 
-class SlowPostCommand {
+class DisablePenaltyBoxCommand {
   constructor() {
-    this.flags = 'disable-slow-post';
-    this.desc = 'Disable slow post on the security policy.';
+    this.flags = 'disable-penalty-box';
+    this.desc = 'Disable penalty box on the security policy.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -31,7 +31,7 @@ class SlowPostCommand {
   }
   run(options) {
     out.print({
-      promise: new SlowPost(options).disableSlowPost(),
+      promise: new PenaltyBox(options).disablePenaltyBox(),
       args: options,
       success: (args, data) => {
         return JSON.stringify(data);
@@ -40,4 +40,4 @@ class SlowPostCommand {
   }
 }
 
-module.exports = new SlowPostCommand();
+module.exports = new DisablePenaltyBoxCommand();
