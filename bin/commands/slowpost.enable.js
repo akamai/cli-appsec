@@ -43,7 +43,7 @@ class EnableSlowPostCommand {
         promise: new SlowPost(options).enableSlowPost(),
         args: options,
         success: (args, data) => {
-          return data.id;
+          return JSON.stringify(data);
         }
       });
     } else {
