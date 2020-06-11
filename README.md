@@ -71,6 +71,7 @@ Commands:
   penalty-box               Display contents of penalty box in a policy.
   enable-penalty-box        Enable penalty box in a policy.
   disable-penalty-box       Disable penalty box in a policy.
+  set-mode                  Set the mode of the policy
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
