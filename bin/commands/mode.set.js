@@ -28,7 +28,7 @@ class SetModeCommand {
       .string('--policy <id>', {
         desc: 'Security Policy ID.',
         group: 'Options:',
-        required: true
+        required: false
       });
   }
 
