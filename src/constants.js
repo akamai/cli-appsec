@@ -38,7 +38,8 @@ const resources = {
   FIREWALL_POLICIES: '/appsec/v1/configs/%s/versions/%s/security-policies',
   API_ENDPOINTS: '/appsec/v1/configs/%s/versions/%s/api-endpoints',
   EXPORT: '/appsec/v1/export/configs/%s/versions/%s',
-  MODE: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/mode'
+  MODE: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/mode',
+  PENALTY_BOX: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/penalty-box'
 };
 
 define('URIS', resources);

@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class EnableSlowPostCommand {
   constructor() {
     this.flags = 'enable-slow-post';
-    this.desc = 'Enable slow post on the security policy.';
+    this.desc = 'Enable slow post on the policy.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -43,7 +43,7 @@ class EnableSlowPostCommand {
         promise: new SlowPost(options).enableSlowPost(),
         args: options,
         success: (args, data) => {
-          return data.id;
+          return JSON.stringify(data);
         }
       });
     } else {
