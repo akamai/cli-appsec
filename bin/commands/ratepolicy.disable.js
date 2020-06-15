@@ -22,6 +22,12 @@ class RatePolicyCommand {
         group: 'Options:',
         required: false
       })
+      .string('--policy <id>', {
+        desc:
+          'The policy id to use. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
+        group: 'Options:',
+        required: false
+      })
       .number('--rate-policy <id>', {
         desc: 'Rate Policy ID.',
         group: 'Options:',
