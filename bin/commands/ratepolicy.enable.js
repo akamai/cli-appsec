@@ -27,6 +27,12 @@ class RatePolicyCommand {
         group: 'Options:',
         required: true
       })
+      .string('--policy <id>', {
+        desc:
+          'The policy id to use. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
+        group: 'Options:',
+        required: false
+      })
       .string('--ipv4-action <id>', {
         desc:
           'IPV4 Action to assign. If the action is "none", it is not associated with the policy.',
