@@ -39,7 +39,15 @@ const resources = {
   API_ENDPOINTS: '/appsec/v1/configs/%s/versions/%s/api-endpoints',
   EXPORT: '/appsec/v1/export/configs/%s/versions/%s',
   MODE: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/mode',
-  PENALTY_BOX: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/penalty-box'
+  PENALTY_BOX: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/penalty-box',
+  ATTACK_GROUPS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/attack-groups',
+  ATTACK_GROUP: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/attack-groups/%s',
+  ATTACK_GROUP_EXCEPTION:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/attack-groups/%s/condition-exception',
+  RULE_CONDITION_EXCEPTION:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rules/%d/condition-exception',
+  RULE_ACTIONS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rule-actions',
+  RULE_ACTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rule-actions/%d'
 };
 
 define('URIS', resources);

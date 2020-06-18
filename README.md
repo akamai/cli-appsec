@@ -31,43 +31,59 @@ $ akamai appsec
 Usage: akamai appsec <command> [options]
 
 Commands:
-  activate                  Activate a version.
-  activation                Get activation status.
-  clone                     Clone a config.
-  configs                   List all available configurations.
-  enable-custom-rule        Assigns an action (such as alert or deny) to an existing custom rule in a policy.
-  create-custom-rule        Create a custom rule.
-  delete-custom-rule        Delete a custom rule.
-  custom-rule               Display contents of custom rule.
-  modify-custom-rule        Update existing custom rule.
-  structured-rule-template  Prints sample JSON of a structured custom rule.                     [aliases: srt]
-  custom-rules              List all custom rules.
-  export                    Export a configuration version.
-  add-hostname              Add hostnames to selected list
-  selectable-hostnames      List all selectable hostnames.
-  selected-hostnames        List all currently chosen hostnames.
-  create-match-target       Creates a match target.
-  modify-match-target       Updates a match target.
-  match-target-order        Change the match target sequence.
-  match-targets             List all match targets.
-  policies                  List all security policies.
-  clone-policy              Clone security policy.
-  version                   Read a config version
-  versions                  List all config versions
-  create-rate-policy        Create a rate policy.
-  delete-rate-policy        Delete a rate policy.
-  rate-policy               Display contents of a rate policy.
-  modify-rate-policy        Update existing rate policy.
-  rate-policies             List all rate policies.
-  api-endpoints             List all api endpoints.
-  protections               List all protections of a policy.
-  set-protections           Update protections of a policy.
-  rate-policies-actions     List all enabled rate policies actions of a policy.
-  enable-rate-policy        Assigns an action to an existing rate policy in a policy.
-  disable-rate-policy       Removes an action set to an existing rate policy in a policy.
-  slow-post                 Display contents of slow post in a policy.
-  enable-slow-post          Enable slow post in a policy.
-  disable-slow-post         Disable slow post in a policy.
+  activate                                  Activate a version.
+  activation                                Get activation status.
+  clone                                     Clone a config.
+  configs                                   List all available configurations.
+  enable-custom-rule                        Assigns an action (such as alert or deny) to an existing custom rule in a policy.
+  create-custom-rule                        Create a custom rule.
+  delete-custom-rule                        Delete a custom rule.
+  custom-rule                               Display contents of custom rule.
+  modify-custom-rule                        Update existing custom rule.
+  structured-rule-template                  Prints sample JSON of a structured custom rule.                     [aliases: srt]
+  custom-rules                              List all custom rules.
+  export                                    Export a configuration version.
+  add-hostname                              Add hostnames to selected list
+  selectable-hostnames                      List all selectable hostnames.
+  selected-hostnames                        List all currently chosen hostnames.
+  create-match-target                       Creates a match target.
+  modify-match-target                       Updates a match target.
+  match-target-order                        Change the match target sequence.
+  match-targets                             List all match targets.
+  policies                                  List all security policies.
+  clone-policy                              Clone security policy.
+  version                                   Read a config version
+  versions                                  List all config versions
+  create-rate-policy                        Create a rate policy.
+  delete-rate-policy                        Delete a rate policy.
+  rate-policy                               Display contents of a rate policy.
+  modify-rate-policy                        Update existing rate policy.
+  rate-policies                             List all rate policies.
+  api-endpoints                             List all api endpoints.
+  protections                               List all protections of a policy.
+  set-protections                           Update protections of a policy.
+  rate-policies-actions                     List all enabled rate policies actions of a policy.
+  enable-rate-policy                        Assigns an action to an existing rate policy in a policy.
+  disable-rate-policy                       Removes an action set to an existing rate policy in a policy.
+  slow-post                                 Display contents of slow post in a policy.
+  enable-slow-post                          Enable slow post in a policy.
+  disable-slow-post                         Disable slow post in a policy.
+  penalty-box                               Display penalty box action in a policy.
+  disable-penalty-box                       Disable penalty box in a policy.
+  enable-penalty-box                        Enable penalty box in a policy.
+  attack-groups                             List all attack group actions in a policy.
+  attack-group                              Display attack group action in a policy.
+  attackgroup-condition-exception           Display attack group condition exception in a policy.
+  modify-attackgroup-condition-exception    Update attack group condition exception in a policy.
+  enable-attack-group                       Enable attack group in a policy.
+  disable-attack-group                      Disable attack group  in a policy.
+  rule-actions                              List all rule actions in a policy.
+  rule-action                               Display rule action in a policy.
+  enable-rule-action                        Enable rule action in a policy.
+  disable-rule-action                       Disable rule action in a policy.
+  rule-condition-exception                  Display rule condition exception in a policy.
+  modify-rule-condition-exception           Update rule condition exception in a policy.
+
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
