@@ -68,6 +68,22 @@ Commands:
   slow-post                 Display contents of slow post in a policy.
   enable-slow-post          Enable slow post in a policy.
   disable-slow-post         Disable slow post in a policy.
+  penalty-box               Display penalty box action in a policy.
+  disable-penalty-box       Disable penalty box in a policy.
+  enable-penalty-box        Enable penalty box in a policy.
+  attack-groups             List all attack group actions in a policy.
+  attack-group              Display attack group action in a policy.
+  attackgroup-condition-exception  Display attack group condition exception in a policy.
+  modify-attackgroup-condition-exception  Update attack group condition exception in a policy.
+  enable-attack-group       Enable attack group in a policy.
+  disable-attack-group      Disable attack group  in a policy.
+  rule-actions              List all rule actions in a policy.
+  rule-action               Display rule action in a policy.
+  enable-rule-action        Enable rule action in a policy.
+  disable-rule-action       Disable rule action in a policy.
+  rule-condition-exception  Display rule condition exception in a policy.
+  modify-rule-condition-exception  Update rule condition exception in a policy.
+
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
