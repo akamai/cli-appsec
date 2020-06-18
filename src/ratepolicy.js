@@ -28,17 +28,33 @@ class RatePolicy {
   }
 
   createRatePolicy() {
-    let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
-    return this._version.createResource(URIs.RATE_POLICIES, [], JSON.parse(payload));
+    if (fs.existsSync(this._options['file'])) {
+      let data;
+      try {
+        data = JSON.parse(payload);
+      } catch (err) {
+        throw 'The input JSON is not valid';
+      }
+      let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
+      return this._version.createResource(URIs.RATE_POLICIES, [], data);
+    } else {
+      throw `The file does not exists: ${this._options['file']}`;
+    }
   }
 
   updateRatePolicy() {
-    let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
-    return this._version.updateResource(
-      URIs.RATE_POLICY,
-      [this._options['rate-policy']],
-      JSON.parse(payload)
-    );
+    if (fs.existsSync(this._options['file'])) {
+      let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
+      let data;
+      try {
+        data = JSON.parse(payload);
+      } catch (err) {
+        throw 'The input JSON is not valid';
+      }
+      return this._version.updateResource(URIs.RATE_POLICY, [this._options['rate-policy']], data);
+    } else {
+      throw `The file does not exists: ${this._options['file']}`;
+    }
   }
 
   getAllRatePolicyActions() {
