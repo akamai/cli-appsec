@@ -43,7 +43,7 @@ class RatePolicyCommand {
         desc:
           'IPV6 Action to assign. If the action is "none", it is not associated with the policy.',
         group: 'Options:',
-        required: false
+        required: true
       });
   }
 
