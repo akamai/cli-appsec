@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class DisablePenaltyBoxCommand {
   constructor() {
     this.flags = 'disable-penalty-box';
-    this.desc = 'Disable penalty box on the policy.';
+    this.desc = '(Beta) Disable penalty box on the policy.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
