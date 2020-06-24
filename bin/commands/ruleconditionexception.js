@@ -34,7 +34,6 @@ class RuleConditionExceptionCommand {
     if (!myArgs[0]) {
       throw 'Missing ruleId.';
     }
-    console.log(myArgs[0]);
 
     options.ruleId = myArgs[0];
     out.print({
