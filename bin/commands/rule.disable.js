@@ -35,7 +35,7 @@ class DisableRuleCommand {
     const myArgs = process.argv.slice(3);
 
     if (myArgs[0]) {
-      options.group = myArgs[0];
+      options.ruleId = myArgs[0];
       out.print({
         promise: new Rules(options).disableRuleAction(),
         args: options,
