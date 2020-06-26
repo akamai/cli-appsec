@@ -54,35 +54,35 @@ Commands:
   clone-policy                              Clone security policy.
   version                                   Read a config version
   versions                                  List all config versions
-  create-rate-policy                        Create a rate policy.
-  delete-rate-policy                        Delete a rate policy.
-  rate-policy                               Display contents of a rate policy.
-  modify-rate-policy                        Update existing rate policy.
-  rate-policies                             List all rate policies.
-  api-endpoints                             List all api endpoints.
-  protections                               List all protections of a policy.
-  set-protections                           Update protections of a policy.
-  rate-policies-actions                     List all enabled rate policies actions of a policy.
-  enable-rate-policy                        Assigns an action to an existing rate policy in a policy.
-  disable-rate-policy                       Removes an action set to an existing rate policy in a policy.
-  slow-post                                 Display contents of slow post in a policy.
-  enable-slow-post                          Enable slow post in a policy.
-  disable-slow-post                         Disable slow post in a policy.
-  penalty-box                               Display penalty box action in a policy.
-  disable-penalty-box                       Disable penalty box in a policy.
-  enable-penalty-box                        Enable penalty box in a policy.
-  attack-groups                             List all attack group actions in a policy.
-  attack-group                              Display attack group action in a policy.
-  attackgroup-condition-exception           Display attack group condition exception in a policy.
-  modify-attackgroup-condition-exception    Update attack group condition exception in a policy.
-  enable-attack-group                       Enable attack group in a policy.
-  disable-attack-group                      Disable attack group  in a policy.
-  rule-actions                              List all rule actions in a policy.
-  rule-action                               Display rule action in a policy.
-  enable-rule-action                        Enable rule action in a policy.
-  disable-rule-action                       Disable rule action in a policy.
-  rule-condition-exception                  Display rule condition exception in a policy.
-  modify-rule-condition-exception           Update rule condition exception in a policy.
+  create-rate-policy                        (Beta) Create a rate policy.
+  delete-rate-policy                        (Beta) Delete a rate policy.
+  rate-policy                               (Beta) Display contents of a rate policy.
+  modify-rate-policy                        (Beta) Update existing rate policy.
+  rate-policies                             (Beta) List all rate policies.
+  api-endpoints                             (Beta) List all api endpoints.
+  protections                               (Beta) List all protections of a policy.
+  set-protections                           (Beta) Update protections of a policy.
+  rate-policies-actions                     (Beta) List all enabled rate policies actions of a policy.
+  enable-rate-policy                        (Beta) Assigns an action to an existing rate policy in a policy.
+  disable-rate-policy                       (Beta) Removes an action set to an existing rate policy in a policy.
+  slow-post                                 (Beta) Display contents of slow post in a policy.
+  enable-slow-post                          (Beta) Enable slow post in a policy.
+  disable-slow-post                         (Beta) Disable slow post in a policy.
+  penalty-box                               (Beta) Display penalty box action in a policy.
+  disable-penalty-box                       (Beta) Disable penalty box in a policy.
+  enable-penalty-box                        (Beta) Enable penalty box in a policy.
+  attack-groups                             (Beta) List all attack group actions in a policy.
+  attack-group                              (Beta) Display attack group action in a policy.
+  attackgroup-condition-exception           (Beta) Display attack group condition exception in a policy.
+  modify-attackgroup-condition-exception    (Beta) Update attack group condition exception in a policy.
+  enable-attack-group                       (Beta) Enable attack group in a policy.
+  disable-attack-group                      (Beta) Disable attack group  in a policy.
+  rule-actions                              (Beta) List all rule actions in a policy.
+  rule-action                               (Beta) Display rule action in a policy.
+  enable-rule-action                        (Beta) Enable rule action in a policy.
+  disable-rule-action                       (Beta) Disable rule action in a policy.
+  rule-condition-exception                  (Beta) Display rule condition exception in a policy.
+  modify-rule-condition-exception           (Beta) Update rule condition exception in a policy.
 
 
 Command options:

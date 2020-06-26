@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class RateActionCommand {
   constructor() {
     this.flags = 'rate-policies-actions';
-    this.desc = 'Display all enabled rate policy actions.';
+    this.desc = '(Beta) Display all enabled rate policy actions.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

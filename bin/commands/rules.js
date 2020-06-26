@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class RuleActionsCommand {
   constructor() {
     this.flags = 'rule-actions';
-    this.desc = 'Display rules and actions.';
+    this.desc = '(Beta) Display rules and actions.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
