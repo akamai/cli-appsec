@@ -34,7 +34,11 @@ class ModifyRuleConditionExceptionCommand {
     const args = process.argv.slice(3, 5);
 
     if (!args[0]) {
-      throw 'Missing ruleId.';
+      throw 'Missing rule Id.';
+    }
+
+    if (isNaN(args[0])) {
+      throw 'Invalid rule Id.';
     }
 
     if (!args[1] || !args[1].startsWith('@')) {

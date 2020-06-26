@@ -32,7 +32,11 @@ class RuleConditionExceptionCommand {
   run(options) {
     const myArgs = process.argv.slice(3);
     if (!myArgs[0]) {
-      throw 'Missing ruleId.';
+      throw 'Missing rule Id.';
+    }
+
+    if (isNaN(myArgs[0])) {
+      throw 'Invalid rule Id.';
     }
 
     options.ruleId = myArgs[0];
