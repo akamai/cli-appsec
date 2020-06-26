@@ -38,7 +38,7 @@ class ModifyRuleConditionExceptionCommand {
     }
 
     if (isNaN(args[0])) {
-      throw 'Missing rule Id.';
+      throw 'Invalid rule Id.';
     }
 
     if (!args[1] || !args[1].startsWith('@')) {
