@@ -61,14 +61,24 @@ class AttackGroups {
   }
 
   updateAttackGroupException() {
-    return this._policyProvider.policyId().then(policyId => {
+    if (fs.existsSync(this._options['file'])) {
       let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
-      return this._version.updateResource(
-        URIs.ATTACK_GROUP_EXCEPTION,
-        [policyId, this._options['group']],
-        payload
-      );
-    });
+      let data;
+      try {
+        data = JSON.parse(payload);
+      } catch (err) {
+        throw 'The input JSON is not valid';
+      }
+      return this._policyProvider.policyId().then(policyId => {
+        return this._version.updateResource(
+          URIs.ATTACK_GROUP_EXCEPTION,
+          [policyId, this._options['group']],
+          data
+        );
+      });
+    } else {
+      throw `The file does not exists: ${this._options['file']}`;
+    }
   }
 }
 
