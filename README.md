@@ -83,6 +83,10 @@ Commands:
   disable-rule-action                       (Beta) Disable rule action in a policy.
   rule-condition-exception                  (Beta) Display rule condition exception in a policy.
   modify-rule-condition-exception           (Beta) Update rule condition exception in a policy.
+  eval-rule-actions                         (Beta) Display eval rules and actions in a policy.
+  eval-rule-action                          (Beta) Display eval rule action in a policy.
+  enable-eval-rule-action                   (Beta) Enable eval rule action in a policy.
+  disable-eval-rule-action                  (Beta) Disable eval rule action in a policy.
 
 
 Command options:
