@@ -60,6 +60,8 @@ Commands:
   modify-rate-policy                        (Beta) Update existing rate policy.
   rate-policies                             (Beta) List all rate policies.
   api-endpoints                             (Beta) List all api endpoints.
+  mode                                      (Beta) Display the WAF Mode
+  set-mode                                  (Beta) Set the WAF Mode
   protections                               (Beta) List all protections of a policy.
   set-protections                           (Beta) Update protections of a policy.
   rate-policies-actions                     (Beta) List all enabled rate policies actions of a policy.
