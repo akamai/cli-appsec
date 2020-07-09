@@ -12,6 +12,12 @@ class Mode {
     this._policyProvider = new PolicyProvider(options);
   }
 
+  getMode() {
+    return this._policyProvider.policyId().then(policyId => {
+      return this._version.readResource(URIs.MODE, [policyId]);
+    });
+  }
+
   setMode() {
     let payload = { mode: this._options.mode };
     return this._policyProvider.policyId().then(policyId => {
