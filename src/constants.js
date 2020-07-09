@@ -48,8 +48,8 @@ const resources = {
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rules/%d/condition-exception',
   RULE_ACTIONS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rule-actions',
   RULE_ACTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rule-actions/%d',
-  EVAL_RULE_ACTIONS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-rule-actions',
-  EVAL_RULE_ACTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-rule-actions/%d'
+  EVAL_RULE_ACTIONS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-rules',
+  EVAL_RULE_ACTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-rules/%d'
 };
 
 define('URIS', resources);
