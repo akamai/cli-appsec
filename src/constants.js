@@ -46,8 +46,8 @@ const resources = {
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/attack-groups/%s/condition-exception',
   RULE_CONDITION_EXCEPTION:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rules/%d/condition-exception',
-  RULE_ACTIONS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rule-actions',
-  RULE_ACTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rule-actions/%d',
+  RULE_ACTIONS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rules',
+  RULE_ACTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rules/%d',
   EVAL_RULE_ACTIONS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-rules',
   EVAL_RULE_ACTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-rules/%d'
 };
