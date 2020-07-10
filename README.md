@@ -89,6 +89,8 @@ Commands:
   eval-rule-action                          (Beta) Display eval rule action in a policy.
   enable-eval-rule-action                   (Beta) Enable eval rule action in a policy.
   disable-eval-rule-action                  (Beta) Disable eval rule action in a policy.
+  eval-rule-condition-exception             (Beta) Display eval rule condition exception in a policy.
+  modify-eval-rule-condition-exception      (Beta) Update eval rule condition exception in a policy.
 
 
 Command options:

@@ -49,7 +49,9 @@ const resources = {
   RULE_ACTIONS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rules',
   RULE_ACTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rules/%d',
   EVAL_RULE_ACTIONS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-rules',
-  EVAL_RULE_ACTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-rules/%d'
+  EVAL_RULE_ACTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-rules/%d',
+  EVAL_RULE_CONDITION_EXCEPTION:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-rules/%d/condition-exception'
 };
 
 define('URIS', resources);
