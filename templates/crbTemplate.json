@@ -164,6 +164,14 @@
         "ChangeMe",
         "ChangeMe2"
       ]
+    },
+    {
+      "type": "clientCertPresentMatch",
+      "positiveMatch": true
+    },
+    {
+      "type": "clientCertValidMatch",
+      "positiveMatch": false
     }
   ]
 }
