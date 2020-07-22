@@ -75,8 +75,6 @@ Commands:
   enable-penalty-box                        (Beta) Enable penalty box in a policy.
   attack-groups                             (Beta) List all attack group actions in a policy.
   attack-group                              (Beta) Display attack group action in a policy.
-  attackgroup-condition-exception           (Beta) Display attack group condition exception in a policy.
-  modify-attackgroup-condition-exception    (Beta) Update attack group condition exception in a policy.
   enable-attack-group                       (Beta) Enable attack group in a policy.
   disable-attack-group                      (Beta) Disable attack group  in a policy.
   rule-actions                              (Beta) List all rule actions in a policy.
