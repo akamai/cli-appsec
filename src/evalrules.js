@@ -50,6 +50,36 @@ class EvalRules {
       );
     });
   }
+
+  getEvalRuleConditionException() {
+    return this._policyProvider.policyId().then(policyId => {
+      return this._version.readResource(URIs.EVAL_RULE_CONDITION_EXCEPTION, [
+        policyId,
+        this._options['ruleId']
+      ]);
+    });
+  }
+
+  updateEvalRuleConditionException() {
+    if (fs.existsSync(this._options['file'])) {
+      let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
+      let data;
+      try {
+        data = JSON.parse(payload);
+      } catch (err) {
+        throw 'The input JSON is not valid';
+      }
+      return this._policyProvider.policyId().then(policyId => {
+        return this._version.updateResource(
+          URIs.EVAL_RULE_CONDITION_EXCEPTION,
+          [policyId, this._options['ruleId']],
+          data
+        );
+      });
+    } else {
+      throw `The file does not exists: ${this._options['file']}`;
+    }
+  }
 }
 
 module.exports = {
