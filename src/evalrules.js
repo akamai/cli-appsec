@@ -80,6 +80,46 @@ class EvalRules {
       throw `The file does not exists: ${this._options['file']}`;
     }
   }
+
+  startEval() {
+    return this._policyProvider.policyId().then(policyId => {
+      let evalMode = JSON.parse(fs.readFileSync(__dirname + '/../templates/evalMode.json', 'utf8'));
+      evalMode.eval = 'START';
+      return this._version.createResource(URIs.EVAL_MODE, [policyId], evalMode);
+    });
+  }
+
+  stopEval() {
+    return this._policyProvider.policyId().then(policyId => {
+      let evalMode = JSON.parse(fs.readFileSync(__dirname + '/../templates/evalMode.json', 'utf8'));
+      evalMode.eval = 'STOP';
+      return this._version.createResource(URIs.EVAL_MODE, [policyId], evalMode);
+    });
+  }
+
+  restartEval() {
+    return this._policyProvider.policyId().then(policyId => {
+      let evalMode = JSON.parse(fs.readFileSync(__dirname + '/../templates/evalMode.json', 'utf8'));
+      evalMode.eval = 'RESTART';
+      return this._version.createResource(URIs.EVAL_MODE, [policyId], evalMode);
+    });
+  }
+
+  updateEval() {
+    return this._policyProvider.policyId().then(policyId => {
+      let evalMode = JSON.parse(fs.readFileSync(__dirname + '/../templates/evalMode.json', 'utf8'));
+      evalMode.eval = 'UPDATE';
+      return this._version.createResource(URIs.EVAL_MODE, [policyId], evalMode);
+    });
+  }
+
+  completeEval() {
+    return this._policyProvider.policyId().then(policyId => {
+      let evalMode = JSON.parse(fs.readFileSync(__dirname + '/../templates/evalMode.json', 'utf8'));
+      evalMode.eval = 'COMPLETE';
+      return this._version.createResource(URIs.EVAL_MODE, [policyId], evalMode);
+    });
+  }
 }
 
 module.exports = {

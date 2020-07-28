@@ -47,11 +47,14 @@ const resources = {
   RULE_CONDITION_EXCEPTION:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rules/%d/condition-exception',
   RULE_ACTIONS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rules',
+  RULE_UPGRADE_DETAILS:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rules/upgrade-details',
   RULE_ACTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rules/%d',
   EVAL_RULE_ACTIONS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-rules',
   EVAL_RULE_ACTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-rules/%d',
   EVAL_RULE_CONDITION_EXCEPTION:
-    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-rules/%d/condition-exception'
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-rules/%d/condition-exception',
+  EVAL_MODE: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval'
 };
 
 define('URIS', resources);
