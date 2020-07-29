@@ -38,7 +38,7 @@ class ActivateVersionCommand {
       })
       .stringArray('--acknowledge-invalid-hosts <invalid hostnames>', {
         desc:
-          'A comma separated list of domains or subdomains that are listed in this configuration as protected, but which cannot be protected for some reason (for example, they are not managed by Akamai). If a previous activation response required you to acknowledge a list of invalid hosts, you can do so here.',
+          'In some cases, you may wish to activate a security configuration which targets hosts to which protection cannot be applied (for example, hosts not managed as Akamai properties). This will block activation with a warning, which will include the names of the invalid hosts. If you want to activate anyway, use this parameter to provide a comma-separated list of invalid host names to acknowledge the warning.',
         group: 'Options:',
         required: false
       });
