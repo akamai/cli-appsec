@@ -3,7 +3,7 @@ let out = require('./lib/out');
 
 class EnableEvalRuleCommand {
   constructor() {
-    this.flags = 'stop-eval';
+    this.flags = 'end-eval';
     this.desc = '(Beta) Stop eval in a policy';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
