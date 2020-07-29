@@ -1,3 +1,4 @@
+**__This is a Beta Software__**
 # Akamai CLI for Application Security
 
 *NOTE:* This tool is intended to be installed via the Akamai CLI package manager, which can be retrieved from the releases page of the [Akamai CLI](https://github.com/akamai/cli) tool.
@@ -30,29 +31,59 @@ $ akamai appsec
 Usage: akamai appsec <command> [options]
 
 Commands:
-  activate                  Activate a version.
-  activation                Get activation status.
-  clone                     Clone a config.
-  configs                   List all available configurations.
-  enable-custom-rule        Assigns an action (such as alert or deny) to an existing custom rule in a policy.
-  create-custom-rule        Create a custom rule.
-  delete-custom-rule        Delete a custom rule.
-  custom-rule               Display contents of custom rule.
-  modify-custom-rule        Update existing custom rule.
-  structured-rule-template  Prints sample JSON of a structured custom rule.                     [aliases: srt]
-  custom-rules              List all custom rules.
-  export                    Export a configuration version.
-  add-hostname              Add hostnames to selected list
-  selectable-hostnames      List all selectable hostnames.
-  selected-hostnames        List all currently chosen hostnames.
-  create-match-target       Creates a match target.
-  modify-match-target       Updates a match target.
-  match-target-order        Change the match target sequence.
-  match-targets             List all match targets.
-  policies                  List all security policies.
-  clone-policy              Clone security policy.
-  version                   Read a config version
-  versions                  List all config versions
+  activate                                  Activate a version.
+  activation                                Get activation status.
+  clone                                     Clone a config.
+  configs                                   List all available configurations.
+  enable-custom-rule                        Assigns an action (such as alert or deny) to an existing custom rule in a policy.
+  create-custom-rule                        Create a custom rule.
+  delete-custom-rule                        Delete a custom rule.
+  custom-rule                               Display contents of custom rule.
+  modify-custom-rule                        Update existing custom rule.
+  structured-rule-template                  Prints sample JSON of a structured custom rule.                     [aliases: srt]
+  custom-rules                              List all custom rules.
+  export                                    Export a configuration version.
+  add-hostname                              Add hostnames to selected list
+  selectable-hostnames                      List all selectable hostnames.
+  selected-hostnames                        List all currently chosen hostnames.
+  create-match-target                       Creates a match target.
+  modify-match-target                       Updates a match target.
+  match-target-order                        Change the match target sequence.
+  match-targets                             List all match targets.
+  policies                                  List all security policies.
+  clone-policy                              Clone security policy.
+  version                                   Read a config version
+  versions                                  List all config versions
+  create-rate-policy                        (Beta) Create a rate policy.
+  delete-rate-policy                        (Beta) Delete a rate policy.
+  rate-policy                               (Beta) Display contents of a rate policy.
+  modify-rate-policy                        (Beta) Update existing rate policy.
+  rate-policies                             (Beta) List all rate policies.
+  api-endpoints                             (Beta) List all api endpoints.
+  mode                                      (Beta) Display the WAF Mode
+  set-mode                                  (Beta) Set the WAF Mode
+  protections                               (Beta) List all protections of a policy.
+  set-protections                           (Beta) Update protections of a policy.
+  rate-policies-actions                     (Beta) List all enabled rate policies actions of a policy.
+  enable-rate-policy                        (Beta) Assigns an action to an existing rate policy in a policy.
+  disable-rate-policy                       (Beta) Removes an action set to an existing rate policy in a policy.
+  slow-post                                 (Beta) Display contents of slow post in a policy.
+  enable-slow-post                          (Beta) Enable slow post in a policy.
+  disable-slow-post                         (Beta) Disable slow post in a policy.
+  penalty-box                               (Beta) Display penalty box action in a policy.
+  disable-penalty-box                       (Beta) Disable penalty box in a policy.
+  enable-penalty-box                        (Beta) Enable penalty box in a policy.
+  attack-groups                             (Beta) List all attack group actions in a policy.
+  attack-group                              (Beta) Display attack group action in a policy.
+  enable-attack-group                       (Beta) Enable attack group in a policy.
+  disable-attack-group                      (Beta) Disable attack group  in a policy.
+  rule-actions                              (Beta) List all rule actions in a policy.
+  rule-action                               (Beta) Display rule action in a policy.
+  enable-rule-action                        (Beta) Enable rule action in a policy.
+  disable-rule-action                       (Beta) Disable rule action in a policy.
+  rule-condition-exception                  (Beta) Display rule condition exception in a policy.
+  modify-rule-condition-exception           (Beta) Update rule condition exception in a policy.
+
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
@@ -61,7 +92,6 @@ Command options:
   --help        Prints help information.                                            [commands: help] [boolean]
   --version     Current version of the program.                                                      [boolean]
   --account-key Account ID to switch to when performing the operation                                 [string]
-
 Copyright (C) Akamai Technologies, Inc
 Visit http://github.com/akamai/cli-appsec for detailed documentation
 ```
