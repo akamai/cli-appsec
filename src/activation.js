@@ -31,6 +31,9 @@ class Activation {
     if (this._options.notify) {
       activation.notificationEmails = this._options.notify;
     }
+    if (this._options['acknowledge-invalid-hosts']) {
+      activation['acknowledgedInvalidHosts'] = this._options['acknowledge-invalid-hosts'];
+    }
 
     return this._config
       .getConfigId()
