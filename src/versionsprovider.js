@@ -69,6 +69,24 @@ class VersionProvider {
       });
   }
 
+  /**
+   * Method to delete resources tied directly to config version.
+   * @param {*} uri The URI of the resource.
+   * @param {*} params parameters other than the configId
+   */
+  deleteResource(uri, params = []) {
+    let args = [];
+    return this.getConfigId()
+      .then(configId => {
+        args.push(configId);
+        return this.getVersionNumber();
+      })
+      .then(version => {
+        args.push(version);
+        return this._edge.delete(uri, args.concat(params));
+      });
+  }
+
   getConfigId() {
     return this._config.getConfigId();
   }
@@ -103,7 +121,9 @@ class VersionProvider {
       let versionAttr =
         this._version == 'PROD' || this._version == 'PRODUCTION'
           ? 'production'
-          : this._version == 'STAGING' ? 'staging' : undefined;
+          : this._version == 'STAGING'
+          ? 'staging'
+          : undefined;
       if (versionAttr) {
         // if asked for staging or prod versions
         return this.versions().then(allVersions => {
