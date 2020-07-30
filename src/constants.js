@@ -54,7 +54,8 @@ const resources = {
   EVAL_RULE_ACTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-rules/%d',
   EVAL_RULE_CONDITION_EXCEPTION:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-rules/%d/condition-exception',
-  EVAL_MODE: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval'
+  EVAL_MODE: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval',
+  IP_GEO_FIREWALL: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/ip-geo-firewall'
 };
 
 define('URIS', resources);
