@@ -95,7 +95,7 @@ Commands:
   update-eval                               (Beta) Update eval in a policy.
   complete-eval                             (Beta) Complete eval in a policy.
   krs-rules-upgrade                         (Beta) Upgrade the KRS rules in a policy.
-  available-rule-versions                   (Beta) Display rules updates.
+  upgrade-details                           (Beta) Display rules updates.
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
