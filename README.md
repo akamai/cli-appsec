@@ -90,7 +90,7 @@ Commands:
   eval-rule-condition-exception             (Beta) Display eval rule condition exception in a policy.
   modify-eval-rule-condition-exception      (Beta) Update eval rule condition exception in a policy.
   start-eval                                (Beta) Start eval in a policy.
-  stop-eval                                 (Beta) Stop eval in a policy.
+  end-eval                                  (Beta) Stop eval in a policy.
   restart-eval                              (Beta) Restart eval in a policy.
   update-eval                               (Beta) Update eval in a policy.
   complete-eval                             (Beta) Complete eval in a policy.
