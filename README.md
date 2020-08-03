@@ -97,6 +97,7 @@ Commands:
   krs-rules-upgrade                         (Beta) Upgrade the KRS rules in a policy.
   upgrade-details                           (Beta) Display rules updates.
   ip-geo-firewall                           (Beta) Display the IP Geo Firewall network lists in a policy
+  modify-ip-geo-firewall                    (Beta) Update the IP Geo Firewall network lists in a policy
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
