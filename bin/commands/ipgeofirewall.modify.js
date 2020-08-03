@@ -11,8 +11,10 @@ class ModifyIpGeoFirewallCommand {
 
   setup(sywac) {
     sywac
-      .positional('@<file>', {
-        paramsDesc: 'The input file path'
+      .string('@<file>', {
+        desc: 'The input file path.',
+        group: 'Options:',
+        mustExist: true
       })
       .number('--config <id>', {
         desc: 'Configuration id. Mandatory if you have more than one configuration.',
@@ -34,13 +36,19 @@ class ModifyIpGeoFirewallCommand {
   }
 
   run(options) {
-    out.print({
-      promise: new IpGeoFirewall(options).updateIpGeoFirewall(),
-      args: options,
-      success: (args, data) => {
-        return JSON.stringify(data);
-      }
-    });
+    const myArgs = process.argv.slice(2);
+    if (myArgs[1].startsWith('@')) {
+      options.file = myArgs[1].replace('@', '');
+      out.print({
+        promise: new IpGeoFirewall(options).updateIpGeoFirewall(),
+        args: options,
+        success: (args, data) => {
+          return JSON.stringify(data);
+        }
+      });
+    } else {
+      throw 'Missing input file path.';
+    }
   }
 }
 
