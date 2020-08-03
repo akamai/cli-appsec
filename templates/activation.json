@@ -9,5 +9,6 @@
             "configId": -1,
             "configVersion": -1
         }
-    ]
+    ],
+    "acknowledgedInvalidHosts":[]
 }
