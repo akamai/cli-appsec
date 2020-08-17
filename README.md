@@ -98,6 +98,11 @@ Commands:
   upgrade-details                           (Beta) Display rules updates.
   ip-geo-firewall                           (Beta) Display the IP Geo Firewall network lists in a policy
   modify-ip-geo-firewall                    (Beta) Update the IP Geo Firewall network lists in a policy
+  create-reputation-profile                 (Beta) Create a reputation profile.
+  delete-reputation-profile                 (Beta) Delete a reputation profile.
+  reputation-profile                        (Beta) Display contents of a reputation profile.
+  modify-reputation-profile                 (Beta) Update existing reputation profile.
+  reputation-profiles                       (Beta) List all reputation profiles.
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
