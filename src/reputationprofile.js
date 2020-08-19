@@ -65,6 +65,45 @@ class ReputationProfile {
       throw `The file does not exists: ${this._options['file']}`;
     }
   }
+
+  getReputationProfileActions() {
+    return this._policyProvider.policyId().then(policyId => {
+      return this._version.readResource(URIs.REPUTATION_PROFILE_ACTIONS, [policyId]);
+    });
+  }
+
+  getReputationProfileAction() {
+    return this._policyProvider.policyId().then(policyId => {
+      return this._version.readResource(URIs.REPUTATION_PROFILE_ACTION, [
+        policyId,
+        this._options['reputation-profile']
+      ]);
+    });
+  }
+
+  enableReputationProfileAction() {
+    return this._policyProvider.policyId().then(policyId => {
+      let protection = JSON.parse(fs.readFileSync(__dirname + '/../templates/action.json', 'utf8'));
+      protection.action = this._options['action'];
+      return this._version.updateResource(
+        URIs.REPUTATION_PROFILE_ACTION,
+        [policyId, this._options['reputation-profile']],
+        protection
+      );
+    });
+  }
+
+  disableReputationProfileAction() {
+    return this._policyProvider.policyId().then(policyId => {
+      let protection = JSON.parse(fs.readFileSync(__dirname + '/../templates/action.json', 'utf8'));
+      protection.action = 'none';
+      return this._version.updateResource(
+        URIs.REPUTATION_PROFILE_ACTION,
+        [policyId, this._options['reputation-profile']],
+        protection
+      );
+    });
+  }
 }
 module.exports = {
   reputationProfile: ReputationProfile

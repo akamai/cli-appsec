@@ -103,6 +103,10 @@ Commands:
   reputation-profile                        (Beta) Display contents of a reputation profile.
   modify-reputation-profile                 (Beta) Update existing reputation profile.
   reputation-profiles                       (Beta) List all reputation profiles.
+  reputation-profile-actions                (Beta) List all reputation profile actions.
+  reputation-profile-action                 (Beta) Display the current reputation profile action.
+  enable-reputation-profile                 (Beta) Enable and set the action for a reputation profile.
+  disable-reputation-profile                (Beta) Disable the action for a reputation profile.
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
