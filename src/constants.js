@@ -61,7 +61,9 @@ const resources = {
   REPUTATION_PROFILE_ACTIONS:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/reputation-profiles',
   REPUTATION_PROFILE_ACTION:
-    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/reputation-profiles/%d'
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/reputation-profiles/%d',
+  CUSTOM_DENY: '/appsec/v1/configs/%s/versions/%s/custom-deny',
+  CUSTOM_DENY_BY_ID: '/appsec/v1/configs/%s/versions/%s/custom-deny/%s'
 };
 
 define('URIS', resources);

@@ -107,6 +107,11 @@ Commands:
   reputation-profile-action                 (Beta) Display the current reputation profile action.
   enable-reputation-profile                 (Beta) Enable and set the action for a reputation profile.
   disable-reputation-profile                (Beta) Disable the action for a reputation profile.
+  custom-deny-list                          (Beta) List all custom deny actions.
+  custom-deny                               (Beta) Display contents of custom deny action. 
+  delete-custom-deny                        (Beta) Delete a custom deny action.
+  create-custom-deny                        (Beta) Create-custom-deny action.
+  modify-custom-deny                        (Beta) Update existing custom deny action.
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
