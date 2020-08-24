@@ -3,7 +3,7 @@ let out = require('./lib/out');
 
 class SetReputationProfileAnalysisCommand {
   constructor() {
-    this.flags = 'set-reputation-profile-analysisn';
+    this.flags = 'set-reputation-profile-analysis';
     this.desc = '(Beta) Set the reputation profile analysis settings';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
@@ -28,17 +28,19 @@ class SetReputationProfileAnalysisCommand {
         group: 'Options:',
         required: false
       })
-      .boolean('--forwardToHTTPHeader <boolean>', {
+      .enumeration('--forwardToHTTPHeader <boolean>', {
         desc:
           'Option to add client reputation details to requests forwarded to origin in an HTTP header',
         group: 'Options:',
-        required: false
+        required: false,
+        choices: ['true', 'false']
       })
-      .boolean('--forwardSharedIPToHTTPHeaderAndSIEM <boolean>', {
+      .enumeration('--forwardSharedIPToHTTPHeaderAndSIEM <boolean>', {
         desc:
           'Option to add value indicating that shared IPs are included in HTTP header and SIEM integration when used.',
         group: 'Options:',
-        required: false
+        required: false,
+        choices: ['true', 'false']
       });
   }
 

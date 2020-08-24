@@ -116,10 +116,14 @@ class ReputationProfile {
       let settings = JSON.parse(
         fs.readFileSync(__dirname + '/../templates/reputationanalysis.json', 'utf8')
       );
-      settings.forwardToHTTPHeader = JSON.parse(this._options['forwardToHTTPHeader']);
-      settings.forwardSharedIPToHTTPHeaderAndSIEM = JSON.parse(
-        this._options['forwardSharedIPToHTTPHeaderAndSIEM']
-      );
+      if (this._options['forwardToHTTPHeader']) {
+        settings.forwardToHTTPHeader = JSON.parse(this._options['forwardToHTTPHeader']);
+      }
+      if (this._options['forwardSharedIPToHTTPHeaderAndSIEM']) {
+        settings.forwardSharedIPToHTTPHeaderAndSIEM = JSON.parse(
+          this._options['forwardSharedIPToHTTPHeaderAndSIEM']
+        );
+      }
       return this._version.updateResource(URIs.REPUTATION_ANALYSIS, [policyId], settings);
     });
   }
