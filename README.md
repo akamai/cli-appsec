@@ -112,6 +112,8 @@ Commands:
   delete-custom-deny                        (Beta) Delete a custom deny action.
   create-custom-deny                        (Beta) Create-custom-deny action.
   modify-custom-deny                        (Beta) Update existing custom deny action.
+  reputation-profile-analysis               (Beta) Display the current reputation profile analysis settings.
+  set-reputation-profile-analysis           (Beta) Set the reputation profile analysis settings.
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
