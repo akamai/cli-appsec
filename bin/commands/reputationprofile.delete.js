@@ -22,7 +22,7 @@ class DeleteReputationProfileCommand {
         group: 'Options:',
         required: false
       })
-      .number('--reputaiton-profile <id>', {
+      .number('--reputation-profile <id>', {
         desc: 'Reputation Profile ID.',
         group: 'Options:',
         required: true
