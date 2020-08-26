@@ -104,6 +104,29 @@ class ReputationProfile {
       );
     });
   }
+
+  getReputationAnalysisSettings() {
+    return this._policyProvider.policyId().then(policyId => {
+      return this._version.readResource(URIs.REPUTATION_ANALYSIS, [policyId]);
+    });
+  }
+
+  updateReputationAnalysisSettings() {
+    return this._policyProvider.policyId().then(policyId => {
+      let settings = JSON.parse(
+        fs.readFileSync(__dirname + '/../templates/reputationanalysis.json', 'utf8')
+      );
+      if (this._options['forwardToHTTPHeader']) {
+        settings.forwardToHTTPHeader = JSON.parse(this._options['forwardToHTTPHeader']);
+      }
+      if (this._options['forwardSharedIPToHTTPHeaderAndSIEM']) {
+        settings.forwardSharedIPToHTTPHeaderAndSIEM = JSON.parse(
+          this._options['forwardSharedIPToHTTPHeaderAndSIEM']
+        );
+      }
+      return this._version.updateResource(URIs.REPUTATION_ANALYSIS, [policyId], settings);
+    });
+  }
 }
 module.exports = {
   reputationProfile: ReputationProfile

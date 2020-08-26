@@ -62,6 +62,7 @@ const resources = {
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/reputation-profiles',
   REPUTATION_PROFILE_ACTION:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/reputation-profiles/%d',
+  REPUTATION_ANALYSIS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/reputation-analysis',
   CUSTOM_DENY: '/appsec/v1/configs/%s/versions/%s/custom-deny',
   CUSTOM_DENY_BY_ID: '/appsec/v1/configs/%s/versions/%s/custom-deny/%s'
 };
