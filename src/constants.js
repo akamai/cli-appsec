@@ -26,6 +26,7 @@ const resources = {
   CRB_ACTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/custom-rules/%s',
   SELECTED_HOSTS_RESOURCE: '/appsec/v1/configs/%s/versions/%s/selected-hostnames',
   SELECTABLE_HOSTS_RESOURCE: '/appsec/v1/configs/%s/versions/%s/selectable-hostnames',
+  FAILOVER_HOSTS_RESOURCE: '/appsec/v1/configs/%s/failover-hostnames',
   MATCH_TARGETS: '/appsec/v1/configs/%s/versions/%s/match-targets',
   MATCH_TARGET: '/appsec/v1/configs/%s/versions/%s/match-targets/%s',
   MATCH_TARGET_SEQUENCE: '/appsec/v1/configs/%s/versions/%s/match-targets/sequence',
