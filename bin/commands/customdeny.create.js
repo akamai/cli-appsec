@@ -11,6 +11,11 @@ class CreateCustomDenyCommand {
 
   setup(sywac) {
     sywac
+      .string('@<path>', {
+        desc: 'The input file path.',
+        group: 'Options:',
+        mustExist: true
+      })
       .number('--config <id>', {
         desc: 'Configuration id. Mandatory if you have more than one configuration.',
         group: 'Options:',
