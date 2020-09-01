@@ -33,7 +33,12 @@ class ListCustomDenyCommand {
       promise: new CustomDeny(options).getCustomdenyList(),
       args: options,
       success: (args, data) => {
-        return JSON.stringify(data);
+        data = data.customDenyList;
+        let str = [];
+        for (let i = 0; data && i < data.length; i++) {
+          str.push(data[i].id);
+        }
+        return str.join(require('os').EOL);
       }
     });
   }
