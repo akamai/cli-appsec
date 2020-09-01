@@ -114,6 +114,8 @@ Commands:
   modify-custom-deny                        (Beta) Update existing custom deny action.
   reputation-profile-analysis               (Beta) Display the current reputation profile analysis settings.
   set-reputation-profile-analysis           (Beta) Set the reputation profile analysis settings.
+  siem                                      (Beta) Display the SIEM settings.
+  modify-siem                               (Beta) Modify the SIEM settings.
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
