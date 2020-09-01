@@ -1,7 +1,7 @@
 let SiemSettings = require('../../src/siemsettings').siemSettings;
 let out = require('./lib/out');
 
-class siemSettingsCommand {
+class SIEMSettingsCommand {
   constructor() {
     this.flags = 'siem';
     this.desc = '(Beta) Display the siem settings.';
@@ -34,4 +34,4 @@ class siemSettingsCommand {
   }
 }
 
-module.exports = new siemSettingsCommand();
+module.exports = new SIEMSettingsCommand();
