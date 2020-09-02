@@ -116,7 +116,6 @@ Commands:
   set-reputation-profile-analysis           (Beta) Set the reputation profile analysis settings.
   api-request-constraints-action            (Beta) Display API Request Constraint action.
   enable-api-request-constraints            (Beta) Enable and set the API Request Constraint action.
-  disable-api-request-constraints           (Beta) Disable API Request Constraint action.
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
