@@ -120,7 +120,6 @@ Commands:
   siem                                      (Beta) Display the SIEM settings.
   modify-siem                               (Beta) Modify the SIEM settings.
   security-policy-api-endpoints             (Beta) List all api endpoints in a security policy.
->>>>>>> develop
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
