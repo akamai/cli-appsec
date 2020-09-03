@@ -116,6 +116,11 @@ Commands:
   set-reputation-profile-analysis           (Beta) Set the reputation profile analysis settings.
   api-request-constraints-action            (Beta) Display API Request Constraint action.
   enable-api-request-constraints            (Beta) Enable and set the API Request Constraint action.
+  failover-hostnames                        (Beta) List all failover hostnames on a config.
+  siem                                      (Beta) Display the SIEM settings.
+  modify-siem                               (Beta) Modify the SIEM settings.
+  security-policy-api-endpoints             (Beta) List all api endpoints in a security policy.
+>>>>>>> develop
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]

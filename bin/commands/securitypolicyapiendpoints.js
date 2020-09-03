@@ -1,10 +1,11 @@
-let CustomDeny = require('../../src/customdeny').customdeny;
+let SecurityPolicyApiEndpoints = require('../../src/securitypolicyapiendpoints')
+  .securitypolicyapiendpoints;
 let out = require('./lib/out');
 
-class ListCustomDenyCommand {
+class SecurityPolicyApiEndpointsCommand {
   constructor() {
-    this.flags = 'custom-deny-list';
-    this.desc = 'List all custom deny actions.';
+    this.flags = 'security-policy-api-endpoints';
+    this.desc = '(Beta) List all api endpoints in a security policy.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -22,21 +23,22 @@ class ListCustomDenyCommand {
         group: 'Options:',
         required: false
       })
-      .string('--search <id>', {
-        desc: 'Search String.',
+      .string('--policy <id>', {
+        desc:
+          'The policy id to use. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
         group: 'Options:',
         required: false
       });
   }
   run(options) {
     out.print({
-      promise: new CustomDeny(options).getCustomdenyList(),
+      promise: new SecurityPolicyApiEndpoints(options).getApiEndpoints(),
       args: options,
       success: (args, data) => {
-        data = data.customDenyList;
+        data = data.apiEndpoints;
         let str = [];
         for (let i = 0; data && i < data.length; i++) {
-          str.push(data[i].id);
+          str.push(data[i].id + ' ' + data[i].name);
         }
         return str.join(require('os').EOL);
       }
@@ -44,4 +46,4 @@ class ListCustomDenyCommand {
   }
 }
 
-module.exports = new ListCustomDenyCommand();
+module.exports = new SecurityPolicyApiEndpointsCommand();

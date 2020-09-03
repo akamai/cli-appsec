@@ -3,9 +3,11 @@
 let URIs = require('./constants').URIS;
 let logger = require('./constants').logger('HostSelection');
 let Version = require('./versionsprovider').versionProvider;
+let Config = require('./configprovider').configProvider;
 
 class SelectedHosts {
   constructor(options) {
+    this._config = new Config(options);
     this._version = new Version(options);
     this._options = JSON.parse(JSON.stringify(options)); //clone
   }
@@ -32,6 +34,10 @@ class SelectedHosts {
 
   selectedHosts() {
     return this._version.readResource(URIs.SELECTED_HOSTS_RESOURCE, []);
+  }
+
+  failoverHosts() {
+    return this._config.readResource(URIs.FAILOVER_HOSTS_RESOURCE, []);
   }
 }
 

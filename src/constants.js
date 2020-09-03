@@ -26,6 +26,7 @@ const resources = {
   CRB_ACTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/custom-rules/%s',
   SELECTED_HOSTS_RESOURCE: '/appsec/v1/configs/%s/versions/%s/selected-hostnames',
   SELECTABLE_HOSTS_RESOURCE: '/appsec/v1/configs/%s/versions/%s/selectable-hostnames',
+  FAILOVER_HOSTS_RESOURCE: '/appsec/v1/configs/%s/failover-hostnames',
   SIEM_RESOURCE: '/appsec/v1/configs/%s/versions/%s/siem',
   MATCH_TARGETS: '/appsec/v1/configs/%s/versions/%s/match-targets',
   MATCH_TARGET: '/appsec/v1/configs/%s/versions/%s/match-targets/%s',
@@ -41,6 +42,8 @@ const resources = {
   FIREWALL_POLICIES: '/appsec/v1/configs/%s/versions/%s/security-policies',
   API_ENDPOINTS: '/appsec/v1/configs/%s/versions/%s/api-endpoints',
   API_CONSTRAINT: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/api-request-constraints',
+  SECURITY_POLICY_API_ENDPOINTS:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/api-endpoints',
   EXPORT: '/appsec/v1/export/configs/%s/versions/%s',
   MODE: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/mode',
   PENALTY_BOX: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/penalty-box',
