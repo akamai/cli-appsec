@@ -1,11 +1,10 @@
-let SecurityPolicyApiEndpoints = require('../../src/securitypolicyapiendpoints')
-  .securitypolicyapiendpoints;
+let ApiConstraint = require('../../src/apiconstraint').apiconstraint;
 let out = require('./lib/out');
 
-class SecurityPolicyApiEndpointsCommand {
+class DisableApiConstraintCommand {
   constructor() {
-    this.flags = 'security-policy-api-endpoints';
-    this.desc = '(Beta) List all api endpoints in a security policy.';
+    this.flags = 'disable-api-request-constraints';
+    this.desc = '(Beta) Disable API Request Constraint.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -30,20 +29,16 @@ class SecurityPolicyApiEndpointsCommand {
         required: false
       });
   }
+
   run(options) {
     out.print({
-      promise: new SecurityPolicyApiEndpoints(options).getApiEndpoints(),
+      promise: new ApiConstraint(options).disableApiConstraint(),
       args: options,
       success: (args, data) => {
-        data = data.apiEndpoints;
-        let str = [];
-        for (let i = 0; data && i < data.length; i++) {
-          str.push(data[i].id + ' ' + data[i].name);
-        }
-        return str.join(require('os').EOL);
+        return "applyApiConstraints: " + data.applyApiConstraints;
       }
     });
   }
 }
 
-module.exports = new SecurityPolicyApiEndpointsCommand();
+module.exports = new DisableApiConstraintCommand();

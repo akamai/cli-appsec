@@ -21,6 +21,11 @@ class ListAPIEndpointsCommand {
           "The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
         group: 'Options:',
         required: false
+      })
+      .string('--policy <id>', {
+        desc: 'The policy id to use. If not provided, we try to use the policy available on file.',
+        group: 'Options:',
+        required: false
       });
   }
   run(options) {
@@ -31,7 +36,7 @@ class ListAPIEndpointsCommand {
         data = data.apiEndpoints;
         let str = [];
         for (let i = 0; data && i < data.length; i++) {
-          str.push(data[i].id);
+          str.push(data[i].id + ' ' + data[i].name);
         }
         return str.join(require('os').EOL);
       }
