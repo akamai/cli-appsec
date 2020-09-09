@@ -23,9 +23,20 @@ class ApiConstraint {
 
   enableApiConstraintAction() {
     return this._policyProvider.policyId().then(policyId => {
-      let protection = JSON.parse(fs.readFileSync(__dirname + '/../templates/action.json', 'utf8'));
-      protection.action = this._options['action'];
-      return this._version.updateResource(URIs.API_CONSTRAINT, [policyId], protection);
+      let action = JSON.parse(fs.readFileSync(__dirname + '/../templates/action.json', 'utf8'));
+      action.action = this._options['action'];
+      return this._version.updateResource(URIs.API_CONSTRAINT, [policyId], action);
+    });
+  }
+
+  disableApiConstraint() {
+    return this._policyProvider.policyId().then(policyId => {
+      let protection = JSON.parse(
+        fs.readFileSync(__dirname + '/../templates/protection.json', 'utf8')
+      );
+
+      protection.applyApiConstraints = false;
+      return this._version.updateResource(URIs.POLICY_PROTECTIONS, [policyId], protection);
     });
   }
 }
