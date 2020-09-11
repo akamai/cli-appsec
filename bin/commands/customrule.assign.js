@@ -23,7 +23,6 @@ class ModifyCustomRuleCommand {
       })
       .enumeration('--action <action>', {
         desc: 'Action to assign. If the action is "none", it is not associated with the policy.',
-        choices: ['alert', 'deny', 'none'],
         group: 'Options:',
         required: true
       })
