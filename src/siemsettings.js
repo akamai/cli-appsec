@@ -7,12 +7,21 @@ let fs = require('fs');
 let untildify = require('untildify');
 let Config = require('./configprovider').configProvider;
 let Version = require('./versionsprovider').versionProvider;
+let Edge =
+  process.env.MOCK_AKA_SEC_API == 'true' ? require('../mock/edgeClient') : require('./edgeClient');
+
 class SIEMSettings {
   constructor(options) {
+    this._edge = new Edge(options);
     this._config = new Config(options);
     this._options = options;
     this._version = new Version(options);
   }
+
+  getSIEMDefinitions() {
+    return this._edge.get(URIs.SIEM_DEF_RESOURCE);
+  }
+
   getSIEMSettings() {
     return this._version.readResource(URIs.SIEM_RESOURCE, []);
   }

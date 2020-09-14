@@ -115,6 +115,7 @@ Commands:
   reputation-profile-analysis               (Beta) Display the current reputation profile analysis settings.
   set-reputation-profile-analysis           (Beta) Set the reputation profile analysis settings.
   failover-hostnames                        (Beta) List all failover hostnames on a config.
+  siem-definitions                          (Beta) List all siem definitions.
   siem                                      (Beta) Display the SIEM settings.
   modify-siem                               (Beta) Modify the SIEM settings.
 
