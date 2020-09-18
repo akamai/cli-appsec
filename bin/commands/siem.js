@@ -4,7 +4,7 @@ let SIEM = require('../../src/siemsettings').siemSettings;
 class SIEMDefCommand {
   constructor() {
     this.flags = 'siem-definitions';
-    this.desc = 'List all siem definitions.';
+    this.desc = '(Beta) List all siem definitions.';
     this.run = this.run.bind(this);
   }
 

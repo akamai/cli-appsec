@@ -35,7 +35,7 @@ class SIEMSettings {
       } catch (err) {
         throw 'The input JSON is not valid';
       }
-      return this._version.createResource(URIs.SIEM_RESOURCE, [], data);
+      return this._version.updateResource(URIs.SIEM_RESOURCE, [], data);
     } else {
       throw `The file does not exists: ${this._options['file']}`;
     }
