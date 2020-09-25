@@ -87,8 +87,8 @@ Commands:
   eval-rule-action                          (Beta) Display eval rule action in a policy.
   enable-eval-rule-action                   (Beta) Enable eval rule action in a policy.
   disable-eval-rule-action                  (Beta) Disable eval rule action in a policy.
-  eval-rule-condition-exception             (Beta) Display eval rule condition exception in a policy.
-  modify-eval-rule-condition-exception      (Beta) Update eval rule condition exception in a policy.
+  eval-rule-condition-exception             (Beta) Display eval rule condition and exception in a policy.
+  modify-eval-rule-condition-exception      (Beta) Update eval rule condition and exception in a policy.
   start-eval                                (Beta) Start eval in a policy.
   end-eval                                  (Beta) Stop eval in a policy.
   restart-eval                              (Beta) Restart eval in a policy.
