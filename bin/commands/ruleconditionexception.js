@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class RuleConditionExceptionCommand {
   constructor() {
     this.flags = 'rule-condition-exception';
-    this.desc = '(Beta) Display rule condition exception.';
+    this.desc = '(Beta) Display rule conditions and exceptions.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

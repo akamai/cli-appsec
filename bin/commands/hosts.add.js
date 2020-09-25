@@ -4,7 +4,7 @@ let SelectedHosts = require('../../src/hosts').selectedHosts;
 class AddHostsCommand {
   constructor() {
     this.flags = 'add-hostname';
-    this.desc = 'Add hostnames to selected list';
+    this.desc = 'Add hostnames to selected list.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
