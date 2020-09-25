@@ -1,10 +1,10 @@
-let Rules = require('../../src/rules').rules;
+let EvalRules = require('../../src/evalrules').evalrules;
 let out = require('./lib/out');
 
-class RuleConditionExceptionCommand {
+class ModifyEvalRuleConditionExceptionCommand {
   constructor() {
-    this.flags = 'rule-condition-exception';
-    this.desc = '(Beta) Display rule conditions and exceptions.';
+    this.flags = 'modify-eval-rule-condition-exception';
+    this.desc = '(Beta) Update evaluation rule conditions and exceptions.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -30,18 +30,26 @@ class RuleConditionExceptionCommand {
       });
   }
   run(options) {
-    const myArgs = process.argv.slice(3);
-    if (!myArgs[0]) {
+    //get last 2 args
+    const args = process.argv.slice(3, 5);
+
+    if (!args[0]) {
       throw 'Missing rule Id.';
     }
 
-    if (isNaN(myArgs[0])) {
+    if (isNaN(args[0])) {
       throw 'Invalid rule Id.';
     }
 
-    options.ruleId = myArgs[0];
+    if (!args[1] || !args[1].startsWith('@')) {
+      throw 'Missing file name.';
+    }
+
+    options.ruleId = args[0];
+    options.file = args[1].replace('@', '');
+
     out.print({
-      promise: new Rules(options).getRuleConditionException(),
+      promise: new EvalRules(options).updateEvalRuleConditionException(),
       args: options,
       success: (args, data) => {
         return JSON.stringify(data);
@@ -50,4 +58,4 @@ class RuleConditionExceptionCommand {
   }
 }
 
-module.exports = new RuleConditionExceptionCommand();
+module.exports = new ModifyEvalRuleConditionExceptionCommand();

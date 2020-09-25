@@ -1,0 +1,46 @@
+{
+  "responseToChoose": 0,
+  "responses": [
+    {
+      "httpStatus": 200,
+      "response": {
+        "conditions": {
+          "groups": [
+            {
+              "conditions": [
+                {
+                  "className": "requestHeaderMatch",
+                  "name": [
+                    "Accept"
+                  ],
+                  "nameWildcard": false,
+                  "positiveMatch": true,
+                  "value": [
+                    "myheader"
+                  ],
+                  "valueCase": false,
+                  "valueWildcard": false
+                }
+              ],
+              "operation": "AND",
+              "positiveMatch": true
+            }
+          ],
+          "operation": "AND",
+          "positiveMatch": true
+        },
+        "inspectRequest": false,
+        "inspectResponse": false,
+        "metadata": "\u003cmatch:request.header result\u003d\"true\" name\u003d\"Accept\" value\u003d\"myheader\" value-case\u003d\"off\" value-wildcard\u003d\"off\" name-wildcard\u003d\"off\"\u003e\n\t\t\u003csecurity:firewall.action\u003e\n\t\t\t\u003cmsg\u003eUXR194\u003c/msg\u003e\n\t\t\t\u003ctag\u003eaa\u003c/tag\u003e\n\t\t\t\u003cid\u003e-1\u003c/id\u003e\n\t\t\t\u003c!-- firewall policy will set this var depending on the user selection --\u003e\n\t\t\t\u003cdeny\u003e%(WAF_CUSTOM_R-1_DENY)\u003c/deny\u003e\n\t\t\t\u003chttp-status\u003e403\u003c/http-status\u003e\n\t\t\u003c/security:firewall.action\u003e\n\u003c/match:request.header\u003e\n",
+        "name": "UXR194",
+        "re2": true,
+        "ruleActivated": false,
+        "structured": true,
+        "tag": [
+          "aa"
+        ],
+        "version": 1
+      }
+    }
+  ]
+}

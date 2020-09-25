@@ -1,0 +1,61 @@
+{
+  "responseToChoose": 0,
+  "responses": [
+    {
+      "httpStatus": 200,
+      "response": {
+        "configId": 1234,
+        "configVersion": 2,
+        "protectARLInclusionHost": true,
+        "availableSet":[
+          {
+            "arlInclusion":false,
+            "activeInProduction":true,
+            "activeInStaging":true,
+            "configIdInProduction":11887,
+            "configNameInProduction":"Rbac Test Config",
+            "hostname":"www.kona-ghost-api.com"
+           },
+           {
+              "arlInclusion":true,
+              "activeInProduction":true,
+              "activeInStaging":true,
+              "configIdInProduction":5443,
+              "configNameInProduction":"WAF Security File",
+              "hostname":"test-uvm-sec.amazonaws.com.edgesuite.net"
+           },
+           {
+              "arlInclusion":true,
+              "activeInProduction":false,
+              "activeInStaging":true,
+              "configIdInProduction":11882,
+              "configNameInProduction":"A PUBLIC CONFIG",
+              "hostname":"www.kona-ghost-netstorage-acs-qa.com"
+           }
+        ],
+        "selectedSet": [
+             {
+              "arlInclusion":false,
+              "activeInProduction":true,
+              "activeInStaging":true,
+              "configIdInProduction":null,
+              "configNameInProduction":null,
+              "hostname":"rbac.mtosches.wix.com"
+             }
+          ],
+        "errorSet":[
+           {
+              "hostname":"*.mss.iss.dlr2.net",
+              "reason":"property is not active in either production or staging",
+              "reasonCode":400
+           },
+           {
+              "hostname":"mss.iss.dlr3.net",
+              "reason":"You don't have access to this property",
+              "reasonCode":403
+           }
+        ]
+     }
+    }
+  ]
+}

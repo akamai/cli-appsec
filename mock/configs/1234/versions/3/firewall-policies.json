@@ -1,0 +1,45 @@
+{
+  "responseToChoose": 0,
+  "responses": [
+    {
+      "httpStatus": 200,
+      "response": {
+            "configId" : 1234,
+            "version" : 3,
+            "policies" : [
+              {
+                "policyId" : "CANN3_61",
+                "policyName" : "CANN FW 3",
+                "policySecurityControls":{
+                  "applyApplicationLayerControls" : true,
+                  "applyNetworkLayerControls" : true,
+                  "applyRateControls" : false,
+                  "applyReputationControls" : false,
+                  "applyBotmanControls" : true,
+                  "applyApiConstraints" : false,
+                  "applyUserValidationControls" : false,
+                  "applySlowPostControls" : false
+                },
+                "hasRatePolicyWithApiKey" : true
+              },
+              {
+                "policyId" : "CANN_2",
+                "policyName" : "CANN FW 1",
+                "policySecurityControls":{
+                  "applyApplicationLayerControls" : true,
+                  "applyNetworkLayerControls" : true,
+                  "applyRateControls" : false,
+                  "applyReputationControls" : false,
+                  "applyBotmanControls" : false,
+                  "applyApiConstraints" : false,
+                  "applyUserValidationControls" : true,
+                  "applySlowPostControls" : false
+                },
+                "hasRatePolicyWithApiKey" : false
+              }
+            ]
+           
+          }
+        }
+    ]
+  }

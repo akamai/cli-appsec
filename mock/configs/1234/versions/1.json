@@ -1,0 +1,47 @@
+{
+    "responseToChoose": 0,
+    "responses":[ {
+        "httpStatus":200,
+        "response": {
+            "configId": 1234,
+            "configName": "jtigano.WAF.test",
+            "createDate": 1493731946000,
+            "createdBy": "jtigano",
+            "links": [
+                {
+                    "enabled": false,
+                    "rel": "delete"
+                },
+                {
+                    "href": "http:viewMetadata.placeholder/url/configs/17956/versions/1",
+                    "rel": "viewMetadata"
+                },
+                {
+                    "href": "http:createVersionFrom.placeholder/url/configs/17956/versions/1",
+                    "rel": "createVersionFrom"
+                },
+                {
+                    "enabled": false,
+                    "rel": "edit"
+                },
+                {
+                    "href": "http:activate.placeholder/url/configs/17956/versions/1",
+                    "rel": "activate"
+                },
+                {
+                    "href": "http:deactivate.placeholder/url/configs/17956/versions/1",
+                    "rel": "deactivate"
+                }
+            ],
+            "production": {
+                "status": "Deactivated",
+                "time": 1493753405000
+            },
+            "staging": {
+                "status": "Active",
+                "time": 1493732705000
+            },
+            "version": 1
+        }
+    } ]
+}

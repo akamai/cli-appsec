@@ -1,10 +1,10 @@
-let Rules = require('../../src/rules').rules;
+let EvalRules = require('../../src/evalrules').evalrules;
 let out = require('./lib/out');
 
-class RuleConditionExceptionCommand {
+class EvalRuleConditionExceptionCommand {
   constructor() {
-    this.flags = 'rule-condition-exception';
-    this.desc = '(Beta) Display rule conditions and exceptions.';
+    this.flags = 'eval-rule-condition-exception';
+    this.desc = '(Beta) Display evaluation rule conditions and exceptions.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -41,7 +41,7 @@ class RuleConditionExceptionCommand {
 
     options.ruleId = myArgs[0];
     out.print({
-      promise: new Rules(options).getRuleConditionException(),
+      promise: new EvalRules(options).getEvalRuleConditionException(),
       args: options,
       success: (args, data) => {
         return JSON.stringify(data);
@@ -50,4 +50,4 @@ class RuleConditionExceptionCommand {
   }
 }
 
-module.exports = new RuleConditionExceptionCommand();
+module.exports = new EvalRuleConditionExceptionCommand();

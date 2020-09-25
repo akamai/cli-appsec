@@ -1,0 +1,25 @@
+{
+    "responseToChoose": 0,
+    "responses": [
+        {
+            "httpStatus": 202,
+            "response": {
+                "statusId": "f81c92c5-b150-4c41-9b53-9cef7969150a",
+                "createDate": "2018-06-19T11:27:55Z",
+                "links": {
+                    "check-status": {
+                        "href": "activations/status/f81c92c5-b150-4c41-9b53-9cef7969150a"
+                    }
+                }
+            }
+        },
+        {
+            "httpStatus": 403,
+            "response": {
+                "status": 403,
+                "title": "Unauthorized",
+                "detail": "You are not authorized to do this!"
+            }
+        }
+    ]
+}

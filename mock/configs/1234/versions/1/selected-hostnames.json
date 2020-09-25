@@ -1,0 +1,18 @@
+{
+  "responseToChoose": 0,
+  "responses": [
+    {
+      "httpStatus": 200,
+      "response": {
+        "hostnameList": [
+          {
+            "hostname": "*.mss.iss.dlr3.net"
+          },
+          {
+            "hostname": "b2c.div1.akamaniac.com"
+          }
+        ]
+      }
+    }
+  ]
+}

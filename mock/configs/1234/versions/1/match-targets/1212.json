@@ -1,0 +1,69 @@
+{
+  "responseToChoose": 0,
+  "responses": [
+    {
+      "httpStatus": 200,
+      "response": {
+        "targetId": 1212,
+        "securityPolicy": {
+          "policyId": "fwsf_32432"
+        },
+        "configId": 1243,
+        "configVersion": 3,
+        "type": "website",
+        "sequence": 1,
+        "hostnames": [
+          "pos.ediversitynetwork.com",
+          "www.staplesadvantage.com",
+          "order.staplesadvantage.com"
+        ],
+        "filePaths": [
+          "/esi/*",
+          "/cache/productpricedetail*",
+          "/price_fragment/*"
+        ],
+        "isNegativePathMatch": false,
+        "fileExtensions": [
+          "wmls",
+          "jpeg",
+          "pws",
+          "carb",
+          "pdf",
+          "js",
+          "hdml",
+          "cct",
+          "swf",
+          "pct"
+        ],
+        "isNegativeFileExtensionMatch": true,
+        "defaultFile": "BASE_MATCH",
+        "bypassNetworkLists": [
+          { "id": "5825_CPFBYPASSLIST", "name": "cp bypass network list" },
+          {
+            "id": "16566_SILVERSUPPORTWAFBYPASSL",
+            "name": "silver support bypass network list"
+          },
+          { "id": "7054_FEOSERVERS", "name": "FEO bypass network list" },
+          {
+            "id": "7518_ACCOUNTCHECKERS",
+            "name": "Account checker network list"
+          },
+          {
+            "id": "13027_WAFBYPASSLIST",
+            "name": "web application firewall bypass network list"
+          }
+        ],
+        "effectiveSecurityControls": {
+          "applyApiConstraints": false,
+          "applyApplicationLayerControls": true,
+          "applyNetworkLayerControls": false,
+          "applyRateControls": true,
+          "applyReputationControls": false,
+          "applySlowPostControls": false,
+          "applyUserValidationControls": false,
+          "applyBotmanControls": false
+        }
+      }
+    }
+  ]
+}
