@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class EvalRuleActionsCommand {
   constructor() {
     this.flags = 'eval-rule-actions';
-    this.desc = '(Beta) Display eval rules and actions in a policy';
+    this.desc = '(Beta) Display evaluation rules and actions in a policy.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
