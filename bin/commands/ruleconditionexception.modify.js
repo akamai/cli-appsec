@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class ModifyRuleConditionExceptionCommand {
   constructor() {
     this.flags = 'modify-rule-condition-exception';
-    this.desc = '(Beta) Modify modify rule condition and exception.';
+    this.desc = '(Beta) Modify modify rule conditions and exceptions.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

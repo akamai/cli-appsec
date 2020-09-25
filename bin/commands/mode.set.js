@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class SetModeCommand {
   constructor() {
     this.flags = 'set-mode';
-    this.desc = '(Beta) Set the WAF Mode';
+    this.desc = '(Beta) Set the WAF Mode.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

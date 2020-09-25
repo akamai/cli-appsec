@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class DisableEvalRuleCommand {
   constructor() {
     this.flags = 'disable-eval-rule-action';
-    this.desc = '(Beta) Disable eval rule action in a policy.';
+    this.desc = '(Beta) Disable evaluation rule action in a policy.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
