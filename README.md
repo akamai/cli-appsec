@@ -43,7 +43,7 @@ Commands:
   structured-rule-template                  Prints sample JSON of a structured custom rule.                     [aliases: srt]
   custom-rules                              List all custom rules.
   export                                    Export a configuration version.
-  add-hostname                              Add hostnames to selected list
+  add-hostname                              Add hostnames to selected list.
   selectable-hostnames                      List all selectable hostnames.
   selected-hostnames                        List all currently chosen hostnames.
   create-match-target                       Creates a match target.
@@ -52,16 +52,16 @@ Commands:
   match-targets                             List all match targets.
   policies                                  List all security policies.
   clone-policy                              Clone security policy.
-  version                                   Read a config version
-  versions                                  List all config versions
+  version                                   Read a config version.
+  versions                                  List all config versions.
   create-rate-policy                        (Beta) Create a rate policy.
   delete-rate-policy                        (Beta) Delete a rate policy.
   rate-policy                               (Beta) Display contents of a rate policy.
   modify-rate-policy                        (Beta) Update existing rate policy.
   rate-policies                             (Beta) List all rate policies.
   api-endpoints                             (Beta) List all api endpoints.
-  mode                                      (Beta) Display the WAF Mode
-  set-mode                                  (Beta) Set the WAF Mode
+  mode                                      (Beta) Display the WAF Mode.
+  set-mode                                  (Beta) Set the WAF Mode.
   protections                               (Beta) List all protections of a policy.
   set-protections                           (Beta) Update protections of a policy.
   rate-policies-actions                     (Beta) List all enabled rate policies actions of a policy.
@@ -81,9 +81,21 @@ Commands:
   rule-action                               (Beta) Display rule action in a policy.
   enable-rule-action                        (Beta) Enable rule action in a policy.
   disable-rule-action                       (Beta) Disable rule action in a policy.
-  rule-condition-exception                  (Beta) Display rule condition exception in a policy.
-  modify-rule-condition-exception           (Beta) Update rule condition exception in a policy.
-
+  rule-condition-exception                  (Beta) Display rule conditions and exceptions in a policy.
+  modify-rule-condition-exception           (Beta) Update rule conditions and exceptions in a policy.
+  eval-rule-actions                         (Beta) Display evaluation rules and actions in a policy.
+  eval-rule-action                          (Beta) Display evaluation rule action in a policy.
+  enable-eval-rule-action                   (Beta) Enable evaluation rule action in a policy.
+  disable-eval-rule-action                  (Beta) Disable evaluation rule action in a policy.
+  eval-rule-condition-exception             (Beta) Display evaluation rule conditions and exceptions in a policy.
+  modify-eval-rule-condition-exception      (Beta) Update evaluation rule conditions and exceptions in a policy.
+  start-eval                                (Beta) Start evaluation in a policy.
+  end-eval                                  (Beta) Stop evaluation in a policy.
+  restart-eval                              (Beta) Restart evaluation in a policy.
+  update-eval                               (Beta) Update evaluation in a policy.
+  complete-eval                             (Beta) Complete evaluation in a policy.
+  krs-rules-upgrade                         (Beta) Upgrade the KRS rules in a policy.
+  upgrade-details                           (Beta) Display rules updates.
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]

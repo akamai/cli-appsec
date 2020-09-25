@@ -1,0 +1,23 @@
+{
+    "responseToChoose": 0,
+    "responses": [
+        {
+            "httpStatus": 200,
+            "response": {
+                "configurations": [
+                    {
+                        "id": 1234
+                    }
+                ]
+            }
+        },
+        {
+            "httpStatus": 403,
+            "response": {
+                "status": 403,
+                "title": "Unauthorized",
+                "detail": "You are not authorized to do this!"
+            }
+        }
+    ]
+}

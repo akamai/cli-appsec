@@ -1,10 +1,10 @@
 let Rules = require('../../src/rules').rules;
 let out = require('./lib/out');
 
-class RuleConditionExceptionCommand {
+class RuleActionsCommand {
   constructor() {
-    this.flags = 'rule-condition-exception';
-    this.desc = '(Beta) Display rule conditions and exceptions.';
+    this.flags = 'krs-rules-upgrade';
+    this.desc = '(Beta) Upgrade the KRS rules in a policy.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -30,18 +30,8 @@ class RuleConditionExceptionCommand {
       });
   }
   run(options) {
-    const myArgs = process.argv.slice(3);
-    if (!myArgs[0]) {
-      throw 'Missing rule Id.';
-    }
-
-    if (isNaN(myArgs[0])) {
-      throw 'Invalid rule Id.';
-    }
-
-    options.ruleId = myArgs[0];
     out.print({
-      promise: new Rules(options).getRuleConditionException(),
+      promise: new Rules(options).upgradeRules(),
       args: options,
       success: (args, data) => {
         return JSON.stringify(data);
@@ -50,4 +40,4 @@ class RuleConditionExceptionCommand {
   }
 }
 
-module.exports = new RuleConditionExceptionCommand();
+module.exports = new RuleActionsCommand();

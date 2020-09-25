@@ -27,6 +27,20 @@ class Rules {
     });
   }
 
+  upgradeRules() {
+    return this._policyProvider.policyId().then(policyId => {
+      let upgrade = JSON.parse(fs.readFileSync(__dirname + '/../templates/upgrade.json', 'utf8'));
+      upgrade.upgrade = true;
+      return this._version.updateResource(URIs.RULE_ACTIONS, [policyId], upgrade);
+    });
+  }
+
+  getUpgradeDetails() {
+    return this._policyProvider.policyId().then(policyId => {
+      return this._version.readResource(URIs.RULE_UPGRADE_DETAILS, [policyId]);
+    });
+  }
+
   enableRuleAction() {
     return this._policyProvider.policyId().then(policyId => {
       let protection = JSON.parse(fs.readFileSync(__dirname + '/../templates/action.json', 'utf8'));

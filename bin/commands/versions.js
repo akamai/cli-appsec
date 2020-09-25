@@ -4,7 +4,7 @@ let util = require('util');
 class VersionsCommand {
   constructor() {
     this.flags = 'versions';
-    this.desc = 'List all config versions';
+    this.desc = 'List all config versions.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

@@ -1,0 +1,105 @@
+{
+  "responseToChoose": 0,
+  "responses": [
+    {
+      "httpStatus": 200,
+      "response": {
+        "matchTargets": {
+          "apiTargets": [
+            {
+              "apis": [
+                { "id": 2332, "name": "API Endpoint 1" },
+                { "id": 33434, "name": "API Endpoint 2" }
+              ],
+              "bypassNetworkLists": [
+                {
+                  "id": "1024_AMAZONELASTICCOMPUTECLOU",
+                  "name": "Amazon bypass network list"
+                }
+              ],
+              "configId": 17027,
+              "configVersion": 25,
+              "effectiveSecurityControls": {
+                "applyApiConstraints": true,
+                "applyApplicationLayerControls": true,
+                "applyBotmanControls": true,
+                "applyNetworkLayerControls": true,
+                "applyRateControls": true,
+                "applyReputationControls": true,
+                "applySlowPostControls": false,
+                "applyUserValidationControls": false
+              },
+              "securityPolicy": {
+                "policyId": "qik1_36553"
+              },
+              "sequence": 3,
+              "targetId": 1222208,
+              "type": "api"
+            }
+          ],
+          "websiteTargets": [
+            {
+              "bypassNetworkLists": [
+                {
+                  "id": "1283_MICROSOFTWINDOWSAZUREDAT",
+                  "name": "Microsoft bypass network list"
+                }
+              ],
+              "configId": 17027,
+              "configVersion": 25,
+              "defaultFile": "NO_MATCH",
+              "effectiveSecurityControls": {
+                "applyApiConstraints": false,
+                "applyApplicationLayerControls": true,
+                "applyBotmanControls": true,
+                "applyNetworkLayerControls": true,
+                "applyRateControls": true,
+                "applyReputationControls": true,
+                "applySlowPostControls": false,
+                "applyUserValidationControls": false
+              },
+              "fileExtensions": ["html"],
+              "filePaths": ["/*"],
+              "securityPolicy": {
+                "policyId": "qik1_36553"
+              },
+              "hostnames": [],
+              "isNegativeFileExtensionMatch": false,
+              "isNegativePathMatch": false,
+              "sequence": 1,
+              "targetId": 1221059,
+              "type": "website"
+            },
+            {
+              "bypassNetworkLists": [],
+              "configId": 17027,
+              "configVersion": 25,
+              "defaultFile": "NO_MATCH",
+              "effectiveSecurityControls": {
+                "applyApiConstraints": false,
+                "applyApplicationLayerControls": true,
+                "applyBotmanControls": true,
+                "applyNetworkLayerControls": false,
+                "applyRateControls": true,
+                "applyReputationControls": true,
+                "applySlowPostControls": false,
+                "applyUserValidationControls": false
+              },
+              "fileExtensions": [],
+              "filePaths": ["/path"],
+              "securityPolicy": {
+                "policyId": "9898_41458"
+              },
+              "hostnames": ["www.google", "www.google.com"],
+              "isNegativeFileExtensionMatch": false,
+              "isNegativePathMatch": false,
+              "sequence": 2,
+              "targetId": 1222207,
+              "type": "website"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

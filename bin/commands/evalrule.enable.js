@@ -1,16 +1,19 @@
-let Rules = require('../../src/rules').rules;
+let EvalRules = require('../../src/evalrules').evalrules;
 let out = require('./lib/out');
 
-class RuleConditionExceptionCommand {
+class EnableEvalRuleCommand {
   constructor() {
-    this.flags = 'rule-condition-exception';
-    this.desc = '(Beta) Display rule conditions and exceptions.';
+    this.flags = 'enable-eval-rule-action';
+    this.desc = '(Beta) Enable evaluation rule action in a policy.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
 
   setup(sywac) {
     sywac
+      .positional('<ruleId>', {
+        paramsDesc: 'The rule id.'
+      })
       .number('--config <id>', {
         desc: 'Configuration id. Mandatory if you have more than one configuration.',
         group: 'Options:',
@@ -27,21 +30,17 @@ class RuleConditionExceptionCommand {
           'The policy id to use. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
         group: 'Options:',
         required: false
+      })
+      .string('--action <id>', {
+        desc: 'Action to assign. ',
+        group: 'Options:',
+        required: true
       });
   }
+
   run(options) {
-    const myArgs = process.argv.slice(3);
-    if (!myArgs[0]) {
-      throw 'Missing rule Id.';
-    }
-
-    if (isNaN(myArgs[0])) {
-      throw 'Invalid rule Id.';
-    }
-
-    options.ruleId = myArgs[0];
     out.print({
-      promise: new Rules(options).getRuleConditionException(),
+      promise: new EvalRules(options).enableEvalRuleAction(),
       args: options,
       success: (args, data) => {
         return JSON.stringify(data);
@@ -50,4 +49,4 @@ class RuleConditionExceptionCommand {
   }
 }
 
-module.exports = new RuleConditionExceptionCommand();
+module.exports = new EnableEvalRuleCommand();

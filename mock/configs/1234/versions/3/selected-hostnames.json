@@ -1,0 +1,18 @@
+{
+  "responseToChoose": 0,
+  "responses": [
+    {
+      "httpStatus": 200,
+      "response": {
+        "hostnameList": [
+          {
+            "hostname": "b2c.div1.akamaniac.com"
+          },
+          {
+            "hostname": "test-uvm-97-qa.akamaifastdnsdemo.com"
+          }
+        ]
+      }
+    }
+  ]
+}

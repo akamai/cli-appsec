@@ -1,16 +1,19 @@
-let Rules = require('../../src/rules').rules;
+let EvalRules = require('../../src/evalrules').evalrules;
 let out = require('./lib/out');
 
-class RuleConditionExceptionCommand {
+class DisableEvalRuleCommand {
   constructor() {
-    this.flags = 'rule-condition-exception';
-    this.desc = '(Beta) Display rule conditions and exceptions.';
+    this.flags = 'disable-eval-rule-action';
+    this.desc = '(Beta) Disable evaluation rule action in a policy.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
 
   setup(sywac) {
     sywac
+      .positional('<ruleId>', {
+        paramsDesc: 'The rule id.'
+      })
       .number('--config <id>', {
         desc: 'Configuration id. Mandatory if you have more than one configuration.',
         group: 'Options:',
@@ -29,19 +32,10 @@ class RuleConditionExceptionCommand {
         required: false
       });
   }
+
   run(options) {
-    const myArgs = process.argv.slice(3);
-    if (!myArgs[0]) {
-      throw 'Missing rule Id.';
-    }
-
-    if (isNaN(myArgs[0])) {
-      throw 'Invalid rule Id.';
-    }
-
-    options.ruleId = myArgs[0];
     out.print({
-      promise: new Rules(options).getRuleConditionException(),
+      promise: new EvalRules(options).disableEvalRuleAction(),
       args: options,
       success: (args, data) => {
         return JSON.stringify(data);
@@ -50,4 +44,4 @@ class RuleConditionExceptionCommand {
   }
 }
 
-module.exports = new RuleConditionExceptionCommand();
+module.exports = new DisableEvalRuleCommand();

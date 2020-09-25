@@ -4,7 +4,7 @@ let Version = require('../../src/versionsprovider').versionProvider;
 class VersionCommand {
   constructor() {
     this.flags = 'version';
-    this.desc = 'Read a config version';
+    this.desc = 'Read a config version.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

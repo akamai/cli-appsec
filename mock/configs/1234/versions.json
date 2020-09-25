@@ -1,0 +1,147 @@
+{
+    "responseToChoose": 0,
+    "responses":[ {
+        "httpStatus":200,
+        "response": {
+            "configId": 1234,
+            "configName": "jtigano.WAF.test",
+            "lastCreatedVersion": 4,
+            "links": [
+                {
+                    "href": "/appsec-configuration/v1/configs/17956/versions?page=1&pagesize=4",
+                    "rel": "self"
+                }
+            ],
+            "page": 1,
+            "pageSize": 4,
+            "productionActiveVersion": 2,
+            "stagingActiveVersion": 1,
+            "totalSize": 4,
+            "versionList": [
+                {
+                    "createDate": 1497912971000,
+                    "createdBy": "kwetter",
+                    "links": [
+                        {
+                            "href": "http:createVersionFrom.placeholder/url/configs/17956/versions/1",
+                            "rel": "createVersionFrom"
+                        },
+                        {
+                            "href": "http:deactivate.placeholder/url/configs/17956/versions/1",
+                            "rel": "deactivate"
+                        },
+                        {
+                            "href": "http:viewMetadata.placeholder/url/configs/17956/versions/1",
+                            "rel": "viewMetadata"
+                        },
+                        {
+                            "href": "http:activate.placeholder/url/configs/17956/versions/1",
+                            "rel": "activate"
+                        },
+                        {
+                            "enabled": false,
+                            "rel": "edit"
+                        },
+                        {
+                            "enabled": false,
+                            "rel": "delete"
+                        }
+                    ],
+                    "production": {
+                        "status": "Deactivated",
+                        "time": 1493753405000
+                    },
+                    "staging": {
+                        "status": "Active",
+                        "time": 1493732705000
+                    },
+                    "version": 1
+                },
+                {
+                    "basedOn": 1,
+                    "createDate": 1497912971000,
+                    "createdBy": "asdasd",
+                    "links": [
+                        {
+                            "href": "http:activate.placeholder/url/configs/17956/versions/2",
+                            "rel": "activate"
+                        },
+                        {
+                            "href": "http:viewMetadata.placeholder/url/configs/17956/versions/2",
+                            "rel": "viewMetadata"
+                        },
+                        {
+                            "href": "http:deactivate.placeholder/url/configs/17956/versions/2",
+                            "rel": "deactivate"
+                        },
+                        {
+                            "href": "http:createVersionFrom.placeholder/url/configs/17956/versions/2",
+                            "rel": "createVersionFrom"
+                        },
+                        {
+                            "enabled": false,
+                            "rel": "delete"
+                        },
+                        {
+                            "enabled": false,
+                            "rel": "edit"
+                        }
+                    ],
+                    "production": {
+                        "status": "Active",
+                        "time": 1493753405000
+                    },
+                    "staging": {
+                        "status": "Inactive"
+                    },
+                    "version": 2
+                },
+                {
+                    "basedOn": 2,
+                    "createDate": 1497912971000,
+                    "createdBy": "ewrer",
+                    "links": [
+                        {
+                            "href": "http:activate.placeholder/url/configs/17956/versions/2",
+                            "rel": "activate"
+                        },
+                        {
+                            "href": "http:viewMetadata.placeholder/url/configs/17956/versions/2",
+                            "rel": "viewMetadata"
+                        },
+                        {
+                            "href": "http:deactivate.placeholder/url/configs/17956/versions/2",
+                            "rel": "deactivate"
+                        },
+                        {
+                            "href": "http:createVersionFrom.placeholder/url/configs/17956/versions/2",
+                            "rel": "createVersionFrom"
+                        },
+                        {
+                            "enabled": false,
+                            "rel": "delete"
+                        },
+                        {
+                            "enabled": false,
+                            "rel": "edit"
+                        }
+                    ],
+                    "production": {
+                        "status": "Inactive"
+                    },
+                    "staging": {
+                        "status": "Inactive"
+                    },
+                    "version": 3
+                }
+            ]
+        }
+    },{
+        "httpStatus":403,
+        "response": {
+            "status": 403,
+            "title":"Unauthorized",
+            "detail":"You are not authorized to do this!"
+        }
+    }]
+}
