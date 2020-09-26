@@ -96,6 +96,29 @@ Commands:
   complete-eval                             (Beta) Complete evaluation in a policy.
   krs-rules-upgrade                         (Beta) Upgrade the KRS rules in a policy.
   upgrade-details                           (Beta) Display rules updates.
+  ip-geo-firewall                           (Beta) Display the IP Geo Firewall network lists in a policy
+  modify-ip-geo-firewall                    (Beta) Update the IP Geo Firewall network lists in a policy
+  create-reputation-profile                 (Beta) Create a reputation profile.
+  delete-reputation-profile                 (Beta) Delete a reputation profile.
+  reputation-profile                        (Beta) Display contents of a reputation profile.
+  modify-reputation-profile                 (Beta) Update existing reputation profile.
+  reputation-profiles                       (Beta) List all reputation profiles.
+  reputation-profile-actions                (Beta) List all reputation profile actions.
+  reputation-profile-action                 (Beta) Display the current reputation profile action.
+  enable-reputation-profile                 (Beta) Enable and set the action for a reputation profile.
+  disable-reputation-profile                (Beta) Disable the action for a reputation profile.
+  custom-deny-list                          (Beta) List all custom deny actions.
+  custom-deny                               (Beta) Display contents of custom deny action. 
+  delete-custom-deny                        (Beta) Delete a custom deny action.
+  create-custom-deny                        (Beta) Create-custom-deny action.
+  modify-custom-deny                        (Beta) Update existing custom deny action.
+  reputation-profile-analysis               (Beta) Display the current reputation profile analysis settings.
+  set-reputation-profile-analysis           (Beta) Set the reputation profile analysis settings.
+  failover-hostnames                        (Beta) List all failover hostnames on a config.
+  siem-definitions                          (Beta) List all siem definitions.
+  siem                                      (Beta) Display the SIEM settings.
+  modify-siem                               (Beta) Modify the SIEM settings.
+
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]

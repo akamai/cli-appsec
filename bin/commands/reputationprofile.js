@@ -1,10 +1,10 @@
-let APIEndpoints = require('../../src/apiendpoints').apiEndpoints;
+let ReputationProfile = require('../../src/reputationprofile').reputationProfile;
 let out = require('./lib/out');
 
-class ListAPIEndpointsCommand {
+class ReputationProfileCommand {
   constructor() {
-    this.flags = 'api-endpoints';
-    this.desc = 'List all api endpoints.';
+    this.flags = 'reputation-profile';
+    this.desc = '(Beta) Display contents of reputation profile.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -22,26 +22,25 @@ class ListAPIEndpointsCommand {
         group: 'Options:',
         required: false
       })
-      .string('--policy <id>', {
-        desc: 'The policy id to use. If not provided, we try to use the policy available on file.',
+      .number('--reputation-profile <id>', {
+        desc: 'Reputation Profile ID.',
         group: 'Options:',
-        required: false
+        required: true
       });
   }
+
   run(options) {
+    if (!options['reputation-profile'] && options._ && !isNaN(options._[0])) {
+      options['reputation-profile'] = options._[0];
+    }
     out.print({
-      promise: new APIEndpoints(options).getAllAPIEndpoints(),
+      promise: new ReputationProfile(options).getReputationProfile(),
       args: options,
       success: (args, data) => {
-        data = data.apiEndpoints;
-        let str = [];
-        for (let i = 0; data && i < data.length; i++) {
-          str.push(data[i].id + ' ' + data[i].name);
-        }
-        return str.join(require('os').EOL);
+        return JSON.stringify(data);
       }
     });
   }
 }
 
-module.exports = new ListAPIEndpointsCommand();
+module.exports = new ReputationProfileCommand();

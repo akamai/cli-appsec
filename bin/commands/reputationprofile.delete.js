@@ -1,10 +1,10 @@
-let APIEndpoints = require('../../src/apiendpoints').apiEndpoints;
+let ReputationProfile = require('../../src/reputationprofile').reputationProfile;
 let out = require('./lib/out');
 
-class ListAPIEndpointsCommand {
+class DeleteReputationProfileCommand {
   constructor() {
-    this.flags = 'api-endpoints';
-    this.desc = 'List all api endpoints.';
+    this.flags = 'delete-reputation-profile';
+    this.desc = '(Beta) Delete a reputation profile.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -22,26 +22,22 @@ class ListAPIEndpointsCommand {
         group: 'Options:',
         required: false
       })
-      .string('--policy <id>', {
-        desc: 'The policy id to use. If not provided, we try to use the policy available on file.',
+      .number('--reputation-profile <id>', {
+        desc: 'Reputation Profile ID.',
         group: 'Options:',
-        required: false
+        required: true
       });
   }
+
   run(options) {
     out.print({
-      promise: new APIEndpoints(options).getAllAPIEndpoints(),
+      promise: new ReputationProfile(options).deleteReputationProfile(),
       args: options,
       success: (args, data) => {
-        data = data.apiEndpoints;
-        let str = [];
-        for (let i = 0; data && i < data.length; i++) {
-          str.push(data[i].id + ' ' + data[i].name);
-        }
-        return str.join(require('os').EOL);
+        return data;
       }
     });
   }
 }
 
-module.exports = new ListAPIEndpointsCommand();
+module.exports = new DeleteReputationProfileCommand();

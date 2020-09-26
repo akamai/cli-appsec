@@ -1,10 +1,10 @@
-let APIEndpoints = require('../../src/apiendpoints').apiEndpoints;
+let ReputationProfile = require('../../src/reputationprofile').reputationProfile;
 let out = require('./lib/out');
 
-class ListAPIEndpointsCommand {
+class ReputationProfileActionsCommand {
   constructor() {
-    this.flags = 'api-endpoints';
-    this.desc = 'List all api endpoints.';
+    this.flags = 'reputation-profile-actions';
+    this.desc = '(Beta) List all reputation profile actions.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -23,25 +23,22 @@ class ListAPIEndpointsCommand {
         required: false
       })
       .string('--policy <id>', {
-        desc: 'The policy id to use. If not provided, we try to use the policy available on file.',
+        desc:
+          'The policy id to use. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
         group: 'Options:',
         required: false
       });
   }
+
   run(options) {
     out.print({
-      promise: new APIEndpoints(options).getAllAPIEndpoints(),
+      promise: new ReputationProfile(options).getReputationProfileActions(),
       args: options,
       success: (args, data) => {
-        data = data.apiEndpoints;
-        let str = [];
-        for (let i = 0; data && i < data.length; i++) {
-          str.push(data[i].id + ' ' + data[i].name);
-        }
-        return str.join(require('os').EOL);
+        return JSON.stringify(data);
       }
     });
   }
 }
 
-module.exports = new ListAPIEndpointsCommand();
+module.exports = new ReputationProfileActionsCommand();

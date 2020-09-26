@@ -1,10 +1,10 @@
-let APIEndpoints = require('../../src/apiendpoints').apiEndpoints;
+let SiemSettings = require('../../src/siemsettings').siemSettings;
 let out = require('./lib/out');
 
-class ListAPIEndpointsCommand {
+class SIEMSettingsCommand {
   constructor() {
-    this.flags = 'api-endpoints';
-    this.desc = 'List all api endpoints.';
+    this.flags = 'siem';
+    this.desc = '(Beta) Display the siem settings.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -21,27 +21,17 @@ class ListAPIEndpointsCommand {
           "The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
         group: 'Options:',
         required: false
-      })
-      .string('--policy <id>', {
-        desc: 'The policy id to use. If not provided, we try to use the policy available on file.',
-        group: 'Options:',
-        required: false
       });
   }
   run(options) {
     out.print({
-      promise: new APIEndpoints(options).getAllAPIEndpoints(),
+      promise: new SiemSettings(options).getSIEMSettings(),
       args: options,
       success: (args, data) => {
-        data = data.apiEndpoints;
-        let str = [];
-        for (let i = 0; data && i < data.length; i++) {
-          str.push(data[i].id + ' ' + data[i].name);
-        }
-        return str.join(require('os').EOL);
+        return JSON.stringify(data);
       }
     });
   }
 }
 
-module.exports = new ListAPIEndpointsCommand();
+module.exports = new SIEMSettingsCommand();

@@ -1,10 +1,10 @@
-let APIEndpoints = require('../../src/apiendpoints').apiEndpoints;
+let CustomDeny = require('../../src/customdeny').customdeny;
 let out = require('./lib/out');
 
-class ListAPIEndpointsCommand {
+class DeleteCustomDenyCommand {
   constructor() {
-    this.flags = 'api-endpoints';
-    this.desc = 'List all api endpoints.';
+    this.flags = 'delete-custom-deny';
+    this.desc = 'Delete a custom deny action.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -21,27 +21,27 @@ class ListAPIEndpointsCommand {
           "The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
         group: 'Options:',
         required: false
-      })
-      .string('--policy <id>', {
-        desc: 'The policy id to use. If not provided, we try to use the policy available on file.',
-        group: 'Options:',
-        required: false
       });
   }
+
   run(options) {
+    //get args
+    const args = process.argv.slice(3, 5);
+
+    if (!args[0]) {
+      throw 'Missing custom deny Id.';
+    }
+
+    options.custom_deny_id = args[0];
+
     out.print({
-      promise: new APIEndpoints(options).getAllAPIEndpoints(),
+      promise: new CustomDeny(options).deleteCustomdeny(),
       args: options,
       success: (args, data) => {
-        data = data.apiEndpoints;
-        let str = [];
-        for (let i = 0; data && i < data.length; i++) {
-          str.push(data[i].id + ' ' + data[i].name);
-        }
-        return str.join(require('os').EOL);
+        return data;
       }
     });
   }
 }
 
-module.exports = new ListAPIEndpointsCommand();
+module.exports = new DeleteCustomDenyCommand();

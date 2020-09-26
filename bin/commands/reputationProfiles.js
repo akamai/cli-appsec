@@ -1,10 +1,10 @@
-let APIEndpoints = require('../../src/apiendpoints').apiEndpoints;
+let ReputationProfile = require('../../src/reputationprofile').reputationProfile;
 let out = require('./lib/out');
 
-class ListAPIEndpointsCommand {
+class ListReputationProfilesCommand {
   constructor() {
-    this.flags = 'api-endpoints';
-    this.desc = 'List all api endpoints.';
+    this.flags = 'reputation-profiles';
+    this.desc = '(Beta) List all reputation profiles.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -21,22 +21,17 @@ class ListAPIEndpointsCommand {
           "The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
         group: 'Options:',
         required: false
-      })
-      .string('--policy <id>', {
-        desc: 'The policy id to use. If not provided, we try to use the policy available on file.',
-        group: 'Options:',
-        required: false
       });
   }
   run(options) {
     out.print({
-      promise: new APIEndpoints(options).getAllAPIEndpoints(),
+      promise: new ReputationProfile(options).getAllReputationProfiles(),
       args: options,
       success: (args, data) => {
-        data = data.apiEndpoints;
+        data = data.reputationProfiles;
         let str = [];
         for (let i = 0; data && i < data.length; i++) {
-          str.push(data[i].id + ' ' + data[i].name);
+          str.push(data[i].id);
         }
         return str.join(require('os').EOL);
       }
@@ -44,4 +39,4 @@ class ListAPIEndpointsCommand {
   }
 }
 
-module.exports = new ListAPIEndpointsCommand();
+module.exports = new ListReputationProfilesCommand();
