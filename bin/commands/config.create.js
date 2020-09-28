@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class CreateConfigCommand {
   constructor() {
     this.flags = 'create-config';
-    this.desc = 'Create a new security config.';
+    this.desc = '(Beta) Create a new security config.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

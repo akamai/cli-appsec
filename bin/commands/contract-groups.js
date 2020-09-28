@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class ContractGroupsCommand {
   constructor() {
     this.flags = 'contract-groups';
-    this.desc = 'List contract groups with KSD/WAP line items.';
+    this.desc = '(Beta) List contracts and groups with KSD/WAP line items.';
     this.run = this.run.bind(this);
   }
 
