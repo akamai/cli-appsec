@@ -41,6 +41,7 @@ const resources = {
   POLICY_PROTECTIONS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/protections',
   SLOW_POST: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/slow-post',
   FIREWALL_POLICIES: '/appsec/v1/configs/%s/versions/%s/security-policies',
+  FIREWALL_POLICY: '/appsec/v1/configs/%s/versions/%s/security-policies/%s',
   API_ENDPOINTS: '/appsec/v1/configs/%s/versions/%s/api-endpoints',
   API_CONSTRAINT: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/api-request-constraints',
   SECURITY_POLICY_API_ENDPOINTS:
