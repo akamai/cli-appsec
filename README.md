@@ -118,6 +118,11 @@ Commands:
   siem-definitions                          (Beta) List all siem definitions.
   siem                                      (Beta) Display the SIEM settings.
   modify-siem                               (Beta) Modify the SIEM settings.
+  create-config                             (Beta)Create a new security config.
+  create-security-policy                    (Beta)Create a security policy.
+  modify-security-policy                    (Beta)Update a security policy.
+  delete-security-policy                    (Beta)Delete a security policy.
+  security-policy                           (Beta)Display contents of security policy.  
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
