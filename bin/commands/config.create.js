@@ -30,7 +30,7 @@ class CreateConfigCommand {
       promise: new Config(options).createConfig(),
       args: options,
       success: (args, data) => {
-        return JSON.stringify(data);
+        return JSON.stringify(data.configId);
       }
     });
   }
