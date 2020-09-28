@@ -70,7 +70,11 @@ const resources = {
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/reputation-profiles/%d',
   REPUTATION_ANALYSIS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/reputation-analysis',
   CUSTOM_DENY: '/appsec/v1/configs/%s/versions/%s/custom-deny',
-  CUSTOM_DENY_BY_ID: '/appsec/v1/configs/%s/versions/%s/custom-deny/%s'
+  CUSTOM_DENY_BY_ID: '/appsec/v1/configs/%s/versions/%s/custom-deny/%s',
+  HTTP_HEADER_LOGGING: '/appsec/v1/configs/%s/versions/%s/advanced-settings/logging',
+  PREFETCH: '/appsec/v1/configs/%s/versions/%s/advanced-settings/prefetch',
+  SECURITY_POLICY_HTTP_HEADER_LOGGING:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/advanced-settings/logging'
 };
 
 define('URIS', resources);
