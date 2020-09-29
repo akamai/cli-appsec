@@ -3,6 +3,8 @@
 let URIs = require('./constants').URIS;
 //let logger = require('./constants').logger('FirewallPolicy');
 let Version = require('./versionsprovider').versionProvider;
+let fs = require('fs');
+let untildify = require('untildify');
 
 class FirewallPolicy {
   constructor(options) {
@@ -25,6 +27,43 @@ class FirewallPolicy {
     return this._version.createResource(URIs.FIREWALL_POLICIES, [], payload);
   }
 
+  createPolicy() {
+    if (fs.existsSync(this._options['file'])) {
+      let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
+      let data;
+      try {
+        data = JSON.parse(payload);
+      } catch (err) {
+        throw 'The input JSON is not valid';
+      }
+      return this._version.createResource(URIs.FIREWALL_POLICIES, [], data);
+    } else {
+      throw `The file does not exists: ${this._options['file']}`;
+    }
+  }
+
+  modifyPolicy() {
+    let payload = { policyId: this._options.policy };
+    if (this._options.name) {
+      payload.policyName = this._options.name;
+    }
+
+    return this.policyId().then(policyId => {
+      return this._version.updateResource(URIs.FIREWALL_POLICY, [policyId], payload);
+    });
+  }
+
+  deletePolicy() {
+    return this.policyId().then(policyId => {
+      return this._version.deleteResource(URIs.FIREWALL_POLICY, [policyId]);
+    });
+  }
+
+  getPolicy() {
+    return this.policyId().then(policyId => {
+      return this._version.readResource(URIs.FIREWALL_POLICY, [policyId]);
+    });
+  }
   /**
    * Provides policy id. If the policy ID is not provided by the user, tries to fetch the policy from server.
    * If there are more than one policy, an error is thrown.

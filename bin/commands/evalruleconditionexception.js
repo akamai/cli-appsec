@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class EvalRuleConditionExceptionCommand {
   constructor() {
     this.flags = 'eval-rule-condition-exception';
-    this.desc = '(Beta) Display eval rule condition exception.';
+    this.desc = '(Beta) Display evaluation rule conditions and exceptions.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

@@ -1,10 +1,10 @@
-let EvalRules = require('../../src/evalrules').evalrules;
+let SecurityPolicy = require('../../src/policy').policy;
 let out = require('./lib/out');
 
-class EnableEvalRuleCommand {
+class SecurityPolicyCommand {
   constructor() {
-    this.flags = 'update-eval';
-    this.desc = '(Beta) Update the evaluation in a policy.';
+    this.flags = 'security-policy';
+    this.desc = '(Beta) Display contents of security policy.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -32,7 +32,7 @@ class EnableEvalRuleCommand {
 
   run(options) {
     out.print({
-      promise: new EvalRules(options).updateEval(),
+      promise: new SecurityPolicy(options).getPolicy(),
       args: options,
       success: (args, data) => {
         return JSON.stringify(data);
@@ -41,4 +41,4 @@ class EnableEvalRuleCommand {
   }
 }
 
-module.exports = new EnableEvalRuleCommand();
+module.exports = new SecurityPolicyCommand();
