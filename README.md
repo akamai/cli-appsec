@@ -123,7 +123,10 @@ Commands:
   modify-security-policy                    (Beta) Update a security policy.
   delete-security-policy                    (Beta) Delete a security policy.
   security-policy                           (Beta) Display contents of security policy.  
-  security-policy                           (Beta) List contracts and groups with KSD/WAP line items.  
+  security-policy                           (Beta) List contracts and groups with KSD/WAP line items.
+  api-request-constraints-action            (Beta) Display API Request Constraint action.
+  enable-api-request-constraints            (Beta) Set the API Request Constraint action.
+  disable-api-request-constraints           (Beta) Disable API Request Constraint.  
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
   --edgerc      The full path to the .edgerc file.                                                    [string]
