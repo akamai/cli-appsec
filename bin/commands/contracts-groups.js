@@ -1,16 +1,16 @@
-let Contractgroups = require('../../src/contractgroups').contractgroups;
+let ContractsGroups = require('../../src/contractgroups').contractgroups;
 let out = require('./lib/out');
 
 class ContractGroupsCommand {
   constructor() {
-    this.flags = 'contract-groups';
+    this.flags = 'contracts-groups';
     this.desc = '(Beta) List contracts and groups with KSD/WAP line items.';
     this.run = this.run.bind(this);
   }
 
   run(options) {
     out.print({
-      promise: new Contractgroups(options).getContractGroups(),
+      promise: new ContractsGroups(options).getContractGroups(),
       args: options,
       success: (args, data) => {
         data = data.contract_groups;
