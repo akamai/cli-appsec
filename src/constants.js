@@ -17,7 +17,7 @@ const resources = {
   GET_CONFIGS: '/appsec/v1/configs',
   GET_CONFIG: '/appsec/v1/configs/%s',
   CLONE: '/appsec/v1/configs/%s/versions',
-  GET_CONTRACT_GROUPS: '/appsec/v1/contract-groups',
+  GET_CONTRACT_GROUPS: '/appsec/v1/contracts-groups',
   GET_VERSIONS: '/appsec/v1/configs/%s/versions?detail=true',
   GET_VERSION: '/appsec/v1/configs/%s/versions/%s',
   GET_CRB_ALL: '/appsec/v1/configs/%s/custom-rules',
