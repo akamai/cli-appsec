@@ -118,6 +118,13 @@ Commands:
   siem-definitions                          (Beta) List all siem definitions.
   siem                                      (Beta) Display the SIEM settings.
   modify-siem                               (Beta) Modify the SIEM settings.
+  http-header-logging                       (Beta) Display the HTTP Header Logging settings.
+  enable-http-header-logging                (Beta) Enable the HTTP Header Logging settings.
+  disable-http-header-logging               (Beta) Disable the HTTP Header Logging settings.
+  enable-override-http-header-logging       (Beta) Enable the HTTP Header Logging Override settings.
+  disable-override-http-header-logging      (Beta) Disable the HTTP Header Logging Override settings.
+  prefetch-requests                         (Beta) Display the Prefetch Requests settings.
+  modify-prefetch-requests                  (Beta) Update the Prefetch Requests settings.
   create-config                             (Beta) Create a new security config.
   create-security-policy                    (Beta) Create a security policy.
   modify-security-policy                    (Beta) Update a security policy.
@@ -127,6 +134,7 @@ Commands:
   api-request-constraints-action            (Beta) Display API Request Constraint action.
   enable-api-request-constraints            (Beta) Set the API Request Constraint action.
   disable-api-request-constraints           (Beta) Disable API Request Constraint.  
+
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
   --edgerc      The full path to the .edgerc file.                                                    [string]
