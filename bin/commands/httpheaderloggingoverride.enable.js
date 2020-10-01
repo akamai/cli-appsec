@@ -11,10 +11,8 @@ class HttpHeaderLoggingCommand {
 
   setup(sywac) {
     sywac
-      .string('@<path>', {
-        desc: 'The input file path.',
-        group: 'Options:',
-        mustExist: true
+      .positional('<@path>', {
+        paramsDesc: 'The input file path.'
       })
       .number('--config <id>', {
         desc: 'Configuration id. Mandatory if you have more than one configuration.',
