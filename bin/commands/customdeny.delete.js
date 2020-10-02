@@ -11,14 +11,17 @@ class DeleteCustomDenyCommand {
 
   setup(sywac) {
     sywac
+      .positional('<custom-deny-id>', {
+        paramsDesc: 'Custom Deny ID'
+      })
       .number('--config <id>', {
-        desc: 'Configuration id. Mandatory if you have more than one configuration.',
+        desc: 'Configuration ID. Mandatory if you have more than one configuration.',
         group: 'Options:',
         required: false
       })
       .string('--version <id>', {
         desc:
-          "The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
+          "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
         group: 'Options:',
         required: false
       });
@@ -27,11 +30,6 @@ class DeleteCustomDenyCommand {
   run(options) {
     //get args
     const args = process.argv.slice(3, 5);
-
-    if (!args[0]) {
-      throw 'Missing custom deny Id.';
-    }
-
     options.custom_deny_id = args[0];
 
     out.print({

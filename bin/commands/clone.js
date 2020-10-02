@@ -13,7 +13,7 @@ class CloneCommand {
     sywac
 
       .number('--config <id>', {
-        desc: 'Configuration id. Mandatory if you have more than one configuration.',
+        desc: 'Configuration ID. Mandatory if you have more than one configuration.',
         group: 'Options:',
         required: false
       })
