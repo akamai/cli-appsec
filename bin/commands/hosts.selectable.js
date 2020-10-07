@@ -23,12 +23,12 @@ class SelectableHostsCommand {
         required: false
       })
       .string('--contract <id>', {
-        desc: 'The contract Id.',
+        desc: 'The contract ID.',
         group: 'Options:',
         required: false
       })
       .number('--group <id>', {
-        desc: 'The group Id. This argument is used along with contract.',
+        desc: 'The group ID. This argument is used along with contract.',
         group: 'Options:',
         required: false
       });
