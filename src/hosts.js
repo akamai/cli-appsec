@@ -5,11 +5,15 @@ let logger = require('./constants').logger('HostSelection');
 let Version = require('./versionsprovider').versionProvider;
 let Config = require('./configprovider').configProvider;
 
+let Edge =
+  process.env.MOCK_AKA_SEC_API == 'true' ? require('../mock/edgeClient') : require('./edgeClient');
+
 class SelectedHosts {
   constructor(options) {
     this._config = new Config(options);
     this._version = new Version(options);
     this._options = JSON.parse(JSON.stringify(options)); //clone
+    this._edge = new Edge(options);
   }
 
   addHosts() {
@@ -29,7 +33,34 @@ class SelectedHosts {
   }
 
   selectableHosts() {
-    return this._version.readResource(URIs.SELECTABLE_HOSTS_RESOURCE, []);
+    if (this._options.contract && this._options.config) {
+      throw `Wrong arguments. config is not a valid argument with contract.`;
+    }
+
+    if (this._options.contract && this._options.version) {
+      throw `Wrong arguments. version is not a valid argument with contract.`;
+    }
+
+    if (this._options.config && this._options.group) {
+      throw `Wrong arguments. group is not a valid argument with config.`;
+    }
+
+    if (this._options.version && this._options.group) {
+      throw `Wrong arguments. group is not a valid argument with version.`;
+    }
+
+    if (this._options.contract && !this._options.group) {
+      throw `group is mandatory with contract argument.`;
+    }
+
+    if (this._options.contractId) {
+      return this._edge.get(URIs.CONTRACT_SELECTABLE_HOSTS_RESOURCE, [
+        this._options['contract'],
+        this._options['group']
+      ]);
+    } else {
+      return this._version.readResource(URIs.SELECTABLE_HOSTS_RESOURCE, []);
+    }
   }
 
   selectedHosts() {

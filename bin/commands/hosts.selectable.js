@@ -21,6 +21,16 @@ class SelectableHostsCommand {
           "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
         group: 'Options:',
         required: false
+      })
+      .string('--contract <id>', {
+        desc: 'The contract Id.',
+        group: 'Options:',
+        required: false
+      })
+      .number('--group <id>', {
+        desc: 'The group Id. This argument is used along with contract.',
+        group: 'Options:',
+        required: false
       });
   }
 
