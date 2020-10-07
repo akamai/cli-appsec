@@ -27,6 +27,12 @@ class DisableApiConstraintCommand {
           'The policy id to use. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
         group: 'Options:',
         required: false
+      })
+      .string('--api <id>', {
+        desc:
+          'The api id to use. If not provided, the request constraints action is disabled for all the associated match target api ids.',
+        group: 'Options:',
+        required: false
       });
   }
 

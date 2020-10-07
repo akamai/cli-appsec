@@ -28,6 +28,12 @@ class EnableApiConstraintCommand {
         group: 'Options:',
         required: false
       })
+      .string('--api <id>', {
+        desc:
+          'The api id to use. If not provided, the request constraints action is set for all the associated match target api ids.',
+        group: 'Options:',
+        required: false
+      })
       .string('--action <id>', {
         desc: 'Action to assign. ',
         group: 'Options:',

@@ -25,18 +25,29 @@ class ApiConstraint {
     return this._policyProvider.policyId().then(policyId => {
       let action = JSON.parse(fs.readFileSync(__dirname + '/../templates/action.json', 'utf8'));
       action.action = this._options['action'];
-      return this._version.updateResource(URIs.API_CONSTRAINT, [policyId], action);
+      this._api = this._options['api'];
+      if (!this._api) {
+        return this._version.updateResource(URIs.API_CONSTRAINT, [policyId], action);
+      } else {
+        return this._version.updateResource(URIs.API_ID_CONSTRAINT, [policyId, this._api], action);
+      }
     });
   }
 
   disableApiConstraint() {
     return this._policyProvider.policyId().then(policyId => {
-      let protection = JSON.parse(
-        fs.readFileSync(__dirname + '/../templates/protection.json', 'utf8')
-      );
-
-      protection.applyApiConstraints = false;
-      return this._version.updateResource(URIs.POLICY_PROTECTIONS, [policyId], protection);
+      this._api = this._options['api'];
+      if (!this._api) {
+        let protection = JSON.parse(
+          fs.readFileSync(__dirname + '/../templates/protection.json', 'utf8')
+        );
+        protection.applyApiConstraints = false;
+        return this._version.updateResource(URIs.POLICY_PROTECTIONS, [policyId], protection);
+      } else {
+        let action = JSON.parse(fs.readFileSync(__dirname + '/../templates/action.json', 'utf8'));
+        action.action = 'none';
+        return this._version.updateResource(URIs.API_ID_CONSTRAINT, [policyId, this._api], action);
+      }
     });
   }
 }
