@@ -27,6 +27,7 @@ const resources = {
   CRB_ACTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/custom-rules/%s',
   SELECTED_HOSTS_RESOURCE: '/appsec/v1/configs/%s/versions/%s/selected-hostnames',
   SELECTABLE_HOSTS_RESOURCE: '/appsec/v1/configs/%s/versions/%s/selectable-hostnames',
+  CONTRACT_SELECTABLE_HOSTS_RESOURCE: '/appsec/v1/contracts/%s/groups/%s/selectable-hostnames',
   FAILOVER_HOSTS_RESOURCE: '/appsec/v1/configs/%s/failover-hostnames',
   SIEM_RESOURCE: '/appsec/v1/configs/%s/versions/%s/siem',
   SIEM_DEF_RESOURCE: '/appsec/v1/siem-definitions',
