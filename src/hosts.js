@@ -53,7 +53,7 @@ class SelectedHosts {
       throw `group is mandatory with contract argument.`;
     }
 
-    if (this._options.contractId) {
+    if (this._options.contract) {
       return this._edge.get(URIs.CONTRACT_SELECTABLE_HOSTS_RESOURCE, [
         this._options['contract'],
         this._options['group']
