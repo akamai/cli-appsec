@@ -126,6 +126,7 @@ Commands:
   prefetch-requests                         (Beta) Display the Prefetch Requests settings.
   modify-prefetch-requests                  (Beta) Update the Prefetch Requests settings.
   create-config                             (Beta) Create a new security config.
+  delete-config                             (Beta) Delete a security config.
   create-security-policy                    (Beta) Create a security policy.
   modify-security-policy                    (Beta) Update a security policy.
   delete-security-policy                    (Beta) Delete a security policy.

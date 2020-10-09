@@ -38,6 +38,11 @@ class ConfigProvider {
       return this._edge.delete(uri, params);
     });
   }
+
+  deleteConfig() {
+    return this.deleteResource(URIs.GET_CONFIG, []);
+  }
+
   /**
    * Method to update resources tied directly to configuration.
    * @param {*} uri The URI of the resource.
