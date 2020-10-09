@@ -47,7 +47,7 @@ const resources = {
   API_ENDPOINTS: '/appsec/v1/configs/%s/versions/%s/api-endpoints',
   API_CONSTRAINT: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/api-request-constraints',
   API_ID_CONSTRAINT:
-    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/api-request-constraint/%s',
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/api-request-constraints/%s',
   SECURITY_POLICY_API_ENDPOINTS:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/api-endpoints',
   EXPORT: '/appsec/v1/export/configs/%s/versions/%s',

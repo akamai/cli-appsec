@@ -41,7 +41,11 @@ class DisableApiConstraintCommand {
       promise: new ApiConstraint(options).disableApiConstraint(),
       args: options,
       success: (args, data) => {
-        return 'applyApiConstraints: ' + data.applyApiConstraints;
+        if (!args['api']) {
+          return '{"applyApiConstraints":' + data.applyApiConstraints + '}';
+        } else {
+          return JSON.stringify(data);
+        }
       }
     });
   }
