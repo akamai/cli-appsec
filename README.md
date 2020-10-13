@@ -134,7 +134,9 @@ Commands:
   contracts-groups                          (Beta) List contracts and groups with KSD/WAP line items.
   api-request-constraints-action            (Beta) Display API Request Constraint action.
   enable-api-request-constraints            (Beta) Set the API Request Constraint action.
-  disable-api-request-constraints           (Beta) Disable API Request Constraint.  
+  disable-api-request-constraints           (Beta) Disable API Request Constraint.
+  attackgroup-condition-exception           (Beta) Display attack group exceptions.
+  modify-attackgroup-condition-exception    (Beta) Update attack group exceptions.    
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
