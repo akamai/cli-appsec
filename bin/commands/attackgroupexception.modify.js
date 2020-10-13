@@ -11,6 +11,12 @@ class AttackGroupExceptionModifyCommand {
 
   setup(sywac) {
     sywac
+      .positional('<group>', {
+        paramsDesc: 'The attack group name.'
+      })
+      .positional('<@path>', {
+        paramsDesc: 'The input file path.'
+      })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
         group: 'Options:',
@@ -33,13 +39,9 @@ class AttackGroupExceptionModifyCommand {
     //get last 2 args
     const args = process.argv.slice(3, 5);
 
-    if (args[0]) {
-      options.group = args[0];
-    } else {
-      throw 'Missing group name.';
-    }
+    options.group = args[0];
 
-    if (!args[1] || !args[1].startsWith('@')) {
+    if (!args[1].startsWith('@')) {
       throw 'Missing file name.';
     }
 

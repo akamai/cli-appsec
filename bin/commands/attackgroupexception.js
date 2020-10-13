@@ -11,6 +11,9 @@ class AttackGroupExceptionCommand {
 
   setup(sywac) {
     sywac
+      .positional('<group>', {
+        paramsDesc: 'The attack group name.'
+      })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
         group: 'Options:',
@@ -32,18 +35,14 @@ class AttackGroupExceptionCommand {
   run(options) {
     const myArgs = process.argv.slice(3);
 
-    if (myArgs[0]) {
-      options.group = myArgs[0];
-      out.print({
-        promise: new AttackGroups(options).getAttackGroupException(),
-        args: options,
-        success: (args, data) => {
-          return JSON.stringify(data);
-        }
-      });
-    } else {
-      throw 'Missing group name.';
-    }
+    options.group = myArgs[0];
+    out.print({
+      promise: new AttackGroups(options).getAttackGroupException(),
+      args: options,
+      success: (args, data) => {
+        return JSON.stringify(data);
+      }
+    });
   }
 }
 
