@@ -137,6 +137,9 @@ Commands:
   disable-api-request-constraints           (Beta) Disable API Request Constraint.
   attackgroup-condition-exception           (Beta) Display attack group exceptions.
   modify-attackgroup-condition-exception    (Beta) Update attack group exceptions.    
+  protect-eval-hostnames                    (Beta) Move evaluation hostnames to protection.
+  eval-hostnames                            (Beta) List all hosts under evaluation.
+  modify-eval-hostnames                     (Beta) Modify hostnames under evaluation.
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
