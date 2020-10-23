@@ -4,6 +4,8 @@ let URIs = require('./constants').URIS;
 let logger = require('./constants').logger('HostSelection');
 let Version = require('./versionsprovider').versionProvider;
 let Config = require('./configprovider').configProvider;
+let fs = require('fs');
+let untildify = require('untildify');
 
 let Edge =
   process.env.MOCK_AKA_SEC_API == 'true' ? require('../mock/edgeClient') : require('./edgeClient');
@@ -65,6 +67,40 @@ class SelectedHosts {
 
   selectedHosts() {
     return this._version.readResource(URIs.SELECTED_HOSTS_RESOURCE, []);
+  }
+
+  evalHosts() {
+    return this._version.readResource(URIs.EVAL_HOSTS_RESOURCE, []);
+  }
+
+  updateEvalHosts() {
+    if (fs.existsSync(this._options['file'])) {
+      let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
+      let data;
+      try {
+        data = JSON.parse(payload);
+      } catch (err) {
+        throw 'The input JSON is not valid';
+      }
+      return this._version.updateResource(URIs.EVAL_HOSTS_RESOURCE, [], data);
+    } else {
+      throw `The file does not exists: ${this._options['file']}`;
+    }
+  }
+
+  protectEvalHosts() {
+    if (fs.existsSync(this._options['file'])) {
+      let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
+      let data;
+      try {
+        data = JSON.parse(payload);
+      } catch (err) {
+        throw 'The input JSON is not valid';
+      }
+      return this._version.updateResource(URIs.PROTECT_EVAL_HOSTS_RESOURCE, [], data);
+    } else {
+      throw `The file does not exists: ${this._options['file']}`;
+    }
   }
 
   failoverHosts() {
