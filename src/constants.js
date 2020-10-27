@@ -6,7 +6,7 @@ function define(name, value) {
 }
 
 const LOG = require('pino')({
-  level: process.env.LOG_LEVEL ? process.env.LOG_LEVEL : 'fatal',
+  level: process.env.LOG_LEVEL ? process.env.LOG_LEVEL : 'debug',
   prettyPrint: true,
   name: 'app-sec'
 });
@@ -81,7 +81,8 @@ const resources = {
   HTTP_HEADER_LOGGING: '/appsec/v1/configs/%s/versions/%s/advanced-settings/logging',
   PREFETCH: '/appsec/v1/configs/%s/versions/%s/advanced-settings/prefetch',
   SECURITY_POLICY_HTTP_HEADER_LOGGING:
-    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/advanced-settings/logging'
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/advanced-settings/logging',
+  VERSION_NOTES: '/appsec/v1/configs/%s/versions/%s/version-notes'
 };
 
 define('URIS', resources);
