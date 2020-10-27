@@ -18,7 +18,7 @@ class VersionNotes {
 
   updateVersionNotes() {
     let json = JSON.parse(fs.readFileSync(__dirname + '/../templates/versionNotes.json', 'utf8'));
-    json.notes = this._options['notes'];
+    json.notes = this._options['notes'] ? this._options['notes'] : '';
     return this._version.updateResource(URIs.VERSION_NOTES, [], json);
   }
 }

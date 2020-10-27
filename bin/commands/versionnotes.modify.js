@@ -11,11 +11,8 @@ class ModifyVersionNotesCommand {
 
   setup(sywac) {
     sywac
-      .string('"<notes>"', {
-        desc:
-          'The version notes. If the input is a sentence, it must be wrapped in quotes. Ex. "This is the version notes."',
-        group: 'Arguments:',
-        mustExist: false
+      .positional('[notes]', {
+        paramsDesc: 'The version notes, if left empty, it will erase the current version notes.'
       })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
@@ -27,11 +24,6 @@ class ModifyVersionNotesCommand {
           "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
         group: 'Options:',
         required: false
-      })
-      .check((argv, context) => {
-        if (argv['notes']) {
-          context.cliMessage('This operation is invalid.');
-        }
       });
   }
   run(options) {
