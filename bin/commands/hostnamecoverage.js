@@ -67,14 +67,14 @@ class HostnameCoverageCommand {
 
   setup(sywac) {
     sywac
-      .number('--config <id>', {
+      .number('--config <ID>', {
         desc:
           'Configuration id. Mandatory if you have more than one configuration. ' +
           'This is only required if you are retrieving a Hostname Coverage Match Target or Overlapping List.',
         group: 'Options:',
         required: false
       })
-      .string('--version <num>', {
+      .string('--version <id>', {
         desc:
           "The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed. " +
           'This is only required if you are retrieving a Hostname Coverage Match Target or Overlapping List.',
