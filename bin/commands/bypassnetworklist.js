@@ -13,14 +13,12 @@ class BypassNLCommand {
     sywac
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
-        group: 'Options:',
-        required: false
+        group: 'Options:'
       })
       .string('--version <id>', {
         desc:
           "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
-        group: 'Options:',
-        required: false
+        group: 'Options:'
       });
   }
 
