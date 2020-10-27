@@ -67,9 +67,9 @@ class HostnameCoverageCommand {
 
   setup(sywac) {
     sywac
-      .number('--config <ID>', {
+      .number('--config <id>', {
         desc:
-          'Configuration id. Mandatory if you have more than one configuration. ' +
+          'Configuration ID. Mandatory if you have more than one configuration. ' +
           'This is only required if you are retrieving a Hostname Coverage Match Target or Overlapping List.',
         group: 'Options:',
         required: false
