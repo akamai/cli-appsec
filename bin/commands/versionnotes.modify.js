@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class ModifyVersionNotesCommand {
   constructor() {
     this.flags = 'modify-version-notes';
-    this.desc = '(Beta) Modify the version notes.';
+    this.desc = '(Beta) Update the version notes.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

@@ -143,6 +143,8 @@ Commands:
   bypass-network-lists                      (Beta) List all bypass network lists.
   modify-bypass-network-lists               (Beta) Update bypass network lists.
   hostname-coverage                         (Beta) Display the Hostname Coverage.
+  version-notes                             (Beta) Display the version notes.
+  modify-version-notes                      (Beta) Update the version notes.
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
