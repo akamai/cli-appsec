@@ -11,11 +11,6 @@ class ModifyVersionNotesCommand {
 
   setup(sywac) {
     sywac
-      .string('--notes <notes>', {
-        desc: 'The version notes, if left empty, it will erase the current version notes.',
-        group: 'Options:',
-        required: false
-      })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
         group: 'Options:',
@@ -24,6 +19,11 @@ class ModifyVersionNotesCommand {
       .string('--version <id>', {
         desc:
           "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
+        group: 'Options:',
+        required: false
+      })
+      .string('--notes <notes>', {
+        desc: 'The version notes, if left empty, it will erase the current version notes.',
         group: 'Options:',
         required: false
       });
