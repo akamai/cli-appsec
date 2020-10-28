@@ -11,8 +11,10 @@ class ModifyVersionNotesCommand {
 
   setup(sywac) {
     sywac
-      .positional('[notes]', {
-        paramsDesc: 'The version notes, if left empty, it will erase the current version notes.'
+      .string('--notes <notes>', {
+        desc: 'The version notes, if left empty, it will erase the current version notes.',
+        group: 'Options:',
+        required: false
       })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
