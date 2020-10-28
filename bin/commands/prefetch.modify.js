@@ -15,52 +15,52 @@ class HttpHeaderLoggingCommand {
         paramsDesc: 'The input file path.'
       })
       .number('--config <id>', {
-        desc: 'Configuration id. Mandatory if you have more than one configuration.',
-        group: 'Options:',
+        desc: 'Configuration ID. Mandatory if you have more than one configuration.',
+        group: 'Optional:',
         required: false
       })
       .string('--version <id>', {
         desc:
-          "The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
-        group: 'Options:',
+          "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
+        group: 'Optional:',
         required: false
+      })
+      .check((argv, context) => {
+        if (!argv['@path'].startsWith('@')) {
+          return context.cliMessage("ERROR: Invalid file name, should start with '@'");
+        }
       });
   }
   run(options) {
-    const myArgs = process.argv.slice(2);
-    if (myArgs[1].startsWith('@')) {
-      options.file = myArgs[1].replace('@', '');
-      out.print({
-        promise: new AdvancedSettings(options).updatePrefetch(),
-        args: options,
-        success: (args, data) => {
-          let allExtensions = data.allExtensions;
-          let enableAppLayer = data.enableAppLayer;
-          let enableRateControls = data.enableRateControls;
-          let extensions = data.extensions;
-          let str = [];
-          if (allExtensions) {
-            str.push('allExtensions');
-          }
-          if (enableAppLayer) {
-            str.push('enableAppLayer');
-          }
-          if (enableRateControls) {
-            str.push('enableRateControls');
-          }
-          if (extensions) {
-            let extensionsStr = 'extensions';
-            for (let i = 0; extensions && i < extensions.length; i++) {
-              extensionsStr += ' ' + extensions[i];
-            }
-            str.push(extensionsStr);
-          }
-          return str.join(require('os').EOL);
+    options.file = options['@path'].replace('@', '');
+    out.print({
+      promise: new AdvancedSettings(options).updatePrefetch(),
+      args: options,
+      success: (args, data) => {
+        let allExtensions = data.allExtensions;
+        let enableAppLayer = data.enableAppLayer;
+        let enableRateControls = data.enableRateControls;
+        let extensions = data.extensions;
+        let str = [];
+        if (allExtensions) {
+          str.push('allExtensions');
         }
-      });
-    } else {
-      throw 'Missing input file path.';
-    }
+        if (enableAppLayer) {
+          str.push('enableAppLayer');
+        }
+        if (enableRateControls) {
+          str.push('enableRateControls');
+        }
+        if (extensions) {
+          let extensionsStr = 'extensions';
+          for (let i = 0; extensions && i < extensions.length; i++) {
+            extensionsStr += ' ' + extensions[i];
+          }
+          str.push(extensionsStr);
+        }
+        return str.join(require('os').EOL);
+      }
+    });
   }
 }
 

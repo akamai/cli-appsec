@@ -13,27 +13,26 @@ class AddHostsCommand {
     sywac
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       })
-      .string('--version <num>', {
+      .string('--version <id>', {
         desc:
           "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       })
       .positional('<hostnames>', {
         params: [
           {
             desc: 'The comma separated list of hostnames to add.',
-            group: 'Options:',
             type: 'array:string'
           }
         ]
       });
     // .stringArray('--hosts <a.com, b.net, c.d.com>', {
     //   desc: 'Hostnames to add to the selected list.',
-    //   group: 'Options:',
+    //   group: 'Optional:',
     //   required: true
     // });
   }

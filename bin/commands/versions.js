@@ -13,18 +13,18 @@ class VersionsCommand {
     sywac
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       })
-      .number('--limit <num>', {
+      .number('--limit <id>', {
         desc:
           'Specifies the number of most recent versions of the selected configuration to be fetched.',
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       })
       .boolean('--verbose', {
         desc: 'Provides more details about each version.',
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       });
   }

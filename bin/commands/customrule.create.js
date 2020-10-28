@@ -11,16 +11,17 @@ class CreateCustomRuleCommand {
 
   setup(sywac) {
     sywac
-      .number('--config <id>', {
-        desc: 'Configuration ID. Mandatory if you have more than one configuration.',
-        group: 'Options:',
-        required: false
-      })
+      .usage('Usage: akamai-appsec create-custom-rule --file <path> [options]')
       .file('--file <path>', {
         desc: 'File with JSON rules',
-        group: 'Options:',
+        group: 'Required:',
         required: true,
         mustExist: true
+      })
+      .number('--config <id>', {
+        desc: 'Configuration ID. Mandatory if you have more than one configuration.',
+        group: 'Optional:',
+        required: false
       });
   }
 

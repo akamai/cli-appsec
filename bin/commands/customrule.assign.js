@@ -11,30 +11,35 @@ class ModifyCustomRuleCommand {
 
   setup(sywac) {
     sywac
+      .usage(
+        'Usage: akamai-appsec enable-custom-rule --custom-rule <id> --action <action> [options]'
+      )
       .number('--custom-rule <id>', {
-        desc: 'Rule ID.',
-        group: 'Options:',
+        desc: 'Custom rule ID.',
+        group: 'Required:',
         required: true
       })
-      .string('--policy <id>', {
-        desc: 'Policy ID. Mandatory if you have more than one policy.',
-        group: 'Options:',
-        required: false
-      })
-      .enumeration('--action <action>', {
-        desc: 'Action to assign. If the action is "none", it is not associated with the policy.',
-        group: 'Options:',
+      .string('--action <action>', {
+        desc:
+          "Action to assign. Use - \n\t\t      • 'alert': To record the trigger of the event; \n\t\t      • 'deny': To block the request; \n\t\t   • 'deny_custom_{custom_deny_id}': To trigger a custom deny; \n\t\t      • 'none': To disassociate with the policy;",
+        group: 'Required:',
+        hints: '[required] [alert, deny, deny_custom_{custom_deny_id}, none]',
         required: true
       })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       })
-      .string('--version <num>', {
+      .string('--version <id>', {
         desc:
           "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
-        group: 'Options:',
+        group: 'Optional:',
+        required: false
+      })
+      .string('--policy <id>', {
+        desc: 'Policy ID. Mandatory if you have more than one policy.',
+        group: 'Optional:',
         required: false
       });
   }

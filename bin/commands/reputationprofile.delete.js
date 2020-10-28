@@ -11,21 +11,22 @@ class DeleteReputationProfileCommand {
 
   setup(sywac) {
     sywac
+      .usage('Usage: akamai-appsec delete-reputation-profile --reputation-profile <id> [options]')
+      .number('--reputation-profile <id>', {
+        desc: 'Reputation Profile ID.',
+        group: 'Required:',
+        required: true
+      })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       })
       .string('--version <id>', {
         desc:
           "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
-        group: 'Options:',
+        group: 'Optional:',
         required: false
-      })
-      .number('--reputation-profile <id>', {
-        desc: 'Reputation Profile ID.',
-        group: 'Options:',
-        required: true
       });
   }
 
