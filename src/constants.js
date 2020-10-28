@@ -82,7 +82,12 @@ const resources = {
   HTTP_HEADER_LOGGING: '/appsec/v1/configs/%s/versions/%s/advanced-settings/logging',
   PREFETCH: '/appsec/v1/configs/%s/versions/%s/advanced-settings/prefetch',
   SECURITY_POLICY_HTTP_HEADER_LOGGING:
-    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/advanced-settings/logging'
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/advanced-settings/logging',
+  HOSTNAME_COVERAGE: '/appsec/v1/hostname-coverage',
+  HOSTNAME_COVERAGE_MATCH_TARGET:
+    '/appsec/v1/configs/%s/versions/%s/hostname-coverage/match-targets?hostname=%s',
+  HOSTNAME_COVERAGE_OVERLAPPING:
+    '/appsec/v1/configs/%s/versions/%s/hostname-coverage/overlapping?hostname=%s'
 };
 
 define('URIS', resources);

@@ -142,6 +142,7 @@ Commands:
   modify-eval-hostnames                     (Beta) Modify hostnames under evaluation.
   bypass-network-lists                      (Beta) List all bypass network lists.
   modify-bypass-network-lists               (Beta) Update bypass network lists.
+  hostname-coverage                         (Beta) Display the Hostname Coverage.
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
