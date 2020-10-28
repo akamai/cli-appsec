@@ -78,11 +78,17 @@ const resources = {
   REPUTATION_ANALYSIS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/reputation-analysis',
   CUSTOM_DENY: '/appsec/v1/configs/%s/versions/%s/custom-deny',
   CUSTOM_DENY_BY_ID: '/appsec/v1/configs/%s/versions/%s/custom-deny/%s',
+  BYPASS_NETWORK_LIST: '/appsec/v1/configs/%s/versions/%s/bypass-network-lists',
   HTTP_HEADER_LOGGING: '/appsec/v1/configs/%s/versions/%s/advanced-settings/logging',
   PREFETCH: '/appsec/v1/configs/%s/versions/%s/advanced-settings/prefetch',
   SECURITY_POLICY_HTTP_HEADER_LOGGING:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/advanced-settings/logging',
-  VERSION_NOTES: '/appsec/v1/configs/%s/versions/%s/version-notes'
+  VERSION_NOTES: '/appsec/v1/configs/%s/versions/%s/version-notes',
+  HOSTNAME_COVERAGE: '/appsec/v1/hostname-coverage',
+  HOSTNAME_COVERAGE_MATCH_TARGET:
+    '/appsec/v1/configs/%s/versions/%s/hostname-coverage/match-targets?hostname=%s',
+  HOSTNAME_COVERAGE_OVERLAPPING:
+    '/appsec/v1/configs/%s/versions/%s/hostname-coverage/overlapping?hostname=%s'
 };
 
 define('URIS', resources);
