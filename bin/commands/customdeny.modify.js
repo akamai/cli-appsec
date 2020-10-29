@@ -38,7 +38,6 @@ class ModifyCustomDenyCommand {
   run(options) {
     options.custom_deny_id = options['custom-deny-id'];
     options.file = options['@path'].replace('@', '');
-    console.log(options);
 
     out.print({
       promise: new CustomDeny(options).updateCustomdeny(),
