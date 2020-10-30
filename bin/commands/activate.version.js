@@ -12,12 +12,12 @@ class ActivateVersionCommand {
   setup(sywac) {
     sywac
       .number('--config <id>', {
-        desc: 'Configuration ID.',
+        desc: 'Configuration id.',
         group: 'Options:',
         required: false
       })
       .string('--version <id>', {
-        desc: 'Version Number.',
+        desc: 'The version number.',
         group: 'Options:',
         required: false
       })

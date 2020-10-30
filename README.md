@@ -96,50 +96,6 @@ Commands:
   complete-eval                             (Beta) Complete evaluation in a policy.
   krs-rules-upgrade                         (Beta) Upgrade the KRS rules in a policy.
   upgrade-details                           (Beta) Display rules updates.
-  ip-geo-firewall                           (Beta) Display the IP Geo Firewall network lists in a policy
-  modify-ip-geo-firewall                    (Beta) Update the IP Geo Firewall network lists in a policy
-  create-reputation-profile                 (Beta) Create a reputation profile.
-  delete-reputation-profile                 (Beta) Delete a reputation profile.
-  reputation-profile                        (Beta) Display contents of a reputation profile.
-  modify-reputation-profile                 (Beta) Update existing reputation profile.
-  reputation-profiles                       (Beta) List all reputation profiles.
-  reputation-profile-actions                (Beta) List all reputation profile actions.
-  reputation-profile-action                 (Beta) Display the current reputation profile action.
-  enable-reputation-profile                 (Beta) Enable and set the action for a reputation profile.
-  disable-reputation-profile                (Beta) Disable the action for a reputation profile.
-  custom-deny-list                          (Beta) List all custom deny actions.
-  custom-deny                               (Beta) Display contents of custom deny action. 
-  delete-custom-deny                        (Beta) Delete a custom deny action.
-  create-custom-deny                        (Beta) Create-custom-deny action.
-  modify-custom-deny                        (Beta) Update existing custom deny action.
-  reputation-profile-analysis               (Beta) Display the current reputation profile analysis settings.
-  set-reputation-profile-analysis           (Beta) Set the reputation profile analysis settings.
-  failover-hostnames                        (Beta) List all failover hostnames on a config.
-  siem-definitions                          (Beta) List all siem definitions.
-  siem                                      (Beta) Display the SIEM settings.
-  modify-siem                               (Beta) Modify the SIEM settings.
-  http-header-logging                       (Beta) Display the HTTP Header Logging settings.
-  enable-http-header-logging                (Beta) Enable the HTTP Header Logging settings.
-  disable-http-header-logging               (Beta) Disable the HTTP Header Logging settings.
-  enable-override-http-header-logging       (Beta) Enable the HTTP Header Logging Override settings.
-  disable-override-http-header-logging      (Beta) Disable the HTTP Header Logging Override settings.
-  prefetch-requests                         (Beta) Display the Prefetch Requests settings.
-  modify-prefetch-requests                  (Beta) Update the Prefetch Requests settings.
-  create-config                             (Beta) Create a new security config.
-  delete-config                             (Beta) Delete a security config.
-  create-security-policy                    (Beta) Create a security policy.
-  modify-security-policy                    (Beta) Update a security policy.
-  delete-security-policy                    (Beta) Delete a security policy.
-  security-policy                           (Beta) Display contents of security policy.  
-  contracts-groups                          (Beta) List contracts and groups with KSD/WAP line items.
-  api-request-constraints-action            (Beta) Display API Request Constraint action.
-  enable-api-request-constraints            (Beta) Set the API Request Constraint action.
-  disable-api-request-constraints           (Beta) Disable API Request Constraint.
-  attackgroup-condition-exception           (Beta) Display attack group exceptions.
-  modify-attackgroup-condition-exception    (Beta) Update attack group exceptions.    
-  protect-eval-hostnames                    (Beta) Move evaluation hostnames to protection.
-  eval-hostnames                            (Beta) List all hosts under evaluation.
-  modify-eval-hostnames                     (Beta) Modify hostnames under evaluation.
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
@@ -150,12 +106,6 @@ Command options:
   --account-key Account ID to switch to when performing the operation                                 [string]
 Copyright (C) Akamai Technologies, Inc
 Visit http://github.com/akamai/cli-appsec for detailed documentation
-```
-
-#### Command details
-For details about any individual command including arguments, options, and command options, you can run -
-```
-akamai appsec <command> --help
 ```
 
 ## akamai-appsec
@@ -196,6 +146,528 @@ Adding or updating a custom rule to the protection of a hostname requires a chan
 |6|`akamai appsec activate --network=<activation network> --notes=<activation notes> --notify=<emails>`||
 |7|`akamai appsec activation --activation-id=<activation id>`||
 
+For details about individual commands, please look at [Commands](#commands)
+### Commands
+* [Retrieve available configurations](#list-configurations)
+* [Retrieve available configuration versions](#list-configuration-versions)
+* [Retrieve a configuration version](#retrieve-configuration-version)
+* [Clone a configuration version](#clone-configuration-version)
+* [Retrieve hostnames available for protection](#list-selectable-hostnames)
+* [Retrieve hostnames that are protected](#list-selected-hostnames)
+* [Add hostname(s) to protect](#add-hostnames)
+* [Retrieve Security policies](#list-security-policies)
+* [Clone a security policy](#create-security-policy-from-another-policy)
+* [Create a Website Match target](#create-website-match-target)
+* [Retrieve Website Match targets](#list-website-match-targets)
+* [Modify a Website Match target](#modify-website-match-target)
+* [Change Website Match target order](#change-website-match-target-order)
+* [Custom rule template](#custom-rule-template)
+* [Create custom rule](#create-custom-rule)
+* [Delete custom rule](#delete-custom-rule)
+* [Modify a custom rule](#modify-custom-rule)
+* [Enable a custom rule](#enable-custom-rule)
+* [Retrieve all custom rules](#list-custom-rules)
+* [Retrieve a custom rule](#retrieve-custom-rule)
+* [Delete a custom rule](#delete-custom-rule)
+* [Activate a configuration version](#activate-configuration-version)
+* [Check activation status](#check-activation-status)
+* [Export a configuration version](#export-configuration-version)
+
+### List Configurations
+```
+Usage: akamai appsec configs [options]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file. Defaults to ~/.edgrrc                                 [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+
+```
+
+### List Configuration versions
+```
+Usage: akamai appsec versions [options]
+
+Options:
+  --config <id>  Configuration id. Mandatory if you have more than one configuration.                       [number]
+  --limit <num>  Specifies the number of most recent versions of the selected configuration to be fetched.  [number]
+  --verbose      Provides more details about each version.                                                  [boolean]
+                 
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file. Defaults to ~/.edgrrc                                 [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+
+```
+
+### Retrieve Configuration version
+```
+Usage: akamai appsec version [options]
+
+Options:
+  --config <id>    Configuration id number. If not provided, assumes there is only one configuration and
+                   chooses it. If there's more, an error is thrown.
+                   [number]
+
+  --version <num>  The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If
+                   not provided, latest version is assumed.
+                   [string]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file. Defaults to ~/.edgrrc                                 [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+
+```
+### Clone Configuration version
+
+Clones the configuration version.
+
+```
+sage: akamai appsec clone [options]
+
+Options:
+  --config <id>    Configuration id. Mandatory if you have more than one configuration.               [number]
+  --version <num>  The version number to clone                                             [required] [string]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+
+Copyright (C) Akamai Technologies, Inc
+Visit http://github.com/akamai/cli-appsec for detailed documentation
+
+```
+### List Selectable Hostnames
+These are the hostnames that the user can choose from, to add to the configuration version for protection.
+
+```
+Usage: akamai appsec selectable-hostnames [options]
+
+Options:
+  --config <id>   Configuration id. Mandatory if you have more than one configuration.
+                  [number]
+
+  --version <id>  The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not
+                  provided, latest version is assumed.
+                  [string]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+
+```
+
+### List Selected hostnames
+These are the hostnames that the user is already protecting as part of this configuration version.
+```
+
+Usage: akamai appsec selected-hostnames [options]
+
+Options:
+  --config <id>   Configuration id. Mandatory if you have more than one configuration.
+                  [number]
+
+  --version <id>  The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not
+                  provided, latest version is assumed.
+                  [string]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+
+```
+
+### Add hostnames
+Adds a new hostname to the protected list(selected hostnames). The hostnames chosen here should be from the selectable hostnames list.
+
+```
+Usage: akamai appsec add-hostname <hostnames> [options]
+
+Arguments:
+  <hostnames>      The comma separated list of hostnames to add.
+                   [required] [array:string]
+
+Options:
+  --config <id>    Configuration id. Mandatory if you have more than one configuration.
+                   [number]
+
+  --version <num>  The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If
+                   not provided, latest version is assumed.
+                   [string]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+```
+
+### List Security policies
+Retrieves the list of security policies present in this configuration version.
+
+```
+Usage: akamai appsec policies [options]
+
+Options:
+  --config <id>   Configuration id. Mandatory if you have more than one configuration.
+                  [number]
+
+  --version <id>  The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not
+                  provided, latest version is assumed.
+                  [string]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+```
+
+### Create security policy from another policy
+Creates a new security policy by cloning another policy available within the same configuration version.
+
+```
+Usage: akamai appsec clone-policy <policy> [options]
+
+Arguments:
+  <policy>        The policyId of the policy to clone.                                     [required] [string]
+
+Options:
+  --config <id>       Configuration id. Mandatory if you have more than one configuration.
+                      [number]
+
+  --version <num>     The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If
+                      not provided, latest version is assumed.
+                      [string]
+  
+  --prefix  <prefix>  A 4 character alphanumeric prefix for the policy ID of the new security policy being created. If
+                      not provided, it will be auto-generated.
+                      [string]
+  
+  --name    <name>    Name of the security policy. Maximum 255 characters. If not provided, it will be auto-generated.
+                      [string]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+```
+
+### Create website match target
+
+```
+Usage: akamai appsec create-match-target [options]
+
+Options:
+  --config <id>                        Configuration id. Mandatory if you have more than one configuration.
+                                       [number]
+
+  --version <id>                       The version number. It can also take the values 'PROD' or 'PRODUCTION'
+                                       or 'STAGING'. If not provided, latest version is assumed.
+                                       [string]
+
+  --hostnames <a.com, b.net, c.d.com>  Hostnames to add.
+                                       [required] [array:string]
+
+  --paths <x,y,z>                      The file paths
+                                       [required] [array:string]
+
+  --policy <id>                        The policy id to use. If not provided, we try to use the policy
+                                       available on file(slow). If you have more than one policy, this option must
+                                       be provided.
+                                       [string]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+```
+
+### List website match targets
+
+```
+Usage: akamai appsec match-targets [options]
+
+Options:
+  --config <id>    Configuration id. Mandatory if you have more than one configuration.
+                   [number]
+
+  --version <num>  The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If
+                   not provided, latest version is assumed.
+                   [string]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+```
+### Modify website match target
+Updates an existing match target. As of now, the only supported operation is to add a hostname to the existing match target.
+
+```
+Usage: akamai appsec modify-match-target <match-target> <subcommand> <hostname> [options]
+
+Arguments:
+  <match-target>  The match target id.                                                     [required] [string]
+  <hostname>      The hostname to add to the match target.                                 [required] [string]
+
+Sub Commands:
+  <subcommand>  The subcommand. [add-hostname]                                             [required] [string]
+
+Options:
+  --config <id>    Configuration id. Mandatory if you have more than one configuration.
+                   [number]
+
+  --version <num>  The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If
+                   not provided, latest version is assumed.
+                   [string]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+```
+### Change website match target order
+Updates the order of the website match targets
+
+```
+Usage: akamai appsec match-target-order [options]
+
+Options:
+  --config <id>    Configuration id. Mandatory if you have more than one configuration.
+                   [number]
+
+  --version <num>  The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If
+                   not provided, latest version is assumed.
+                   [string]
+
+  --insert <id>    Match target id to move to the start.
+                   [number]
+
+  --append <id>    Match target id to move to the end.
+                   [number]
+
+  [order]          The comma separated list of numeric match target ids in desired order.
+                   [array:number]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+```
+### Custom rule template
+
+The custom rule needs to be fed as as json and this command prints the json template for creating a custom rule. You must add the required details in the json and remove the rest before creating a custom rule.
+
+```
+Usage: akamai appsec structured-rule-template
+```
+### Create custom rule
+```
+Usage: akamai appsec create-custom-rule [options]
+
+Options:
+  --config <id>  Configuration id. Mandatory if you have more than one configuration.                 [number]
+  --file <path>  File with JSON rules                                           [required] [file] [must exist]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+
+```
+### Modify custom rule
+```
+Usage: akamai appsec modify-custom-rule [options]
+
+Options:
+  --config <id>       Configuration id. Mandatory if you have more than one configuration.            [number]
+  --custom-rule <id>  Rule ID.                                                             [required] [number]
+  --file <path>       File with JSON rules                                                 [file] [must exist]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+```
+### Enable custom rule
+```
+Usage: akamai appsec enable-custom-rule [options]
+
+Options:
+  --custom-rule <id>  Rule ID.
+                      [required] [number]
+
+  --policy <id>       Policy ID.
+                      [required] [string]
+
+  --action <action>   Action to assign. If the action is "none", it is not associated with the policy
+                      [required] [enum] [alert, deny, none]
+
+  --config <id>       Configuration id. Mandatory if you have more than one configuration.
+                      [number]
+
+  --version <num>     The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If
+                      not provided, latest version is assumed.
+                      [string]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+  ```
+### List custom rules
+```
+Usage: akamai appsec custom-rules [options]
+
+Options:
+  --config <id>  Configuration id. Mandatory if you have more than one configuration.                 [number]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+```
+
+### Retrieve custom rule
+```
+Usage: akamai appsec custom-rule [options]
+
+Options:
+  --config <id>       Configuration id. Mandatory if you have more than one configuration.            [number]
+  --custom-rule <id>  Rule ID.                                                             [required] [number]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+```
+
+### Activate Configuration version
+
+Activates a configuration version and provides the activation id. This ID is required to monitor the activation status.
+
+```
+Usage: akamai appsec activate [options]
+
+Options:
+  --config <id>        Configuration id.
+                       [number]
+
+  --version <id>       The version number.
+                       [string]
+
+  --network <network>  The network in which the configuration must be activated.
+                       [required] [enum] [PRODUCTION, STAGING]
+
+  --note <note>        The activation notes.
+                       [string]
+
+  --notify <emails>    The comma separated email ids to get notification.
+                       [required] [array:string]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+
+Copyright (C) Akamai Technologies, Inc
+Visit http://github.com/akamai/cli-appsec for detailed documentation
+```
+### Check Activation status
+
+Prints the current state of the activation request. This command needs the activation id from the [activation](#activate-configuration-version) step.
+
+```
+Usage: akamai appsec activation [options]
+
+Options:
+  --activation-id <id>  Activation request id.                                             [required] [number]
+  --verbose             Provides more details about the activation status.                           [boolean]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+
+Copyright (C) Akamai Technologies, Inc
+Visit http://github.com/akamai/cli-appsec for detailed documentation
+```
+### Delete custom rule
+```
+Usage: akamai appsec delete-custom-rule [options]
+
+Options:
+  --config <id>       Configuration id. Mandatory if you have more than one configuration.            [number]
+  --custom-rule <id>  Rule ID.                                                             [required] [number]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+```
+
+### Export Configuration Version
+Exports the complete details of a configuration version.
+```
+Usage: akamai appsec export [options]
+
+Options:
+  --config <id>    Configuration id. Mandatory if you have more than one configuration.               [number]
+  --version <num>  The version number to Export                                                       [string]
+
+Command options:
+  --json     Print the raw json response. All commands respect this option.                          [boolean]
+  --edgerc   The full path to the .edgerc file.                                                       [string]
+  --section  The section of .edgerc to use.                                                           [string]
+  --help     Prints help information.                                               [commands: help] [boolean]
+  --version  Current version of the program.                                                         [boolean]
+
+```
 ## Caveats
 The Akamai CLI is a new tool and as such we have made some design choices worth mentioning.
 * Credentials - the tool looks for credentials in the 'appsec' section in your ~/.edgerc file. If not present, it will look for the section 'default'. Alternatively you can provide the section name using the --section option in every command. If you are unfamiliar with the authentication and provisioning for OPEN APIs, see the "Get Started" section of https://developer.akamai.com
