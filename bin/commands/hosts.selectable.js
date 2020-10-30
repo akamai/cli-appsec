@@ -12,13 +12,23 @@ class SelectableHostsCommand {
   setup(sywac) {
     sywac
       .number('--config <id>', {
-        desc: 'Configuration id. Mandatory if you have more than one configuration.',
+        desc: 'Configuration ID. Mandatory if you have more than one configuration.',
         group: 'Options:',
         required: false
       })
       .string('--version <id>', {
         desc:
-          "The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
+          "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
+        group: 'Options:',
+        required: false
+      })
+      .string('--contract <id>', {
+        desc: 'The contract ID.',
+        group: 'Options:',
+        required: false
+      })
+      .number('--group <id>', {
+        desc: 'The group ID. This argument is used along with contract.',
         group: 'Options:',
         required: false
       });

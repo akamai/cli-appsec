@@ -15,13 +15,13 @@ class SetModeCommand {
         paramsDesc: 'The mode to be set to.'
       })
       .number('--config <id>', {
-        desc: 'Configuration id. Mandatory if you have more than one configuration.',
+        desc: 'Configuration ID. Mandatory if you have more than one configuration.',
         group: 'Options:',
         required: false
       })
       .string('--version <id>', {
         desc:
-          "The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
+          "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
         group: 'Options:',
         required: false
       })
