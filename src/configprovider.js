@@ -5,6 +5,8 @@ let Edge =
 
 let URIs = require('./constants').URIS;
 let logger = require('./constants').logger('ConfigProvider');
+let fs = require('fs');
+let untildify = require('untildify');
 
 class ConfigProvider {
   constructor(options) {
@@ -36,6 +38,11 @@ class ConfigProvider {
       return this._edge.delete(uri, params);
     });
   }
+
+  deleteConfig() {
+    return this.deleteResource(URIs.GET_CONFIG, []);
+  }
+
   /**
    * Method to update resources tied directly to configuration.
    * @param {*} uri The URI of the resource.
@@ -66,6 +73,24 @@ class ConfigProvider {
   configs() {
     logger.info('Fetching all available configurations..');
     return this._edge.get(URIs.GET_CONFIGS);
+  }
+
+  /**
+   * Create Config.
+   */
+  createConfig() {
+    if (fs.existsSync(this._options['file'])) {
+      let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
+      let data;
+      try {
+        data = JSON.parse(payload);
+      } catch (err) {
+        throw 'The input JSON is not valid';
+      }
+      return this._edge.post(URIs.GET_CONFIGS, data, []);
+    } else {
+      throw `The file does not exists: ${this._options['file']}`;
+    }
   }
 
   /**

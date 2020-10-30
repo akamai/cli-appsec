@@ -13,13 +13,13 @@ class VersionCommand {
     sywac
       .number('--config <id>', {
         desc:
-          "Configuration id number. If not provided, assumes there is only one configuration and chooses it. If there's more, an error is thrown.",
+          "Configuration ID. If not provided, assumes there is only one configuration and chooses it. If there's more, an error is thrown.",
         group: 'Options:',
         required: false
       })
       .string('--version <num>', {
         desc:
-          "The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
+          "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
         group: 'Options:',
         required: false
       });

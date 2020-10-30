@@ -13,30 +13,30 @@ class MatchTargetOrderCommand {
     sywac
       .usage('Usage: akamai-appsec match-target-order [options]')
       .number('--config <id>', {
-        desc: 'Configuration id. Mandatory if you have more than one configuration.',
+        desc: 'Configuration ID. Mandatory if you have more than one configuration.',
         group: 'Options:',
         required: false
       })
       .string('--version <num>', {
         desc:
-          "The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
+          "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
         group: 'Options:',
         required: false
       })
       .number('--insert <id>', {
-        desc: 'Match target id to move to the start.',
+        desc: 'Match target ID to move to the start.',
         group: 'Options:',
         required: false
       })
       .number('--append <id>', {
-        desc: 'Match target id to move to the end.',
+        desc: 'Match target ID to move to the end.',
         group: 'Options:',
         required: false
       })
       .positional('[order]', {
         params: [
           {
-            desc: 'The comma separated list of numeric match target ids in desired order.',
+            desc: 'The comma separated list of numeric match target IDs in desired order.',
             group: 'Options:',
             type: 'array:number'
           }

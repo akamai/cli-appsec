@@ -23,18 +23,17 @@ class ModifyCustomRuleCommand {
       })
       .enumeration('--action <action>', {
         desc: 'Action to assign. If the action is "none", it is not associated with the policy.',
-        choices: ['alert', 'deny', 'none'],
         group: 'Options:',
         required: true
       })
       .number('--config <id>', {
-        desc: 'Configuration id. Mandatory if you have more than one configuration.',
+        desc: 'Configuration ID. Mandatory if you have more than one configuration.',
         group: 'Options:',
         required: false
       })
       .string('--version <num>', {
         desc:
-          "The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
+          "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
         group: 'Options:',
         required: false
       });
