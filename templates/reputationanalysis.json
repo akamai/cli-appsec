@@ -1,0 +1,4 @@
+{
+  "forwardToHTTPHeader" : null,
+  "forwardSharedIPToHTTPHeaderAndSIEM" : null
+}
