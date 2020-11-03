@@ -12,32 +12,28 @@ class CreateCustomDenyCommand {
   setup(sywac) {
     sywac
       .positional('<@path>', {
-        paramsDesc: 'The input file path.',
-        group: 'Arguments:',
-        mustExist: true
+        paramsDesc: 'The input file path.'
       })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       })
       .string('--version <id>', {
         desc:
           "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       })
       .check((argv, context) => {
-        if (!argv || !argv['@path'].startsWith('@')) {
+        if (!argv['@path'].startsWith('@')) {
           return context.cliMessage("ERROR: Invalid file name, should start with '@'");
         }
       });
   }
 
   run(options) {
-    //get args
-    const args = process.argv.slice(3, 5);
-    options.file = args[0].replace('@', '');
+    options.file = options['@path'].replace('@', '');
 
     out.print({
       promise: new CustomDeny(options).addCustomdeny(),

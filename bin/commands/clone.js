@@ -11,17 +11,16 @@ class CloneCommand {
 
   setup(sywac) {
     sywac
-
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       })
-      .string('--version <num>', {
+      .string('--version <id>', {
         desc:
-          "The version to clone. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'.",
-        group: 'Options:',
-        required: true
+          "Version number to clone. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'.",
+        group: 'Optional:',
+        required: false
       });
   }
 

@@ -10,21 +10,19 @@ class CreateConfigCommand {
   }
 
   setup(sywac) {
-    sywac.string('@<path>', {
-      desc: 'The input file path.',
-      group: 'Options:',
-      mustExist: true
-    });
+    sywac
+      .positional('<@path>', {
+        paramsDesc: 'The input file path.'
+      })
+      .check((argv, context) => {
+        if (!argv['@path'].startsWith('@')) {
+          return context.cliMessage("ERROR: Invalid file name, should start with '@'");
+        }
+      });
   }
 
   run(options) {
-    //get args
-    const args = process.argv.slice(3, 5);
-
-    if (!args[0] || !args[0].startsWith('@')) {
-      throw 'Missing file name.';
-    }
-    options.file = args[0].replace('@', '');
+    options.file = options['@path'].replace('@', '');
 
     out.print({
       promise: new Config(options).createConfig(),

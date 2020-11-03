@@ -12,7 +12,7 @@ class ListCustomRulesCommand {
   setup(sywac) {
     sywac.number('--config <id>', {
       desc: 'Configuration ID. Mandatory if you have more than one configuration.',
-      group: 'Options:',
+      group: 'Optional:',
       required: false
     });
   }

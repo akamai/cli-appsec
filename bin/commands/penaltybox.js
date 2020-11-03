@@ -13,19 +13,19 @@ class PenaltyBoxCommand {
     sywac
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       })
       .string('--version <id>', {
         desc:
           "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       })
       .string('--policy <id>', {
         desc:
           'Policy ID. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       });
   }

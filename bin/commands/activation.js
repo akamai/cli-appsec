@@ -11,14 +11,15 @@ class ActivationStatusCommand {
 
   setup(sywac) {
     sywac
+      .usage('Usage: akamai-appsec activation --activation-id <id> [options]')
       .number('--activation-id <id>', {
-        desc: 'Activation request id.',
-        group: 'Options:',
+        desc: 'Activation request ID.',
+        group: 'Required:',
         required: true
       })
       .boolean('--verbose', {
         desc: 'Provides more details about the activation status.',
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       });
   }

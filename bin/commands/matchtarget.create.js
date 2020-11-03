@@ -11,31 +11,34 @@ class CreateMatchTargetCommand {
 
   setup(sywac) {
     sywac
+      .usage(
+        'Usage: akamai-appsec create-match-target --hostnames <a.com, b.net, c.d.com> ---paths <x,y,z> [options]'
+      )
+      .stringArray('--hostnames <a.com, b.net, c.d.com>', {
+        desc: 'Hostnames to add.',
+        group: 'Required:',
+        required: true
+      })
+      .stringArray('--paths <x,y,z>', {
+        desc: 'The file paths',
+        group: 'Required:',
+        required: true
+      })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       })
       .string('--version <id>', {
         desc:
           "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
-        group: 'Options:',
+        group: 'Optional:',
         required: false
-      })
-      .stringArray('--hostnames <a.com, b.net, c.d.com>', {
-        desc: 'Hostnames to add.',
-        group: 'Options:',
-        required: true
-      })
-      .stringArray('--paths <x,y,z>', {
-        desc: 'The file paths',
-        group: 'Options:',
-        required: true
       })
       .string('--policy <id>', {
         desc:
           'Policy ID. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       });
   }
