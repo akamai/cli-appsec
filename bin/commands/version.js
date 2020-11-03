@@ -14,13 +14,13 @@ class VersionCommand {
       .number('--config <id>', {
         desc:
           "Configuration ID. If not provided, assumes there is only one configuration and chooses it. If there's more, an error is thrown.",
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       })
-      .string('--version <num>', {
+      .string('--version <id>', {
         desc:
           "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       });
   }

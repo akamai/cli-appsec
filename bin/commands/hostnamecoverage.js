@@ -76,7 +76,7 @@ class HostnameCoverageCommand {
       })
       .string('--version <id>', {
         desc:
-          "The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed. " +
+          "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed. " +
           'This is only required if you are retrieving a Hostname Coverage Match Target or Overlapping List.',
         group: 'Options:',
         required: false

@@ -19,22 +19,21 @@ class ProtectEvalHostsCommand {
         group: 'Options:',
         required: false
       })
-      .string('--version <num>', {
+      .string('--version <id>', {
         desc:
           "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
         group: 'Options:',
         required: false
+      })
+      .check((argv, context) => {
+        if (!argv['@path'].startsWith('@')) {
+          return context.cliMessage("ERROR: Invalid file name, should start with '@'");
+        }
       });
   }
 
   run(options) {
-    const args = process.argv.slice(3, 4);
-
-    if (!args[0].startsWith('@')) {
-      throw 'Missing file name.';
-    }
-
-    options.file = args[0].replace('@', '');
+    options.file = options['@path'].replace('@', '');
 
     out.print({
       promise: new SelectedHosts(options).protectEvalHosts(),

@@ -11,33 +11,36 @@ class EnableApiConstraintCommand {
 
   setup(sywac) {
     sywac
+      .usage('Usage: akamai-appsec enable-api-request-constraints --action <action> [options]')
+      .string('--action <action>', {
+        desc:
+          "Action to assign. Use - \n\t\t     • 'alert': To record the trigger of the event; \n\t\t     • 'deny': To block the request; \n\t\t       • 'deny_custom_{custom_deny_id}': To trigger a custom deny; \n\t\t     • 'none': To disassociate with the policy;",
+        group: 'Required:',
+        hints: '[required] [alert, deny, deny_custom_{custom_deny_id}, none]',
+        required: true
+      })
       .number('--config <id>', {
-        desc: 'Configuration id. Mandatory if you have more than one configuration.',
-        group: 'Options:',
+        desc: 'Configuration ID. Mandatory if you have more than one configuration.',
+        group: 'Optional:',
         required: false
       })
       .string('--version <id>', {
         desc:
-          "The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
-        group: 'Options:',
+          "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
+        group: 'Optional:',
         required: false
       })
       .string('--policy <id>', {
         desc:
-          'The policy id to use. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
-        group: 'Options:',
+          'Policy ID. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
+        group: 'Optional:',
         required: false
       })
       .string('--api <id>', {
         desc:
-          'The api id to use. If not provided, the request constraints action is set for all the associated match target api ids.',
-        group: 'Options:',
+          'API ID. If not provided, the request constraints action is set for all the associated match target API IDs.',
+        group: 'Optional:',
         required: false
-      })
-      .string('--action <id>', {
-        desc: 'Action to assign. ',
-        group: 'Options:',
-        required: true
       });
   }
 

@@ -11,21 +11,22 @@ class DeleteRatePolicyCommand {
 
   setup(sywac) {
     sywac
+      .usage('Usage: akamai-appsec delete-rate-policy --rate-policy <id> [options]')
+      .number('--rate-policy <id>', {
+        desc: 'Rate Policy ID.',
+        group: 'Required:',
+        required: true
+      })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       })
       .string('--version <id>', {
         desc:
           "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
-        group: 'Options:',
+        group: 'Optional:',
         required: false
-      })
-      .number('--rate-policy <id>', {
-        desc: 'Rate Policy ID.',
-        group: 'Options:',
-        required: true
       });
   }
 

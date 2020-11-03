@@ -12,14 +12,14 @@ class HttpHeaderLoggingCommand {
   setup(sywac) {
     sywac
       .number('--config <id>', {
-        desc: 'Configuration id. Mandatory if you have more than one configuration.',
-        group: 'Options:',
+        desc: 'Configuration ID. Mandatory if you have more than one configuration.',
+        group: 'Optional:',
         required: false
       })
       .string('--version <id>', {
         desc:
-          "The version number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
-        group: 'Options:',
+          "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
+        group: 'Optional:',
         required: false
       });
   }

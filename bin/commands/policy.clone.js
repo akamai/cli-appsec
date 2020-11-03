@@ -12,28 +12,28 @@ class PolicyCloneCommand {
   setup(sywac) {
     sywac
       .positional('<policy>', {
-        paramsDesc: 'The policy id to be cloned.'
+        paramsDesc: 'Policy ID to be cloned.'
       })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       })
-      .string('--version <num>', {
+      .string('--version <id>', {
         desc:
           "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       })
       .string('--prefix <prefix>', {
         desc:
-          'A 4 character alphanumeric prefix for the policy ID of the new security policy being created.',
-        group: 'Options:',
+          '4 character alphanumeric prefix for the policy ID of the new security policy being created.',
+        group: 'Optional:',
         required: false
       })
       .string('--name <name>', {
         desc: 'Name of the security policy.',
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       });
   }
