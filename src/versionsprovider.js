@@ -164,6 +164,10 @@ class VersionProvider {
       return this._config.readResource(URIs.GET_VERSION, [version]);
     });
   }
+
+  deleteConfigVersion() {
+    return this.deleteResource(URIs.GET_VERSION, []);
+  }
 }
 
 module.exports = {
