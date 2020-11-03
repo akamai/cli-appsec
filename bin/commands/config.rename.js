@@ -11,19 +11,20 @@ class RenameConfigCommand {
 
   setup(sywac) {
     sywac
+        .usage('Usage: akamai-appsec rename-config --name <name> [options]')
+        .string('--name <name>', {
+        desc: 'Name of the security config.',
+        group: 'Required:',
+        required: true
+      })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
-        group: 'Options:',
+        group: 'Optional:',
         required: false
-      })
-      .string('--name <name>', {
-        desc: 'Name of the security config.',
-        group: 'Options:',
-        required: true
       })
       .string('--description <description>', {
         desc: 'Description of the security config.',
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       });
   }
