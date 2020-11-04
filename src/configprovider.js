@@ -146,7 +146,7 @@ class ConfigProvider {
       fs.readFileSync(__dirname + '/../templates/rename-config.json', 'utf8')
     );
     rename.name = this._options['name'];
-    rename.desciption = this._options['description'];
+    rename.description = this._options['description'];
     return this.updateResource(URIs.GET_CONFIG, [], rename);
   }
 }
