@@ -18,14 +18,14 @@ class HostnameCoverage {
     if (this._options['match-target'] && this._options['overlapping']) {
       throw 'Cannot retrieve both the hostname coverage match targets and overlapping list at the same time.';
     } else if (this._options['match-target'] || this._options['overlapping']) {
-      if (!this._options['host']) {
-        throw 'Host is required when retrieving hostname coverage match target or overlapping list.';
+      if (!this._options['hostname']) {
+        throw 'Hostname is required when retrieving hostname coverage match target or overlapping list.';
       }
       return this._version.readResource(
         this._options['match-target']
           ? URIs.HOSTNAME_COVERAGE_MATCH_TARGET
           : URIs.HOSTNAME_COVERAGE_OVERLAPPING,
-        [this._options['host']]
+        [this._options['hostname']]
       );
     } else {
       return this._edge.get(URIs.HOSTNAME_COVERAGE);

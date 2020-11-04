@@ -91,7 +91,7 @@ class HostnameCoverageCommand {
         group: 'Options:',
         required: false
       })
-      .string('--host <hostname>', {
+      .string('--hostname <hostname>', {
         desc: 'The input host for match target or overlapping.',
         group: 'Options:',
         required: false
