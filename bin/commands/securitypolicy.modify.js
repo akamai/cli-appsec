@@ -11,8 +11,8 @@ class ModifySecurityPolicyCommand {
 
   setup(sywac) {
     sywac
-      .usage('Usage: akamai-appsec modify-security-policy --name <id> [options]')
-      .string('--name <id>', {
+      .usage('Usage: akamai-appsec modify-security-policy --name <name> [options]')
+      .string('--name <name>', {
         desc: 'The name for the policy.',
         group: 'Required:',
         required: true

@@ -11,9 +11,7 @@ class ReputationProfileActionCommand {
 
   setup(sywac) {
     sywac
-      .usage(
-        'Usage: akamai-appsec reputation-profile-action --reputation-profile <id> --action <action> [options]'
-      )
+      .usage('Usage: akamai-appsec reputation-profile-action --reputation-profile <id> [options]')
       .number('--reputation-profile <id>', {
         desc: 'Reputation Profile ID.',
         group: 'Required:',
