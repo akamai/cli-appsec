@@ -12,7 +12,7 @@ class CreateMatchTargetCommand {
   setup(sywac) {
     sywac
       .usage(
-        'Usage: akamai-appsec create-match-target --hostnames <a.com, b.net, c.d.com> ---paths <x,y,z> [options]'
+        'Usage: akamai-appsec create-match-target --hostnames <a.com, b.net, c.d.com> --paths <x,y,z> [options]'
       )
       .stringArray('--hostnames <a.com, b.net, c.d.com>', {
         desc: 'Hostnames to add.',
