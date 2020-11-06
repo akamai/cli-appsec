@@ -11,8 +11,8 @@ class AttackGroupExceptionModifyCommand {
 
   setup(sywac) {
     sywac
-      .positional('<attack-group-id>', {
-        paramsDesc: 'The attack group ID.'
+      .positional('<attack-group-name>', {
+        paramsDesc: 'The attack group name.'
       })
       .positional('<@path>', {
         paramsDesc: 'The input file path.'
@@ -41,7 +41,7 @@ class AttackGroupExceptionModifyCommand {
       });
   }
   run(options) {
-    options.group = options['attack-group-id'];
+    options.group = options['attack-group-name'];
     options.file = options['@path'].replace('@', '');
 
     out.print({
