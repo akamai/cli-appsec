@@ -11,8 +11,8 @@ class AttackGroupExceptionCommand {
 
   setup(sywac) {
     sywac
-      .positional('<attack-group-id>', {
-        paramsDesc: 'The attack group ID.'
+      .positional('<attack-group-name>', {
+        paramsDesc: 'The attack group name.'
       })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
@@ -33,7 +33,7 @@ class AttackGroupExceptionCommand {
       });
   }
   run(options) {
-    options.group = options['attack-group-id'];
+    options.group = options['attack-group-name'];
     out.print({
       promise: new AttackGroups(options).getAttackGroupException(),
       args: options,

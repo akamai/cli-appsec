@@ -11,8 +11,20 @@ class PolicyCloneCommand {
 
   setup(sywac) {
     sywac
+      .usage('Usage: akamai-appsec clone-policy <policy> --name <name> --prefix <prefix> [options]')
       .positional('<policy>', {
         paramsDesc: 'Policy ID to be cloned.'
+      })
+      .string('--name <name>', {
+        desc: 'Name of the security policy.',
+        group: 'Required:',
+        required: true
+      })
+      .string('--prefix <prefix>', {
+        desc:
+          '4 character alphanumeric prefix for the policy ID of the new security policy being created.',
+        group: 'Required:',
+        required: true
       })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
@@ -22,17 +34,6 @@ class PolicyCloneCommand {
       .string('--version <id>', {
         desc:
           "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
-        group: 'Optional:',
-        required: false
-      })
-      .string('--prefix <prefix>', {
-        desc:
-          '4 character alphanumeric prefix for the policy ID of the new security policy being created.',
-        group: 'Optional:',
-        required: false
-      })
-      .string('--name <name>', {
-        desc: 'Name of the security policy.',
         group: 'Optional:',
         required: false
       });

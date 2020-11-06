@@ -12,10 +12,10 @@ class EnableAttackGroupCommand {
   setup(sywac) {
     sywac
       .usage(
-        'Usage: akamai-appsec enable-attack-group <attack-group-id> --action <action> [options]'
+        'Usage: akamai-appsec enable-attack-group <attack-group-name> --action <action> [options]'
       )
-      .positional('<attack-group-id>', {
-        paramsDesc: 'The attack group ID.'
+      .positional('<attack-group-name>', {
+        paramsDesc: 'The attack group name.'
       })
       .string('--action <action>', {
         desc:
@@ -44,7 +44,7 @@ class EnableAttackGroupCommand {
   }
 
   run(options) {
-    options.group = options['attack-group-id'];
+    options.group = options['attack-group-name'];
     out.print({
       promise: new AttackGroups(options).enableAttackGroup(),
       args: options,
