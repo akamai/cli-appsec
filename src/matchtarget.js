@@ -38,6 +38,10 @@ class MatchTarget {
     });
   }
 
+  deleteMatchTarget() {
+    return this._version.deleteResource(URIs.MATCH_TARGET, [this._options['match-target']]);
+  }
+
   addHostnames() {
     return this._version
       .readResource(URIs.MATCH_TARGET, [this._options['match-target']])
