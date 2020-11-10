@@ -47,6 +47,7 @@ Commands:
   selectable-hostnames                      List all selectable hostnames.
   selected-hostnames                        List all currently chosen hostnames.
   create-match-target                       Creates a match target.
+  delete-match-target                       Deletes a match target.
   modify-match-target                       Updates a match target.
   match-target-order                        Change the match target sequence.
   match-targets                             List all match targets.
