@@ -11,9 +11,9 @@ class ModifyCustomRuleCommand {
 
   setup(sywac) {
     sywac
-      .usage('Usage: akamai-appsec modify-custom-rule [required] [options]')
+      .usage('Usage: akamai-appsec modify-custom-rule --custom-rule <id> --file <path> [options]')
       .number('--custom-rule <id>', {
-        desc: 'Rule ID.',
+        desc: 'Custom rule ID.',
         group: 'Required:',
         required: true
       })
