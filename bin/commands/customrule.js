@@ -11,7 +11,7 @@ class CustomRuleCommand {
 
   setup(sywac) {
     sywac
-      .usage('Usage: akamai-appsec custom-rule [required] [options]')
+      .usage('Usage: akamai-appsec custom-rule --custom-rule <id> [options]')
       .number('--custom-rule <id>', {
         desc: 'Custom rule ID.',
         group: 'Required:',
