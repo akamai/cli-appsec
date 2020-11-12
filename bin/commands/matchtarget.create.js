@@ -4,7 +4,7 @@ let MatchTarget = require('../../src/matchtarget').matchTarget;
 class CreateMatchTargetCommand {
   constructor() {
     this.flags = 'create-match-target';
-    this.desc = 'Creates a match target.';
+    this.desc = 'Creates a website match target.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

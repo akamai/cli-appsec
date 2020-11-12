@@ -6,7 +6,7 @@ const SUB_CPMMANDS = ['add-hostname'];
 class ModifyMatchTargetCommand {
   constructor() {
     this.flags = 'modify-match-target';
-    this.desc = 'Updates a match target.';
+    this.desc = 'Updates a website match target.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
