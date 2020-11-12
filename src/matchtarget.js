@@ -28,6 +28,10 @@ class MatchTarget {
     });
   }
 
+  getMatchTarget() {
+    return this._version.readResource(URIs.MATCH_TARGET, [this._options['match-target']]);
+  }
+
   createMatchTarget() {
     return this._policyProvider.policyId().then(policyId => {
       this._matchTarget.securityPolicy.policyId = policyId;
