@@ -20,9 +20,16 @@ class MatchTarget {
 
   matchtargets() {
     return this._version.readResource(URIs.MATCH_TARGETS, []).then(allMatchTargets => {
-      let matchTargetToChange =
-        this._matchTargetType == 'website' ? 'websiteTargets' : 'apiTargets';
-      let existingMatchTargets = allMatchTargets.matchTargets[matchTargetToChange]; //fetch only the requested type. i.e, website or api
+      let existingMatchTargets = [];
+      if (this._options.type) {
+        let matchTargetToChange = this._options.type == 'website' ? 'websiteTargets' : 'apiTargets';
+        existingMatchTargets = allMatchTargets.matchTargets[matchTargetToChange]; //fetch only the requested type. i.e, website or api
+      } else {
+        existingMatchTargets = allMatchTargets.matchTargets['websiteTargets'];
+        existingMatchTargets = existingMatchTargets.concat(
+          allMatchTargets.matchTargets['apiTargets']
+        );
+      }
       logger.debug('Existing sequence: %s', JSON.stringify(existingMatchTargets));
       return { matchTargets: existingMatchTargets };
     });
