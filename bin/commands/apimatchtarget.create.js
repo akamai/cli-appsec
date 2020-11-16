@@ -1,26 +1,19 @@
 let out = require('./lib/out');
 let MatchTarget = require('../../src/matchtarget').matchTarget;
 
-class CreateMatchTargetCommand {
+class CreateApiMatchTargetCommand {
   constructor() {
-    this.flags = 'create-match-target';
-    this.desc = 'Creates a website match target.';
+    this.flags = 'create-api-match-target';
+    this.desc = '(Beta) Creates an API match target.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
 
   setup(sywac) {
     sywac
-      .usage(
-        'Usage: akamai-appsec create-match-target --hostnames <a.com, b.net, c.d.com> --paths <x,y,z> [options]'
-      )
-      .stringArray('--hostnames <a.com, b.net, c.d.com>', {
-        desc: 'Hostnames to add.',
-        group: 'Required:',
-        required: true
-      })
-      .stringArray('--paths <x,y,z>', {
-        desc: 'The file paths',
+      .usage('Usage: akamai-appsec create-api-match-target --apis <123, 456, 789> [options]')
+      .numberArray('--apis <apiId1, apiId2, apiId3>', {
+        desc: 'APIs to add.',
         group: 'Required:',
         required: true
       })
@@ -45,7 +38,7 @@ class CreateMatchTargetCommand {
 
   run(options) {
     out.print({
-      promise: new MatchTarget(options).createMatchTarget(),
+      promise: new MatchTarget(options).createApiMatchTarget(),
       args: options,
       success: (args, data) => {
         return data.targetId;
@@ -54,4 +47,4 @@ class CreateMatchTargetCommand {
   }
 }
 
-module.exports = new CreateMatchTargetCommand();
+module.exports = new CreateApiMatchTargetCommand();

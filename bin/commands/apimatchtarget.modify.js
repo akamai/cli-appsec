@@ -1,12 +1,12 @@
 let out = require('./lib/out');
 let MatchTarget = require('../../src/matchtarget').matchTarget;
-let logger = require('../../src/constants').logger('modify-match-target');
+let logger = require('../../src/constants').logger('modify-api-match-target');
 
-const SUB_CPMMANDS = ['add-hostname'];
-class ModifyMatchTargetCommand {
+const SUB_CPMMANDS = ['add-api'];
+class ModifyAPIMatchTargetCommand {
   constructor() {
-    this.flags = 'modify-match-target';
-    this.desc = 'Updates a website match target.';
+    this.flags = 'modify-api-match-target';
+    this.desc = '(Beta) Updates an API match target.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -19,8 +19,8 @@ class ModifyMatchTargetCommand {
       .positional('<subcommand>', {
         paramsDesc: 'The subcommand. [' + SUB_CPMMANDS.join(',') + ']'
       })
-      .positional('<hostname>', {
-        paramsDesc: 'The hostname to add to the match target.'
+      .positional('<api>', {
+        paramsDesc: 'The api to add to the match target.'
       })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
@@ -42,7 +42,6 @@ class ModifyMatchTargetCommand {
 
   run(options) {
     logger.debug(JSON.stringify(options));
-    options.hostnames = [options.hostname];
     out.print({
       promise: this._getOperation(options),
       args: options,
@@ -54,12 +53,12 @@ class ModifyMatchTargetCommand {
 
   _getOperation(options) {
     switch (options.subcommand) {
-      case 'add-hostname':
-        return new MatchTarget(options).addHostnames();
+      case 'add-api':
+        return new MatchTarget(options).addApi();
       default:
         return null;
     }
   }
 }
 
-module.exports = new ModifyMatchTargetCommand();
+module.exports = new ModifyAPIMatchTargetCommand();

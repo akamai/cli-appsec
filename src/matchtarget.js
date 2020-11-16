@@ -7,12 +7,14 @@ let PolicyProvider = require('./policy').policy;
 
 let fs = require('fs');
 const TEMPLATE_PATH = __dirname + '/../templates/matchtarget.json';
+const API_TEMPLATE_PATH = __dirname + '/../templates/apimatchtarget.json';
 
 class MatchTarget {
   constructor(options) {
     this._version = new Version(options);
     this._options = JSON.parse(JSON.stringify(options)); //clone
     this._matchTarget = JSON.parse(fs.readFileSync(TEMPLATE_PATH, 'utf8'));
+    this._apiMatchTarget = JSON.parse(fs.readFileSync(API_TEMPLATE_PATH, 'utf8'));
     //this._matchTargetType = this._options.type ? this._options.type : 'website';
     this._matchTargetType = 'website';
     this._policyProvider = new PolicyProvider(options);
@@ -49,6 +51,22 @@ class MatchTarget {
     });
   }
 
+  createApiMatchTarget() {
+    return this._policyProvider.policyId().then(policyId => {
+      this._apiMatchTarget.securityPolicy.policyId = policyId;
+      let inputApis = this._options.apis;
+      this._apiMatchTarget.apis = [];
+      for (let i = 0; i < inputApis.length; i++) {
+        if (!Number.isInteger(inputApis[i])) {
+          throw 'Must provide at least 1 API, API list has to be valid.';
+        }
+        this._apiMatchTarget.apis.push({ id: inputApis[i] });
+      }
+
+      return this._version.createResource(URIs.MATCH_TARGETS, [], this._apiMatchTarget);
+    });
+  }
+
   deleteMatchTarget() {
     return this._version.deleteResource(URIs.MATCH_TARGET, [this._options['match-target']]);
   }
@@ -62,6 +80,32 @@ class MatchTarget {
         }
         for (let i = 0; i < this._options.hostnames.length; i++) {
           matchTarget.hostnames.push(this._options.hostnames[i]);
+        }
+        delete matchTarget.validations;
+        logger.debug('Updated match target: %s', JSON.stringify(matchTarget));
+        return this._version.updateResource(
+          URIs.MATCH_TARGET,
+          [this._options['match-target']],
+          matchTarget
+        );
+      });
+  }
+
+  addApi() {
+    return this._version
+      .readResource(URIs.MATCH_TARGET, [this._options['match-target']])
+      .then(matchTarget => {
+        if (!matchTarget.apis) {
+          matchTarget.apis = [];
+        }
+        let apiExists = false;
+        for (let i = 0; i < matchTarget.apis.length; i++) {
+          if (matchTarget.apis[i].id == this._options.api) {
+            apiExists = true;
+          }
+        }
+        if (!apiExists) {
+          matchTarget.apis.push({ id: this._options.api });
         }
         delete matchTarget.validations;
         logger.debug('Updated match target: %s', JSON.stringify(matchTarget));
