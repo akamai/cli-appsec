@@ -51,6 +51,7 @@ Commands:
   modify-match-target                       Updates a match target.
   match-target-order                        Change the match target sequence.
   match-targets                             List all match targets.
+  match-target                              (Beta) Read a match target.
   policies                                  List all security policies.
   clone-policy                              Clone security policy.
   version                                   Read a config version.
