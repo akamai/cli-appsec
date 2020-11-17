@@ -22,7 +22,7 @@ class MatchTargetsCommand {
         group: 'Optional:',
         required: false
       })
-      .enumeration('--type <apiType>', {
+      .enumeration('--type <match-target-type>', {
         desc: 'Select whether to return API or Website match targets, if left blank, return both.',
         choices: ['api', 'website'],
         group: 'Optional:',
