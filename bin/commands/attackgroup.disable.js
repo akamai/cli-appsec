@@ -11,41 +11,34 @@ class DisableAttackGroupCommand {
 
   setup(sywac) {
     sywac
+      .positional('<attack-group-name>', {
+        paramsDesc: 'The attack group name.'
+      })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
-        group: 'Options:',
-        required: false
+        group: 'Optional:'
       })
       .string('--version <id>', {
         desc:
           "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
-        group: 'Options:',
-        required: false
+        group: 'Optional:'
       })
       .string('--policy <id>', {
         desc:
           'Policy ID. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
-        group: 'Options:',
-        required: false
+        group: 'Optional:'
       });
   }
 
   run(options) {
-    //get last argument
-    const myArgs = process.argv.slice(3);
-
-    if (myArgs[0]) {
-      options.group = myArgs[0];
-      out.print({
-        promise: new AttackGroups(options).disableAttackGroup(),
-        args: options,
-        success: (args, data) => {
-          return JSON.stringify(data);
-        }
-      });
-    } else {
-      throw 'Missing group name.';
-    }
+    options.group = options['attack-group-name'];
+    out.print({
+      promise: new AttackGroups(options).disableAttackGroup(),
+      args: options,
+      success: (args, data) => {
+        return JSON.stringify(data);
+      }
+    });
   }
 }
 

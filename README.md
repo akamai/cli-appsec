@@ -46,10 +46,14 @@ Commands:
   add-hostname                              Add hostnames to selected list.
   selectable-hostnames                      List all selectable hostnames.
   selected-hostnames                        List all currently chosen hostnames.
-  create-match-target                       Creates a match target.
-  modify-match-target                       Updates a match target.
+  create-match-target                       Creates a website match target.
+  delete-match-target                       Deletes a match target.
+  modify-match-target                       Updates a website match target.
+  create-api-match-target                   (Beta) Creates an API match target.
+  modify-api-match-target                   (Beta) Updates an API match target.
   match-target-order                        Change the match target sequence.
   match-targets                             List all match targets.
+  match-target                              (Beta) Read a match target.
   policies                                  List all security policies.
   clone-policy                              Clone security policy.
   version                                   Read a config version.
@@ -140,6 +144,11 @@ Commands:
   protect-eval-hostnames                    (Beta) Move evaluation hostnames to protection.
   eval-hostnames                            (Beta) List all hosts under evaluation.
   modify-eval-hostnames                     (Beta) Modify hostnames under evaluation.
+  bypass-network-lists                      (Beta) List all bypass network lists.
+  modify-bypass-network-lists               (Beta) Update bypass network lists.
+  hostname-coverage                         (Beta) Display the Hostname Coverage.
+  version-notes                             (Beta) Display the version notes.
+  modify-version-notes                      (Beta) Update the version notes.
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]

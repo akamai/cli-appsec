@@ -121,6 +121,34 @@ class ConfigProvider {
       return Promise.resolve(this._configId);
     }
   }
+
+  cloneConfig() {
+    if (fs.existsSync(this._options['file'])) {
+      let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
+      let data;
+      try {
+        data = JSON.parse(payload);
+      } catch (err) {
+        throw 'The input JSON is not valid';
+      }
+      if (data.createFrom) {
+        return this._edge.post(URIs.GET_CONFIGS, data, []);
+      } else {
+        throw 'The createFrom is not specified in the input JSON.';
+      }
+    } else {
+      throw `The file does not exists: ${this._options['file']}`;
+    }
+  }
+
+  renameConfig() {
+    let rename = JSON.parse(
+      fs.readFileSync(__dirname + '/../templates/rename-config.json', 'utf8')
+    );
+    rename.name = this._options['name'];
+    rename.description = this._options['description'];
+    return this.updateResource(URIs.GET_CONFIG, [], rename);
+  }
 }
 
 module.exports = {

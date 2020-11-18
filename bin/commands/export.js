@@ -13,12 +13,13 @@ class ExportCommand {
     sywac
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       })
-      .string('--version <num>', {
-        desc: 'The version number to Export',
-        group: 'Options:',
+      .string('--version <id>', {
+        desc:
+          "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
+        group: 'Optional:',
         required: false
       });
   }

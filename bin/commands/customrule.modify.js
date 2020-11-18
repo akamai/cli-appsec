@@ -11,20 +11,22 @@ class ModifyCustomRuleCommand {
 
   setup(sywac) {
     sywac
-      .number('--config <id>', {
-        desc: 'Configuration ID. Mandatory if you have more than one configuration.',
-        group: 'Options:',
-        required: false
-      })
+      .usage('Usage: akamai-appsec modify-custom-rule --custom-rule <id> --file <path> [options]')
       .number('--custom-rule <id>', {
-        desc: 'Rule ID.',
-        group: 'Options:',
+        desc: 'Custom rule ID.',
+        group: 'Required:',
         required: true
       })
       .file('--file <path>', {
         desc: 'File with JSON rules',
+        group: 'Required:',
         mustExist: true,
         required: true
+      })
+      .number('--config <id>', {
+        desc: 'Configuration ID. Mandatory if you have more than one configuration.',
+        group: 'Optional:',
+        required: false
       });
   }
 

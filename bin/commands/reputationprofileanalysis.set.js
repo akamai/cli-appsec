@@ -13,32 +13,32 @@ class SetReputationProfileAnalysisCommand {
     sywac
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       })
       .string('--version <id>', {
         desc:
           "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       })
       .string('--policy <id>', {
         desc:
           'Policy ID. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       })
       .enumeration('--forwardToHTTPHeader <boolean>', {
         desc:
           'Option to add client reputation details to requests forwarded to origin in an HTTP header',
-        group: 'Options:',
+        group: 'Optional:',
         required: false,
         choices: ['true', 'false']
       })
       .enumeration('--forwardSharedIPToHTTPHeaderAndSIEM <boolean>', {
         desc:
           'Option to add value indicating that shared IPs are included in HTTP header and SIEM integration when used.',
-        group: 'Options:',
+        group: 'Optional:',
         required: false,
         choices: ['true', 'false']
       });

@@ -13,13 +13,19 @@ class MatchTargetsCommand {
     sywac
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       })
-      .string('--version <num>', {
+      .string('--version <id>', {
         desc:
           "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
-        group: 'Options:',
+        group: 'Optional:',
+        required: false
+      })
+      .enumeration('--type <match-target-type>', {
+        desc: 'Select whether to return API or Website match targets, if left blank, return both.',
+        choices: ['api', 'website'],
+        group: 'Optional:',
         required: false
       });
   }
@@ -32,7 +38,7 @@ class MatchTargetsCommand {
         let targetSequence = [];
         let matchTargets = data.matchTargets;
         for (let i = 0; i < matchTargets.length; i++) {
-          targetSequence.push(matchTargets[i].targetId);
+          targetSequence.push(matchTargets[i].targetId + ' ' + matchTargets[i].type);
         }
         return targetSequence.join(require('os').EOL);
       }

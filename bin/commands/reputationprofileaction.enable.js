@@ -11,32 +11,37 @@ class EnableReputationProfileActionCommand {
 
   setup(sywac) {
     sywac
+      .usage(
+        'Usage: akamai-appsec enable-reputation-profile --reputation-profile <id> --action <action> [options]'
+      )
+      .number('--reputation-profile <id>', {
+        desc: 'Reputation Profile ID.',
+        group: 'Required:',
+        required: true
+      })
+      .string('--action <action>', {
+        desc:
+          "Action to assign. Use - \n\t\t\t     • 'alert': To record the trigger of the event; \n\t\t\t     • 'deny': To block the request; \n\t\t\t     • 'deny_custom_{custom_deny_id}': To trigger a custom deny; \n\t\t\t     • 'none': To disassociate with the policy;",
+        group: 'Required:',
+        hints: '[required] [alert, deny, deny_custom_{custom_deny_id}, none]',
+        required: true
+      })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       })
       .string('--version <id>', {
         desc:
           "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       })
       .string('--policy <id>', {
         desc:
           'Policy ID. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
-        group: 'Options:',
+        group: 'Optional:',
         required: false
-      })
-      .number('--reputation-profile <id>', {
-        desc: 'Reputation Profile ID.',
-        group: 'Options:',
-        required: true
-      })
-      .string('--action <id>', {
-        desc: 'Action to assign. ',
-        group: 'Options:',
-        required: true
       });
   }
 

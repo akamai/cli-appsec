@@ -6,7 +6,7 @@ const SUB_CPMMANDS = ['add-hostname'];
 class ModifyMatchTargetCommand {
   constructor() {
     this.flags = 'modify-match-target';
-    this.desc = 'Updates a match target.';
+    this.desc = 'Updates a website match target.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -14,25 +14,23 @@ class ModifyMatchTargetCommand {
   setup(sywac) {
     sywac
       .positional('<match-target>', {
-        paramsDesc: 'The match target id.'
+        paramsDesc: 'The match target ID.'
       })
       .positional('<subcommand>', {
-        paramsDesc: 'The subcommand. [' + SUB_CPMMANDS.join(',') + ']',
-        group: 'Sub Commands:'
+        paramsDesc: 'The subcommand. [' + SUB_CPMMANDS.join(',') + ']'
       })
       .positional('<hostname>', {
         paramsDesc: 'The hostname to add to the match target.'
       })
-      //.usage('Usage: appsec modify-match-target <match-target-id> add-hostname <hostname> [options]')
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       })
-      .string('--version <num>', {
+      .string('--version <id>', {
         desc:
           "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
-        group: 'Options:',
+        group: 'Optional:',
         required: false
       })
       .check((argv, context) => {
