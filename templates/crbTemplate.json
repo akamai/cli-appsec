@@ -172,6 +172,19 @@
     {
       "type": "clientCertValidMatch",
       "positiveMatch": false
+    },
+    {
+      "type": "clientTlsFingerprintMatch",
+      "positiveMatch": false,
+      "value": "ChangeMe"
+    },
+    {
+      "type": "hostMatch",
+      "positiveMatch": true,
+      "value": [
+        "ChangeMe.com",
+        "ChangeMe2.com"
+      ]
     }
   ]
 }
