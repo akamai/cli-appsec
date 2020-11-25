@@ -176,7 +176,10 @@
     {
       "type": "clientTlsFingerprintMatch",
       "positiveMatch": false,
-      "value": "ChangeMe"
+      "value": [
+        "ChangeMe",
+        "ChangeMe2"
+      ]
     },
     {
       "type": "hostMatch",
