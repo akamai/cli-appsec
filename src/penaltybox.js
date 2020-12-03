@@ -4,7 +4,6 @@ let URIs = require('./constants').URIS;
 //needed to pass files to PUT/POST
 let fs = require('fs');
 //Ensures user can add paths like '~/foo'
-let untildify = require('untildify');
 let Config = require('./configprovider').configProvider;
 let Version = require('./versionsprovider').versionProvider;
 let PolicyProvider = require('./policy').policy;

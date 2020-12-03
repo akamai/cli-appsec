@@ -1,6 +1,6 @@
 {
   "name": "akamaicliappsec",
-  "version": "1.9.0",
+  "version": "2.0.0",
   "description": "A wrapping development kit to interface common tasks with akamai's Security {OPEN} API.",
   "repository": "https://github.com/akamai/cli-appsec",
   "license": "Apache-2.0",
@@ -9,7 +9,6 @@
   },
   "scripts": {
     "lint": "eslint src",
-    "test": "mocha",
     "precommit": "lint-staged"
   },
   "bin": {
@@ -27,18 +26,15 @@
     "string-format": "^0.5.0",
     "sywac": "^1.2.0",
     "untildify": "^3.0.2",
-    "yarn": "^1.3.2"
+    "yarn": "^1.22.10"
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "eslint": "^4.17.0",
+    "eslint": "^7.14.0",
     "fs": "0.0.1-security",
     "husky": "^0.14.3",
     "lint-staged": "^6.1.0",
-    "mocha": "^5.0.0",
-    "nock": "^9.1.6",
-    "prettier": "^1.6.1",
-    "sinon": "^4.2.2"
+    "prettier": "^1.6.1"
   },
   "lint-staged": {
     "*.js": [
