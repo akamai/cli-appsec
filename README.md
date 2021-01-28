@@ -130,6 +130,7 @@ Commands:
   prefetch-requests                         (Beta) Display the Prefetch Requests settings.
   modify-prefetch-requests                  (Beta) Update the Prefetch Requests settings.
   pragma-header                             (Beta) Display Pragma Header settings.
+  modify-pragma-header                      (Beta) Update Pragma Header settings.
   create-config                             (Beta) Create a new security config.
   delete-config                             (Beta) Delete a security config.
   create-security-policy                    (Beta) Create a security policy.
