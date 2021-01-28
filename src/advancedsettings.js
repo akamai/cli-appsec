@@ -104,6 +104,31 @@ class AdvancedSettings {
       throw `The file does not exists: ${this._options['file']}`;
     }
   }
+  
+  getPragmaHeader() {
+    if (this._options.policy) {
+      return this._policyProvider.policyId().then(policyId => {
+        return this._version.readResource(URIs.PRAGMA_HEADER, [policyId]);
+      });
+    }
+    return  this._version.readResource(URIs.PRAGMA_HEADER, []);
+  }
+
+  updatePragmaHeader() {
+    if (fs.existsSync(this._options['file'])) {
+      let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
+      let data;
+      try {
+        data = JSON.parse(payload);
+      } catch (err) {
+        throw 'The input JSON is not valid';
+      }
+      return this._version.updateResource(URIs.PRAGMA_HEADER, [], data);
+    } else {
+      throw `The file does not exists: ${this._options['file']}`;
+    }
+  }
+  
 }
 
 module.exports = {
