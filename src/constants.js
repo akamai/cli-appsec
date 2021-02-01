@@ -82,6 +82,7 @@ const resources = {
   HTTP_HEADER_LOGGING: '/appsec/v1/configs/%s/versions/%s/advanced-settings/logging',
   PREFETCH: '/appsec/v1/configs/%s/versions/%s/advanced-settings/prefetch',
   PRAGMA_HEADER: '/appsec/v1/configs/%s/versions/%s/advanced-settings/pragma-header',
+  SECURITY_POLICY_PRAGMA_HEADER:'/appsec/v1/configs/%s/versions/%s/security-policies/%s/advanced-settings/pragma-header',
   SECURITY_POLICY_HTTP_HEADER_LOGGING:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/advanced-settings/logging',
   VERSION_NOTES: '/appsec/v1/configs/%s/versions/%s/version-notes',

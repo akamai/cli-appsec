@@ -108,7 +108,7 @@ class AdvancedSettings {
   getPragmaHeader() {
     if (this._options.policy) {
       return this._policyProvider.policyId().then(policyId => {
-        return this._version.readResource(URIs.PRAGMA_HEADER, [policyId]);
+        return this._version.readResource(URIs.SECURITY_POLICY_PRAGMA_HEADER, [policyId]);
       });
     }
     return  this._version.readResource(URIs.PRAGMA_HEADER, []);
@@ -122,6 +122,11 @@ class AdvancedSettings {
         data = JSON.parse(payload);
       } catch (err) {
         throw 'The input JSON is not valid';
+      }
+      if (this._options.policy) {
+        return this._policyProvider.policyId().then(policyId => {
+          return this._version.updateResource(URIs.SECURITY_POLICY_PRAGMA_HEADER, [policyId], data);
+        });
       }
       return this._version.updateResource(URIs.PRAGMA_HEADER, [], data);
     } else {
