@@ -2,7 +2,7 @@ let out = require('./lib/out');
 let MatchTarget = require('../../src/matchtarget').matchTarget;
 let logger = require('../../src/constants').logger('modify-api-match-target');
 
-const SUB_CPMMANDS = ['add-api'];
+const SUB_CPMMANDS = ['add-api', 'remove-api'];
 class ModifyAPIMatchTargetCommand {
   constructor() {
     this.flags = 'modify-api-match-target';
@@ -55,6 +55,8 @@ class ModifyAPIMatchTargetCommand {
     switch (options.subcommand) {
       case 'add-api':
         return new MatchTarget(options).addApi();
+      case 'remove-api':
+        return new MatchTarget(options).removeApi();
       default:
         return null;
     }

@@ -91,6 +91,34 @@ class MatchTarget {
       });
   }
 
+  removeHostname() {
+    return this._version
+      .readResource(URIs.MATCH_TARGET, [this._options['match-target']])
+      .then(matchTarget => {
+        if (!matchTarget.hostnames) {
+          matchTarget.hostnames = [];
+        }
+        let hostExists = false;
+        for (var i = 0; i < matchTarget.hostnames.length; i++) {
+          if (matchTarget.hostnames[i] === this._options.hostname) {
+            matchTarget.hostnames.splice(i, 1);
+            hostExists = true;
+          }
+        }
+        if (!hostExists) {
+          throw 'The specified hostname not present in the match target';
+        }
+
+        delete matchTarget.validations;
+        logger.debug('Updated match target: %s', JSON.stringify(matchTarget));
+        return this._version.updateResource(
+          URIs.MATCH_TARGET,
+          [this._options['match-target']],
+          matchTarget
+        );
+      });
+  }
+
   addApi() {
     return this._version
       .readResource(URIs.MATCH_TARGET, [this._options['match-target']])
@@ -106,6 +134,33 @@ class MatchTarget {
         }
         if (!apiExists) {
           matchTarget.apis.push({ id: this._options.api });
+        }
+        delete matchTarget.validations;
+        logger.debug('Updated match target: %s', JSON.stringify(matchTarget));
+        return this._version.updateResource(
+          URIs.MATCH_TARGET,
+          [this._options['match-target']],
+          matchTarget
+        );
+      });
+  }
+
+  removeApi() {
+    return this._version
+      .readResource(URIs.MATCH_TARGET, [this._options['match-target']])
+      .then(matchTarget => {
+        if (!matchTarget.apis) {
+          matchTarget.apis = [];
+        }
+        let apiExists = false;
+        for (let i = 0; i < matchTarget.apis.length; i++) {
+          if (matchTarget.apis[i].id == this._options.api) {
+            matchTarget.apis.splice(i, 1);
+            apiExists = true;
+          }
+        }
+        if (!apiExists) {
+          throw 'The specified api not present in the match target';
         }
         delete matchTarget.validations;
         logger.debug('Updated match target: %s', JSON.stringify(matchTarget));
