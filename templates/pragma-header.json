@@ -1,0 +1,19 @@
+{
+  "action": "REMOVE",
+  "excludeCondition": [
+    {
+      "type":"requestHeaderValueMatch",
+      "positiveMatch": true,
+      "header": "accept",
+      "value": [ "application/json", "application/xml"],
+      "valueCase": false,
+      "valueWildcard": true
+    },
+    {
+      "type":"ipMatch",
+      "positiveMatch": true,
+      "value": [ "1.1.1.1", "192.168.100.14/24"],
+      "useHeaders": false
+    }
+  ]
+}
