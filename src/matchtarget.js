@@ -95,14 +95,13 @@ class MatchTarget {
     return this._version
       .readResource(URIs.MATCH_TARGET, [this._options['match-target']])
       .then(matchTarget => {
-        if (!matchTarget.hostnames) {
-          matchTarget.hostnames = [];
-        }
+        matchTarget.hostnames = matchTarget.hostnames || [];
         let hostExists = false;
-        for (var i = 0; i < matchTarget.hostnames.length; i++) {
+        for (let i = 0; i < matchTarget.hostnames.length; i++) {
           if (matchTarget.hostnames[i] === this._options.hostname) {
             matchTarget.hostnames.splice(i, 1);
             hostExists = true;
+            break;
           }
         }
         if (!hostExists) {
@@ -130,6 +129,7 @@ class MatchTarget {
         for (let i = 0; i < matchTarget.apis.length; i++) {
           if (matchTarget.apis[i].id == this._options.api) {
             apiExists = true;
+            break;
           }
         }
         if (!apiExists) {
@@ -149,14 +149,13 @@ class MatchTarget {
     return this._version
       .readResource(URIs.MATCH_TARGET, [this._options['match-target']])
       .then(matchTarget => {
-        if (!matchTarget.apis) {
-          matchTarget.apis = [];
-        }
+        matchTarget.apis = matchTarget.apis || [];
         let apiExists = false;
         for (let i = 0; i < matchTarget.apis.length; i++) {
           if (matchTarget.apis[i].id == this._options.api) {
             matchTarget.apis.splice(i, 1);
             apiExists = true;
+            break;
           }
         }
         if (!apiExists) {
