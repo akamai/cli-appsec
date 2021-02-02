@@ -2,7 +2,7 @@ let out = require('./lib/out');
 let MatchTarget = require('../../src/matchtarget').matchTarget;
 let logger = require('../../src/constants').logger('modify-match-target');
 
-const SUB_CPMMANDS = ['add-hostname'];
+const SUB_CPMMANDS = ['add-hostname', 'remove-hostname'];
 class ModifyMatchTargetCommand {
   constructor() {
     this.flags = 'modify-match-target';
@@ -42,7 +42,9 @@ class ModifyMatchTargetCommand {
 
   run(options) {
     logger.debug(JSON.stringify(options));
-    options.hostnames = [options.hostname];
+    if (options.hostname) {
+      options.hostnames = [options.hostname];
+    }
     out.print({
       promise: this._getOperation(options),
       args: options,
@@ -56,6 +58,8 @@ class ModifyMatchTargetCommand {
     switch (options.subcommand) {
       case 'add-hostname':
         return new MatchTarget(options).addHostnames();
+      case 'remove-hostname':
+        return new MatchTarget(options).removeHostname();
       default:
         return null;
     }
