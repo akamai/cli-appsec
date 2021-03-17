@@ -1,6 +1,7 @@
 ## 2.2.0
 * Bugfixes:
     * When all hostnames are selected for the website match-target, command will return "ALL_HOSTNAMES" (instead of "undefined")
+    * `modify-bypass-network-lists` command will return all the network lists instead of JSON
 
 ## 2.1.0
 * Commands:
