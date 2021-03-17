@@ -39,7 +39,7 @@ class CreateSecurityPolicyCommand {
       promise: new SecurityPolicy(options).createPolicy(),
       args: options,
       success: (args, data) => {
-        return JSON.stringify(data);
+        return data.policyId;
       }
     });
   }
