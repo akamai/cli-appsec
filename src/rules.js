@@ -29,8 +29,14 @@ class Rules {
 
   upgradeRules() {
     return this._policyProvider.policyId().then(policyId => {
+
       let upgrade = JSON.parse(fs.readFileSync(__dirname + '/../templates/upgrade.json', 'utf8'));
       upgrade.upgrade = true;
+      if(this._options.mode) {
+        if(this._options.mode!=='KRS2_MANUAL' && this._options.mode!=='KRS2_AUTO')
+          throw `Wrong arguments. mode argument should be set to either KRS2_AUTO or KRS2_MANUAL.`;
+        upgrade.mode=this._options.mode;
+      }
       return this._version.updateResource(URIs.RULE_ACTIONS, [policyId], upgrade);
     });
   }
