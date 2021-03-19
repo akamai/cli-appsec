@@ -27,7 +27,13 @@ class RuleActionsCommand {
           'Policy ID. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
         group: 'Optional:',
         required: false
-      });
+      })
+        .string('--mode <id>', {
+          desc:
+              'Ruleset upgrade mode KRS2_AUTO or KRS2_MANUAL. If mode is not provided, KRS 1.0 ruleset is assumed',
+          group: 'Optional:',
+          required: false
+        });
   }
   run(options) {
     out.print({
