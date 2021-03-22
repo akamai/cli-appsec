@@ -37,7 +37,12 @@ class ModifyBypassNLCommand {
       promise: new BypassNL(options).updateBypassNetworkList(),
       args: options,
       success: (args, data) => {
-        return JSON.stringify(data);
+        data = data.networkLists;
+        let response = [];
+        data.forEach(networkList => {
+          response.push(networkList);
+        });
+        return response.join(require('os').EOL);
       }
     });
   }
