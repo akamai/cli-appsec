@@ -1,18 +1,18 @@
-let AdvancedSettings = require('../../src/advancedsettings').advancedsettings;
+let AttackGroups = require('../../src/evalgroups').attackGroups;
 let out = require('./lib/out');
 
-class PragmaHeaderModifyCommand {
+class AttackGroupCommand {
   constructor() {
-    this.flags = 'modify-pragma-header';
-    this.desc = '(Beta) Update Pragma Header settings.';
+    this.flags = 'eval-group';
+    this.desc = '(Beta) Display eval attack group action.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
 
   setup(sywac) {
     sywac
-      .positional('<@path>', {
-        paramsDesc: 'The input file path.'
+      .positional('<attack-group-name>', {
+        paramsDesc: 'The attack group name.'
       })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
@@ -25,22 +25,17 @@ class PragmaHeaderModifyCommand {
         group: 'Optional:',
         required: false
       })
-        .string('--policy <id>', {
-      desc:
+      .string('--policy <id>', {
+        desc:
           'Policy ID. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
-      group: 'Optional:',
-      required: false
-    })
-      .check((argv, context) => {
-        if (!argv['@path'].startsWith('@')) {
-          return context.cliMessage("ERROR: Invalid file name, should start with '@'");
-        }
+        group: 'Optional:',
+        required: false
       });
   }
   run(options) {
-    options.file = options['@path'].replace('@', '');
+    options.group = options['attack-group-name'];
     out.print({
-      promise: new AdvancedSettings(options).updatePragmaHeader(),
+      promise: new AttackGroups(options).getAttackGroupAction(),
       args: options,
       success: (args, data) => {
         return JSON.stringify(data);
@@ -49,4 +44,4 @@ class PragmaHeaderModifyCommand {
   }
 }
 
-module.exports = new PragmaHeaderModifyCommand();
+module.exports = new AttackGroupCommand();

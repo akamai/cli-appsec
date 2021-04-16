@@ -133,6 +133,28 @@ class AdvancedSettings {
       throw `The file does not exists: ${this._options['file']}`;
     }
   }
+
+  getRequestBody() {
+    if (this._options.policy) {
+      return this._policyProvider.policyId().then(policyId => {
+        return this._version.readResource(URIs.SECURITY_POLICY_REQUEST_BODY, [policyId]);
+      });
+    }
+    return  this._version.readResource(URIs.REQUEST_BODY, []);
+  }
+
+  updateRequestBody() {
+
+      let payload = { requestBodyInspectionLimitInKB: this._options.inspectionlimit };
+
+      if (this._options.policy) {
+        return this._policyProvider.policyId().then(policyId => {
+          return this._version.updateResource(URIs.SECURITY_POLICY_REQUEST_BODY, [policyId], payload);
+        });
+      }
+      return this._version.updateResource(URIs.REQUEST_BODY, [], payload);
+
+  }
   
 }
 
