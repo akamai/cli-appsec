@@ -70,7 +70,7 @@ const resources = {
   EVAL_GROUP_ACTIONS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-groups',
   EVAL_GROUP_ACTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-groups/%s',
   EVAL_GROUP_CONDITION_EXCEPTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-groups/%s/condition-exception',
-  EVAL_RULE_CONDITION_EXCEPTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-rules/%s/condition-exception',
+  EVAL_RULE_CONDITION_EXCEPTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-rules/%d/condition-exception',
   EVAL_MODE: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval',
   IP_GEO_FIREWALL: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/ip-geo-firewall',
   REPUTATION_PROFILE_ACTIONS:
