@@ -29,6 +29,7 @@ class RequestBodyCommand {
                 required: false
             });
     }
+
     run(options) {
         out.print({
             promise: new AdvancedSettings(options).getRequestBody(),
@@ -40,4 +41,4 @@ class RequestBodyCommand {
     }
 }
 
-module.exports = new RequestBodyCommand ();
+module.exports = new RequestBodyCommand();
