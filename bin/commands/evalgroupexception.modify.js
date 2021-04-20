@@ -1,16 +1,19 @@
-let AdvancedSettings = require('../../src/advancedsettings').advancedsettings;
+let AttackGroups = require('../../src/attackgroups').attackGroups;
 let out = require('./lib/out');
 
-class PragmaHeaderModifyCommand {
+class AttackGroupExceptionModifyCommand {
   constructor() {
-    this.flags = 'modify-pragma-header';
-    this.desc = '(Beta) Update Pragma Header settings.';
+    this.flags = 'modify-eval-group-condition-exception';
+    this.desc = '(Beta) Update eval attack group exceptions.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
 
   setup(sywac) {
     sywac
+      .positional('<attack-group-name>', {
+        paramsDesc: 'The attack group name.'
+      })
       .positional('<@path>', {
         paramsDesc: 'The input file path.'
       })
@@ -25,12 +28,12 @@ class PragmaHeaderModifyCommand {
         group: 'Optional:',
         required: false
       })
-        .string('--policy <id>', {
-      desc:
+      .string('--policy <id>', {
+        desc:
           'Policy ID. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
-      group: 'Optional:',
-      required: false
-    })
+        group: 'Optional:',
+        required: false
+      })
       .check((argv, context) => {
         if (!argv['@path'].startsWith('@')) {
           return context.cliMessage("ERROR: Invalid file name, should start with '@'");
@@ -38,9 +41,11 @@ class PragmaHeaderModifyCommand {
       });
   }
   run(options) {
+    options.group = options['attack-group-name'];
     options.file = options['@path'].replace('@', '');
+
     out.print({
-      promise: new AdvancedSettings(options).updatePragmaHeader(),
+      promise: new AttackGroups(options).updateAttackGroupException(),
       args: options,
       success: (args, data) => {
         return JSON.stringify(data);
@@ -49,4 +54,4 @@ class PragmaHeaderModifyCommand {
   }
 }
 
-module.exports = new PragmaHeaderModifyCommand();
+module.exports = new AttackGroupExceptionModifyCommand();
