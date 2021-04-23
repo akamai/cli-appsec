@@ -1,3 +1,6 @@
+## 2.3.0
+* Adding option to specify "rule-update" flag while cloning a config version
+
 ## 2.2.0
 * Bugfixes:
     * When all hostnames are selected for the website match-target, command will return "ALL_HOSTNAMES" (instead of "undefined")
