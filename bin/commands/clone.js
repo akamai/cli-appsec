@@ -23,7 +23,8 @@ class CloneCommand {
         required: false
       })
       .boolean('--rule-update', {
-        desc: 'Specify whether the cloned config should have updated rule-set. Defaults to false.',
+        desc:
+          'Specify whether the cloned config version should have updated rule-set. Defaults to false.',
         group: 'Optional:',
         required: false
       });
