@@ -34,6 +34,7 @@ class ReputationProfileActionsCommand {
     out.print({
       promise: new ReputationProfile(options).getReputationProfileActions(),
       args: options,
+      objectType: 'reputationProfiles',
       success: (args, data) => {
         return JSON.stringify(data);
       }

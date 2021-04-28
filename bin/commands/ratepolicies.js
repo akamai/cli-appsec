@@ -27,8 +27,8 @@ class ListRatePoliciesCommand {
     out.print({
       promise: new RatePolicy(options).getAllRatePolicies(),
       args: options,
+      objectType: 'ratePolicies',
       success: (args, data) => {
-        data = data.ratePolicies;
         let str = [];
         for (let i = 0; data && i < data.length; i++) {
           str.push(data[i].id);

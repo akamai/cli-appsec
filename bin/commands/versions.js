@@ -33,6 +33,7 @@ class VersionsCommand {
     out.print({
       promise: new Version(options).versions(),
       args: options,
+      objectType: 'versionList',
       success: (args, data) => {
         let nl = require('os').EOL;
         let res = [];

@@ -32,8 +32,8 @@ class ListAPIEndpointsCommand {
     out.print({
       promise: new APIEndpoints(options).getAllAPIEndpoints(),
       args: options,
+      objectType: 'apiEndpoints',
       success: (args, data) => {
-        data = data.apiEndpoints;
         let str = [];
         for (let i = 0; data && i < data.length; i++) {
           str.push(data[i].id + ' ' + data[i].name);

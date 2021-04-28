@@ -20,8 +20,8 @@ class ListCustomRulesCommand {
     out.print({
       promise: new CRB(options).getAllRules(),
       args: options,
+      objectType: 'customRules',
       success: (args, data) => {
-        data = data.customRules;
         let str = [];
         for (let i = 0; data && i < data.length; i++) {
           str.push(data[i].id);

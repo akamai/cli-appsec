@@ -38,11 +38,12 @@ class SelectableHostsCommand {
     out.print({
       promise: new SelectedHosts(options).selectableHosts(),
       args: options,
+      objectType: 'availableSet',
       success: (args, data) => {
         let hosts = [];
-        if (data.availableSet && data.availableSet.length > 0) {
-          for (let i = 0; i < data.availableSet.length; i++) {
-            hosts.push(data.availableSet[i].hostname);
+        if (data && data.length > 0) {
+          for (let i = 0; i < data.length; i++) {
+            hosts.push(data[i].hostname);
           }
         }
         return hosts.join(require('os').EOL);

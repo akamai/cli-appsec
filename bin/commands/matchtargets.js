@@ -34,9 +34,10 @@ class MatchTargetsCommand {
     out.print({
       promise: new MatchTarget(options).matchtargets(),
       args: options,
+      objectType: 'matchTargets',
       success: (args, data) => {
         let targetSequence = [];
-        let matchTargets = data.matchTargets;
+        let matchTargets = data;
         for (let i = 0; i < matchTargets.length; i++) {
           targetSequence.push(matchTargets[i].targetId + ' ' + matchTargets[i].type);
         }

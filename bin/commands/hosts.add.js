@@ -30,21 +30,17 @@ class AddHostsCommand {
           }
         ]
       });
-    // .stringArray('--hosts <a.com, b.net, c.d.com>', {
-    //   desc: 'Hostnames to add to the selected list.',
-    //   group: 'Optional:',
-    //   required: true
-    // });
   }
 
   run(options) {
     out.print({
       promise: new SelectedHosts(options).addHosts(),
       args: options,
+      objectType: 'hostnameList',
       success: (args, data) => {
         let hosts = [];
-        for (let i = 0; i < data.hostnameList.length; i++) {
-          hosts.push(data.hostnameList[i].hostname);
+        for (let i = 0; i < data.length; i++) {
+          hosts.push(data[i].hostname);
         }
         return hosts.join(require('os').EOL);
       }

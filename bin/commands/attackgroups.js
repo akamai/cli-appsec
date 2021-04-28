@@ -33,6 +33,7 @@ class AttackGroupsCommand {
     out.print({
       promise: new AttackGroups(options).getAttackGroupActions(),
       args: options,
+      objectType: 'attackGroupActions',
       success: (args, data) => {
         return JSON.stringify(data);
       }

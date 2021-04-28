@@ -28,10 +28,11 @@ class PoliciesCommand {
     out.print({
       promise: new Policy(options).policies(),
       args: options,
+      objectType: 'policies',
       success: (args, data) => {
         let s = [];
-        for (let i = 0; i < data.policies.length; i++) {
-          s.push(data.policies[i].policyId);
+        for (let i = 0; i < data.length; i++) {
+          s.push(data[i].policyId);
         }
         return s.join(require('os').EOL);
       }

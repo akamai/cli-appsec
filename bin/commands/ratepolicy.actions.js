@@ -33,6 +33,7 @@ class RateActionCommand {
     out.print({
       promise: new RatePolicy(options).getAllRatePolicyActions(),
       args: options,
+      objectType: 'ratePolicyActions',
       success: (args, data) => {
         return JSON.stringify(data);
       }

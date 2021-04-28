@@ -33,6 +33,7 @@ class RuleActionsCommand {
     out.print({
       promise: new Rules(options).getRulesActions(),
       args: options,
+      objectType: 'ruleActions',
       success: (args, data) => {
         return JSON.stringify(data);
       }

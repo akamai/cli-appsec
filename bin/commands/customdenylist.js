@@ -32,8 +32,8 @@ class ListCustomDenyCommand {
     out.print({
       promise: new CustomDeny(options).getCustomdenyList(),
       args: options,
+      objectType: 'customDenyList',
       success: (args, data) => {
-        data = data.customDenyList;
         let str = [];
         for (let i = 0; data && i < data.length; i++) {
           str.push(data[i].id);

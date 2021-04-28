@@ -33,6 +33,7 @@ class EvalRuleActionsCommand {
     out.print({
       promise: new EvalRules(options).getEvalRulesActions(),
       args: options,
+      objectType: 'evalRuleActions',
       success: (args, data) => {
         return JSON.stringify(data);
       }

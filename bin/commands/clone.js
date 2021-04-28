@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class CloneCommand {
   constructor() {
     this.flags = 'clone';
-    this.desc = 'Clone a config.';
+    this.desc = 'Clone a config version.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
