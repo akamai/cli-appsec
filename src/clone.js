@@ -13,7 +13,8 @@ class CloneHandler {
 
   clone() {
     return this._version.getVersionNumber().then(version => {
-      let payload = { createFromVersion: version, ruleUpdate: false };
+      this.ruleUpdate = this._options['rule-update'] || false;
+      let payload = { createFromVersion: version, ruleUpdate: this.ruleUpdate };
       return this._config.createResource(URIs.CLONE, [], payload);
     });
   }

@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class CloneCommand {
   constructor() {
     this.flags = 'clone';
-    this.desc = 'Clone a config.';
+    this.desc = 'Clone a config version.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -19,6 +19,12 @@ class CloneCommand {
       .string('--version <id>', {
         desc:
           "Version number to clone. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'.",
+        group: 'Optional:',
+        required: false
+      })
+      .boolean('--rule-update', {
+        desc:
+          'Specify whether the cloned config version should have updated rule-set. Defaults to false.',
         group: 'Optional:',
         required: false
       });
