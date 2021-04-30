@@ -26,8 +26,8 @@ class BypassNLCommand {
     out.print({
       promise: new BypassNL(options).getBypassNetworkList(),
       args: options,
+      objectType: 'networkLists',
       success: (args, data) => {
-        data = data.networkLists;
         let str = [];
         for (let i = 0; data && i < data.length; i++) {
           str.push(data[i].id);

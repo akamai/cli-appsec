@@ -9,9 +9,8 @@ class HostnameCoverageCommand {
     this.run = this.run.bind(this);
   }
 
-  hostnameCoveragelist(data) {
+  hostnameCoveragelist(hostnameCoverage) {
     let hostnameCoverages = [];
-    let hostnameCoverage = data.hostnameCoverage;
     for (let i = 0; i < hostnameCoverage.length; i++) {
       let lineArray = [];
       let hostnameCoverageObject = hostnameCoverage[i];
@@ -27,9 +26,8 @@ class HostnameCoverageCommand {
     return hostnameCoverages.join(require('os').EOL);
   }
 
-  hostnameCoverageMatchTarget(data) {
+  hostnameCoverageMatchTarget(matchTargets) {
     let output = [];
-    let matchTargets = data.matchTargets;
     let apiTargets = matchTargets.apiTargets;
     let websiteTargets = matchTargets.websiteTargets;
     for (let i = 0; i < apiTargets.length; i++) {
@@ -49,9 +47,8 @@ class HostnameCoverageCommand {
     return output.join(require('os').EOL);
   }
 
-  hostnameCoverageOverlapping(data) {
+  hostnameCoverageOverlapping(overlappingList) {
     let output = [];
-    let overlappingList = data.overLappingList;
     if (overlappingList) {
       for (let i = 0; i < overlappingList.length; i++) {
         let lineArray = [];
@@ -98,9 +95,18 @@ class HostnameCoverageCommand {
       });
   }
   run(options) {
+    let objectType;
+    if (options['match-target']) {
+      objectType = 'matchTargets';
+    } else if (options['overlapping']) {
+      objectType = 'overLappingList';
+    } else {
+      objectType = 'hostnameCoverage';
+    }
     out.print({
       promise: new HostnameCoverage(options).getHostnameCoverage(),
       args: options,
+      objectType,
       success: (args, data) => {
         if (options['match-target']) {
           return this.hostnameCoverageMatchTarget(data);

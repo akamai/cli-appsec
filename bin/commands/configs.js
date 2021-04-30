@@ -12,8 +12,8 @@ class ConfigsCommand {
     out.print({
       promise: new Config(options).configs(),
       args: options,
+      objectType: 'configurations',
       success: (args, data) => {
-        data = data.configurations;
         let str = [];
         for (let i = 0; data && i < data.length; i++) {
           str.push(data[i].id);

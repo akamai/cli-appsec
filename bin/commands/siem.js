@@ -12,8 +12,8 @@ class SIEMDefCommand {
     out.print({
       promise: new SIEM(options).getSIEMDefinitions(),
       args: options,
+      objectType: 'siemDefinitions',
       success: (args, data) => {
-        data = data.siemDefinitions;
         let str = [];
         for (let i = 0; data && i < data.length; i++) {
           str.push(data[i].id + ' ' + data[i].name);

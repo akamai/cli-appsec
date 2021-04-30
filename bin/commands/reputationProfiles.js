@@ -27,8 +27,8 @@ class ListReputationProfilesCommand {
     out.print({
       promise: new ReputationProfile(options).getAllReputationProfiles(),
       args: options,
+      objectType: 'reputationProfiles',
       success: (args, data) => {
-        data = data.reputationProfiles;
         let str = [];
         for (let i = 0; data && i < data.length; i++) {
           str.push(data[i].id);

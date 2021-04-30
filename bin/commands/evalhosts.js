@@ -28,10 +28,11 @@ class EvalHostsCommand {
     out.print({
       promise: new SelectedHosts(options).evalHosts(),
       args: options,
+      objectType: 'hostnames',
       success: (args, data) => {
         let hosts = [];
-        for (let i = 0; i < data.hostnames.length; i++) {
-          hosts.push(data.hostnames[i]);
+        for (let i = 0; i < data.length; i++) {
+          hosts.push(data[i]);
         }
         return hosts.join(require('os').EOL);
       }

@@ -12,8 +12,8 @@ class ContractGroupsCommand {
     out.print({
       promise: new ContractsGroups(options).getContractGroups(),
       args: options,
+      objectType: 'contract_groups',
       success: (args, data) => {
-        data = data.contract_groups;
         let str = [];
         for (let i = 0; data && i < data.length; i++) {
           str.push(data[i].contractId + ' ' + data[i].groupId);

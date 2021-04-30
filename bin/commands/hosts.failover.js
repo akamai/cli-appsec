@@ -21,10 +21,11 @@ class SelectableHostsCommand {
     out.print({
       promise: new SelectedHosts(options).failoverHosts(),
       args: options,
+      objectType: 'hostnameList',
       success: (args, data) => {
         let hosts = [];
-        for (let i = 0; i < data.hostnameList.length; i++) {
-          hosts.push(data.hostnameList[i].hostname);
+        for (let i = 0; i < data.length; i++) {
+          hosts.push(data[i].hostname);
         }
         return hosts.join(require('os').EOL);
       }
