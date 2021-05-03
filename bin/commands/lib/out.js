@@ -9,7 +9,7 @@ class CommandOutput {
     }
     // --query parsing
     if (options.query || options.q) {
-      let query = options.queries || options.q;
+      let query = options.query || options.q;
       // if query is in CSV
       let queries = query.split(',');
       queries = queries.map(query => query.split('='));
