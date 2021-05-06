@@ -1,4 +1,4 @@
-let AttackGroups = require('../../src/attackgroups').attackGroups;
+let AttackGroups = require('../../src/evalgroups').attackGroups;
 let out = require('./lib/out');
 
 class AttackGroupExceptionModifyCommand {
