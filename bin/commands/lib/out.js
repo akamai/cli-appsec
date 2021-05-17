@@ -52,7 +52,7 @@ class CommandOutput {
       if (!(object instanceof Array)) {
         filteredResponse = filteredResponse[0];
       }
-      console.log(JSON.stringify(object));
+      console.log(JSON.stringify(filteredResponse));
     } else {
       // --fields parsing
       if (options.fields || options.f) {
