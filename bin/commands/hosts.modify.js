@@ -1,10 +1,11 @@
 let out = require('./lib/out');
 let SelectedHosts = require('../../src/hosts').selectedHosts;
+let Mode = require('../../src/hosts').mode;
 
 class AddHostsCommand {
   constructor() {
-    this.flags = 'add-hostname';
-    this.desc = 'Add hostnames to selected list.';
+    this.flags = 'modify-hostnames';
+    this.desc = '(Beta) Modify hostnames for the configuration version.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -22,6 +23,21 @@ class AddHostsCommand {
         group: 'Optional:',
         required: false
       })
+      .boolean('--append', {
+        desc: 'Appends the hostnames provided to the existing selected hostnames.',
+        group: 'Optional:',
+        required: false
+      })
+      .boolean('--remove', {
+        desc: 'Removes the hostnames provided from the existing selected hostnames.',
+        group: 'Optional:',
+        required: false
+      })
+      .boolean('--replace', {
+        desc: 'Replaces the existing selected hostnames with the hostnames provided.',
+        group: 'Optional:',
+        required: false
+      })
       .positional('<hostnames>', {
         params: [
           {
@@ -30,14 +46,22 @@ class AddHostsCommand {
           }
         ]
       })
-      .epilogue(
-        'NOTE: THIS WILL BE DEPRECATED IN THE NEXT RELEASE. INSTEAD USE: `akamai appsec modify-hostnames <hostnames> --append [options]`\n\nCopyright (C) Akamai Technologies, Inc\nVisit http://github.com/akamai/cli-appsec for detailed documentation.'
-      );
+      .check((argv, context) => {
+        if (
+          (argv[Mode.APPEND] && (argv[Mode.REMOVE] || argv[Mode.REPLACE])) ||
+          (argv[Mode.REMOVE] && (argv[Mode.APPEND] || argv[Mode.REPLACE])) ||
+          (argv[Mode.REPLACE] && (argv[Mode.REMOVE] || argv[Mode.APPEND]))
+        ) {
+          return context.cliMessage(
+            "ERROR: Please pass in just one of the following arguments 'append', 'remove', or 'replace'"
+          );
+        }
+      });
   }
 
   run(options) {
     out.print({
-      promise: new SelectedHosts(options).addHosts(),
+      promise: new SelectedHosts(options).modifyHosts(),
       args: options,
       objectType: 'hostnameList',
       success: (args, data) => {

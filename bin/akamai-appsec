@@ -4,8 +4,10 @@
 
 let logger = require('../src/constants').logger('main');
 let version = require('../package.json').version;
+const figlet = require('figlet');
 
 require('sywac')
+  .preface(figlet.textSync('Akamai Appsec', 'Graffiti'), 'Unleashing the power of the Akamai application security via simple and easy to use CLI!')
   .commandDirectory('./commands')
   .boolean('--json', {
     desc: 'Print the raw json response. All commands respect this option.',
@@ -56,7 +58,7 @@ require('sywac')
     group: 'Command options:',
     required: false
   })
-  .epilogue('Copyright (C) Akamai Technologies, Inc\nVisit http://github.com/akamai/cli-appsec for detailed documentation\n')
+  .epilogue('Copyright (C) Akamai Technologies, Inc\nVisit http://github.com/akamai/cli-appsec for detailed documentation.\n')
   .outputSettings({
     maxWidth: 150
   })
