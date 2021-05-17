@@ -10,6 +10,12 @@ let untildify = require('untildify');
 let Edge =
   process.env.MOCK_AKA_SEC_API == 'true' ? require('../mock/edgeClient') : require('./edgeClient');
 
+const Mode = {
+  APPEND: 'append',
+  REMOVE: 'remove',
+  REPLACE: 'replace'
+};
+
 class SelectedHosts {
   constructor(options) {
     this._config = new Config(options);
@@ -32,6 +38,20 @@ class SelectedHosts {
       }
       return this._version.updateResource(URIs.SELECTED_HOSTS_RESOURCE, [], selectedHosts);
     });
+  }
+
+  modifyHosts() {
+    const mode = this._options.append
+      ? Mode.APPEND
+      : this._options.remove
+      ? Mode.REMOVE
+      : Mode.REPLACE;
+    let selectedHosts = [];
+    for (let i = 0; i < this._options.hostnames.length; i++) {
+      selectedHosts.push({ hostname: this._options.hostnames[i] });
+    }
+    const payload = { hostnameList: selectedHosts, mode };
+    return this._version.updateResource(URIs.SELECTED_HOSTS_RESOURCE, [], payload);
   }
 
   selectableHosts() {
@@ -109,5 +129,6 @@ class SelectedHosts {
 }
 
 module.exports = {
-  selectedHosts: SelectedHosts
+  selectedHosts: SelectedHosts,
+  mode: Mode
 };

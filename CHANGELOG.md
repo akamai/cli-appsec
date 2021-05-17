@@ -1,7 +1,4 @@
-## 2.3.0
-* Adding option to specify "rule-update" flag while cloning a config version
-
-## 2.2.0
+## 2.2.0 (May Release)
 
 - CLI Enhancements - adding "--query", "--fields", "--raw", and "--sort" flags.
   - --query:
@@ -16,6 +13,10 @@
   - --sort:
     - Description: Use for the sorting the response. [Default: asc (ascending)]
     - Usage: `akamai appsec configs --fields id,name,targetProduct --sort id,desc`
+- Adding option to specify "rule-update" flag while cloning a config version
+- New Command:
+  - `modify-hostnames`: Modify hostnames for the configuration version
+
 - Bugfixes:
   - When all hostnames are selected for the website match-target, command will return "ALL_HOSTNAMES" (instead of "undefined")
   - `modify-bypass-network-lists` command will return all the network lists instead of JSON (when --json option is not provided)
