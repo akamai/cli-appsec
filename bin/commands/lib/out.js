@@ -56,6 +56,7 @@ class CommandOutput {
       }
 
       let jsonOutput = filteredResponse;
+      // If the command have objectType, the JSON output should display the objectType
       if (objectType) {
         jsonOutput = { [objectType]: filteredResponse };
       }
