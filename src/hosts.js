@@ -41,17 +41,21 @@ class SelectedHosts {
   }
 
   modifyHosts() {
-    const mode = this._options.append
-      ? Mode.APPEND
-      : this._options.remove
-      ? Mode.REMOVE
-      : Mode.REPLACE;
-    let selectedHosts = [];
-    for (let i = 0; i < this._options.hostnames.length; i++) {
-      selectedHosts.push({ hostname: this._options.hostnames[i] });
+    if (fs.existsSync(this._options['file'])) {
+      let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
+      let data;
+      try {
+        data = JSON.parse(payload);
+      } catch (err) {
+        throw 'The input JSON is not valid';
+      }
+      data.mode = this._options.append
+        ? Mode.APPEND
+        : this._options.remove
+        ? Mode.REMOVE
+        : Mode.REPLACE;
+      return this._version.updateResource(URIs.SELECTED_HOSTS_RESOURCE, [], data);
     }
-    const payload = { hostnameList: selectedHosts, mode };
-    return this._version.updateResource(URIs.SELECTED_HOSTS_RESOURCE, [], payload);
   }
 
   selectableHosts() {
