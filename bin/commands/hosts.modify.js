@@ -12,6 +12,9 @@ class AddHostsCommand {
 
   setup(sywac) {
     sywac
+      .positional('<@path>', {
+        paramsDesc: 'The input file path.'
+      })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
         group: 'Optional:',
@@ -38,14 +41,6 @@ class AddHostsCommand {
         group: 'Optional:',
         required: false
       })
-      .positional('<hostnames>', {
-        params: [
-          {
-            desc: 'The comma separated list of hostnames to add.',
-            type: 'array:string'
-          }
-        ]
-      })
       .check((argv, context) => {
         if (
           (argv[Mode.APPEND] && (argv[Mode.REMOVE] || argv[Mode.REPLACE])) ||
@@ -56,10 +51,14 @@ class AddHostsCommand {
             "ERROR: Please pass in just one of the following arguments 'append', 'remove', or 'replace'"
           );
         }
+        if (!argv['@path'].startsWith('@')) {
+          return context.cliMessage("ERROR: Invalid file name, should start with '@'");
+        }
       });
   }
 
   run(options) {
+    options.file = options['@path'].replace('@', '');
     out.print({
       promise: new SelectedHosts(options).modifyHosts(),
       args: options,

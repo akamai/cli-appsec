@@ -31,7 +31,7 @@ class AddHostsCommand {
         ]
       })
       .epilogue(
-        'NOTE: THIS WILL BE DEPRECATED IN THE NEXT RELEASE. INSTEAD USE: `akamai appsec modify-hostnames <hostnames> --append [options]`\n\nCopyright (C) Akamai Technologies, Inc\nVisit http://github.com/akamai/cli-appsec for detailed documentation.'
+        'NOTE: THIS WILL BE DEPRECATED IN THE NEXT RELEASE. INSTEAD USE: `akamai appsec modify-hostnames @path --append [options]`\n\nCopyright (C) Akamai Technologies, Inc\nVisit http://github.com/akamai/cli-appsec for detailed documentation.'
       );
   }
 
