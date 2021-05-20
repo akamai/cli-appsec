@@ -1,7 +1,9 @@
 class CommandOutput {
   constructor() {}
 
-  _out(object, options, customPrinter) {
+  _out(object, options, customPrinter, objectType) {
+    // objectType is the map key of the object
+    object = objectType ? object[objectType] : object;
     let filteredResponse = object;
     // convert the response into array for querying
     if (!(object instanceof Array)) {
@@ -52,7 +54,13 @@ class CommandOutput {
       if (!(object instanceof Array)) {
         filteredResponse = filteredResponse[0];
       }
-      console.log(JSON.stringify(filteredResponse));
+
+      let jsonOutput = filteredResponse;
+      // If the command have objectType, the JSON output should display the objectType
+      if (objectType) {
+        jsonOutput = { [objectType]: filteredResponse };
+      }
+      console.log(JSON.stringify(jsonOutput));
     } else {
       // --fields parsing
       if (options.fields || options.f) {
@@ -111,8 +119,7 @@ class CommandOutput {
   print(handlerOptions) {
     handlerOptions.promise
       .then(res => {
-        res = handlerOptions.objectType ? res[handlerOptions.objectType] : res;
-        this._out(res, handlerOptions.args, handlerOptions.success);
+        this._out(res, handlerOptions.args, handlerOptions.success, handlerOptions.objectType);
       })
       .catch(err => {
         this._errorOut(err, handlerOptions.args, handlerOptions.error);
