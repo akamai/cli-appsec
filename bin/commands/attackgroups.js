@@ -1,6 +1,8 @@
 let AttackGroups = require('../../src/attackgroups').attackGroups;
 let out = require('./lib/out');
 
+const objectType = 'attackGroupActions';
+
 class AttackGroupsCommand {
   constructor() {
     this.flags = 'attack-groups';
@@ -33,9 +35,10 @@ class AttackGroupsCommand {
     out.print({
       promise: new AttackGroups(options).getAttackGroupActions(),
       args: options,
-      objectType: 'attackGroupActions',
+      objectType,
       success: (args, data) => {
-        return JSON.stringify(data);
+        const jsonOutput = { [objectType]: data };
+        return JSON.stringify(jsonOutput);
       }
     });
   }
