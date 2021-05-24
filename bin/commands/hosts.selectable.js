@@ -1,6 +1,8 @@
 let out = require('./lib/out');
 let SelectedHosts = require('../../src/hosts').selectedHosts;
 
+const objectType = 'availableSet';
+
 class SelectableHostsCommand {
   constructor() {
     this.flags = 'selectable-hostnames';
@@ -38,14 +40,12 @@ class SelectableHostsCommand {
     out.print({
       promise: new SelectedHosts(options).selectableHosts(),
       args: options,
-      objectType: 'availableSet',
+      objectType,
       success: (args, data) => {
         let hosts = [];
-        if (data && data.length > 0) {
-          for (let i = 0; i < data.length; i++) {
-            hosts.push(data[i].hostname);
-          }
-        }
+        data[objectType].forEach(host => {
+          hosts.push(host.hostname);
+        });
         return hosts.join(require('os').EOL);
       }
     });

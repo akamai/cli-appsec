@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class ReputationProfileCommand {
   constructor() {
     this.flags = 'reputation-profile';
-    this.desc = '(Beta) Display contents of reputation profile.';
+    this.desc = 'Display contents of reputation profile.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

@@ -1,6 +1,8 @@
 let APIEndpoints = require('../../src/apiendpoints').apiEndpoints;
 let out = require('./lib/out');
 
+const objectType = 'apiEndpoints';
+
 class ListAPIEndpointsCommand {
   constructor() {
     this.flags = 'api-endpoints';
@@ -32,12 +34,12 @@ class ListAPIEndpointsCommand {
     out.print({
       promise: new APIEndpoints(options).getAllAPIEndpoints(),
       args: options,
-      objectType: 'apiEndpoints',
+      objectType,
       success: (args, data) => {
         let str = [];
-        for (let i = 0; data && i < data.length; i++) {
-          str.push(data[i].id + ' ' + data[i].name);
-        }
+        data[objectType].forEach(endpoint => {
+          str.push(endpoint.id + ' ' + endpoint.name);
+        });
         return str.join(require('os').EOL);
       }
     });

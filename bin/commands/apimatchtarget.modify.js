@@ -6,7 +6,7 @@ const SUB_CPMMANDS = ['add-api', 'remove-api'];
 class ModifyAPIMatchTargetCommand {
   constructor() {
     this.flags = 'modify-api-match-target';
-    this.desc = '(Beta) Updates an API match target.';
+    this.desc = 'Updates an API match target.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

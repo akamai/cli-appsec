@@ -1,10 +1,11 @@
 let RatePolicy = require('../../src/ratepolicy').ratePolicy;
 let out = require('./lib/out');
 
+const objectType = 'ratePolicies';
 class ListRatePoliciesCommand {
   constructor() {
     this.flags = 'rate-policies';
-    this.desc = '(Beta) List all rate policies.';
+    this.desc = 'List all rate policies.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -27,12 +28,12 @@ class ListRatePoliciesCommand {
     out.print({
       promise: new RatePolicy(options).getAllRatePolicies(),
       args: options,
-      objectType: 'ratePolicies',
+      objectType,
       success: (args, data) => {
         let str = [];
-        for (let i = 0; data && i < data.length; i++) {
-          str.push(data[i].id);
-        }
+        data[objectType].forEach(ratePolicy => {
+          str.push(ratePolicy.id);
+        });
         return str.join(require('os').EOL);
       }
     });

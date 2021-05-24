@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class ModifyBypassNLCommand {
   constructor() {
     this.flags = 'modify-bypass-network-lists';
-    this.desc = '(Beta) Update bypass network lists.';
+    this.desc = 'Update bypass network lists.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

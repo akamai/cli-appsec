@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class CreateReputationProfileCommand {
   constructor() {
     this.flags = 'create-reputation-profile';
-    this.desc = '(Beta) Create a reputation profile.';
+    this.desc = 'Create a reputation profile.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

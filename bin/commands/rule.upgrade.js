@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class RuleActionsCommand {
   constructor() {
     this.flags = 'krs-rules-upgrade';
-    this.desc = '(Beta) Upgrade the KRS rules in a policy.';
+    this.desc = 'Upgrade the KRS rules in a policy.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -28,12 +28,12 @@ class RuleActionsCommand {
         group: 'Optional:',
         required: false
       })
-        .string('--mode <id>', {
-          desc:
-              'Ruleset upgrade mode KRS2_AUTO or KRS2_MANUAL. If mode is not provided, KRS 1.0 ruleset is assumed',
-          group: 'Optional:',
-          required: false
-        });
+      .string('--mode <id>', {
+        desc:
+          'Ruleset upgrade mode KRS2_AUTO or KRS2_MANUAL. If mode is not provided, KRS 1.0 ruleset is assumed',
+        group: 'Optional:',
+        required: false
+      });
   }
   run(options) {
     out.print({

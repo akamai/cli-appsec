@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class ModifyReputationProfileCommand {
   constructor() {
     this.flags = 'modify-reputation-profile';
-    this.desc = '(Beta) Update existing reputation profile.';
+    this.desc = 'Update existing reputation profile.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

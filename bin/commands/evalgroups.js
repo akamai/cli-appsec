@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class AttackGroupsCommand {
   constructor() {
     this.flags = 'eval-groups';
-    this.desc = '(Beta) Display eval attack groups and actions.';
+    this.desc = 'Display eval attack groups and actions.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

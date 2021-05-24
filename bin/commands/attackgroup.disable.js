@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class DisableAttackGroupCommand {
   constructor() {
     this.flags = 'disable-attack-group';
-    this.desc = '(Beta) Disable attack group.';
+    this.desc = 'Disable attack group.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

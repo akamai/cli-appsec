@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class ModifyProtectionsCommand {
   constructor() {
     this.flags = 'set-protections';
-    this.desc = '(Beta) Modify the security policy protections.';
+    this.desc = 'Modify the security policy protections.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

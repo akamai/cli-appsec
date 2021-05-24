@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class EnableSlowPostCommand {
   constructor() {
     this.flags = 'enable-slow-post';
-    this.desc = '(Beta) Enable slow post on the policy.';
+    this.desc = 'Enable slow post on the policy.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

@@ -2,10 +2,12 @@ let out = require('./lib/out');
 let SelectedHosts = require('../../src/hosts').selectedHosts;
 let Mode = require('../../src/hosts').mode;
 
+const objectType = 'hostnameList';
+
 class AddHostsCommand {
   constructor() {
     this.flags = 'modify-hostnames';
-    this.desc = '(Beta) Modify hostnames for the configuration version.';
+    this.desc = 'Modify hostnames for the configuration version.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -62,12 +64,12 @@ class AddHostsCommand {
     out.print({
       promise: new SelectedHosts(options).modifyHosts(),
       args: options,
-      objectType: 'hostnameList',
+      objectType,
       success: (args, data) => {
         let hosts = [];
-        for (let i = 0; i < data.length; i++) {
-          hosts.push(data[i].hostname);
-        }
+        data[objectType].forEach(host => {
+          hosts.push(host.hostname);
+        });
         return hosts.join(require('os').EOL);
       }
     });

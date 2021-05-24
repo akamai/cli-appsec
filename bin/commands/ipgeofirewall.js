@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class IpGeoFirewallCommand {
   constructor() {
     this.flags = 'ip-geo-firewall';
-    this.desc = '(Beta) Display the IP Geo Firewall network lists in a policy';
+    this.desc = 'Display the IP Geo Firewall network lists in a policy';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

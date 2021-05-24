@@ -4,7 +4,7 @@ let MatchTarget = require('../../src/matchtarget').matchTarget;
 class CreateApiMatchTargetCommand {
   constructor() {
     this.flags = 'create-api-match-target';
-    this.desc = '(Beta) Creates an API match target.';
+    this.desc = 'Creates an API match target.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

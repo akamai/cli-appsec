@@ -1,6 +1,8 @@
 let CRB = require('../../src/crb').CRBHandler;
 let out = require('./lib/out');
 
+const objectType = 'customRules';
+
 class ListCustomRulesCommand {
   constructor() {
     this.flags = 'custom-rules';
@@ -20,12 +22,12 @@ class ListCustomRulesCommand {
     out.print({
       promise: new CRB(options).getAllRules(),
       args: options,
-      objectType: 'customRules',
+      objectType,
       success: (args, data) => {
         let str = [];
-        for (let i = 0; data && i < data.length; i++) {
-          str.push(data[i].id);
-        }
+        data[objectType].forEach(rule => {
+          str.push(rule.id);
+        });
         return str.join(require('os').EOL);
       }
     });

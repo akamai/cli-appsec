@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class PolicyProtectionsCommand {
   constructor() {
     this.flags = 'protections';
-    this.desc = '(Beta) Display contents of security policy protections.';
+    this.desc = 'Display contents of security policy protections.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

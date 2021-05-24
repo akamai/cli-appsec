@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class AttackGroupExceptionModifyCommand {
   constructor() {
     this.flags = 'modify-eval-group-condition-exception';
-    this.desc = '(Beta) Update eval attack group exceptions.';
+    this.desc = 'Update eval attack group exceptions.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
