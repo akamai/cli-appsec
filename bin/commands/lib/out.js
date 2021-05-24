@@ -2,6 +2,8 @@ class CommandOutput {
   constructor() {}
 
   _out(object, options, customPrinter, objectType) {
+    // store original response to be used in JSON output
+    const originalResponse = object;
     // objectType is the map key of the object
     object = objectType ? object[objectType] : object;
     let filteredResponse = object;
@@ -54,11 +56,11 @@ class CommandOutput {
       if (!(object instanceof Array)) {
         filteredResponse = filteredResponse[0];
       }
-
       let jsonOutput = filteredResponse;
       // If the command have objectType, the JSON output should display the objectType
       if (objectType) {
-        jsonOutput = { [objectType]: filteredResponse };
+        originalResponse[objectType] = filteredResponse;
+        jsonOutput = originalResponse;
       }
       console.log(JSON.stringify(jsonOutput));
     } else {
