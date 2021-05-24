@@ -7,7 +7,7 @@ const objectType = 'hostnameList';
 class AddHostsCommand {
   constructor() {
     this.flags = 'modify-hostnames';
-    this.desc = '(Beta) Modify hostnames for the configuration version.';
+    this.desc = 'Modify hostnames for the configuration version.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

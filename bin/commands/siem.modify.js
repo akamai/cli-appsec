@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class ModifySIEMCommand {
   constructor() {
     this.flags = 'modify-siem';
-    this.desc = '(Beta) Modify the SIEM settings.';
+    this.desc = 'Modify the SIEM settings.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

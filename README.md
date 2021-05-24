@@ -49,109 +49,109 @@ Commands:
   create-match-target                       Creates a website match target.
   delete-match-target                       Deletes a match target.
   modify-match-target                       Updates a website match target.
-  create-api-match-target                   (Beta) Creates an API match target.
-  modify-api-match-target                   (Beta) Updates an API match target.
+  create-api-match-target                   Creates an API match target.
+  modify-api-match-target                   Updates an API match target.
   match-target-order                        Change the match target sequence.
   match-targets                             List all match targets.
-  match-target                              (Beta) Read a match target.
+  match-target                              Read a match target.
   policies                                  List all security policies.
   clone-policy                              Clone security policy.
   version                                   Read a config version.
   versions                                  List all config versions.
-  create-rate-policy                        (Beta) Create a rate policy.
-  delete-rate-policy                        (Beta) Delete a rate policy.
-  rate-policy                               (Beta) Display contents of a rate policy.
-  modify-rate-policy                        (Beta) Update existing rate policy.
-  rate-policies                             (Beta) List all rate policies.
-  api-endpoints                             (Beta) List all api endpoints.
-  mode                                      (Beta) Display the WAF Mode.
-  set-mode                                  (Beta) Set the WAF Mode.
-  protections                               (Beta) List all protections of a policy.
-  set-protections                           (Beta) Update protections of a policy.
-  rate-policies-actions                     (Beta) List all enabled rate policies actions of a policy.
-  enable-rate-policy                        (Beta) Assigns an action to an existing rate policy in a policy.
-  disable-rate-policy                       (Beta) Removes an action set to an existing rate policy in a policy.
-  slow-post                                 (Beta) Display contents of slow post in a policy.
-  enable-slow-post                          (Beta) Enable slow post in a policy.
-  disable-slow-post                         (Beta) Disable slow post in a policy.
-  penalty-box                               (Beta) Display penalty box action in a policy.
-  disable-penalty-box                       (Beta) Disable penalty box in a policy.
-  enable-penalty-box                        (Beta) Enable penalty box in a policy.
-  attack-groups                             (Beta) List all attack group actions in a policy.
-  attack-group                              (Beta) Display attack group action in a policy.
-  enable-attack-group                       (Beta) Enable attack group in a policy.
-  disable-attack-group                      (Beta) Disable attack group  in a policy.
-  rule-actions                              (Beta) List all rule actions in a policy.
-  rule-action                               (Beta) Display rule action in a policy.
-  enable-rule-action                        (Beta) Enable rule action in a policy.
-  disable-rule-action                       (Beta) Disable rule action in a policy.
-  rule-condition-exception                  (Beta) Display rule conditions and exceptions in a policy.
-  modify-rule-condition-exception           (Beta) Update rule conditions and exceptions in a policy.
-  eval-rule-actions                         (Beta) Display evaluation rules and actions in a policy.
-  eval-rule-action                          (Beta) Display evaluation rule action in a policy.
-  enable-eval-rule-action                   (Beta) Enable evaluation rule action in a policy.
-  disable-eval-rule-action                  (Beta) Disable evaluation rule action in a policy.
-  eval-rule-condition-exception             (Beta) Display evaluation rule conditions and exceptions in a policy.
-  modify-eval-rule-condition-exception      (Beta) Update evaluation rule conditions and exceptions in a policy.
-  start-eval                                (Beta) Start evaluation in a policy.
-  end-eval                                  (Beta) Stop evaluation in a policy.
-  restart-eval                              (Beta) Restart evaluation in a policy.
-  update-eval                               (Beta) Update evaluation in a policy.
-  complete-eval                             (Beta) Complete evaluation in a policy.
-  krs-rules-upgrade                         (Beta) Upgrade the KRS rules in a policy.
-  upgrade-details                           (Beta) Display rules updates.
-  ip-geo-firewall                           (Beta) Display the IP Geo Firewall network lists in a policy
-  modify-ip-geo-firewall                    (Beta) Update the IP Geo Firewall network lists in a policy
-  create-reputation-profile                 (Beta) Create a reputation profile.
-  delete-reputation-profile                 (Beta) Delete a reputation profile.
-  reputation-profile                        (Beta) Display contents of a reputation profile.
-  modify-reputation-profile                 (Beta) Update existing reputation profile.
-  reputation-profiles                       (Beta) List all reputation profiles.
-  reputation-profile-actions                (Beta) List all reputation profile actions.
-  reputation-profile-action                 (Beta) Display the current reputation profile action.
-  enable-reputation-profile                 (Beta) Enable and set the action for a reputation profile.
-  disable-reputation-profile                (Beta) Disable the action for a reputation profile.
-  custom-deny-list                          (Beta) List all custom deny actions.
-  custom-deny                               (Beta) Display contents of custom deny action. 
-  delete-custom-deny                        (Beta) Delete a custom deny action.
-  create-custom-deny                        (Beta) Create-custom-deny action.
-  modify-custom-deny                        (Beta) Update existing custom deny action.
-  reputation-profile-analysis               (Beta) Display the current reputation profile analysis settings.
-  set-reputation-profile-analysis           (Beta) Set the reputation profile analysis settings.
-  failover-hostnames                        (Beta) List all failover hostnames on a config.
-  siem-definitions                          (Beta) List all siem definitions.
-  siem                                      (Beta) Display the SIEM settings.
-  modify-siem                               (Beta) Modify the SIEM settings.
-  http-header-logging                       (Beta) Display the HTTP Header Logging settings.
-  enable-http-header-logging                (Beta) Enable the HTTP Header Logging settings.
-  disable-http-header-logging               (Beta) Disable the HTTP Header Logging settings.
-  enable-override-http-header-logging       (Beta) Enable the HTTP Header Logging Override settings.
-  disable-override-http-header-logging      (Beta) Disable the HTTP Header Logging Override settings.
-  prefetch-requests                         (Beta) Display the Prefetch Requests settings.
-  modify-prefetch-requests                  (Beta) Update the Prefetch Requests settings.
-  pragma-header                             (Beta) Display Pragma Header settings.
-  modify-pragma-header                      (Beta) Update Pragma Header settings.
-  create-config                             (Beta) Create a new security config.
-  delete-config                             (Beta) Delete a security config.
-  create-security-policy                    (Beta) Create a security policy.
-  modify-security-policy                    (Beta) Update a security policy.
-  delete-security-policy                    (Beta) Delete a security policy.
-  security-policy                           (Beta) Display contents of security policy.  
-  contracts-groups                          (Beta) List contracts and groups with KSD/WAP line items.
-  api-request-constraints-action            (Beta) Display API Request Constraint action.
-  enable-api-request-constraints            (Beta) Set the API Request Constraint action.
-  disable-api-request-constraints           (Beta) Disable API Request Constraint.
-  attackgroup-condition-exception           (Beta) Display attack group exceptions.
-  modify-attackgroup-condition-exception    (Beta) Update attack group exceptions.    
-  protect-eval-hostnames                    (Beta) Move evaluation hostnames to protection.
-  eval-hostnames                            (Beta) List all hosts under evaluation.
-  modify-eval-hostnames                     (Beta) Modify hostnames under evaluation.
-  bypass-network-lists                      (Beta) List all bypass network lists.
-  modify-bypass-network-lists               (Beta) Update bypass network lists.
-  hostname-coverage                         (Beta) Display the Hostname Coverage.
-  version-notes                             (Beta) Display the version notes.
-  modify-version-notes                      (Beta) Update the version notes.
-  modify-hostnames                          (Beta) Modify hostnames for the configuration version.
+  create-rate-policy                        Create a rate policy.
+  delete-rate-policy                        Delete a rate policy.
+  rate-policy                               Display contents of a rate policy.
+  modify-rate-policy                        Update existing rate policy.
+  rate-policies                             List all rate policies.
+  api-endpoints                             List all api endpoints.
+  mode                                      Display the WAF Mode.
+  set-mode                                  Set the WAF Mode.
+  protections                               List all protections of a policy.
+  set-protections                           Update protections of a policy.
+  rate-policies-actions                     List all enabled rate policies actions of a policy.
+  enable-rate-policy                        Assigns an action to an existing rate policy in a policy.
+  disable-rate-policy                       Removes an action set to an existing rate policy in a policy.
+  slow-post                                 Display contents of slow post in a policy.
+  enable-slow-post                          Enable slow post in a policy.
+  disable-slow-post                         Disable slow post in a policy.
+  penalty-box                               Display penalty box action in a policy.
+  disable-penalty-box                       Disable penalty box in a policy.
+  enable-penalty-box                        Enable penalty box in a policy.
+  attack-groups                             List all attack group actions in a policy.
+  attack-group                              Display attack group action in a policy.
+  enable-attack-group                       Enable attack group in a policy.
+  disable-attack-group                      Disable attack group  in a policy.
+  rule-actions                              List all rule actions in a policy.
+  rule-action                               Display rule action in a policy.
+  enable-rule-action                        Enable rule action in a policy.
+  disable-rule-action                       Disable rule action in a policy.
+  rule-condition-exception                  Display rule conditions and exceptions in a policy.
+  modify-rule-condition-exception           Update rule conditions and exceptions in a policy.
+  eval-rule-actions                         Display evaluation rules and actions in a policy.
+  eval-rule-action                          Display evaluation rule action in a policy.
+  enable-eval-rule-action                   Enable evaluation rule action in a policy.
+  disable-eval-rule-action                  Disable evaluation rule action in a policy.
+  eval-rule-condition-exception             Display evaluation rule conditions and exceptions in a policy.
+  modify-eval-rule-condition-exception      Update evaluation rule conditions and exceptions in a policy.
+  start-eval                                Start evaluation in a policy.
+  end-eval                                  Stop evaluation in a policy.
+  restart-eval                              Restart evaluation in a policy.
+  update-eval                               Update evaluation in a policy.
+  complete-eval                             Complete evaluation in a policy.
+  krs-rules-upgrade                         Upgrade the KRS rules in a policy.
+  upgrade-details                           Display rules updates.
+  ip-geo-firewall                           Display the IP Geo Firewall network lists in a policy
+  modify-ip-geo-firewall                    Update the IP Geo Firewall network lists in a policy
+  create-reputation-profile                 Create a reputation profile.
+  delete-reputation-profile                 Delete a reputation profile.
+  reputation-profile                        Display contents of a reputation profile.
+  modify-reputation-profile                 Update existing reputation profile.
+  reputation-profiles                       List all reputation profiles.
+  reputation-profile-actions                List all reputation profile actions.
+  reputation-profile-action                 Display the current reputation profile action.
+  enable-reputation-profile                 Enable and set the action for a reputation profile.
+  disable-reputation-profile                Disable the action for a reputation profile.
+  custom-deny-list                          List all custom deny actions.
+  custom-deny                               Display contents of custom deny action. 
+  delete-custom-deny                        Delete a custom deny action.
+  create-custom-deny                        Create-custom-deny action.
+  modify-custom-deny                        Update existing custom deny action.
+  reputation-profile-analysis               Display the current reputation profile analysis settings.
+  set-reputation-profile-analysis           Set the reputation profile analysis settings.
+  failover-hostnames                        List all failover hostnames on a config.
+  siem-definitions                          List all siem definitions.
+  siem                                      Display the SIEM settings.
+  modify-siem                               Modify the SIEM settings.
+  http-header-logging                       Display the HTTP Header Logging settings.
+  enable-http-header-logging                Enable the HTTP Header Logging settings.
+  disable-http-header-logging               Disable the HTTP Header Logging settings.
+  enable-override-http-header-logging       Enable the HTTP Header Logging Override settings.
+  disable-override-http-header-logging      Disable the HTTP Header Logging Override settings.
+  prefetch-requests                         Display the Prefetch Requests settings.
+  modify-prefetch-requests                  Update the Prefetch Requests settings.
+  pragma-header                             Display Pragma Header settings.
+  modify-pragma-header                      Update Pragma Header settings.
+  create-config                             Create a new security config.
+  delete-config                             Delete a security config.
+  create-security-policy                    Create a security policy.
+  modify-security-policy                    Update a security policy.
+  delete-security-policy                    Delete a security policy.
+  security-policy                           Display contents of security policy.  
+  contracts-groups                          List contracts and groups with KSD/WAP line items.
+  api-request-constraints-action            Display API Request Constraint action.
+  enable-api-request-constraints            Set the API Request Constraint action.
+  disable-api-request-constraints           Disable API Request Constraint.
+  attackgroup-condition-exception           Display attack group exceptions.
+  modify-attackgroup-condition-exception    Update attack group exceptions.    
+  protect-eval-hostnames                    Move evaluation hostnames to protection.
+  eval-hostnames                            List all hosts under evaluation.
+  modify-eval-hostnames                     Modify hostnames under evaluation.
+  bypass-network-lists                      List all bypass network lists.
+  modify-bypass-network-lists               Update bypass network lists.
+  hostname-coverage                         Display the Hostname Coverage.
+  version-notes                             Display the version notes.
+  modify-version-notes                      Update the version notes.
+  modify-hostnames                          Modify hostnames for the configuration version.
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]

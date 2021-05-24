@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class DeleteReputationProfileCommand {
   constructor() {
     this.flags = 'delete-reputation-profile';
-    this.desc = '(Beta) Delete a reputation profile.';
+    this.desc = 'Delete a reputation profile.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

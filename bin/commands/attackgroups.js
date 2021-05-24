@@ -6,7 +6,7 @@ const objectType = 'attackGroupActions';
 class AttackGroupsCommand {
   constructor() {
     this.flags = 'attack-groups';
-    this.desc = '(Beta) Display attack groups and actions.';
+    this.desc = 'Display attack groups and actions.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

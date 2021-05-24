@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class SIEMSettingsCommand {
   constructor() {
     this.flags = 'siem';
-    this.desc = '(Beta) Display the siem settings.';
+    this.desc = 'Display the siem settings.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

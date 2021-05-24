@@ -6,7 +6,7 @@ const objectType = 'hostnames';
 class ProtectEvalHostsCommand {
   constructor() {
     this.flags = 'protect-eval-hostnames';
-    this.desc = '(Beta) Move evaluation hostnames to protection.';
+    this.desc = 'Move evaluation hostnames to protection.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

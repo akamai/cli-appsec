@@ -6,7 +6,7 @@ const objectType = 'hostnames';
 class EvalHostsCommand {
   constructor() {
     this.flags = 'eval-hostnames';
-    this.desc = '(Beta) List all hosts under evaluation.';
+    this.desc = 'List all hosts under evaluation.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

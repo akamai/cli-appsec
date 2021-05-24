@@ -6,7 +6,7 @@ const objectType = 'contract_groups';
 class ContractGroupsCommand {
   constructor() {
     this.flags = 'contracts-groups';
-    this.desc = '(Beta) List contracts and groups with KSD/WAP line items.';
+    this.desc = 'List contracts and groups with KSD/WAP line items.';
     this.run = this.run.bind(this);
   }
 

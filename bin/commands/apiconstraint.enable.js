@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class EnableApiConstraintCommand {
   constructor() {
     this.flags = 'enable-api-request-constraints';
-    this.desc = '(Beta) Set the API Request Constraint action.';
+    this.desc = 'Set the API Request Constraint action.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

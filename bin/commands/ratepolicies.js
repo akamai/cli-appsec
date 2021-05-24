@@ -5,7 +5,7 @@ const objectType = 'ratePolicies';
 class ListRatePoliciesCommand {
   constructor() {
     this.flags = 'rate-policies';
-    this.desc = '(Beta) List all rate policies.';
+    this.desc = 'List all rate policies.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

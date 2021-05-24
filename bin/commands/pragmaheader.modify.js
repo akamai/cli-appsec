@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class PragmaHeaderModifyCommand {
   constructor() {
     this.flags = 'modify-pragma-header';
-    this.desc = '(Beta) Update Pragma Header settings.';
+    this.desc = 'Update Pragma Header settings.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -25,12 +25,12 @@ class PragmaHeaderModifyCommand {
         group: 'Optional:',
         required: false
       })
-        .string('--policy <id>', {
-      desc:
+      .string('--policy <id>', {
+        desc:
           'Policy ID. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
-      group: 'Optional:',
-      required: false
-    })
+        group: 'Optional:',
+        required: false
+      })
       .check((argv, context) => {
         if (!argv['@path'].startsWith('@')) {
           return context.cliMessage("ERROR: Invalid file name, should start with '@'");

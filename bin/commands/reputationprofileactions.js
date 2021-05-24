@@ -6,7 +6,7 @@ const objectType = 'reputationProfiles';
 class ReputationProfileActionsCommand {
   constructor() {
     this.flags = 'reputation-profile-actions';
-    this.desc = '(Beta) List all reputation profile actions.';
+    this.desc = 'List all reputation profile actions.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

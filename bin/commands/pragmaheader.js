@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class PragmaHeaderCommand {
   constructor() {
     this.flags = 'pragma-header';
-    this.desc = '(Beta) Display Pragma Header settings';
+    this.desc = 'Display Pragma Header settings';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

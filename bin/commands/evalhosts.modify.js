@@ -6,7 +6,7 @@ const objectType = 'hostnames';
 class ModifyEvalHostsCommand {
   constructor() {
     this.flags = 'modify-eval-hostnames';
-    this.desc = '(Beta) Modify hostnames under evaluation.';
+    this.desc = 'Modify hostnames under evaluation.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

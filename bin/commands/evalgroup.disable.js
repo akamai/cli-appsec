@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class DisableAttackGroupCommand {
   constructor() {
     this.flags = 'disable-eval-group';
-    this.desc = '(Beta) Disable eval attack group.';
+    this.desc = 'Disable eval attack group.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

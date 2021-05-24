@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class DeleteRatePolicyCommand {
   constructor() {
     this.flags = 'delete-rate-policy';
-    this.desc = '(Beta) Delete a rate policy.';
+    this.desc = 'Delete a rate policy.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

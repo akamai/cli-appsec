@@ -4,7 +4,7 @@ let MatchTarget = require('../../src/matchtarget').matchTarget;
 class MatchTargetCommand {
   constructor() {
     this.flags = 'match-target';
-    this.desc = '(Beta) Read a match target.';
+    this.desc = 'Read a match target.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

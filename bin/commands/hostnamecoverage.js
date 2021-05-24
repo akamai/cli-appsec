@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class HostnameCoverageCommand {
   constructor() {
     this.flags = 'hostname-coverage';
-    this.desc = '(Beta) Display the Hostname Coverage.';
+    this.desc = 'Display the Hostname Coverage.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

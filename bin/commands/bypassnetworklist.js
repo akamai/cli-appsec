@@ -6,7 +6,7 @@ const objectType = 'networkLists';
 class BypassNLCommand {
   constructor() {
     this.flags = 'bypass-network-lists';
-    this.desc = '(Beta) List all bypass network lists.';
+    this.desc = 'List all bypass network lists.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
