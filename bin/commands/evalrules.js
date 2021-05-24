@@ -1,6 +1,8 @@
 let EvalRules = require('../../src/evalrules').evalrules;
 let out = require('./lib/out');
 
+const objectType = 'evalRuleActions';
+
 class EvalRuleActionsCommand {
   constructor() {
     this.flags = 'eval-rule-actions';
@@ -33,9 +35,10 @@ class EvalRuleActionsCommand {
     out.print({
       promise: new EvalRules(options).getEvalRulesActions(),
       args: options,
-      objectType: 'evalRuleActions',
+      objectType,
       success: (args, data) => {
-        return JSON.stringify(data);
+        const jsonOutput = { [objectType]: data };
+        return JSON.stringify(jsonOutput);
       }
     });
   }

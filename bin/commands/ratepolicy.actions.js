@@ -1,6 +1,8 @@
 let RatePolicy = require('../../src/ratepolicy').ratePolicy;
 let out = require('./lib/out');
 
+const objectType = 'ratePolicyActions';
+
 class RateActionCommand {
   constructor() {
     this.flags = 'rate-policies-actions';
@@ -33,9 +35,10 @@ class RateActionCommand {
     out.print({
       promise: new RatePolicy(options).getAllRatePolicyActions(),
       args: options,
-      objectType: 'ratePolicyActions',
+      objectType,
       success: (args, data) => {
-        return JSON.stringify(data);
+        const jsonOutput = { [objectType]: data };
+        return JSON.stringify(jsonOutput);
       }
     });
   }

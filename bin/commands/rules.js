@@ -1,6 +1,8 @@
 let Rules = require('../../src/rules').rules;
 let out = require('./lib/out');
 
+const objectType = 'ruleActions';
+
 class RuleActionsCommand {
   constructor() {
     this.flags = 'rule-actions';
@@ -33,9 +35,10 @@ class RuleActionsCommand {
     out.print({
       promise: new Rules(options).getRulesActions(),
       args: options,
-      objectType: 'ruleActions',
+      objectType,
       success: (args, data) => {
-        return JSON.stringify(data);
+        const jsonOutput = { [objectType]: data };
+        return JSON.stringify(jsonOutput);
       }
     });
   }
