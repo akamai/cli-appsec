@@ -38,6 +38,7 @@ class ReputationProfileCommand {
       promise: new ReputationProfile(options).getReputationProfile(),
       args: options,
       success: (args, data) => {
+        console.log(data);
         return JSON.stringify(data);
       }
     });

@@ -37,8 +37,7 @@ class RuleActionsCommand {
       args: options,
       objectType,
       success: (args, data) => {
-        const jsonOutput = { [objectType]: data };
-        return JSON.stringify(jsonOutput);
+        return JSON.stringify(data);
       }
     });
   }
