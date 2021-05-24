@@ -1,6 +1,8 @@
 let ReputationProfile = require('../../src/reputationprofile').reputationProfile;
 let out = require('./lib/out');
 
+const objectType = 'reputationProfiles';
+
 class ListReputationProfilesCommand {
   constructor() {
     this.flags = 'reputation-profiles';
@@ -27,12 +29,12 @@ class ListReputationProfilesCommand {
     out.print({
       promise: new ReputationProfile(options).getAllReputationProfiles(),
       args: options,
-      objectType: 'reputationProfiles',
+      objectType,
       success: (args, data) => {
         let str = [];
-        for (let i = 0; data && i < data.length; i++) {
-          str.push(data[i].id);
-        }
+        data[objectType].forEach(profile => {
+          str.push(profile.id);
+        });
         return str.join(require('os').EOL);
       }
     });

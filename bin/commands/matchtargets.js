@@ -1,6 +1,8 @@
 let out = require('./lib/out');
 let MatchTarget = require('../../src/matchtarget').matchTarget;
 
+const objectType = 'matchTargets';
+
 class MatchTargetsCommand {
   constructor() {
     this.flags = 'match-targets';
@@ -34,13 +36,12 @@ class MatchTargetsCommand {
     out.print({
       promise: new MatchTarget(options).matchtargets(),
       args: options,
-      objectType: 'matchTargets',
+      objectType,
       success: (args, data) => {
         let targetSequence = [];
-        let matchTargets = data;
-        for (let i = 0; i < matchTargets.length; i++) {
-          targetSequence.push(matchTargets[i].targetId + ' ' + matchTargets[i].type);
-        }
+        data[objectType].forEach(matchTarget => {
+          targetSequence.push(matchTarget.targetId + ' ' + matchTarget.type);
+        });
         return targetSequence.join(require('os').EOL);
       }
     });

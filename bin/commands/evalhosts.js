@@ -1,6 +1,8 @@
 let out = require('./lib/out');
 let SelectedHosts = require('../../src/hosts').selectedHosts;
 
+const objectType = 'hostnames';
+
 class EvalHostsCommand {
   constructor() {
     this.flags = 'eval-hostnames';
@@ -28,12 +30,12 @@ class EvalHostsCommand {
     out.print({
       promise: new SelectedHosts(options).evalHosts(),
       args: options,
-      objectType: 'hostnames',
+      objectType,
       success: (args, data) => {
         let hosts = [];
-        for (let i = 0; i < data.length; i++) {
-          hosts.push(data[i]);
-        }
+        data[objectType].forEach(host => {
+          hosts.push(host);
+        });
         return hosts.join(require('os').EOL);
       }
     });

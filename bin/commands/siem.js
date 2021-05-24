@@ -1,6 +1,8 @@
 let out = require('./lib/out');
 let SIEM = require('../../src/siemsettings').siemSettings;
 
+const objectType = 'siemDefinitions';
+
 class SIEMDefCommand {
   constructor() {
     this.flags = 'siem-definitions';
@@ -12,12 +14,12 @@ class SIEMDefCommand {
     out.print({
       promise: new SIEM(options).getSIEMDefinitions(),
       args: options,
-      objectType: 'siemDefinitions',
+      objectType,
       success: (args, data) => {
         let str = [];
-        for (let i = 0; data && i < data.length; i++) {
-          str.push(data[i].id + ' ' + data[i].name);
-        }
+        data[objectType].forEach(siem => {
+          str.push(siem.id + ' ' + siem.name);
+        });
         return str.join(require('os').EOL);
       }
     });

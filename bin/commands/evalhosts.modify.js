@@ -1,6 +1,8 @@
 let out = require('./lib/out');
 let SelectedHosts = require('../../src/hosts').selectedHosts;
 
+const objectType = 'hostnames';
+
 class ModifyEvalHostsCommand {
   constructor() {
     this.flags = 'modify-eval-hostnames';
@@ -38,12 +40,12 @@ class ModifyEvalHostsCommand {
     out.print({
       promise: new SelectedHosts(options).updateEvalHosts(),
       args: options,
-      objectType: 'hostnames',
+      objectType,
       success: (args, data) => {
         let hosts = [];
-        for (let i = 0; i < data.length; i++) {
-          hosts.push(data[i]);
-        }
+        data[objectType].forEach(host => {
+          hosts.push(host);
+        });
         return hosts.join(require('os').EOL);
       }
     });

@@ -1,6 +1,8 @@
 let ContractsGroups = require('../../src/contractgroups').contractgroups;
 let out = require('./lib/out');
 
+const objectType = 'contract_groups';
+
 class ContractGroupsCommand {
   constructor() {
     this.flags = 'contracts-groups';
@@ -12,12 +14,12 @@ class ContractGroupsCommand {
     out.print({
       promise: new ContractsGroups(options).getContractGroups(),
       args: options,
-      objectType: 'contract_groups',
+      objectType,
       success: (args, data) => {
         let str = [];
-        for (let i = 0; data && i < data.length; i++) {
-          str.push(data[i].contractId + ' ' + data[i].groupId);
-        }
+        data[objectType].forEach(cg => {
+          str.push(cg.contractId + ' ' + cg.groupId);
+        });
         return str.join(require('os').EOL);
       }
     });

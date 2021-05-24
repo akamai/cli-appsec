@@ -1,6 +1,8 @@
 let out = require('./lib/out');
 let Policy = require('../../src/policy').policy;
 
+const objectType = 'policies';
+
 class PoliciesCommand {
   constructor() {
     this.flags = 'policies';
@@ -28,12 +30,12 @@ class PoliciesCommand {
     out.print({
       promise: new Policy(options).policies(),
       args: options,
-      objectType: 'policies',
+      objectType,
       success: (args, data) => {
         let s = [];
-        for (let i = 0; i < data.length; i++) {
-          s.push(data[i].policyId);
-        }
+        data[objectType].forEach(policy => {
+          s.push(policy.policyId);
+        });
         return s.join(require('os').EOL);
       }
     });

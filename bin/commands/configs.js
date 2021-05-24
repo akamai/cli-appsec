@@ -1,6 +1,8 @@
 let out = require('./lib/out');
 let Config = require('../../src/configprovider').configProvider;
 
+const objectType = 'configurations';
+
 class ConfigsCommand {
   constructor() {
     this.flags = 'configs';
@@ -12,12 +14,12 @@ class ConfigsCommand {
     out.print({
       promise: new Config(options).configs(),
       args: options,
-      objectType: 'configurations',
+      objectType,
       success: (args, data) => {
         let str = [];
-        for (let i = 0; data && i < data.length; i++) {
-          str.push(data[i].id);
-        }
+        data[objectType].forEach(config => {
+          str.push(config.id);
+        });
         return str.join(require('os').EOL);
       }
     });
