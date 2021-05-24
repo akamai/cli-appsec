@@ -38,8 +38,7 @@ class ReputationProfileActionsCommand {
       args: options,
       objectType,
       success: (args, data) => {
-        const jsonOutput = { [objectType]: data };
-        return JSON.stringify(jsonOutput);
+        return JSON.stringify(data);
       }
     });
   }
