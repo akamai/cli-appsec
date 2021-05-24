@@ -98,7 +98,13 @@ class CommandOutput {
         if (!(object instanceof Array)) {
           filteredResponse = filteredResponse[0];
         }
-        console.log(customPrinter(options, filteredResponse));
+        let jsonOutput = filteredResponse;
+        // If the command have objectType, return the original response output should display the objectType
+        if (objectType) {
+          originalResponse[objectType] = filteredResponse;
+          jsonOutput = originalResponse;
+        }
+        console.log(customPrinter(options, jsonOutput));
       }
     }
   }
