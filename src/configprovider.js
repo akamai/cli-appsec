@@ -79,7 +79,6 @@ class ConfigProvider {
    * Returns a target product for the config ID
    */
   getTargetProduct() {
-    logger.info('Fetching all available configurations..');
     return this.getConfigId().then(() => {
       return this._edge.get(URIs.GET_CONFIGS).then(configs => {
         const config = configs.configurations.find(cfg => cfg.id === this._configId);
