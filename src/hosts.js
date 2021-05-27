@@ -28,17 +28,21 @@ class SelectedHosts {
 
   addHosts() {
     logger.debug('Adding hosts to selected list.');
-    return this._version.readResource(URIs.SELECTED_HOSTS_RESOURCE, []).then(selectedHosts => {
-      let hosts = [];
-      if (!selectedHosts || !selectedHosts.hostnameList) {
-        selectedHosts = { hostnameList: [] };
-      }
-      logger.info('Adding hosts to the list: ' + JSON.stringify(selectedHosts.hostnameList));
-      hosts = selectedHosts.hostnameList;
-      for (let i = 0; i < this._options.hostnames.length; i++) {
-        hosts.push({ hostname: this._options.hostnames[i] });
-      }
-      return this._version.updateResource(URIs.SELECTED_HOSTS_RESOURCE, [], selectedHosts);
+    return this._config.getTargetProduct().then(targetProduct => {
+      return this._version.readResource(URIs.SELECTED_HOSTS_RESOURCE, []).then(selectedHosts => {
+        let hosts = [];
+        if (!selectedHosts || !selectedHosts.hostnameList) {
+          selectedHosts = { hostnameList: [] };
+        }
+        logger.info('Adding hosts to the list: ' + JSON.stringify(selectedHosts.hostnameList));
+        hosts = selectedHosts.hostnameList;
+        for (let i = 0; i < this._options.hostnames.length; i++) {
+          hosts.push({ hostname: this._options.hostnames[i] });
+        }
+        return targetProduct === 'WAP_AAG'
+          ? this._policy.updateResource(URIs.SELECTED_HOSTS_RESOURCE_WAP, [], selectedHosts)
+          : this._version.updateResource(URIs.SELECTED_HOSTS_RESOURCE, [], selectedHosts);
+      });
     });
   }
 
@@ -57,9 +61,9 @@ class SelectedHosts {
           : this._options.remove
           ? Mode.REMOVE
           : Mode.REPLACE;
-        return targetProduct === 'KSD'
-          ? this._version.updateResource(URIs.SELECTED_HOSTS_RESOURCE, [], data)
-          : this._policy.updateResource(URIs.SELECTED_HOSTS_RESOURCE_WAP, [], data);
+        return targetProduct === 'WAP_AAG'
+          ? this._policy.updateResource(URIs.SELECTED_HOSTS_RESOURCE_WAP, [], data)
+          : this._version.updateResource(URIs.SELECTED_HOSTS_RESOURCE, [], data);
       }
     });
   }
