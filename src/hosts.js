@@ -4,6 +4,7 @@ let URIs = require('./constants').URIS;
 let logger = require('./constants').logger('HostSelection');
 let Version = require('./versionsprovider').versionProvider;
 let Config = require('./configprovider').configProvider;
+let PolicyProvider = require('./policy').policy;
 let fs = require('fs');
 let untildify = require('untildify');
 
@@ -20,6 +21,7 @@ class SelectedHosts {
   constructor(options) {
     this._config = new Config(options);
     this._version = new Version(options);
+    this._policy = new PolicyProvider(options);
     this._options = JSON.parse(JSON.stringify(options)); //clone
     this._edge = new Edge(options);
   }
@@ -41,21 +43,25 @@ class SelectedHosts {
   }
 
   modifyHosts() {
-    if (fs.existsSync(this._options['file'])) {
-      let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
-      let data;
-      try {
-        data = JSON.parse(payload);
-      } catch (err) {
-        throw 'The input JSON is not valid';
+    return this._config.getTargetProduct().then(targetProduct => {
+      if (fs.existsSync(this._options['file'])) {
+        let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
+        let data;
+        try {
+          data = JSON.parse(payload);
+        } catch (err) {
+          throw 'The input JSON is not valid';
+        }
+        data.mode = this._options.append
+          ? Mode.APPEND
+          : this._options.remove
+          ? Mode.REMOVE
+          : Mode.REPLACE;
+        return targetProduct === 'KSD'
+          ? this._version.updateResource(URIs.SELECTED_HOSTS_RESOURCE, [], data)
+          : this._policy.updateResource(URIs.SELECTED_HOSTS_RESOURCE_WAP, [], data);
       }
-      data.mode = this._options.append
-        ? Mode.APPEND
-        : this._options.remove
-        ? Mode.REMOVE
-        : Mode.REPLACE;
-      return this._version.updateResource(URIs.SELECTED_HOSTS_RESOURCE, [], data);
-    }
+    });
   }
 
   selectableHosts() {

@@ -76,6 +76,22 @@ class ConfigProvider {
   }
 
   /**
+   * Returns a target product for the config Id.
+   */
+  getTargetProduct() {
+    logger.info('Fetching all available configurations..');
+    return this._edge.get(URIs.GET_CONFIGS).then(configs => {
+      const config = configs.configurations.find(cfg => cfg.id === this._configId);
+      if (config) {
+        return config.targetProduct;
+      } else {
+        logger.error('No security configurations exist for this config ID - ' + this._configId);
+        throw `No security configurations exist for this config ID - ${this._configId}`;
+      }
+    });
+  }
+
+  /**
    * Create Config.
    */
   createConfig() {
