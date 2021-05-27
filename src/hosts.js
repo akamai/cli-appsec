@@ -100,7 +100,11 @@ class SelectedHosts {
   }
 
   selectedHosts() {
-    return this._version.readResource(URIs.SELECTED_HOSTS_RESOURCE, []);
+    return this._config.getTargetProduct().then(targetProduct => {
+      return targetProduct === 'WAP_AAG'
+        ? this._policy.readResource(URIs.SELECTED_HOSTS_RESOURCE_WAP, [])
+        : this._version.readResource(URIs.SELECTED_HOSTS_RESOURCE, []);
+    });
   }
 
   evalHosts() {
