@@ -1,10 +1,12 @@
 let Rules = require('../../src/rules').rules;
 let out = require('./lib/out');
 
+const objectType = 'ruleActions';
+
 class RuleActionsCommand {
   constructor() {
     this.flags = 'rule-actions';
-    this.desc = '(Beta) Display rules and actions.';
+    this.desc = 'Display rules and actions.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -33,6 +35,7 @@ class RuleActionsCommand {
     out.print({
       promise: new Rules(options).getRulesActions(),
       args: options,
+      objectType,
       success: (args, data) => {
         return JSON.stringify(data);
       }

@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class CreateConfigCommand {
   constructor() {
     this.flags = 'delete-config';
-    this.desc = '(Beta) Delete a security config.';
+    this.desc = 'Delete a security config.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

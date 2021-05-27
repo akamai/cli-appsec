@@ -4,58 +4,79 @@
 
 let logger = require('../src/constants').logger('main');
 let version = require('../package.json').version;
+const figlet = require('figlet');
 
-require("sywac")
+require('sywac')
+  .preface(figlet.textSync('Akamai Appsec', 'Graffiti'), 'Unleashing the power of the Akamai application security via simple and easy to use CLI!')
   .commandDirectory('./commands')
-  .boolean("--json", {
-    desc: "Print the raw json response. All commands respect this option.",
-    group: "Command options:",
+  .boolean('--json', {
+    desc: 'Print the raw json response. All commands respect this option.',
+    group: 'Command options:',
     required: false
   })
-  .string("--edgerc", {
-    desc: "The full path to the .edgerc file.",
-    group: "Command options:",
+  .string('--query', {
+    desc: 'Query to use for filtering the response and can be comma separated multiple fields.',
+    group: 'Command options:',
     required: false
   })
-  .string("--section", {
-    desc: "The section of .edgerc to use.",
-    group: "Command options:",
+  .string('--fields', {
+    desc: 'Fields to be displayed from the response and can be comma separated multiple fields.',
+    group: 'Command options:',
+    required: false
+  })
+  .string('--sort', {
+    desc: 'Use for the sorting the response.',
+    group: 'Command options:',
+    required: false
+  })
+  .boolean('--raw', {
+    desc: 'Use to get fields in raw format (requires "--fields" argument).',
+    group: 'Command options:',
+    required: false
+  })
+  .string('--edgerc', {
+    desc: 'The full path to the .edgerc file.',
+    group: 'Command options:',
+    required: false
+  })
+  .string('--section', {
+    desc: 'The section of .edgerc to use.',
+    group: 'Command options:',
     required: false
   })
   .showHelpByDefault()
-  .help("--help", {
-    group: "Command options:",
-    desc: "Prints help information."
+  .help('--help', {
+    group: 'Command options:',
+    desc: 'Prints help information.'
   })
-  .boolean("--version", {
-    group: "Command options:",
-    desc: "Current version of the program."
+  .boolean('--version', {
+    group: 'Command options:',
+    desc: 'Current version of the program.'
   })
-  .string("--account-key", {
-    desc: "Account ID to switch to when performing the operation.",
-    group: "Command options:",
+  .string('--account-key', {
+    desc: 'Account ID to switch to when performing the operation.',
+    group: 'Command options:',
     required: false
   })
-  .epilogue("Copyright (C) Akamai Technologies, Inc\nVisit http://github.com/akamai/cli-appsec for detailed documentation\n")
+  .epilogue('Copyright (C) Akamai Technologies, Inc\nVisit http://github.com/akamai/cli-appsec for detailed documentation.\n')
   .outputSettings({
     maxWidth: 150
   })
   .parse()
-  .then(result => {
+  .then((result) => {
     if (result.errors.length) {
-      let err = result.errors[0]+'' || JSON.stringify(result.errors[0]);
-      logger.error("ERROR: ", err);
+      let err = result.errors[0] + '' || JSON.stringify(result.errors[0]);
+      logger.error('ERROR: ', err);
       console.error(err);
       process.exit(result.code);
     }
-    if(result.argv.version && result.details.args.length == 1) {
+    if (result.argv.version && result.details.args.length == 1) {
       //print version info
       console.log(version);
       process.exit(0);
-    }
-    else if (result.output) {
-      let output = result.output.replace(/akamai-appsec/,'akamai appsec');
-      if(result.code != 0) {
+    } else if (result.output) {
+      let output = result.output.replace(/akamai-appsec/, 'akamai appsec');
+      if (result.code != 0) {
         console.error(output);
       } else {
         console.log(output);

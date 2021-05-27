@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class HttpHeaderLoggingCommand {
   constructor() {
     this.flags = 'modify-prefetch-requests';
-    this.desc = '(Beta) Update the Prefetch Requests settings.';
+    this.desc = 'Update the Prefetch Requests settings.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

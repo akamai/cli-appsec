@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class HttpHeaderLoggingCommand {
   constructor() {
     this.flags = 'enable-http-header-logging';
-    this.desc = '(Beta) Enable the HTTP Header Logging settings.';
+    this.desc = 'Enable the HTTP Header Logging settings.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

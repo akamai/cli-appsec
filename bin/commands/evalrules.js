@@ -1,10 +1,12 @@
 let EvalRules = require('../../src/evalrules').evalrules;
 let out = require('./lib/out');
 
+const objectType = 'evalRuleActions';
+
 class EvalRuleActionsCommand {
   constructor() {
     this.flags = 'eval-rule-actions';
-    this.desc = '(Beta) Display evaluation rules and actions in a policy.';
+    this.desc = 'Display evaluation rules and actions in a policy.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -33,6 +35,7 @@ class EvalRuleActionsCommand {
     out.print({
       promise: new EvalRules(options).getEvalRulesActions(),
       args: options,
+      objectType,
       success: (args, data) => {
         return JSON.stringify(data);
       }

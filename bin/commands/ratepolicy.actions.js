@@ -1,10 +1,12 @@
 let RatePolicy = require('../../src/ratepolicy').ratePolicy;
 let out = require('./lib/out');
 
+const objectType = 'ratePolicyActions';
+
 class RateActionCommand {
   constructor() {
     this.flags = 'rate-policies-actions';
-    this.desc = '(Beta) Display all enabled rate policy actions.';
+    this.desc = 'Display all enabled rate policy actions.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -33,6 +35,7 @@ class RateActionCommand {
     out.print({
       promise: new RatePolicy(options).getAllRatePolicyActions(),
       args: options,
+      objectType,
       success: (args, data) => {
         return JSON.stringify(data);
       }

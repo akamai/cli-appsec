@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class AttackGroupExceptionCommand {
   constructor() {
     this.flags = 'attackgroup-condition-exception';
-    this.desc = '(Beta) Display attack group exceptions.';
+    this.desc = 'Display attack group exceptions.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

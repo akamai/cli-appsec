@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class EnableRuleCommand {
   constructor() {
     this.flags = 'enable-rule-action';
-    this.desc = '(Beta) Enable rule action.';
+    this.desc = 'Enable rule action.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

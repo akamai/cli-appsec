@@ -1,6 +1,8 @@
 let CustomDeny = require('../../src/customdeny').customdeny;
 let out = require('./lib/out');
 
+const objectType = 'customDenyList';
+
 class ListCustomDenyCommand {
   constructor() {
     this.flags = 'custom-deny-list';
@@ -32,12 +34,12 @@ class ListCustomDenyCommand {
     out.print({
       promise: new CustomDeny(options).getCustomdenyList(),
       args: options,
+      objectType,
       success: (args, data) => {
-        data = data.customDenyList;
         let str = [];
-        for (let i = 0; data && i < data.length; i++) {
-          str.push(data[i].id);
-        }
+        data[objectType].forEach(action => {
+          str.push(action.id);
+        });
         return str.join(require('os').EOL);
       }
     });

@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class DisableReputationProfileActionCommand {
   constructor() {
     this.flags = 'disable-reputation-profile';
-    this.desc = '(Beta) Disable the action for a reputation profile.';
+    this.desc = 'Disable the action for a reputation profile.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

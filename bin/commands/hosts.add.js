@@ -1,6 +1,8 @@
 let out = require('./lib/out');
 let SelectedHosts = require('../../src/hosts').selectedHosts;
 
+const objectType = 'hostnameList';
+
 class AddHostsCommand {
   constructor() {
     this.flags = 'add-hostname';
@@ -29,23 +31,22 @@ class AddHostsCommand {
             type: 'array:string'
           }
         ]
-      });
-    // .stringArray('--hosts <a.com, b.net, c.d.com>', {
-    //   desc: 'Hostnames to add to the selected list.',
-    //   group: 'Optional:',
-    //   required: true
-    // });
+      })
+      .epilogue(
+        'NOTE: THIS WILL BE DEPRECATED IN THE NEXT RELEASE. INSTEAD USE: `akamai appsec modify-hostnames @path --append [options]`\n\nCopyright (C) Akamai Technologies, Inc\nVisit http://github.com/akamai/cli-appsec for detailed documentation.'
+      );
   }
 
   run(options) {
     out.print({
       promise: new SelectedHosts(options).addHosts(),
       args: options,
+      objectType,
       success: (args, data) => {
         let hosts = [];
-        for (let i = 0; i < data.hostnameList.length; i++) {
-          hosts.push(data.hostnameList[i].hostname);
-        }
+        data[objectType].forEach(host => {
+          hosts.push(host.hostname);
+        });
         return hosts.join(require('os').EOL);
       }
     });

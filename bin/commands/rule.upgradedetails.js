@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class RuleActionsCommand {
   constructor() {
     this.flags = 'upgrade-details';
-    this.desc = '(Beta) Display rules updates.';
+    this.desc = 'Display rules updates.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

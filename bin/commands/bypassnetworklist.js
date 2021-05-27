@@ -1,10 +1,12 @@
 let BypassNL = require('../../src/bypassnl').bypassnetworklist;
 let out = require('./lib/out');
 
+const objectType = 'networkLists';
+
 class BypassNLCommand {
   constructor() {
     this.flags = 'bypass-network-lists';
-    this.desc = '(Beta) List all bypass network lists.';
+    this.desc = 'List all bypass network lists.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -26,12 +28,12 @@ class BypassNLCommand {
     out.print({
       promise: new BypassNL(options).getBypassNetworkList(),
       args: options,
+      objectType,
       success: (args, data) => {
-        data = data.networkLists;
         let str = [];
-        for (let i = 0; data && i < data.length; i++) {
-          str.push(data[i].id);
-        }
+        data[objectType].forEach(nl => {
+          str.push(nl.id);
+        });
         return str.join(require('os').EOL);
       }
     });

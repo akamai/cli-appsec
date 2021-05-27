@@ -4,7 +4,7 @@ let MatchTarget = require('../../src/matchtarget').matchTarget;
 class MatchTargetCommand {
   constructor() {
     this.flags = 'match-target';
-    this.desc = '(Beta) Read a match target.';
+    this.desc = 'Read a match target.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -34,12 +34,17 @@ class MatchTargetCommand {
       success: (args, data) => {
         let dataList = [];
         if (data.type == 'api') {
-          for (let i = 0; i < data.apis.length; i++) {
-            dataList.push(data.apis[i].id);
-          }
+          data.apis.forEach(api => {
+            dataList.push(api.id);
+          });
         } else {
-          for (let i = 0; i < data.hostnames.length; i++) {
-            dataList.push(data.hostnames[i]);
+          if (data.hostnames && data.hostnames.length) {
+            data.hostnames.forEach(hostname => {
+              dataList.push(hostname);
+            });
+          } else {
+            // If there are no "hostanames" in the response, that means "ALL_HOSTNAMES" is selected.
+            dataList.push('ALL_HOSTNAMES');
           }
         }
         return dataList.join(require('os').EOL);

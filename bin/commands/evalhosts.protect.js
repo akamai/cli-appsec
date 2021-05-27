@@ -1,10 +1,12 @@
 let out = require('./lib/out');
 let SelectedHosts = require('../../src/hosts').selectedHosts;
 
+const objectType = 'hostnames';
+
 class ProtectEvalHostsCommand {
   constructor() {
     this.flags = 'protect-eval-hostnames';
-    this.desc = '(Beta) Move evaluation hostnames to protection.';
+    this.desc = 'Move evaluation hostnames to protection.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -38,11 +40,12 @@ class ProtectEvalHostsCommand {
     out.print({
       promise: new SelectedHosts(options).protectEvalHosts(),
       args: options,
+      objectType,
       success: (args, data) => {
         let hosts = [];
-        for (let i = 0; i < data.hostnames.length; i++) {
-          hosts.push(data.hostnames[i]);
-        }
+        data[objectType].forEach(host => {
+          hosts.push(host);
+        });
         return hosts.join(require('os').EOL);
       }
     });

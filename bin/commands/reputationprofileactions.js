@@ -1,10 +1,12 @@
 let ReputationProfile = require('../../src/reputationprofile').reputationProfile;
 let out = require('./lib/out');
 
+const objectType = 'reputationProfiles';
+
 class ReputationProfileActionsCommand {
   constructor() {
     this.flags = 'reputation-profile-actions';
-    this.desc = '(Beta) List all reputation profile actions.';
+    this.desc = 'List all reputation profile actions.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -34,6 +36,7 @@ class ReputationProfileActionsCommand {
     out.print({
       promise: new ReputationProfile(options).getReputationProfileActions(),
       args: options,
+      objectType,
       success: (args, data) => {
         return JSON.stringify(data);
       }

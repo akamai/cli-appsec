@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class CreateSecurityPolicyCommand {
   constructor() {
     this.flags = 'create-security-policy';
-    this.desc = '(Beta) Create a security policy.';
+    this.desc = 'Create a security policy.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -39,7 +39,7 @@ class CreateSecurityPolicyCommand {
       promise: new SecurityPolicy(options).createPolicy(),
       args: options,
       success: (args, data) => {
-        return JSON.stringify(data);
+        return data.policyId;
       }
     });
   }

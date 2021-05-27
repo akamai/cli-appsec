@@ -4,21 +4,21 @@ let out = require('./lib/out');
 class CloneConfigCommand {
   constructor() {
     this.flags = 'clone-config';
-    this.desc = '(Beta) Clone a new security config.';
+    this.desc = 'Clone a new security config.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
 
   setup(sywac) {
     sywac
-        .positional('<@path>', {
-          paramsDesc: 'The input file path.'
-        })
-        .check((argv, context) => {
-          if (!argv['@path'].startsWith('@')) {
-            return context.cliMessage("ERROR: Invalid file name, should start with '@'");
-          }
-        });
+      .positional('<@path>', {
+        paramsDesc: 'The input file path.'
+      })
+      .check((argv, context) => {
+        if (!argv['@path'].startsWith('@')) {
+          return context.cliMessage("ERROR: Invalid file name, should start with '@'");
+        }
+      });
   }
 
   run(options) {

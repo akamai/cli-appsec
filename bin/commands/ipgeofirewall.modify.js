@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class ModifyIpGeoFirewallCommand {
   constructor() {
     this.flags = 'modify-ip-geo-firewall';
-    this.desc = '(Beta) Update the IP Geo Firewall network lists in a policy';
+    this.desc = 'Update the IP Geo Firewall network lists in a policy';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

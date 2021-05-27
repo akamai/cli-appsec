@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class SlowPostCommand {
   constructor() {
     this.flags = 'slow-post';
-    this.desc = '(Beta) Display contents of slow post.';
+    this.desc = 'Display contents of slow post.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

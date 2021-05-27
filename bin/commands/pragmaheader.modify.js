@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class PragmaHeaderModifyCommand {
   constructor() {
     this.flags = 'modify-pragma-header';
-    this.desc = '(Beta) Update Pragma Header settings.';
+    this.desc = 'Update Pragma Header settings.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -22,6 +22,12 @@ class PragmaHeaderModifyCommand {
       .string('--version <id>', {
         desc:
           "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
+        group: 'Optional:',
+        required: false
+      })
+      .string('--policy <id>', {
+        desc:
+          'Policy ID. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
         group: 'Optional:',
         required: false
       })

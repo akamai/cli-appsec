@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class ModifyBypassNLCommand {
   constructor() {
     this.flags = 'modify-bypass-network-lists';
-    this.desc = '(Beta) Update bypass network lists.';
+    this.desc = 'Update bypass network lists.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -37,7 +37,12 @@ class ModifyBypassNLCommand {
       promise: new BypassNL(options).updateBypassNetworkList(),
       args: options,
       success: (args, data) => {
-        return JSON.stringify(data);
+        data = data.networkLists;
+        let response = [];
+        data.forEach(networkList => {
+          response.push(networkList);
+        });
+        return response.join(require('os').EOL);
       }
     });
   }

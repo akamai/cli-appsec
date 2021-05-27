@@ -10,6 +10,12 @@ let untildify = require('untildify');
 let Edge =
   process.env.MOCK_AKA_SEC_API == 'true' ? require('../mock/edgeClient') : require('./edgeClient');
 
+const Mode = {
+  APPEND: 'append',
+  REMOVE: 'remove',
+  REPLACE: 'replace'
+};
+
 class SelectedHosts {
   constructor(options) {
     this._config = new Config(options);
@@ -32,6 +38,24 @@ class SelectedHosts {
       }
       return this._version.updateResource(URIs.SELECTED_HOSTS_RESOURCE, [], selectedHosts);
     });
+  }
+
+  modifyHosts() {
+    if (fs.existsSync(this._options['file'])) {
+      let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
+      let data;
+      try {
+        data = JSON.parse(payload);
+      } catch (err) {
+        throw 'The input JSON is not valid';
+      }
+      data.mode = this._options.append
+        ? Mode.APPEND
+        : this._options.remove
+        ? Mode.REMOVE
+        : Mode.REPLACE;
+      return this._version.updateResource(URIs.SELECTED_HOSTS_RESOURCE, [], data);
+    }
   }
 
   selectableHosts() {
@@ -109,5 +133,6 @@ class SelectedHosts {
 }
 
 module.exports = {
-  selectedHosts: SelectedHosts
+  selectedHosts: SelectedHosts,
+  mode: Mode
 };

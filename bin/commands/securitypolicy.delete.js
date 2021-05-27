@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class DeleteCustomRuleCommand {
   constructor() {
     this.flags = 'delete-security-policy';
-    this.desc = '(Beta) Delete a security policy.';
+    this.desc = 'Delete a security policy.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
