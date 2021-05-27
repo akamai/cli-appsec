@@ -76,7 +76,7 @@ class ConfigProvider {
   }
 
   /**
-   * Returns a target product for the config Id.
+   * Returns a target product for the config ID
    */
   getTargetProduct() {
     logger.info('Fetching all available configurations..');
