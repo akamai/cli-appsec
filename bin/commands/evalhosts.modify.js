@@ -27,6 +27,27 @@ class ModifyEvalHostsCommand {
         group: 'Options:',
         required: false
       })
+      .string('--policy <id>', {
+        desc:
+          'Policy ID. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
+        group: 'Optional:',
+        required: false
+      })
+      .boolean('--append', {
+        desc: 'Appends the hostnames provided to the existing selected hostnames.',
+        group: 'Optional:',
+        required: false
+      })
+      .boolean('--remove', {
+        desc: 'Removes the hostnames provided from the existing selected hostnames.',
+        group: 'Optional:',
+        required: false
+      })
+      .boolean('--replace', {
+        desc: 'Replaces the existing selected hostnames with the hostnames provided.',
+        group: 'Optional:',
+        required: false
+      })
       .check((argv, context) => {
         if (!argv['@path'].startsWith('@')) {
           return context.cliMessage("ERROR: Invalid file name, should start with '@'");

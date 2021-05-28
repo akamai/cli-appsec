@@ -28,6 +28,12 @@ class AddHostsCommand {
         group: 'Optional:',
         required: false
       })
+      .string('--policy <id>', {
+        desc:
+          'Policy ID. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
+        group: 'Optional:',
+        required: false
+      })
       .boolean('--append', {
         desc: 'Appends the hostnames provided to the existing selected hostnames.',
         group: 'Optional:',
