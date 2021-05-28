@@ -89,7 +89,7 @@ class FirewallPolicy {
   readResource(uri, params) {
     return this.policyId().then(policyId => {
       params.unshift(policyId);
-      return this.this._version.readResource(uri, params);
+      return this._version.readResource(uri, params);
     });
   }
 
@@ -101,7 +101,7 @@ class FirewallPolicy {
   updateResource(uri, params, payload) {
     return this.policyId().then(policyId => {
       params.unshift(policyId);
-      return this.this._version.updateResource(uri, params, payload);
+      return this._version.updateResource(uri, params, payload);
     });
   }
 
@@ -113,7 +113,7 @@ class FirewallPolicy {
   createResource(uri, params, payload) {
     return this.policyId().then(policyId => {
       params.unshift(policyId);
-      return this.this._version.createResource(uri, params, payload);
+      return this._version.createResource(uri, params, payload);
     });
   }
 }
