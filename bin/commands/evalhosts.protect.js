@@ -27,6 +27,12 @@ class ProtectEvalHostsCommand {
         group: 'Options:',
         required: false
       })
+      .string('--policy <id>', {
+        desc:
+          'Policy ID. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
+        group: 'Optional:',
+        required: false
+      })
       .check((argv, context) => {
         if (!argv['@path'].startsWith('@')) {
           return context.cliMessage("ERROR: Invalid file name, should start with '@'");

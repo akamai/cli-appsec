@@ -108,7 +108,7 @@ class SelectedHosts {
   }
 
   evalHosts() {
-    return this._version.readResource(URIs.EVAL_HOSTS_RESOURCE, []);
+    return this._policy.readResource(URIs.EVAL_HOSTS_RESOURCE, []);
   }
 
   updateEvalHosts() {
@@ -120,7 +120,13 @@ class SelectedHosts {
       } catch (err) {
         throw 'The input JSON is not valid';
       }
-      return this._version.updateResource(URIs.EVAL_HOSTS_RESOURCE, [], data);
+
+      data.mode = this._options.append
+        ? Mode.APPEND
+        : this._options.remove
+        ? Mode.REMOVE
+        : Mode.REPLACE;
+      return this._policy.updateResource(URIs.EVAL_HOSTS_RESOURCE, [], data);
     } else {
       throw `The file does not exists: ${this._options['file']}`;
     }
@@ -135,7 +141,7 @@ class SelectedHosts {
       } catch (err) {
         throw 'The input JSON is not valid';
       }
-      return this._version.updateResource(URIs.PROTECT_EVAL_HOSTS_RESOURCE, [], data);
+      return this._policy.updateResource(URIs.PROTECT_EVAL_HOSTS_RESOURCE, [], data);
     } else {
       throw `The file does not exists: ${this._options['file']}`;
     }

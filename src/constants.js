@@ -28,8 +28,9 @@ const resources = {
   SELECTED_HOSTS_RESOURCE: '/appsec/v1/configs/%s/versions/%s/selected-hostnames',
   SELECTED_HOSTS_RESOURCE_WAP:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/selected-hostnames',
-  EVAL_HOSTS_RESOURCE: '/appsec/v1/configs/%s/versions/%s/selected-hostnames/eval-hostnames',
-  PROTECT_EVAL_HOSTS_RESOURCE: '/appsec/v1/configs/%s/versions/%s/protect-eval-hostnames',
+  EVAL_HOSTS_RESOURCE: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-hostnames',
+  PROTECT_EVAL_HOSTS_RESOURCE:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/protect-eval-hostnames',
   SELECTABLE_HOSTS_RESOURCE: '/appsec/v1/configs/%s/versions/%s/selectable-hostnames',
   CONTRACT_SELECTABLE_HOSTS_RESOURCE: '/appsec/v1/contracts/%s/groups/%s/selectable-hostnames',
   FAILOVER_HOSTS_RESOURCE: '/appsec/v1/configs/%s/failover-hostnames',
