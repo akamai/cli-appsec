@@ -5,18 +5,20 @@ let fs = require('fs');
 let untildify = require('untildify');
 let Config = require('./configprovider').configProvider;
 let Version = require('./versionsprovider').versionProvider;
+let PolicyProvider = require('./policy').policy;
 
 class BypassNL {
   constructor(options) {
     this._config = new Config(options);
     this._options = options;
     this._version = new Version(options);
+    this._policy = new PolicyProvider(options);
   }
 
   getBypassNetworkList() {
     let listUrl = URIs.BYPASS_NETWORK_LIST;
 
-    return this._version.readResource(listUrl, []);
+    return this._policy.readResource(listUrl, []);
   }
 
   updateBypassNetworkList() {
@@ -28,7 +30,7 @@ class BypassNL {
       } catch (err) {
         throw 'The input JSON is not valid';
       }
-      return this._version.updateResource(URIs.BYPASS_NETWORK_LIST, [], data);
+      return this._policy.updateResource(URIs.BYPASS_NETWORK_LIST, [], data);
     } else {
       throw `The file does not exists: ${this._options['file']}`;
     }
