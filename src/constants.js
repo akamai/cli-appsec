@@ -85,7 +85,8 @@ const resources = {
   REPUTATION_ANALYSIS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/reputation-analysis',
   CUSTOM_DENY: '/appsec/v1/configs/%s/versions/%s/custom-deny',
   CUSTOM_DENY_BY_ID: '/appsec/v1/configs/%s/versions/%s/custom-deny/%s',
-  BYPASS_NETWORK_LIST: '/appsec/v1/configs/%s/versions/%s/bypass-network-lists',
+  BYPASS_NETWORK_LIST:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/bypass-network-lists',
   HTTP_HEADER_LOGGING: '/appsec/v1/configs/%s/versions/%s/advanced-settings/logging',
   PREFETCH: '/appsec/v1/configs/%s/versions/%s/advanced-settings/prefetch',
   PRAGMA_HEADER: '/appsec/v1/configs/%s/versions/%s/advanced-settings/pragma-header',
