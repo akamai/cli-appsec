@@ -27,10 +27,19 @@ class EnableEvalRuleCommand {
           'Policy ID. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
         group: 'Optional:',
         required: false
-      });
+      })
+        .string('--mode <mode>', {
+          desc:
+              'Evaluation mode  KRS2_AUTO or KRS2_MANUAL. Used only for ASE(KRS 2) evaluation rulesets. Defaults to KRS2_MANUAL',
+          group: 'Optional:',
+          required: false
+        })
+     ;
   }
 
   run(options) {
+    options.mode = options['mode'];
+
     out.print({
       promise: new EvalRules(options).startEval(),
       args: options,
