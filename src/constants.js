@@ -102,7 +102,8 @@ const resources = {
   HOSTNAME_COVERAGE_MATCH_TARGET:
     '/appsec/v1/configs/%s/versions/%s/hostname-coverage/match-targets?hostname=%s',
   HOSTNAME_COVERAGE_OVERLAPPING:
-    '/appsec/v1/configs/%s/versions/%s/hostname-coverage/overlapping?hostname=%s'
+    '/appsec/v1/configs/%s/versions/%s/hostname-coverage/overlapping?hostname=%s',
+  THREAT_INTEL:'/appsec/v1/configs/%s/versions/%s/security-policies/%s/threat-intel'
 };
 
 define('URIS', resources);
