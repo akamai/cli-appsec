@@ -11,9 +11,6 @@ class EnableThreatIntelCommand {
 
   setup(sywac) {
     sywac
-      .usage(
-        'Usage: akamai-appsec disable-threat-intel [options]'
-      )
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
         group: 'Optional:',
@@ -35,7 +32,7 @@ class EnableThreatIntelCommand {
 
   run(options) {
     out.print({
-      promise: new ThreatIntel(options).disableThreatIntel(),
+      promise: new ThreatIntel(options).toggleThreatIntel("off"),
       args: options,
       success: (args, data) => {
         return JSON.stringify(data);

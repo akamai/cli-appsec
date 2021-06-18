@@ -21,24 +21,13 @@ class ThreatIntel {
     });
   }
 
-  enableThreatIntel() {
+  toggleThreatIntel(toggle) {
     return this._policyProvider.policyId().then(policyId => {
-      let json = { threatIntel: "on"};
+      let json = { threatIntel: toggle};
       return this._version.updateResource(
         URIs.THREAT_INTEL,
         [policyId],
         json
-      );
-    });
-  }
-
-  disableThreatIntel() {
-    return this._policyProvider.policyId().then(policyId => {
-      let json = { threatIntel: "off"};
-      return this._version.updateResource(
-          URIs.THREAT_INTEL,
-          [policyId],
-          json
       );
     });
   }
