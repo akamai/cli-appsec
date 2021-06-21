@@ -85,6 +85,8 @@ class EvalRules {
     return this._policyProvider.policyId().then(policyId => {
       let evalMode = JSON.parse(fs.readFileSync(__dirname + '/../templates/evalMode.json', 'utf8'));
       evalMode.eval = 'START';
+      if(this._options['mode'])
+        evalMode.mode=this._options['mode'];
       return this._version.createResource(URIs.EVAL_MODE, [policyId], evalMode);
     });
   }

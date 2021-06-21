@@ -1,10 +1,10 @@
-let EvalRules = require('../../src/evalrules').evalrules;
+let ThreatIntel = require('../../src/threatintel').threatIntel;
 let out = require('./lib/out');
 
-class EnableEvalRuleCommand {
+class ThreatIntelCommand {
   constructor() {
-    this.flags = 'start-eval';
-    this.desc = 'Start evaluation in a policy.';
+    this.flags = 'threat-intel';
+    this.desc = 'Threat Intel setting for a policy';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -27,21 +27,11 @@ class EnableEvalRuleCommand {
           'Policy ID. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
         group: 'Optional:',
         required: false
-      })
-        .string('--mode <mode>', {
-          desc:
-              'Evaluation mode  KRS2_AUTO or KRS2_MANUAL. Used only for ASE(KRS 2) evaluation rulesets. Defaults to KRS2_MANUAL',
-          group: 'Optional:',
-          required: false
-        })
-     ;
+      });
   }
-
   run(options) {
-    options.mode = options['mode'];
-
     out.print({
-      promise: new EvalRules(options).startEval(),
+      promise: new ThreatIntel(options).getThreatIntel(),
       args: options,
       success: (args, data) => {
         return JSON.stringify(data);
@@ -50,4 +40,4 @@ class EnableEvalRuleCommand {
   }
 }
 
-module.exports = new EnableEvalRuleCommand();
+module.exports = new ThreatIntelCommand();
