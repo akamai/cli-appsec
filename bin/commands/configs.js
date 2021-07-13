@@ -13,7 +13,7 @@ class ConfigsCommand {
   setup(sywac) {
     sywac
       .boolean('--include-hostnames', {
-        desc: 'Specify whether to include staging and production host names. Defaults to true.',
+        desc: 'Specify whether to include staging and production hostnames. Defaults to true.',
         group: 'Optional:',
         required: false
       })
