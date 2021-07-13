@@ -14,7 +14,7 @@ let logger = function(loggerName) {
   return LOG.child({ name: loggerName });
 };
 const resources = {
-  GET_CONFIGS: '/appsec/v1/configs',
+  GET_CONFIGS: '/appsec/v1/configs?includeHostnames=%s&includeContractGroup=%s',
   GET_CONFIG: '/appsec/v1/configs/%s',
   CLONE: '/appsec/v1/configs/%s/versions',
   GET_CONTRACT_GROUPS: '/appsec/v1/contracts-groups',
@@ -103,7 +103,7 @@ const resources = {
     '/appsec/v1/configs/%s/versions/%s/hostname-coverage/match-targets?hostname=%s',
   HOSTNAME_COVERAGE_OVERLAPPING:
     '/appsec/v1/configs/%s/versions/%s/hostname-coverage/overlapping?hostname=%s',
-  THREAT_INTEL:'/appsec/v1/configs/%s/versions/%s/security-policies/%s/threat-intel'
+  THREAT_INTEL: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/threat-intel'
 };
 
 define('URIS', resources);

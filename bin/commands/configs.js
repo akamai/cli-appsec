@@ -10,6 +10,20 @@ class ConfigsCommand {
     this.run = this.run.bind(this);
   }
 
+  setup(sywac) {
+    sywac
+      .boolean('--include-hostnames', {
+        desc: 'Specify whether to include staging and production hostnames. Defaults to true.',
+        group: 'Optional:',
+        required: false
+      })
+      .boolean('--include-contract-group', {
+        desc: 'Specify whether to include contract and group id. Defaults to false.',
+        group: 'Optional:',
+        required: false
+      });
+  }
+
   run(options) {
     out.print({
       promise: new Config(options).configs(),
