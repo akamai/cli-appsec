@@ -12,7 +12,7 @@ class SetModeCommand {
   setup(sywac) {
     sywac
       .positional('<mode>', {
-        paramsDesc: 'The mode to be set to.'
+        paramsDesc: 'The mode to be set to. Supported values are ASE_AUTO, ASE_MANUAL, AAG, KRS'
       })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
