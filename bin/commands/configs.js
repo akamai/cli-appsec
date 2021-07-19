@@ -8,6 +8,7 @@ class ConfigsCommand {
     this.flags = 'configs';
     this.desc = 'List all available configurations.';
     this.run = this.run.bind(this);
+    this.setup = this.setup.bind(this);
   }
 
   setup(sywac) {
