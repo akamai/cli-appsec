@@ -8,6 +8,21 @@ class ConfigsCommand {
     this.flags = 'configs';
     this.desc = 'List all available configurations.';
     this.run = this.run.bind(this);
+    this.setup = this.setup.bind(this);
+  }
+
+  setup(sywac) {
+    sywac
+      .boolean('--include-hostnames', {
+        desc: 'Specify whether to include staging and production hostnames. Defaults to false.',
+        group: 'Optional:',
+        required: false
+      })
+      .boolean('--include-contract-group', {
+        desc: 'Specify whether to include contract and group ID. Defaults to false.',
+        group: 'Optional:',
+        required: false
+      });
   }
 
   run(options) {

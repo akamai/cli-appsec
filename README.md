@@ -1,4 +1,3 @@
-**__This is a Beta Software__**
 # Akamai CLI for Application Security
 
 *NOTE:* This tool is intended to be installed via the Akamai CLI package manager, which can be retrieved from the releases page of the [Akamai CLI](https://github.com/akamai/cli) tool.

@@ -21,6 +21,12 @@ class BypassNLCommand {
         desc:
           "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
         group: 'Options:'
+      })
+      .string('--policy <id>', {
+        desc:
+          'Policy ID. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
+        group: 'Optional:',
+        required: false
       });
   }
 

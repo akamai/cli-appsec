@@ -72,7 +72,26 @@ class ConfigProvider {
    */
   configs() {
     logger.info('Fetching all available configurations..');
-    return this._edge.get(URIs.GET_CONFIGS);
+    this.includeHostnames = this._options['include-hostnames'] || false;
+    this.includeContractGroup = this._options['include-contract-group'] || false;
+    return this._edge.get(URIs.GET_CONFIGS, [this.includeHostnames, this.includeContractGroup]);
+  }
+
+  /**
+   * Returns a target product for the config ID
+   */
+  getTargetProduct() {
+    return this.getConfigId().then(() => {
+      return this._edge.get(URIs.GET_CONFIGS, [false, false]).then(configs => {
+        const config = configs.configurations.find(cfg => cfg.id === this._configId);
+        if (config) {
+          return config.targetProduct;
+        } else {
+          logger.error('No security configurations exist for this config ID - ' + this._configId);
+          throw `No security configurations exist for this config ID - ${this._configId}`;
+        }
+      });
+    });
   }
 
   /**

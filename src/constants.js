@@ -14,7 +14,7 @@ let logger = function(loggerName) {
   return LOG.child({ name: loggerName });
 };
 const resources = {
-  GET_CONFIGS: '/appsec/v1/configs',
+  GET_CONFIGS: '/appsec/v1/configs?includeHostnames=%s&includeContractGroup=%s',
   GET_CONFIG: '/appsec/v1/configs/%s',
   CLONE: '/appsec/v1/configs/%s/versions',
   GET_CONTRACT_GROUPS: '/appsec/v1/contracts-groups',
@@ -26,8 +26,11 @@ const resources = {
   ACTIVATE_VERSION: '/appsec/v1/activations',
   CRB_ACTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/custom-rules/%s',
   SELECTED_HOSTS_RESOURCE: '/appsec/v1/configs/%s/versions/%s/selected-hostnames',
-  EVAL_HOSTS_RESOURCE: '/appsec/v1/configs/%s/versions/%s/selected-hostnames/eval-hostnames',
-  PROTECT_EVAL_HOSTS_RESOURCE: '/appsec/v1/configs/%s/versions/%s/protect-eval-hostnames',
+  SELECTED_HOSTS_RESOURCE_WAP:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/selected-hostnames',
+  EVAL_HOSTS_RESOURCE: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-hostnames',
+  PROTECT_EVAL_HOSTS_RESOURCE:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/protect-eval-hostnames',
   SELECTABLE_HOSTS_RESOURCE: '/appsec/v1/configs/%s/versions/%s/selectable-hostnames',
   CONTRACT_SELECTABLE_HOSTS_RESOURCE: '/appsec/v1/contracts/%s/groups/%s/selectable-hostnames',
   FAILOVER_HOSTS_RESOURCE: '/appsec/v1/configs/%s/failover-hostnames',
@@ -69,8 +72,10 @@ const resources = {
   EVAL_RULE_ACTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-rules/%d',
   EVAL_GROUP_ACTIONS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-groups',
   EVAL_GROUP_ACTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-groups/%s',
-  EVAL_GROUP_CONDITION_EXCEPTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-groups/%s/condition-exception',
-  EVAL_RULE_CONDITION_EXCEPTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-rules/%d/condition-exception',
+  EVAL_GROUP_CONDITION_EXCEPTION:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-groups/%s/condition-exception',
+  EVAL_RULE_CONDITION_EXCEPTION:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-rules/%d/condition-exception',
   EVAL_MODE: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval',
   IP_GEO_FIREWALL: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/ip-geo-firewall',
   REPUTATION_PROFILE_ACTIONS:
@@ -80,13 +85,16 @@ const resources = {
   REPUTATION_ANALYSIS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/reputation-analysis',
   CUSTOM_DENY: '/appsec/v1/configs/%s/versions/%s/custom-deny',
   CUSTOM_DENY_BY_ID: '/appsec/v1/configs/%s/versions/%s/custom-deny/%s',
-  BYPASS_NETWORK_LIST: '/appsec/v1/configs/%s/versions/%s/bypass-network-lists',
+  BYPASS_NETWORK_LIST:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/bypass-network-lists',
   HTTP_HEADER_LOGGING: '/appsec/v1/configs/%s/versions/%s/advanced-settings/logging',
   PREFETCH: '/appsec/v1/configs/%s/versions/%s/advanced-settings/prefetch',
   PRAGMA_HEADER: '/appsec/v1/configs/%s/versions/%s/advanced-settings/pragma-header',
-  SECURITY_POLICY_PRAGMA_HEADER:'/appsec/v1/configs/%s/versions/%s/security-policies/%s/advanced-settings/pragma-header',
-  REQUEST_BODY:'/appsec/v1/configs/%s/versions/%s/advanced-settings/request-body',
-  SECURITY_POLICY_REQUEST_BODY:'/appsec/v1/configs/%s/versions/%s/security-policies/%s/advanced-settings/request-body',
+  SECURITY_POLICY_PRAGMA_HEADER:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/advanced-settings/pragma-header',
+  REQUEST_BODY: '/appsec/v1/configs/%s/versions/%s/advanced-settings/request-body',
+  SECURITY_POLICY_REQUEST_BODY:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/advanced-settings/request-body',
   SECURITY_POLICY_HTTP_HEADER_LOGGING:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/advanced-settings/logging',
   VERSION_NOTES: '/appsec/v1/configs/%s/versions/%s/version-notes',
@@ -94,7 +102,8 @@ const resources = {
   HOSTNAME_COVERAGE_MATCH_TARGET:
     '/appsec/v1/configs/%s/versions/%s/hostname-coverage/match-targets?hostname=%s',
   HOSTNAME_COVERAGE_OVERLAPPING:
-    '/appsec/v1/configs/%s/versions/%s/hostname-coverage/overlapping?hostname=%s'
+    '/appsec/v1/configs/%s/versions/%s/hostname-coverage/overlapping?hostname=%s',
+  THREAT_INTEL: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/threat-intel'
 };
 
 define('URIS', resources);

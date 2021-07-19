@@ -4,6 +4,7 @@ let URIs = require('./constants').URIS;
 let logger = require('./constants').logger('HostSelection');
 let Version = require('./versionsprovider').versionProvider;
 let Config = require('./configprovider').configProvider;
+let PolicyProvider = require('./policy').policy;
 let fs = require('fs');
 let untildify = require('untildify');
 
@@ -20,42 +21,51 @@ class SelectedHosts {
   constructor(options) {
     this._config = new Config(options);
     this._version = new Version(options);
+    this._policy = new PolicyProvider(options);
     this._options = JSON.parse(JSON.stringify(options)); //clone
     this._edge = new Edge(options);
   }
 
   addHosts() {
     logger.debug('Adding hosts to selected list.');
-    return this._version.readResource(URIs.SELECTED_HOSTS_RESOURCE, []).then(selectedHosts => {
-      let hosts = [];
-      if (!selectedHosts || !selectedHosts.hostnameList) {
-        selectedHosts = { hostnameList: [] };
-      }
-      logger.info('Adding hosts to the list: ' + JSON.stringify(selectedHosts.hostnameList));
-      hosts = selectedHosts.hostnameList;
-      for (let i = 0; i < this._options.hostnames.length; i++) {
-        hosts.push({ hostname: this._options.hostnames[i] });
-      }
-      return this._version.updateResource(URIs.SELECTED_HOSTS_RESOURCE, [], selectedHosts);
+    return this._config.getTargetProduct().then(targetProduct => {
+      return this._version.readResource(URIs.SELECTED_HOSTS_RESOURCE, []).then(selectedHosts => {
+        let hosts = [];
+        if (!selectedHosts || !selectedHosts.hostnameList) {
+          selectedHosts = { hostnameList: [] };
+        }
+        logger.info('Adding hosts to the list: ' + JSON.stringify(selectedHosts.hostnameList));
+        hosts = selectedHosts.hostnameList;
+        for (let i = 0; i < this._options.hostnames.length; i++) {
+          hosts.push({ hostname: this._options.hostnames[i] });
+        }
+        return targetProduct === 'WAP_AAG'
+          ? this._policy.updateResource(URIs.SELECTED_HOSTS_RESOURCE_WAP, [], selectedHosts)
+          : this._version.updateResource(URIs.SELECTED_HOSTS_RESOURCE, [], selectedHosts);
+      });
     });
   }
 
   modifyHosts() {
-    if (fs.existsSync(this._options['file'])) {
-      let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
-      let data;
-      try {
-        data = JSON.parse(payload);
-      } catch (err) {
-        throw 'The input JSON is not valid';
+    return this._config.getTargetProduct().then(targetProduct => {
+      if (fs.existsSync(this._options['file'])) {
+        let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
+        let data;
+        try {
+          data = JSON.parse(payload);
+        } catch (err) {
+          throw 'The input JSON is not valid';
+        }
+        data.mode = this._options.append
+          ? Mode.APPEND
+          : this._options.remove
+          ? Mode.REMOVE
+          : Mode.REPLACE;
+        return targetProduct === 'WAP_AAG'
+          ? this._policy.updateResource(URIs.SELECTED_HOSTS_RESOURCE_WAP, [], data)
+          : this._version.updateResource(URIs.SELECTED_HOSTS_RESOURCE, [], data);
       }
-      data.mode = this._options.append
-        ? Mode.APPEND
-        : this._options.remove
-        ? Mode.REMOVE
-        : Mode.REPLACE;
-      return this._version.updateResource(URIs.SELECTED_HOSTS_RESOURCE, [], data);
-    }
+    });
   }
 
   selectableHosts() {
@@ -90,11 +100,15 @@ class SelectedHosts {
   }
 
   selectedHosts() {
-    return this._version.readResource(URIs.SELECTED_HOSTS_RESOURCE, []);
+    return this._config.getTargetProduct().then(targetProduct => {
+      return targetProduct === 'WAP_AAG'
+        ? this._policy.readResource(URIs.SELECTED_HOSTS_RESOURCE_WAP, [])
+        : this._version.readResource(URIs.SELECTED_HOSTS_RESOURCE, []);
+    });
   }
 
   evalHosts() {
-    return this._version.readResource(URIs.EVAL_HOSTS_RESOURCE, []);
+    return this._policy.readResource(URIs.EVAL_HOSTS_RESOURCE, []);
   }
 
   updateEvalHosts() {
@@ -106,7 +120,13 @@ class SelectedHosts {
       } catch (err) {
         throw 'The input JSON is not valid';
       }
-      return this._version.updateResource(URIs.EVAL_HOSTS_RESOURCE, [], data);
+
+      data.mode = this._options.append
+        ? Mode.APPEND
+        : this._options.remove
+        ? Mode.REMOVE
+        : Mode.REPLACE;
+      return this._policy.updateResource(URIs.EVAL_HOSTS_RESOURCE, [], data);
     } else {
       throw `The file does not exists: ${this._options['file']}`;
     }
@@ -121,7 +141,7 @@ class SelectedHosts {
       } catch (err) {
         throw 'The input JSON is not valid';
       }
-      return this._version.updateResource(URIs.PROTECT_EVAL_HOSTS_RESOURCE, [], data);
+      return this._policy.updateResource(URIs.PROTECT_EVAL_HOSTS_RESOURCE, [], data);
     } else {
       throw `The file does not exists: ${this._options['file']}`;
     }
