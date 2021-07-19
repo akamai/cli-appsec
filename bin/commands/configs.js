@@ -14,12 +14,12 @@ class ConfigsCommand {
   setup(sywac) {
     sywac
       .boolean('--include-hostnames', {
-        desc: 'Specify whether to include staging and production hostnames. Defaults to true.',
+        desc: 'Specify whether to include staging and production hostnames. Defaults to false.',
         group: 'Optional:',
         required: false
       })
       .boolean('--include-contract-group', {
-        desc: 'Specify whether to include contract and group id. Defaults to false.',
+        desc: 'Specify whether to include contract and group ID. Defaults to false.',
         group: 'Optional:',
         required: false
       });
