@@ -28,7 +28,7 @@ class EnableEvalRuleCommand {
         group: 'Optional:',
         required: false
       })
-        .string('--mode <mode>', {
+        .string('--eval-mode <mode>', {
           desc:
               'Evaluation mode  ASE_AUTO or ASE_MANUAL. Used only for ASE evaluation rulesets. Defaults to ASE_MANUAL',
           group: 'Optional:',
