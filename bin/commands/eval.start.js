@@ -38,7 +38,7 @@ class EnableEvalRuleCommand {
   }
 
   run(options) {
-    options.mode = options['mode'];
+    options.mode = options['eval-mode'];
 
     out.print({
       promise: new EvalRules(options).startEval(),
