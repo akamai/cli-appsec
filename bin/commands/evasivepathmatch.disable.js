@@ -30,7 +30,7 @@ class EvasivePathMatchCommand {
   }
   run(options) {
     out.print({
-      promise: new AdvancedSettings(options).disableEvasivePathMatch(),
+      promise: new AdvancedSettings(options).updateEvasivePathMatch(false),
       args: options,
       success: (args, data) => {
         let enablePathMatch = data.enablePathMatch;
