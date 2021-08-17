@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class RecommendationsCommand {
     constructor() {
         this.flags = 'accept-recommendation';
-        this.desc = 'Accept Recommendations';
+        this.desc = 'Accept Recommendation';
         this.setup = this.setup.bind(this);
         this.run = this.run.bind(this);
     }
@@ -34,21 +34,21 @@ class RecommendationsCommand {
                     'Policy ID. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
                 group: 'Optional:',
                 required: false
-            })
+            });
     }
 
     run(options) {
         options.action = 'ACCEPT';
         options.selectorId = options['selector'];
 
-            out.print({
-                promise: new Recommendations(options).postRecommendation(),
-                args: options,
-                success: (args, data) => {
-                return JSON.stringify(data);
-        }
-        })
-            ;
+        out.print({
+            promise: new Recommendations(options).postRecommendation(),
+            args: options,
+            success: (args, data) = > {
+            return JSON.stringify(data);
+    }
+    })
+        ;
     }
 }
 

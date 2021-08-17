@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class RecommendationsCommand {
     constructor() {
         this.flags = 'reset-recommendation';
-        this.desc = 'Reset Recommendations';
+        this.desc = 'Reset Recommendation';
         this.setup = this.setup.bind(this);
         this.run = this.run.bind(this);
     }
@@ -34,7 +34,7 @@ class RecommendationsCommand {
                     'Policy ID. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
                 group: 'Optional:',
                 required: false
-            })
+            });
     }
 
     run(options) {

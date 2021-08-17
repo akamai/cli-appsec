@@ -30,7 +30,7 @@ class RecommendationsCommand {
                     'Policy ID. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
                 group: 'Optional:',
                 required: false
-            })
+            });
     }
 
     run(options) {
