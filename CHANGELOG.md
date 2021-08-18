@@ -1,9 +1,16 @@
+## 2.4.0 (August Release)
+- New Command:
+  - `recommendations` command displays recommendations in a policy
+  - `accept-recommendation` command accepts a recommendation
+  - `decline-recommendation` command declines a recommendation
+  - `reset-recommendation` command resets a recommendation
+
 ## 2.3.0 (July Release)
 
 - WAP Plus support for selected-hostnames, modify-hostnames, and network-lists
 - Added "mode" parameter to support ASE (Auto and Manual) for the "start-eval" command
 - Added "threat-intel", "enable-threat-intel", and "disable-threat-intel" commands
-- Support for including hostnames ("--include-hostnames) and contract-group ("--include-contract-group") in the "configs" command
+- Support for including hostnames ("--include-hostnames") and contract-group ("--include-contract-group") in the "configs" command
 
 ## 2.2.0 (May Release)
 

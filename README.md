@@ -154,6 +154,10 @@ Commands:
   evasive-path-match                        Display the Evasive Path Match settings.
   enable-evasive-path-match                 Enable Evasive Path Match.
   disable-evasive-path-match                Disable Evasive Path Match.
+  recommendations                           Display recommendations in a policy.
+  accept-recommendation                     Accept a recommendation.
+  decline-recommendation                    Decline a recommendation.
+  reset-recommendation                      Reset a recommendation.
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
