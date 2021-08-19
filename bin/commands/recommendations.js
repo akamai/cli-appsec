@@ -34,6 +34,7 @@ class RecommendationsCommand {
   }
 
   run(options) {
+    options.group = options['attack-group-name'];
     const promise =
       options.group != null
         ? new Recommendations(options).getGroupRecommendations()
