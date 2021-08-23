@@ -88,7 +88,6 @@ const resources = {
   BYPASS_NETWORK_LIST:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/bypass-network-lists',
   HTTP_HEADER_LOGGING: '/appsec/v1/configs/%s/versions/%s/advanced-settings/logging',
-  EVASIVE_PATH_MATCH: '/appsec/v1/configs/%s/versions/%s/advanced-settings/evasive-path-match',
   PREFETCH: '/appsec/v1/configs/%s/versions/%s/advanced-settings/prefetch',
   PRAGMA_HEADER: '/appsec/v1/configs/%s/versions/%s/advanced-settings/pragma-header',
   SECURITY_POLICY_PRAGMA_HEADER:
@@ -98,8 +97,6 @@ const resources = {
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/advanced-settings/request-body',
   SECURITY_POLICY_HTTP_HEADER_LOGGING:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/advanced-settings/logging',
-  SECURITY_POLICY_EVASIVE_PATH_MATCH:
-    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/advanced-settings/evasive-path-match',
   VERSION_NOTES: '/appsec/v1/configs/%s/versions/%s/version-notes',
   HOSTNAME_COVERAGE: '/appsec/v1/hostname-coverage',
   HOSTNAME_COVERAGE_MATCH_TARGET:
@@ -108,8 +105,10 @@ const resources = {
     '/appsec/v1/configs/%s/versions/%s/hostname-coverage/overlapping?hostname=%s',
   THREAT_INTEL: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/threat-intel',
   RECOMMENDATIONS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/recommendations',
-  RULE_RECOMMENDATIONS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/recommendations/rules/%s',
-  GROUP_RECOMMENDATIONS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/recommendations/attack-group/%s'
+  RULE_RECOMMENDATIONS:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/recommendations/rules/%s',
+  GROUP_RECOMMENDATIONS:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/recommendations/attack-group/%s'
 };
 
 define('URIS', resources);
