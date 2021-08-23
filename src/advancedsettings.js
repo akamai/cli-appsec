@@ -163,11 +163,28 @@ class AdvancedSettings {
     return this._version.readResource(URIs.EVASIVE_PATH_MATCH, []);
   }
 
-  updateEvasivePathMatch(enable) {
+  disableEvasivePathMatch() {
     let data = JSON.parse(
       fs.readFileSync(__dirname + '/../templates/evasivepathmatch.json', 'utf8')
     );
-    data.enablePathMatch = enable;
+    data.enablePathMatch = false;
+    if (this._options.policy) {
+      return this._policyProvider.policyId().then(policyId => {
+        return this._version.updateResource(
+          URIs.SECURITY_POLICY_EVASIVE_PATH_MATCH,
+          [policyId],
+          data
+        );
+      });
+    }
+    return this._version.updateResource(URIs.EVASIVE_PATH_MATCH, [], data);
+  }
+
+  enableEvasivePathMatch() {
+    let data = JSON.parse(
+      fs.readFileSync(__dirname + '/../templates/evasivepathmatch.json', 'utf8')
+    );
+    data.enablePathMatch = true;
     if (this._options.policy) {
       return this._policyProvider.policyId().then(policyId => {
         return this._version.updateResource(
