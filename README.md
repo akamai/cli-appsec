@@ -151,6 +151,10 @@ Commands:
   version-notes                             Display the version notes.
   modify-version-notes                      Update the version notes.
   modify-hostnames                          Modify hostnames for the configuration version.
+  recommendations                           Display recommendations in a policy.
+  accept-recommendation                     Accept a recommendation.
+  decline-recommendation                    Decline a recommendation.
+  reset-recommendation                      Reset a recommendation.
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]

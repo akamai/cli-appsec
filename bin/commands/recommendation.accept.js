@@ -1,18 +1,21 @@
-let Mode = require('../../src/mode').mode;
+let Recommendations = require('../../src/recommendations').recommendations;
 let out = require('./lib/out');
 
-class SetModeCommand {
+class RecommendationsCommand {
   constructor() {
-    this.flags = 'set-mode';
-    this.desc = 'Set the WAF Mode.';
+    this.flags = 'accept-recommendation';
+    this.desc = 'Accept Recommendation';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
 
   setup(sywac) {
     sywac
-      .positional('<mode>', {
-        paramsDesc: 'The mode to be set to. Supported values are ASE_AUTO, ASE_MANUAL, AAG, KRS'
+      .usage('Usage: akamai-appsec accept-recommendation --selector <selectorId> [options]')
+      .number('--selector <selectorId>', {
+        desc: 'Selector ID',
+        group: 'Required:',
+        required: true
       })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
@@ -25,16 +28,21 @@ class SetModeCommand {
         group: 'Optional:',
         required: false
       })
+
       .string('--policy <id>', {
-        desc: 'Security Policy ID.',
+        desc:
+          'Policy ID. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
         group: 'Optional:',
         required: false
       });
   }
 
   run(options) {
+    options.action = 'ACCEPT';
+    options.selectorId = options['selector'];
+
     out.print({
-      promise: new Mode(options).setMode(),
+      promise: new Recommendations(options).postRecommendation(),
       args: options,
       success: (args, data) => {
         return JSON.stringify(data);
@@ -43,4 +51,4 @@ class SetModeCommand {
   }
 }
 
-module.exports = new SetModeCommand();
+module.exports = new RecommendationsCommand();

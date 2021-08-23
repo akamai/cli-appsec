@@ -30,7 +30,7 @@ class RuleActionsCommand {
       })
       .string('--mode <id>', {
         desc:
-          'Ruleset upgrade mode KRS2_AUTO or KRS2_MANUAL. If mode is not provided, KRS 1.0 ruleset is assumed',
+          'Ruleset upgrade mode ASE_AUTO or ASE_MANUAL. If mode is not provided, KRS 1.0 ruleset is assumed',
         group: 'Optional:',
         required: false
       });

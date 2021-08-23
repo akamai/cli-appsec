@@ -28,9 +28,9 @@ class EnableEvalRuleCommand {
         group: 'Optional:',
         required: false
       })
-        .string('--mode <mode>', {
+        .string('--eval-mode <mode>', {
           desc:
-              'Evaluation mode  KRS2_AUTO or KRS2_MANUAL. Used only for ASE(KRS 2) evaluation rulesets. Defaults to KRS2_MANUAL',
+              'Evaluation mode  ASE_AUTO or ASE_MANUAL. Used only for ASE evaluation rulesets. Defaults to ASE_MANUAL',
           group: 'Optional:',
           required: false
         })
@@ -38,7 +38,7 @@ class EnableEvalRuleCommand {
   }
 
   run(options) {
-    options.mode = options['mode'];
+    options.mode = options['eval-mode'];
 
     out.print({
       promise: new EvalRules(options).startEval(),

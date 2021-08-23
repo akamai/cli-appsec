@@ -1,18 +1,18 @@
-let Mode = require('../../src/mode').mode;
+let Recommendations = require('../../src/recommendations').recommendations;
 let out = require('./lib/out');
 
-class SetModeCommand {
+class RecommendationsCommand {
   constructor() {
-    this.flags = 'set-mode';
-    this.desc = 'Set the WAF Mode.';
+    this.flags = 'recommendations';
+    this.desc = 'Display Recommendations';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
 
   setup(sywac) {
     sywac
-      .positional('<mode>', {
-        paramsDesc: 'The mode to be set to. Supported values are ASE_AUTO, ASE_MANUAL, AAG, KRS'
+      .positional('[attack-group-name]', {
+        paramsDesc: 'The attack group name.'
       })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
@@ -26,15 +26,21 @@ class SetModeCommand {
         required: false
       })
       .string('--policy <id>', {
-        desc: 'Security Policy ID.',
+        desc:
+          'Policy ID. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
         group: 'Optional:',
         required: false
       });
   }
 
   run(options) {
+    options.group = options['attack-group-name'];
+    const promise =
+      options.group != null
+        ? new Recommendations(options).getGroupRecommendations()
+        : new Recommendations(options).getRecommendations();
     out.print({
-      promise: new Mode(options).setMode(),
+      promise,
       args: options,
       success: (args, data) => {
         return JSON.stringify(data);
@@ -43,4 +49,4 @@ class SetModeCommand {
   }
 }
 
-module.exports = new SetModeCommand();
+module.exports = new RecommendationsCommand();
