@@ -1,5 +1,8 @@
 ## 2.4.0 (August Release)
 - New Command:
+  - `evasive-path-match` command displays the evasive path match settings
+  - `enable-evasive-path-match` command enables evasive path match settings
+  - `disable-evasive-path-match` command disable evasive path match settings
   - `recommendations` command displays recommendations in a policy
   - `accept-recommendation` command accepts a recommendation
   - `decline-recommendation` command declines a recommendation
