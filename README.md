@@ -42,7 +42,6 @@ Commands:
   structured-rule-template                  Prints sample JSON of a structured custom rule.                     [aliases: srt]
   custom-rules                              List all custom rules.
   export                                    Export a configuration version.
-  add-hostname                              Add hostnames to selected list.
   selectable-hostnames                      List all selectable hostnames.
   selected-hostnames                        List all currently chosen hostnames.
   create-match-target                       Creates a website match target.
@@ -151,6 +150,9 @@ Commands:
   version-notes                             Display the version notes.
   modify-version-notes                      Update the version notes.
   modify-hostnames                          Modify hostnames for the configuration version.
+  evasive-path-match                        Display the Evasive Path Match settings.
+  enable-evasive-path-match                 Enable Evasive Path Match.
+  disable-evasive-path-match                Disable Evasive Path Match.
   recommendations                           Display recommendations in a policy.
   accept-recommendation                     Accept a recommendation.
   decline-recommendation                    Decline a recommendation.
@@ -190,7 +192,7 @@ Akamai customers can currently configure delivery of a new web property using th
 |4|`akamai appsec versions --config=<config id>`||
 |5|`akamai appsec clone --config=<config id>`|Optional. You can skip this step if you choose to use an existing editable<sup>[1](#references)</sup> configuration version|
 |6|`akamai appsec selectable-hostnames`  ||
-|7|`akamai appsec add-hostname <comma separated hostnames>`||
+|7|`akamai appsec modify-hostnames @input.json --append`||
 |8a|`akamai appsec policies --config=<config id> --version=<version number>`||
 |8b|`akamai appsec create-match-target --hostnames=<comma separated hostnames> --paths=<comma separated paths> --policy=<security policy id>`||
 |8c|`akamai appsec match-target-order --insert=<match target id> --config=<config id> --version=<version number>`  ||
