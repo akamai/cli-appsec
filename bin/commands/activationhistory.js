@@ -6,7 +6,7 @@ const objectType = 'activationHistory';
 class GetActivationHistoryCommand {
   constructor() {
     this.flags = 'activation-history';
-    this.desc = 'List all activation histories for the configuration.';
+    this.desc = 'List activation history for the configuration.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
