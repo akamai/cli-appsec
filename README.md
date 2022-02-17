@@ -157,6 +157,7 @@ Commands:
   accept-recommendation                     Accept a recommendation.
   decline-recommendation                    Decline a recommendation.
   reset-recommendation                      Reset a recommendation.
+  activation-history                        List activation history for the configuration.
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
