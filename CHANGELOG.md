@@ -1,6 +1,7 @@
 ## 2.6.0 (February Release)
 - New Command:
   - `activation-history` command lists activation history for the configuration
+
 ## 2.5.0 (January Release)
 - New Command:
   - `evasive-path-match` command displays the evasive path match settings
