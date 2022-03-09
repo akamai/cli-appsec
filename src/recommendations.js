@@ -34,7 +34,8 @@ class Recommendations {
     return this._policyProvider.policyId().then(policyId => {
       return this._version.readResource(URIs.GROUP_RECOMMENDATIONS, [
         policyId,
-        this._options['group']
+        this._options['group'],
+        this.type
       ]);
     });
   }
