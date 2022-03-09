@@ -6,7 +6,7 @@ function define(name, value) {
 }
 
 const LOG = require('pino')({
-  level: process.env.LOG_LEVEL ? process.env.LOG_LEVEL : 'fatal',
+  level: process.env.LOG_LEVEL ? process.env.LOG_LEVEL : 'debug',
   prettyPrint: true,
   name: 'app-sec'
 });
@@ -107,7 +107,7 @@ const resources = {
   HOSTNAME_COVERAGE_OVERLAPPING:
     '/appsec/v1/configs/%s/versions/%s/hostname-coverage/overlapping?hostname=%s',
   THREAT_INTEL: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/threat-intel',
-  RECOMMENDATIONS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/recommendations',
+  RECOMMENDATIONS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/recommendations?type=%s',
   RULE_RECOMMENDATIONS:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/recommendations/rules/%s',
   GROUP_RECOMMENDATIONS:
