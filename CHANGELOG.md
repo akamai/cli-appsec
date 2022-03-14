@@ -1,3 +1,5 @@
+## 2.7.0 (March Release)
+
 ## 2.6.0 (February Release)
 - New Command:
   - `activation-history` command lists activation history for the configuration
