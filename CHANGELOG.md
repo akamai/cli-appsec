@@ -1,5 +1,9 @@
 ## 2.7.0 (March Release)
-
+- CLI Enhancements - adding "--type" parameter to recommendations command
+  - --type:
+    - Description:Use to get active or eval or all recommendations. Supported values are active|eval|all. If type not provided, default is active
+    - Usage: `akamai appsec recommendations --type=active`
+    - Usage: `akamai appsec recommendations CMD --type=active`
 ## 2.6.0 (February Release)
 - New Command:
   - `activation-history` command lists activation history for the configuration
