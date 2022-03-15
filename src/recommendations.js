@@ -12,7 +12,7 @@ class Recommendations {
     this._options = options;
     this._version = new Version(options);
     this._policyProvider = new PolicyProvider(options);
-    this.type = !!this._options.type?.length ? this._options.type : 'active';
+    this.type = this._options.type || 'active';
   }
 
   getRecommendations() {
