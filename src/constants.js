@@ -107,11 +107,11 @@ const resources = {
   HOSTNAME_COVERAGE_OVERLAPPING:
     '/appsec/v1/configs/%s/versions/%s/hostname-coverage/overlapping?hostname=%s',
   THREAT_INTEL: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/threat-intel',
-  RECOMMENDATIONS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/recommendations',
+  RECOMMENDATIONS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/recommendations?type=%s',
   RULE_RECOMMENDATIONS:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/recommendations/rules/%s',
   GROUP_RECOMMENDATIONS:
-    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/recommendations/attack-group/%s',
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/recommendations/attack-groups/%s?type=%s',
   ACTIVATION_HISTORY: '/appsec/v1/configs/%s/activations'
 };
 
