@@ -33,7 +33,7 @@ class RecommendationsCommand {
       })
       .string('--type <type>', {
         desc:
-          'Recommendation Query Type (active|eval|all). If not provided, active recommendations fetched by default.',
+          'Recommendation Query Type (active|evaluation|all). If not provided, active recommendations fetched by default.',
         group: 'Optional:',
         required: false
       });
