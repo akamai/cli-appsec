@@ -58,6 +58,7 @@ const resources = {
   EXPORT: '/appsec/v1/export/configs/%s/versions/%s',
   MODE: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/mode',
   PENALTY_BOX: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/penalty-box',
+  EVAL_PENALTY_BOX: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-penalty-box',
   ATTACK_GROUPS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/attack-groups',
   ATTACK_GROUP: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/attack-groups/%s',
   ATTACK_GROUP_EXCEPTION:
