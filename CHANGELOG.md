@@ -1,3 +1,8 @@
+## 2.8.0 (June Release)
+- New Commands:
+   eval-penalty-box                          Display evaluation penalty box action in a policy.
+   disable-eval-penalty-box                  Disable evaluation penalty box in a policy.
+   enable-eval-penalty-box                   Enable evaluation penalty box in a policy.
 ## 2.7.0 (March Release)
 - CLI Enhancements - adding "--type" parameter to recommendations command
   - --type:

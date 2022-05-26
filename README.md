@@ -75,6 +75,9 @@ Commands:
   penalty-box                               Display penalty box action in a policy.
   disable-penalty-box                       Disable penalty box in a policy.
   enable-penalty-box                        Enable penalty box in a policy.
+  eval-penalty-box                          Display evaluation penalty box action in a policy.
+  disable-eval-penalty-box                  Disable evaluation penalty box in a policy.
+  enable-eval-penalty-box                   Enable evaluation penalty box in a policy.
   attack-groups                             List all attack group actions in a policy.
   attack-group                              Display attack group action in a policy.
   enable-attack-group                       Enable attack group in a policy.
