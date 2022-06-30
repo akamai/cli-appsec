@@ -161,6 +161,15 @@ Commands:
   decline-recommendation                    Decline a recommendation.
   reset-recommendation                      Reset a recommendation.
   activation-history                        List activation history for the configuration.
+  malware-policies                          List all malware policies.
+  malware-policy                            Display contents of a malware policy.
+  modify-malware-policy                     Modify an existing malware policy.
+  create-malware-policy                     Create a malware policy.
+  delete-malware-policy                     Delete an existing malware policy.
+  malware-policies-actions                  Display all enabled malware policy actions.
+  disable-malware-policy                    Remove actions to an existing malware policy in a firewall policy.
+  enable-malware-policy                     Assign actions to an existing malware policy in a firewall policy.
+  malware-content-types                     List all malware content types.
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
