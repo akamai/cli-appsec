@@ -113,7 +113,13 @@ const resources = {
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/recommendations/rules/%s',
   GROUP_RECOMMENDATIONS:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/recommendations/attack-groups/%s?type=%s',
-  ACTIVATION_HISTORY: '/appsec/v1/configs/%s/activations'
+  ACTIVATION_HISTORY: '/appsec/v1/configs/%s/activations',
+  MALWARE_POLICIES: '/appsec/v1/configs/%s/versions/%s/malware-policies',
+  MALWARE_POLICY: '/appsec/v1/configs/%s/versions/%s/malware-policies/%s',
+  MALWARE_POLICY_ACTIONS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/malware-policies',
+  MALWARE_POLICY_ACTION:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/malware-policies/%s',
+  MALWARE_POLICY_CONTENT_TYPES: '/appsec/v1/configs/%s/versions/%s/malware-policies/content-types'
 };
 
 define('URIS', resources);
