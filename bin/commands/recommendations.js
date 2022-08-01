@@ -11,8 +11,8 @@ class RecommendationsCommand {
 
   setup(sywac) {
     sywac
-      .positional('[attack-group-name]', {
-        paramsDesc: 'The attack group name.'
+      .positional('[attack-group-name-or-rule-id]', {
+        paramsDesc: 'The attack group name or Rule ID.'
       })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
@@ -40,10 +40,16 @@ class RecommendationsCommand {
   }
 
   run(options) {
-    options.group = options['attack-group-name'];
+    if (isNaN(options['attack-group-name-or-rule-id'])) {
+      options.group = options['attack-group-name-or-rule-id'];
+    } else {
+      options.rule = options['attack-group-name-or-rule-id'];
+    }
     const promise =
       options.group != null
         ? new Recommendations(options).getGroupRecommendations()
+        : options.rule != null
+        ? new Recommendations(options).getRuleRecommendations()
         : new Recommendations(options).getRecommendations();
     out.print({
       promise,
