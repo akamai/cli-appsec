@@ -110,7 +110,7 @@ const resources = {
   THREAT_INTEL: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/threat-intel',
   RECOMMENDATIONS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/recommendations?type=%s',
   RULE_RECOMMENDATIONS:
-    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/recommendations/rules/%s',
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/recommendations/rules/%s?type=%s',
   GROUP_RECOMMENDATIONS:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/recommendations/attack-groups/%s?type=%s',
   ACTIVATION_HISTORY: '/appsec/v1/configs/%s/activations',

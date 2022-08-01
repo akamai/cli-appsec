@@ -25,7 +25,8 @@ class Recommendations {
     return this._policyProvider.policyId().then(policyId => {
       return this._version.readResource(URIs.RULE_RECOMMENDATIONS, [
         policyId,
-        this._options['rule']
+        this._options['rule'],
+        this.type
       ]);
     });
   }
