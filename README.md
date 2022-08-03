@@ -30,146 +30,228 @@ $ akamai appsec
 Usage: akamai appsec <command> [options]
 
 Commands:
-  activate                                  Activate a version.
-  activation                                Get activation status.
-  clone                                     Clone a config.
-  configs                                   List all available configurations.
-  enable-custom-rule                        Assigns an action (such as alert or deny) to an existing custom rule in a policy.
-  create-custom-rule                        Create a custom rule.
-  delete-custom-rule                        Delete a custom rule.
-  custom-rule                               Display contents of custom rule.
-  modify-custom-rule                        Update existing custom rule.
-  structured-rule-template                  Prints sample JSON of a structured custom rule.                     [aliases: srt]
-  custom-rules                              List all custom rules.
-  export                                    Export a configuration version.
-  selectable-hostnames                      List all selectable hostnames.
-  selected-hostnames                        List all currently chosen hostnames.
-  create-match-target                       Creates a website match target.
-  delete-match-target                       Deletes a match target.
-  modify-match-target                       Updates a website match target.
-  create-api-match-target                   Creates an API match target.
-  modify-api-match-target                   Updates an API match target.
-  match-target-order                        Change the match target sequence.
-  match-targets                             List all match targets.
-  match-target                              Read a match target.
-  policies                                  List all security policies.
-  clone-policy                              Clone security policy.
-  version                                   Read a config version.
-  versions                                  List all config versions.
-  create-rate-policy                        Create a rate policy.
-  delete-rate-policy                        Delete a rate policy.
-  rate-policy                               Display contents of a rate policy.
-  modify-rate-policy                        Update existing rate policy.
-  rate-policies                             List all rate policies.
-  api-endpoints                             List all api endpoints.
-  mode                                      Display the WAF Mode.
-  set-mode                                  Set the WAF Mode.
-  protections                               List all protections of a policy.
-  set-protections                           Update protections of a policy.
-  rate-policies-actions                     List all enabled rate policies actions of a policy.
-  enable-rate-policy                        Assigns an action to an existing rate policy in a policy.
-  disable-rate-policy                       Removes an action set to an existing rate policy in a policy.
-  slow-post                                 Display contents of slow post in a policy.
-  enable-slow-post                          Enable slow post in a policy.
-  disable-slow-post                         Disable slow post in a policy.
-  penalty-box                               Display penalty box action in a policy.
-  disable-penalty-box                       Disable penalty box in a policy.
-  enable-penalty-box                        Enable penalty box in a policy.
-  eval-penalty-box                          Display evaluation penalty box action in a policy.
-  disable-eval-penalty-box                  Disable evaluation penalty box in a policy.
-  enable-eval-penalty-box                   Enable evaluation penalty box in a policy.
-  attack-groups                             List all attack group actions in a policy.
-  attack-group                              Display attack group action in a policy.
-  enable-attack-group                       Enable attack group in a policy.
-  disable-attack-group                      Disable attack group  in a policy.
-  rule-actions                              List all rule actions in a policy.
-  rule-action                               Display rule action in a policy.
-  enable-rule-action                        Enable rule action in a policy.
-  disable-rule-action                       Disable rule action in a policy.
-  rule-condition-exception                  Display rule conditions and exceptions in a policy.
-  modify-rule-condition-exception           Update rule conditions and exceptions in a policy.
-  eval-rule-actions                         Display evaluation rules and actions in a policy.
-  eval-rule-action                          Display evaluation rule action in a policy.
-  enable-eval-rule-action                   Enable evaluation rule action in a policy.
-  disable-eval-rule-action                  Disable evaluation rule action in a policy.
-  eval-rule-condition-exception             Display evaluation rule conditions and exceptions in a policy.
-  modify-eval-rule-condition-exception      Update evaluation rule conditions and exceptions in a policy.
-  start-eval                                Start evaluation in a policy.
-  end-eval                                  Stop evaluation in a policy.
-  restart-eval                              Restart evaluation in a policy.
-  update-eval                               Update evaluation in a policy.
-  complete-eval                             Complete evaluation in a policy.
-  krs-rules-upgrade                         Upgrade the KRS rules in a policy.
-  upgrade-details                           Display rules updates.
-  ip-geo-firewall                           Display the IP Geo Firewall network lists in a policy
-  modify-ip-geo-firewall                    Update the IP Geo Firewall network lists in a policy
-  create-reputation-profile                 Create a reputation profile.
-  delete-reputation-profile                 Delete a reputation profile.
-  reputation-profile                        Display contents of a reputation profile.
-  modify-reputation-profile                 Update existing reputation profile.
-  reputation-profiles                       List all reputation profiles.
-  reputation-profile-actions                List all reputation profile actions.
-  reputation-profile-action                 Display the current reputation profile action.
-  enable-reputation-profile                 Enable and set the action for a reputation profile.
-  disable-reputation-profile                Disable the action for a reputation profile.
-  custom-deny-list                          List all custom deny actions.
-  custom-deny                               Display contents of custom deny action. 
-  delete-custom-deny                        Delete a custom deny action.
-  create-custom-deny                        Create-custom-deny action.
-  modify-custom-deny                        Update existing custom deny action.
-  reputation-profile-analysis               Display the current reputation profile analysis settings.
-  set-reputation-profile-analysis           Set the reputation profile analysis settings.
-  failover-hostnames                        List all failover hostnames on a config.
-  siem-definitions                          List all siem definitions.
-  siem                                      Display the SIEM settings.
-  modify-siem                               Modify the SIEM settings.
-  http-header-logging                       Display the HTTP Header Logging settings.
-  enable-http-header-logging                Enable the HTTP Header Logging settings.
-  disable-http-header-logging               Disable the HTTP Header Logging settings.
-  enable-override-http-header-logging       Enable the HTTP Header Logging Override settings.
-  disable-override-http-header-logging      Disable the HTTP Header Logging Override settings.
-  prefetch-requests                         Display the Prefetch Requests settings.
-  modify-prefetch-requests                  Update the Prefetch Requests settings.
-  pragma-header                             Display Pragma Header settings.
-  modify-pragma-header                      Update Pragma Header settings.
-  create-config                             Create a new security config.
-  delete-config                             Delete a security config.
-  create-security-policy                    Create a security policy.
-  modify-security-policy                    Update a security policy.
-  delete-security-policy                    Delete a security policy.
-  security-policy                           Display contents of security policy.  
-  contracts-groups                          List contracts and groups with KSD/WAP line items.
-  api-request-constraints-action            Display API Request Constraint action.
-  enable-api-request-constraints            Set the API Request Constraint action.
-  disable-api-request-constraints           Disable API Request Constraint.
-  attackgroup-condition-exception           Display attack group exceptions.
-  modify-attackgroup-condition-exception    Update attack group exceptions.    
-  protect-eval-hostnames                    Move evaluation hostnames to protection.
-  eval-hostnames                            List all hosts under evaluation.
-  modify-eval-hostnames                     Modify hostnames under evaluation.
-  bypass-network-lists                      List all bypass network lists.
-  modify-bypass-network-lists               Update bypass network lists.
-  hostname-coverage                         Display the Hostname Coverage.
-  version-notes                             Display the version notes.
-  modify-version-notes                      Update the version notes.
-  modify-hostnames                          Modify hostnames for the configuration version.
-  evasive-path-match                        Display the Evasive Path Match settings.
-  enable-evasive-path-match                 Enable Evasive Path Match.
-  disable-evasive-path-match                Disable Evasive Path Match.
-  recommendations                           Display recommendations in a policy.
-  accept-recommendation                     Accept a recommendation.
-  decline-recommendation                    Decline a recommendation.
-  reset-recommendation                      Reset a recommendation.
-  activation-history                        List activation history for the configuration.
-  malware-policies                          List all malware policies.
-  malware-policy                            Display contents of a malware policy.
-  modify-malware-policy                     Modify an existing malware policy.
-  create-malware-policy                     Create a malware policy.
-  delete-malware-policy                     Delete an existing malware policy.
-  malware-policies-actions                  Display all enabled malware policy actions.
-  disable-malware-policy                    Remove actions to an existing malware policy in a firewall policy.
-  enable-malware-policy                     Assign actions to an existing malware policy in a firewall policy.
-  malware-content-types                     List all malware content types.
+  activate                                     Activate a version.
+  activation                                   Get activation status.
+  clone                                        Clone a config.
+  configs                                      List all available configurations.
+  enable-custom-rule                           Assigns an action (such as alert or deny) to an existing custom rule in a policy.
+  create-custom-rule                           Create a custom rule.
+  delete-custom-rule                           Delete a custom rule.
+  custom-rule                                  Display contents of custom rule.
+  modify-custom-rule                           Update existing custom rule.
+  structured-rule-template                     Prints sample JSON of a structured custom rule.                     [aliases: srt]
+  custom-rules                                 List all custom rules.
+  export                                       Export a configuration version.
+  selectable-hostnames                         List all selectable hostnames.
+  selected-hostnames                           List all currently chosen hostnames.
+  create-match-target                          Creates a website match target.
+  delete-match-target                          Deletes a match target.
+  modify-match-target                          Updates a website match target.
+  create-api-match-target                      Creates an API match target.
+  modify-api-match-target                      Updates an API match target.
+  match-target-order                           Change the match target sequence.
+  match-targets                                List all match targets.
+  match-target                                 Read a match target.
+  policies                                     List all security policies.
+  clone-policy                                 Clone security policy.
+  version                                      Read a config version.
+  versions                                     List all config versions.
+  create-rate-policy                           Create a rate policy.
+  delete-rate-policy                           Delete a rate policy.
+  rate-policy                                  Display contents of a rate policy.
+  modify-rate-policy                           Update existing rate policy.
+  rate-policies                                List all rate policies.
+  api-endpoints                                List all api endpoints.
+  mode                                         Display the WAF Mode.
+  set-mode                                     Set the WAF Mode.
+  protections                                  List all protections of a policy.
+  set-protections                              Update protections of a policy.
+  rate-policies-actions                        List all enabled rate policies actions of a policy.
+  enable-rate-policy                           Assigns an action to an existing rate policy in a policy.
+  disable-rate-policy                          Removes an action set to an existing rate policy in a policy.
+  slow-post                                    Display contents of slow post in a policy.
+  enable-slow-post                             Enable slow post in a policy.
+  disable-slow-post                            Disable slow post in a policy.
+  penalty-box                                  Display penalty box action in a policy.
+  disable-penalty-box                          Disable penalty box in a policy.
+  enable-penalty-box                           Enable penalty box in a policy.
+  eval-penalty-box                             Display evaluation penalty box action in a policy.
+  disable-eval-penalty-box                     Disable evaluation penalty box in a policy.
+  enable-eval-penalty-box                      Enable evaluation penalty box in a policy.
+  attack-groups                                List all attack group actions in a policy.
+  attack-group                                 Display attack group action in a policy.
+  enable-attack-group                          Enable attack group in a policy.
+  disable-attack-group                         Disable attack group  in a policy.
+  rule-actions                                 List all rule actions in a policy.
+  rule-action                                  Display rule action in a policy.
+  enable-rule-action                           Enable rule action in a policy.
+  disable-rule-action                          Disable rule action in a policy.
+  rule-condition-exception                     Display rule conditions and exceptions in a policy.
+  modify-rule-condition-exception              Update rule conditions and exceptions in a policy.
+  eval-rule-actions                            Display evaluation rules and actions in a policy.
+  eval-rule-action                             Display evaluation rule action in a policy.
+  enable-eval-rule-action                      Enable evaluation rule action in a policy.
+  disable-eval-rule-action                     Disable evaluation rule action in a policy.
+  eval-rule-condition-exception                Display evaluation rule conditions and exceptions in a policy.
+  modify-eval-rule-condition-exception         Update evaluation rule conditions and exceptions in a policy.
+  start-eval                                   Start evaluation in a policy.
+  end-eval                                     Stop evaluation in a policy.
+  restart-eval                                 Restart evaluation in a policy.
+  update-eval                                  Update evaluation in a policy.
+  complete-eval                                Complete evaluation in a policy.
+  krs-rules-upgrade                            Upgrade the KRS rules in a policy.
+  upgrade-details                              Display rules updates.
+  ip-geo-firewall                              Display the IP Geo Firewall network lists in a policy
+  modify-ip-geo-firewall                       Update the IP Geo Firewall network lists in a policy
+  create-reputation-profile                    Create a reputation profile.
+  delete-reputation-profile                    Delete a reputation profile.
+  reputation-profile                           Display contents of a reputation profile.
+  modify-reputation-profile                    Update existing reputation profile.
+  reputation-profiles                          List all reputation profiles.
+  reputation-profile-actions                   List all reputation profile actions.
+  reputation-profile-action                    Display the current reputation profile action.
+  enable-reputation-profile                    Enable and set the action for a reputation profile.
+  disable-reputation-profile                   Disable the action for a reputation profile.
+  custom-deny-list                             List all custom deny actions.
+  custom-deny                                  Display contents of custom deny action. 
+  delete-custom-deny                           Delete a custom deny action.
+  create-custom-deny                           Create-custom-deny action.
+  modify-custom-deny                           Update existing custom deny action.
+  reputation-profile-analysis                  Display the current reputation profile analysis settings.
+  set-reputation-profile-analysis              Set the reputation profile analysis settings.
+  failover-hostnames                           List all failover hostnames on a config.
+  siem-definitions                             List all siem definitions.
+  siem                                         Display the SIEM settings.
+  modify-siem                                  Modify the SIEM settings.
+  http-header-logging                          Display the HTTP Header Logging settings.
+  enable-http-header-logging                   Enable the HTTP Header Logging settings.
+  disable-http-header-logging                  Disable the HTTP Header Logging settings.
+  enable-override-http-header-logging          Enable the HTTP Header Logging Override settings.
+  disable-override-http-header-logging         Disable the HTTP Header Logging Override settings.
+  prefetch-requests                            Display the Prefetch Requests settings.
+  modify-prefetch-requests                     Update the Prefetch Requests settings.
+  pragma-header                                Display Pragma Header settings.
+  modify-pragma-header                         Update Pragma Header settings.
+  create-config                                Create a new security config.
+  delete-config                                Delete a security config.
+  create-security-policy                       Create a security policy.
+  modify-security-policy                       Update a security policy.
+  delete-security-policy                       Delete a security policy.
+  security-policy                              Display contents of security policy.  
+  contracts-groups                             List contracts and groups with KSD/WAP line items.
+  api-request-constraints-action               Display API Request Constraint action.
+  enable-api-request-constraints               Set the API Request Constraint action.
+  disable-api-request-constraints              Disable API Request Constraint.
+  attackgroup-condition-exception              Display attack group exceptions.
+  modify-attackgroup-condition-exception       Update attack group exceptions.    
+  protect-eval-hostnames                       Move evaluation hostnames to protection.
+  eval-hostnames                               List all hosts under evaluation.
+  modify-eval-hostnames                        Modify hostnames under evaluation.
+  bypass-network-lists                         List all bypass network lists.
+  modify-bypass-network-lists                  Update bypass network lists.
+  hostname-coverage                            Display the Hostname Coverage.
+  version-notes                                Display the version notes.
+  modify-version-notes                         Update the version notes.
+  modify-hostnames                             Modify hostnames for the configuration version.
+  evasive-path-match                           Display the Evasive Path Match settings.
+  enable-evasive-path-match                    Enable Evasive Path Match.
+  disable-evasive-path-match                   Disable Evasive Path Match.
+  recommendations                              Display recommendations in a policy.
+  accept-recommendation                        Accept a recommendation.
+  decline-recommendation                       Decline a recommendation.
+  reset-recommendation                         Reset a recommendation.
+  activation-history                           List activation history for the configuration.
+  malware-policies                             List all malware policies.
+  malware-policy                               Display contents of a malware policy.
+  modify-malware-policy                        Modify an existing malware policy.
+  create-malware-policy                        Create a malware policy.
+  delete-malware-policy                        Delete an existing malware policy.
+  malware-policies-actions                     Display all enabled malware policy actions.
+  disable-malware-policy                       Remove actions to an existing malware policy in a firewall policy.
+  enable-malware-policy                        Assign actions to an existing malware policy in a firewall policy.
+  malware-content-types                        List all malware content types.
+  akamai-bot-category                          Display contents of akamai bot category.
+  akamai-bot-category-action                   Display contents of akamai bot category action.
+  modify-akamai-bot-category-action            Update existing akamai bot category action.
+  akamai-bot-category-action-list              List all akamai bot category action.
+  akamai-bot-category-list                     List all akamai bot category.
+  akamai-defined-bot                           Display contents of akamai defined bot.
+  akamai-defined-bot-list                      List all akamai defined bot.
+  bot-analytics-cookie                         Display contents of bot analytics cookie.
+  modify-bot-analytics-cookie                  Update existing bot analytics cookie.
+  bot-analytics-cookie-values                  Display contents of bot analytics cookie values.
+  bot-detection                                Display contents of bot detection.
+  bot-detection-action                         Display contents of bot detection action.
+  modify-bot-detection-action                  Update existing bot detection action.
+  bot-detection-action-list                    List all bot detection action.
+  bot-detection-list                           List all bot detection.
+  bot-endpoint-coverage-report                 Display contents of bot endpoint coverage report.
+  bot-endpoint-coverage-report-config-version  Display contents of bot endpoint coverage report - config version.
+  bot-management-settings                      Display contents of bot management settings.
+  modify-bot-management-settings               Update existing bot management settings.
+  bot-protection-exceptions                    Display contents of bot protection exceptions.
+  modify-bot-protection-exceptions             Update existing bot protection exceptions.
+  create-challenge-action                      Create a challenge action.
+  delete-challenge-action                      Delete a challenge action.
+  challenge-action                             Display contents of challenge action.
+  modify-challenge-action                      Update existing challenge action.
+  challenge-action-list                        List all challenge action.
+  challenge-interception-rules                 Display contents of challenge interception rules.
+  modify-challenge-interception-rules          Update existing challenge interception rules.
+  client-side-security                         Display contents of client side security.
+  modify-client-side-security                  Update existing client side security.
+  create-conditional-action                    Create a conditional action.
+  delete-conditional-action                    Delete a conditional action.
+  conditional-action                           Display contents of conditional action.
+  modify-conditional-action                    Update existing conditional action.
+  conditional-action-list                      List all conditional action.
+  create-custom-bot-category                   Create a custom bot category.
+  delete-custom-bot-category                   Delete a custom bot category.
+  custom-bot-category                          Display contents of custom bot category.
+  modify-custom-bot-category                   Update existing custom bot category.
+  custom-bot-category-action                   Display contents of custom bot category action.
+  modify-custom-bot-category-action            Update existing custom bot category action.
+  custom-bot-category-action-list              List all custom bot category action.
+  custom-bot-category-list                     List all custom bot category.
+  custom-bot-category-sequence                 Display contents of custom bot category sequence.
+  modify-custom-bot-category-sequence          Update existing custom bot category sequence.
+  create-custom-client                         Create a custom client.
+  delete-custom-client                         Delete a custom client.
+  custom-client                                Display contents of custom client.
+  modify-custom-client                         Update existing custom client.
+  custom-client-list                           List all custom client.
+  create-custom-defined-bot                    Create a custom defined bot.
+  delete-custom-defined-bot                    Delete a custom defined bot.
+  custom-defined-bot                           Display contents of custom defined bot.
+  modify-custom-defined-bot                    Update existing custom defined bot.
+  custom-defined-bot-list                      List all custom defined bot.
+  create-custom-deny-action                    Create a custom deny action.
+  delete-custom-deny-action                    Delete a custom deny action.
+  custom-deny-action                           Display contents of custom deny action.
+  modify-custom-deny-action                    Update existing custom deny action.
+  custom-deny-action-list                      List all custom deny action.
+  modify-google-recaptcha-secret-key           Update existing google recaptcha secret key.
+  javascript-injection-rules                   Display contents of javascript injection rules.
+  modify-javascript-injection-rules            Update existing javascript injection rules.
+  create-recategorized-akamai-defined-bot      Create a recategorized akamai defined bot.
+  delete-recategorized-akamai-defined-bot      Delete a recategorized akamai defined bot.
+  recategorized-akamai-defined-bot             Display contents of recategorized akamai defined bot.
+  modify-recategorized-akamai-defined-bot      Update existing recategorized akamai defined bot.
+  recategorized-akamai-defined-bot-list        List all recategorized akamai defined bot.
+  response-actions-list                        List all response actions.
+  rotate-bot-analytics-cookie-values           Rotate bot analytics cookie values.
+  create-serve-alternate-action                Create a serve alternate action.
+  delete-serve-alternate-action                Delete a serve alternate action.
+  serve-alternate-action                       Display contents of serve alternate action.
+  modify-serve-alternate-action                Update existing serve alternate action.
+  serve-alternate-action-list                  List all serve alternate action.
+  create-transactional-endpoint                Create a transactional endpoint.
+  delete-transactional-endpoint                Delete a transactional endpoint.
+  transactional-endpoint                       Display contents of transactional endpoint.
+  modify-transactional-endpoint                Update existing transactional endpoint.
+  transactional-endpoint-list                  List all transactional endpoint.
+  transactional-endpoint-protection            Display contents of transactional endpoint protection.
+  modify-transactional-endpoint-protection     Update existing transactional endpoint protection.
 
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
