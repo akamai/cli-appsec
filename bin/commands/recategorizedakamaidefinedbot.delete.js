@@ -35,7 +35,7 @@ class DeleteRecategorizedAkamaiDefinedBotCommand {
       promise: new RecategorizedAkamaiDefinedBot(options).deleteRecategorizedAkamaiDefinedBot(),
       args: options,
       success: (args, data) => {
-        return data.statusCode;
+        return data;
       }
     });
   }

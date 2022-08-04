@@ -34,7 +34,7 @@ class DeleteServeAlternateActionCommand {
       promise: new ServeAlternateAction(options).deleteServeAlternateAction(),
       args: options,
       success: (args, data) => {
-        return data.statusCode;
+        return data;
       }
     });
   }

@@ -40,7 +40,7 @@ class DeleteTransactionalEndpointCommand {
       promise: new TransactionalEndpoint(options).deleteTransactionalEndpoint(),
       args: options,
       success: (args, data) => {
-        return data.statusCode;
+        return data;
       }
     });
   }

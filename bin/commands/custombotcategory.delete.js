@@ -34,7 +34,7 @@ class DeleteCustomBotCategoryCommand {
       promise: new CustomBotCategory(options).deleteCustomBotCategory(),
       args: options,
       success: (args, data) => {
-        return data.statusCode;
+        return data;
       }
     });
   }

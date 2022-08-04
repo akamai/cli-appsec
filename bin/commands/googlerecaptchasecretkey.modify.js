@@ -44,7 +44,7 @@ class ModifyGoogleRecaptchaSecretKeyCommand {
       promise: new GoogleRecaptchaSecretKey(options).updateGoogleRecaptchaSecretKey(),
       args: options,
       success: (args, data) => {
-        return data.statusCode;
+        return data;
       }
     });
   }

@@ -34,7 +34,7 @@ class DeleteCustomClientCommand {
       promise: new CustomClient(options).deleteCustomClient(),
       args: options,
       success: (args, data) => {
-        return data.statusCode;
+        return data;
       }
     });
   }

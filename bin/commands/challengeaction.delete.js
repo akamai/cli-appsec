@@ -34,7 +34,7 @@ class DeleteChallengeActionCommand {
       promise: new ChallengeAction(options).deleteChallengeAction(),
       args: options,
       success: (args, data) => {
-        return data.statusCode;
+        return data;
       }
     });
   }

@@ -34,7 +34,7 @@ class DeleteConditionalActionCommand {
       promise: new ConditionalAction(options).deleteConditionalAction(),
       args: options,
       success: (args, data) => {
-        return data.statusCode;
+        return data;
       }
     });
   }

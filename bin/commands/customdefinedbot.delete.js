@@ -34,7 +34,7 @@ class DeleteCustomDefinedBotCommand {
       promise: new CustomDefinedBot(options).deleteCustomDefinedBot(),
       args: options,
       success: (args, data) => {
-        return data.statusCode;
+        return data;
       }
     });
   }

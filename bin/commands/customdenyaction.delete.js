@@ -34,7 +34,7 @@ class DeleteCustomDenyActionCommand {
       promise: new CustomDenyAction(options).deleteCustomDenyAction(),
       args: options,
       success: (args, data) => {
-        return data.statusCode;
+        return data;
       }
     });
   }
