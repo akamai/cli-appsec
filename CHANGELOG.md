@@ -1,14 +1,16 @@
-## 2.8.0 (June Release)
+## 2.7.0 (September Release)
 - New Commands:
-   - `eval-penalty-box`                          Display evaluation penalty box action in a policy.
-   - `disable-eval-penalty-box`                  Disable evaluation penalty box in a policy.
-   - `enable-eval-penalty-box`                   Enable evaluation penalty box in a policy.
-## 2.7.0 (March Release)
-- CLI Enhancements - adding "--type" parameter to recommendations command
-  - --type:
+   - `eval-penalty-box` command displays evaluation penalty box action in a policy
+   - `disable-eval-penalty-box` command disable evaluation penalty box in a policy
+   - `enable-eval-penalty-box` command enable evaluation penalty box in a policy
+- CLI Enhancements 
+  - Adding "--type" parameter to recommendations command:
     - Description:Use to get active or evaluation or all recommendations. Supported values are active|evaluation|all. If type not provided, default is active
     - Usage: `akamai appsec recommendations --type=active`
     - Usage: `akamai appsec recommendations CMD --type=active`
+  - Supporting "--accountkey" flag to switch the account when performing the operation
+- Fixing security vulnerabilities
+
 ## 2.6.0 (February Release)
 - New Command:
   - `activation-history` command lists activation history for the configuration
