@@ -58,6 +58,12 @@ require('sywac')
     group: 'Command options:',
     required: false
   })
+  .string('--accountkey', {
+    desc: 'Account ID to switch to when performing the operation.',
+    group: 'Command options:',
+    required: false,
+    hidden: true
+  })
   .epilogue('Copyright (C) Akamai Technologies, Inc\nVisit http://github.com/akamai/cli-appsec for detailed documentation.\n')
   .outputSettings({
     maxWidth: 150

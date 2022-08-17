@@ -1,6 +1,6 @@
 'use strict';
 let untildify = require('untildify');
-var EdgeGrid = require('edgegrid');
+var EdgeGrid = require('akamai-edgegrid');
 let util = require('util');
 let logger = require('./constants').logger('EdgeClient');
 let version = require('../package.json').version;
@@ -31,7 +31,7 @@ class Edge {
       debug: auth.debug
     });
 
-    this._accountKey = options['account-key'];
+    this._accountKey = options['account-key'] || options['accountkey'];
     if (!this._accountKey) {
       logger.debug('Account key not provided');
     } else {
@@ -61,7 +61,7 @@ class Edge {
     return new Promise((resolve, reject) => {
       logger.debug('Request: %s', JSON.stringify(request));
       this._edge.auth(request);
-      this._edge.send(function(data, response) {
+      this._edge.send(function(data, response, body) {
         logger.debug(
           request.method +
             ' : ' +
@@ -69,25 +69,21 @@ class Edge {
             '; Body: ' +
             request.body +
             '; Response : ' +
-            JSON.stringify(response)
+            JSON.stringify(body)
         );
-        if (response && response.statusCode >= 200 && response.statusCode < 400) {
-          let body = response.body;
-          if (response.body) {
-            //delete calls don't have a body and throw errors when parsing.
-            body = JSON.parse(response.body);
-          } else {
-            //promise needs to call resolve and resolve() returns "undefined"
-            body = response.body;
+        if (response && response.status >= 200 && response.status < 400) {
+          if (body) {
+            // DELETE calls don't have a body and throw errors when parsing.
+            body = JSON.parse(body);
           }
-          //Temp fix for long activation. Remove when long activation is fixed
-          if (response.statusCode == 202 || response.statusCode == 303) {
-            body.statusCode = response.statusCode;
+          // Temp fix for long activation. Remove when long activation is fixed
+          if (response.status == 202 || response.status == 303) {
+            body.statusCode = response.status;
             body.headers = response.headers;
           }
-          /////
+          // Response
           resolve(body);
-        } else if (response && response.statusCode == 504) {
+        } else if (response.status == 504) {
           reject('The request is taking longer than expected.');
         } else if (!response) {
           logger.info('No response from server: ', data);
@@ -95,13 +91,13 @@ class Edge {
         } else {
           try {
             logger.error('Error response from server: ', JSON.stringify(response, null, 2));
-            logger.error('Body: ', JSON.stringify(JSON.parse(response.body), null, 2));
+            logger.error('Body: ', JSON.stringify(JSON.parse(body), null, 2));
           } catch (err) {
-            //do nothing
+            // Do nothing
           }
 
           try {
-            let errJson = JSON.parse(response.body);
+            let errJson = JSON.parse(body);
             reject(errJson);
           } catch (err) {
             reject({ detail: 'Unknown Error' });
