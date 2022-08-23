@@ -83,11 +83,15 @@ class Edge {
           }
           // Response
           resolve(body);
-        } else if (response.status == 504) {
+        } else if (response && response.status == 504) {
           reject('The request is taking longer than expected.');
         } else if (!response) {
           logger.info('No response from server: ', data);
-          reject('Could not get data at this time.');
+          let errorText = '';
+          if (data && data.response) {
+            errorText = `Status: ${data.response.status} - ${data.response.statusText} \n`;
+          }
+          reject(`${errorText}Could not get data at this time.`);
         } else {
           try {
             logger.error('Error response from server: ', JSON.stringify(response, null, 2));
