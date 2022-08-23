@@ -89,9 +89,12 @@ class Edge {
           logger.info('No response from server: ', data);
           let errorText = '';
           if (data && data.response) {
-            errorText = `Status: ${data.response.status} - ${data.response.statusText} \n`;
+            errorText = `\nStatus: ${data.response.status} - ${data.response.statusText} \n`;
+            if (data.response.data) {
+              errorText += `Details: ${JSON.stringify(data.response.data, null, 2)}`;
+            }
           }
-          reject(`${errorText}Could not get data at this time.`);
+          reject(`Could not get data at this time. ${errorText}`);
         } else {
           try {
             logger.error('Error response from server: ', JSON.stringify(response, null, 2));
