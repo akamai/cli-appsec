@@ -88,7 +88,7 @@ class Edge {
         } else if (!response) {
           logger.info('No response from server: ', data);
           if (data && data.response) {
-            reject(JSON.stringify(data.response.data));
+            reject(data.response.data);
           } else {
             reject('Could not get data at this time.');
           }
