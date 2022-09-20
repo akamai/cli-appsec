@@ -2,9 +2,19 @@
 
 ## 2.7.0 (September Release)
 - New Commands:
-  - `eval-penalty-box` command displays evaluation penalty box action in a policy
-  - `disable-eval-penalty-box` command disable evaluation penalty box in a policy
-  - `enable-eval-penalty-box` command enable evaluation penalty box in a policy
+  - `eval-penalty-box` command displays evaluation penalty box action in a policy.
+  - `disable-eval-penalty-box` command disable evaluation penalty box in a policy.
+  - `enable-eval-penalty-box` command enable evaluation penalty box in a policy.
+  - `malware-policies` command lists all malware policies.
+  - `malware-policy` command displays contents of a malware policy.
+  - `modify-malware-policy`command modifies an existing malware policy.
+  - `create-malware-policy` command creates a malware policy.
+  - `delete-malware-policy` command deletes an existing malware policy.
+  - `malware-policies-actions` command displays all enabled malware policy actions.
+  - `disable-malware-policy` command removes actions to an existing malware policy in a firewall policy.
+  - `enable-malware-policy` command assigns actions to an existing malware policy in a firewall policy.
+  - `malware-content-types` command lists all malware content types.
+  
   - Moving BOTMAN CLI commands -
     - `akamai-bot-category` command displays contents of akamai bot category.
     - `akamai-bot-category-action` command displays contents of akamai bot category action.
