@@ -1,3 +1,5 @@
+## 2.8.0
+
 ## 2.7.0 (September Release)
 - New Commands:
   - `eval-penalty-box` command displays evaluation penalty box action in a policy
