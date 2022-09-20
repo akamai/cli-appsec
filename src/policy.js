@@ -116,6 +116,17 @@ class FirewallPolicy {
       return this._version.createResource(uri, params, payload);
     });
   }
+  /**
+   * Deletes resources tied to the security policy.
+   * @param {*} uri The uri of the resource. Always starts with /configs/<id>/versions/<id>/security-policies/<id>
+   * @param {*} params the parameters that gets substituted in the uri in order(except config id, version id and policy id)
+   */
+  deleteResource(uri, params) {
+    return this.policyId().then(policyId => {
+      params.unshift(policyId);
+      return this._version.deleteResource(uri, params);
+    });
+  }
 }
 
 module.exports = {

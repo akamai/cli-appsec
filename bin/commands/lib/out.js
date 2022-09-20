@@ -113,7 +113,13 @@ class CommandOutput {
     errJson,
     options,
     customPrinter = (opt, err) => {
-      return typeof err == 'string' ? err : err.detail ? err.detail : err.title;
+      if (typeof err == 'string') {
+        return err;
+      }
+      if (err.errors && err.errors.length > 0) {
+        return err.detail + ': [ ' + err.errors.map(e => e.detail).join(', ') + ' ]';
+      }
+      return err.detail ? err.detail : err.title;
     }
   ) {
     if (options.json) {
