@@ -179,6 +179,15 @@ class AdvancedSettings {
     }
     return this._version.updateResource(URIs.EVASIVE_PATH_MATCH, [], data);
   }
+
+  getMatchDataLogging() {
+    if (this._options.policy) {
+      return this._policyProvider.policyId().then(policyId => {
+        return this._version.readResource(URIs.SECURITY_POLICY_MATCH_DATA_LOGGING, [policyId]);
+      });
+    }
+    return this._version.readResource(URIs.MATCH_DATA_LOGGING, []);
+  }
 }
 
 module.exports = {
