@@ -34,26 +34,7 @@ class MatchDataLoggingCommand {
       promise: new AdvancedSettings(options).getMatchDataLogging(),
       args: options,
       success: (args, data) => {
-        let enabled = data.enabled;
-        let requestBody = data.requestBody;
-        let responseBody = data.responseBody;
-        let str = [];
-
-        if (enabled) {
-          str.push('enabled');
-        }
-
-        if (requestBody) {
-          str.push('requestBody');
-        }
-        str.push(requestBody);
-
-        if (responseBody) {
-          str.push('responseBody');
-        }
-        str.push(responseBody);
-
-        return str.join(require('os').EOL);
+        return JSON.stringify(data);
       }
     });
   }
