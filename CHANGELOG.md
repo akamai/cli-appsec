@@ -1,4 +1,6 @@
-## 2.8.0
+## 2.8.0 (February release)
+- New Commands:
+  - `match-data-logging` command displays match data logging settings.
 
 ## 2.7.0 (September Release)
 - New Commands:
