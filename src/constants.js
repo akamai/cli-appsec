@@ -95,12 +95,15 @@ const resources = {
   SECURITY_POLICY_PRAGMA_HEADER:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/advanced-settings/pragma-header',
   REQUEST_BODY: '/appsec/v1/configs/%s/versions/%s/advanced-settings/request-body',
+  MATCH_DATA_LOGGING: '/appsec/v1/configs/%s/versions/%s/advanced-settings/logging/match-data',
   SECURITY_POLICY_REQUEST_BODY:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/advanced-settings/request-body',
   SECURITY_POLICY_HTTP_HEADER_LOGGING:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/advanced-settings/logging',
   SECURITY_POLICY_EVASIVE_PATH_MATCH:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/advanced-settings/evasive-path-match',
+  SECURITY_POLICY_MATCH_DATA_LOGGING:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/advanced-settings/logging/match-data',
   VERSION_NOTES: '/appsec/v1/configs/%s/versions/%s/version-notes',
   HOSTNAME_COVERAGE: '/appsec/v1/hostname-coverage',
   HOSTNAME_COVERAGE_MATCH_TARGET:
