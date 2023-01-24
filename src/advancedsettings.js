@@ -223,6 +223,36 @@ class AdvancedSettings {
     }
   }
 
+  enableMatchDataLoggingOverride() {
+    return this._policyProvider.policyId().then(policyId => {
+      let data = JSON.parse(
+        fs.readFileSync(__dirname + '/../templates/securitypolicymatchdatalogging.json', 'utf8')
+      );
+
+      data.override = true;
+      return this._version.updateResource(
+        URIs.SECURITY_POLICY_MATCH_DATA_LOGGING,
+        [policyId],
+        data
+      );
+    });
+  }
+
+  disableMatchDataLoggingOverride() {
+    return this._policyProvider.policyId().then(policyId => {
+      let data = JSON.parse(
+        fs.readFileSync(__dirname + '/../templates/securitypolicymatchdatalogging.json', 'utf8')
+      );
+
+      data.override = false;
+      return this._version.updateResource(
+        URIs.SECURITY_POLICY_MATCH_DATA_LOGGING,
+        [policyId],
+        data
+      );
+    });
+  }
+
   modifyMatchDataLoggingOverride() {
     if (fs.existsSync(this._options['file'])) {
       return this._policyProvider.policyId().then(policyId => {
@@ -243,21 +273,6 @@ class AdvancedSettings {
     } else {
       throw `The file does not exists: ${this._options['file']}`;
     }
-  }
-
-  disableMatchDataLoggingOverride() {
-    return this._policyProvider.policyId().then(policyId => {
-      let data = JSON.parse(
-        fs.readFileSync(__dirname + '/../templates/securitypolicymatchdatalogging.json', 'utf8')
-      );
-
-      data.override = false;
-      return this._version.updateResource(
-        URIs.SECURITY_POLICY_MATCH_DATA_LOGGING,
-        [policyId],
-        data
-      );
-    });
   }
 }
 

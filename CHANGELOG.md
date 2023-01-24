@@ -3,8 +3,10 @@
   - `match-data-logging` command displays match data logging settings.
   - `enable-match-data-logging` command enables match data logging settings.
   - `disable-match-data-logging` command disables match data logging settings.
+  - `modify-match-data-logging` command modifies an existing match data logging settings.
   - `enable-override-match-data-logging` command enables match data logging override settings.
   - `disable-override-match-data-logging` command disables match data logging override settings.
+  - `modify-override-match-data-logging` command modifies match data logging override settings for an existing policy.
 
 ## 2.7.0 (September Release)
 - New Commands:
