@@ -1,7 +1,7 @@
 let AdvancedSettings = require('../../src/advancedsettings').advancedsettings;
 let out = require('./lib/out');
 
-class MatchDataLoggingCommand {
+class ModifyMatchDataLoggingCommand {
   constructor() {
     this.flags = 'modify-match-data-logging';
     this.desc = 'Modify the Match Data Logging settings.';
@@ -46,4 +46,4 @@ class MatchDataLoggingCommand {
   }
 }
 
-module.exports = new MatchDataLoggingCommand();
+module.exports = new ModifyMatchDataLoggingCommand();

@@ -1,7 +1,7 @@
 let AdvancedSettings = require('../../src/advancedsettings').advancedsettings;
 let out = require('./lib/out');
 
-class MatchDataLoggingOverrideCommand {
+class DisableMatchDataLoggingOverrideCommand {
   constructor() {
     this.flags = 'disable-override-match-data-logging';
     this.desc = 'Disable the Match Data Logging Override settings.';
@@ -39,4 +39,4 @@ class MatchDataLoggingOverrideCommand {
   }
 }
 
-module.exports = new MatchDataLoggingOverrideCommand();
+module.exports = new DisableMatchDataLoggingOverrideCommand();
