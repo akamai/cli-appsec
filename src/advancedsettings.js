@@ -194,15 +194,7 @@ class AdvancedSettings {
       fs.readFileSync(__dirname + '/../templates/matchdatalogging.json', 'utf8')
     );
     data.enabled = enable;
-    if (this._options.policy) {
-      return this._policyProvider.policyId().then(policyId => {
-        return this._version.updateResource(
-          URIs.SECURITY_POLICY_MATCH_DATA_LOGGING,
-          [policyId],
-          data
-        );
-      });
-    }
+
     return this._version.updateResource(URIs.MATCH_DATA_LOGGING, [], data);
   }
 
