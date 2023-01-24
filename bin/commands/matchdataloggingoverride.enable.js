@@ -12,7 +12,9 @@ class EnableMatchDataLoggingOverrideCommand {
   setup(sywac) {
     sywac
       .positional('<@path>', {
-        paramsDesc: 'The input file path.'
+        paramsDesc: 'The input file path.',
+        group: 'Required:',
+        required: true
       })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
@@ -36,10 +38,11 @@ class EnableMatchDataLoggingOverrideCommand {
         }
       });
   }
+
   run(options) {
     options.file = options['@path'].replace('@', '');
     out.print({
-      promise: new AdvancedSettings(options).enableOverrideMatchDataLogging(),
+      promise: new AdvancedSettings(options).enableMatchDataLoggingOverride(),
       args: options,
       success: (args, data) => {
         return JSON.stringify(data);

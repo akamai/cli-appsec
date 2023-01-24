@@ -11,6 +11,11 @@ class DisableMatchDataLoggingOverrideCommand {
 
   setup(sywac) {
     sywac
+      .positional('<@path>', {
+        paramsDesc: 'The input file path.',
+        group: 'Required:',
+        required: true
+      })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
         group: 'Required:',
@@ -26,9 +31,16 @@ class DisableMatchDataLoggingOverrideCommand {
         desc: 'Policy ID. If not provided, we try to use the policy available on file.',
         group: 'Required:',
         required: true
+      })
+      .check((argv, context) => {
+        if (!argv['@path'].startsWith('@')) {
+          return context.cliMessage("ERROR: Invalid file name, should start with '@'");
+        }
       });
   }
+
   run(options) {
+    options.file = options['@path'].replace('@', '');
     out.print({
       promise: new AdvancedSettings(options).disableMatchDataLoggingOverride(),
       args: options,

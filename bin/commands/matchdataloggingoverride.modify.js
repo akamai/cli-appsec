@@ -3,8 +3,8 @@ let out = require('./lib/out');
 
 class ModifyMatchDataLoggingOverrideCommand {
   constructor() {
-    this.flags = 'modify-match-data-logging';
-    this.desc = 'Modify the Match Data Logging settings.';
+    this.flags = 'modify-match-data-logging-override';
+    this.desc = 'Modify the Match Data Logging Override settings.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -27,6 +27,11 @@ class ModifyMatchDataLoggingOverrideCommand {
         group: 'Required:',
         required: true
       })
+      .string('--policy <id>', {
+        desc: 'Policy ID. If not provided, we try to use the policy available on file.',
+        group: 'Required:',
+        required: true
+      })
       .check((argv, context) => {
         if (!argv['@path'].startsWith('@')) {
           return context.cliMessage("ERROR: Invalid file name, should start with '@'");
@@ -37,7 +42,7 @@ class ModifyMatchDataLoggingOverrideCommand {
   run(options) {
     options.file = options['@path'].replace('@', '');
     out.print({
-      promise: new AdvancedSettings(options).updateMatchDataLogging(),
+      promise: new AdvancedSettings(options).updateMatchDataLoggingOverride(),
       args: options,
       success: (args, data) => {
         return JSON.stringify(data);
