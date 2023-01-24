@@ -11,11 +11,6 @@ class MatchDataLoggingCommand {
 
   setup(sywac) {
     sywac
-      .positional('<@path>', {
-        paramsDesc: 'The input file path.',
-        group: 'Required:',
-        required: true
-      })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
         group: 'Required:',
@@ -30,18 +25,12 @@ class MatchDataLoggingCommand {
       .string('--policy <id>', {
         desc:
           'Policy ID. If provided, returns policy-level settings. If not provided, returns config-level settings.',
-        group: 'Required:',
-        required: true
-      })
-      .check((argv, context) => {
-        if (!argv['@path'].startsWith('@')) {
-          return context.cliMessage("ERROR: Invalid file name, should start with '@'");
-        }
+        group: 'Optional:',
+        required: false
       });
   }
 
   run(options) {
-    options.file = options['@path'].replace('@', '');
     out.print({
       promise: new AdvancedSettings(options).getMatchDataLogging(),
       args: options,

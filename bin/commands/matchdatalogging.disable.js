@@ -11,6 +11,11 @@ class DisableMatchDataLoggingCommand {
 
   setup(sywac) {
     sywac
+      .positional('<@path>', {
+        paramsDesc: 'The input file path.',
+        group: 'Required:',
+        required: true
+      })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
         group: 'Required:',
