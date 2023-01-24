@@ -11,9 +11,6 @@ class MatchDataLoggingCommand {
 
   setup(sywac) {
     sywac
-      .positional('<@path>', {
-        paramsDesc: 'The input file path.'
-      })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
         group: 'Optional:',
@@ -24,17 +21,11 @@ class MatchDataLoggingCommand {
           "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
         group: 'Optional:',
         required: false
-      })
-      .string('--policy <id>', {
-        desc: 'Policy ID. If not provided, we try to use the policy available on file.',
-        group: 'Optional:',
-        required: false
       });
   }
   run(options) {
-    options.file = options['@path'].replace('@', '');
     out.print({
-      promise: new AdvancedSettings(options).updateMatchDataLogging(true),
+      promise: new AdvancedSettings(options).enableMatchDataLogging(),
       args: options,
       success: (args, data) => {
         return JSON.stringify(data);

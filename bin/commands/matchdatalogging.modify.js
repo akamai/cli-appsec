@@ -3,14 +3,17 @@ let out = require('./lib/out');
 
 class MatchDataLoggingCommand {
   constructor() {
-    this.flags = 'disable-match-data-logging';
-    this.desc = 'Disable the Match Data Logging settings.';
+    this.flags = 'modify-match-data-logging';
+    this.desc = 'Modify the Match Data Logging settings.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
 
   setup(sywac) {
     sywac
+      .positional('<@path>', {
+        paramsDesc: 'The input file path.'
+      })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
         group: 'Optional:',
@@ -24,8 +27,9 @@ class MatchDataLoggingCommand {
       });
   }
   run(options) {
+    options.file = options['@path'].replace('@', '');
     out.print({
-      promise: new AdvancedSettings(options).disableMatchDataLogging(),
+      promise: new AdvancedSettings(options).updateMatchDataLogging(),
       args: options,
       success: (args, data) => {
         return JSON.stringify(data);

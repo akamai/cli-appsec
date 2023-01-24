@@ -1,3 +1,9 @@
 {
-  "enabled": null
+  "enabled": null,
+  "requestBody": {
+    "type":"ATTACK_PAYLOAD"
+  },
+  "responseBody": {
+    "type":"ATTACK_PAYLOAD"
+  }
 }

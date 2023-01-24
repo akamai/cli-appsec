@@ -189,16 +189,41 @@ class AdvancedSettings {
     return this._version.readResource(URIs.MATCH_DATA_LOGGING, []);
   }
 
-  updateMatchDataLogging(enable) {
+  enableMatchDataLogging() {
     let data = JSON.parse(
       fs.readFileSync(__dirname + '/../templates/matchdatalogging.json', 'utf8')
     );
-    data.enabled = enable;
+    data.enabled = true;
 
     return this._version.updateResource(URIs.MATCH_DATA_LOGGING, [], data);
   }
 
-  enableMatchDataLoggingOverride() {
+  disableMatchDataLogging() {
+    let data = JSON.parse(
+      fs.readFileSync(__dirname + '/../templates/matchdatalogging.json', 'utf8')
+    );
+    data.enabled = false;
+
+    return this._version.updateResource(URIs.MATCH_DATA_LOGGING, [], data);
+  }
+
+  updateMatchDataLogging() {
+    if (fs.existsSync(this._options['file'])) {
+      let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
+      let data;
+      try {
+        data = JSON.parse(payload);
+      } catch (err) {
+        throw 'The input JSON is not valid';
+      }
+
+      return this._version.updateResource(URIs.MATCH_DATA_LOGGING, [], data);
+    } else {
+      throw `The file does not exists: ${this._options['file']}`;
+    }
+  }
+
+  modifyMatchDataLoggingOverride() {
     if (fs.existsSync(this._options['file'])) {
       return this._policyProvider.policyId().then(policyId => {
         let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
