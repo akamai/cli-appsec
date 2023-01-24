@@ -188,6 +188,60 @@ class AdvancedSettings {
     }
     return this._version.readResource(URIs.MATCH_DATA_LOGGING, []);
   }
+
+  updateMatchDataLogging(enable) {
+    let data = JSON.parse(
+      fs.readFileSync(__dirname + '/../templates/matchdatalogging.json', 'utf8')
+    );
+    data.enabled = enable;
+    if (this._options.policy) {
+      return this._policyProvider.policyId().then(policyId => {
+        return this._version.updateResource(
+          URIs.SECURITY_POLICY_MATCH_DATA_LOGGING,
+          [policyId],
+          data
+        );
+      });
+    }
+    return this._version.updateResource(URIs.MATCH_DATA_LOGGING, [], data);
+  }
+
+  enableMatchDataLoggingOverride() {
+    if (fs.existsSync(this._options['file'])) {
+      return this._policyProvider.policyId().then(policyId => {
+        let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
+        let data;
+        try {
+          data = JSON.parse(payload);
+          data.override = true;
+        } catch (err) {
+          throw 'The input JSON is not valid';
+        }
+        return this._version.updateResource(
+          URIs.SECURITY_POLICY_MATCH_DATA_LOGGING,
+          [policyId],
+          data
+        );
+      });
+    } else {
+      throw `The file does not exists: ${this._options['file']}`;
+    }
+  }
+
+  disableMatchDataLoggingOverride() {
+    return this._policyProvider.policyId().then(policyId => {
+      let data = JSON.parse(
+        fs.readFileSync(__dirname + '/../templates/securitypolicymatchdatalogging.json', 'utf8')
+      );
+
+      data.override = false;
+      return this._version.updateResource(
+        URIs.SECURITY_POLICY_MATCH_DATA_LOGGING,
+        [policyId],
+        data
+      );
+    });
+  }
 }
 
 module.exports = {
