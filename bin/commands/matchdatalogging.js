@@ -12,12 +12,12 @@ class MatchDataLoggingCommand {
   setup(sywac) {
     sywac
       .number('--config <id>', {
-        desc: 'Configuration ID. Mandatory.',
+        desc: 'Configuration ID.',
         group: 'Required:',
         required: true
       })
       .string('--version <id>', {
-        desc: 'Version Number. Mandatory.',
+        desc: 'Version Number.',
         group: 'Required:',
         required: true
       })

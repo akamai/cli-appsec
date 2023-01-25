@@ -12,17 +12,17 @@ class EnableMatchDataLoggingCommand {
   setup(sywac) {
     sywac
       .positional('<@path>', {
-        paramsDesc: 'The input file path. Mandatory.',
+        paramsDesc: 'The input file path.',
         group: 'Required:',
         required: true
       })
       .number('--config <id>', {
-        desc: 'Configuration ID. Mandatory.',
+        desc: 'Configuration ID.',
         group: 'Required:',
         required: true
       })
       .string('--version <id>', {
-        desc: 'Version Number. Mandatory.',
+        desc: 'Version Number.',
         group: 'Required:',
         required: true
       })

@@ -17,17 +17,17 @@ class EnableMatchDataLoggingOverrideCommand {
         required: true
       })
       .number('--config <id>', {
-        desc: 'Configuration ID. Mandatory.',
+        desc: 'Configuration ID.',
         group: 'Required:',
         required: true
       })
       .string('--version <id>', {
-        desc: 'Version Number. Mandatory.',
+        desc: 'Version Number.',
         group: 'Required:',
         required: true
       })
       .string('--policy <id>', {
-        desc: 'Policy ID. Mandatory.',
+        desc: 'Policy ID.',
         group: 'Required:',
         required: true
       })
