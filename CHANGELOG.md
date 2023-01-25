@@ -1,12 +1,18 @@
 ## 2.8.0 (February release)
 - New Commands:
   - `match-data-logging` command displays match data logging settings.
+  - `enable-match-data-logging` command enables match data logging settings.
+  - `disable-match-data-logging` command disables match data logging settings.
+  - `modify-match-data-logging` command modifies an existing match data logging settings.
+  - `enable-override-match-data-logging` command enables match data logging override settings.
+  - `disable-override-match-data-logging` command disables match data logging override settings.
+  - `modify-override-match-data-logging` command modifies match data logging override settings for an existing policy.
 
 ## 2.7.0 (September Release)
 - New Commands:
   - `eval-penalty-box` command displays evaluation penalty box action in a policy.
-  - `disable-eval-penalty-box` command disable evaluation penalty box in a policy.
-  - `enable-eval-penalty-box` command enable evaluation penalty box in a policy.
+  - `disable-eval-penalty-box` command disables evaluation penalty box in a policy.
+  - `enable-eval-penalty-box` command enables evaluation penalty box in a policy.
   - `malware-policies` command lists all malware policies.
   - `malware-policy` command displays contents of a malware policy.
   - `modify-malware-policy`command modifies an existing malware policy.
