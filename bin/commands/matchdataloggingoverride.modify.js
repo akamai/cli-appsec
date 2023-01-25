@@ -17,14 +17,15 @@ class ModifyMatchDataLoggingOverrideCommand {
         required: true
       })
       .number('--config <id>', {
-        desc: 'Configuration ID.',
-        group: 'Required:',
-        required: true
+        desc: 'Configuration ID. Mandatory if you have more than one configuration.',
+        group: 'Optional:',
+        required: false
       })
       .string('--version <id>', {
-        desc: 'Version Number.',
-        group: 'Required:',
-        required: true
+        desc:
+          "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
+        group: 'Optional:',
+        required: false
       })
       .string('--policy <id>', {
         desc: 'Policy ID.',
