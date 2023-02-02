@@ -231,7 +231,6 @@ class AdvancedSettings {
       let data;
       try {
         data = JSON.parse(payload);
-        data.enabled = true;
       } catch (err) {
         throw 'The input JSON is not valid';
       }
@@ -298,7 +297,6 @@ class AdvancedSettings {
 
         try {
           data = JSON.parse(payload);
-          data.override = true;
         } catch (err) {
           throw 'The input JSON is not valid';
         }
