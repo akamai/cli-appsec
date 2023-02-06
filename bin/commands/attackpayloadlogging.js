@@ -1,21 +1,16 @@
 let AdvancedSettings = require('../../src/advancedsettings').advancedsettings;
 let out = require('./lib/out');
 
-class EnableMatchDataLoggingCommand {
+class AttackPayloadLoggingCommand {
   constructor() {
-    this.flags = 'enable-match-data-logging';
-    this.desc = 'Enable the Match Data Logging settings.';
+    this.flags = 'attack-payload-logging';
+    this.desc = 'Display the Attack Payload Logging settings.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
 
   setup(sywac) {
     sywac
-      .positional('<@path>', {
-        paramsDesc: 'The input file path.',
-        group: 'Required:',
-        required: true
-      })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
         group: 'Optional:',
@@ -27,17 +22,17 @@ class EnableMatchDataLoggingCommand {
         group: 'Optional:',
         required: false
       })
-      .check((argv, context) => {
-        if (!argv['@path'].startsWith('@')) {
-          return context.cliMessage("ERROR: Invalid file name, should start with '@'");
-        }
+      .string('--policy <id>', {
+        desc:
+          'Policy ID. If provided, returns policy-level settings. If not provided, returns config-level settings.',
+        group: 'Optional:',
+        required: false
       });
   }
 
   run(options) {
-    options.file = options['@path'].replace('@', '');
     out.print({
-      promise: new AdvancedSettings(options).enableMatchDataLogging(),
+      promise: new AdvancedSettings(options).getAttackPayloadLogging(),
       args: options,
       success: (args, data) => {
         return JSON.stringify(data);
@@ -46,4 +41,4 @@ class EnableMatchDataLoggingCommand {
   }
 }
 
-module.exports = new EnableMatchDataLoggingCommand();
+module.exports = new AttackPayloadLoggingCommand();

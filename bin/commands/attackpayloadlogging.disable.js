@@ -1,10 +1,10 @@
 let AdvancedSettings = require('../../src/advancedsettings').advancedsettings;
 let out = require('./lib/out');
 
-class ModifyMatchDataLoggingCommand {
+class DisableAttackPayloadLoggingCommand {
   constructor() {
-    this.flags = 'modify-match-data-logging';
-    this.desc = 'Modify the Match Data Logging settings.';
+    this.flags = 'disable-attack-payload-logging';
+    this.desc = 'Disable the Attack Payload Logging settings.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -37,7 +37,7 @@ class ModifyMatchDataLoggingCommand {
   run(options) {
     options.file = options['@path'].replace('@', '');
     out.print({
-      promise: new AdvancedSettings(options).updateMatchDataLogging(),
+      promise: new AdvancedSettings(options).disableAttackPayloadLogging(),
       args: options,
       success: (args, data) => {
         return JSON.stringify(data);
@@ -46,4 +46,4 @@ class ModifyMatchDataLoggingCommand {
   }
 }
 
-module.exports = new ModifyMatchDataLoggingCommand();
+module.exports = new DisableAttackPayloadLoggingCommand();

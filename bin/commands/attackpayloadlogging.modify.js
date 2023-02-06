@@ -1,10 +1,10 @@
 let AdvancedSettings = require('../../src/advancedsettings').advancedsettings;
 let out = require('./lib/out');
 
-class DisableMatchDataLoggingOverrideCommand {
+class ModifyAttackPayloadLoggingCommand {
   constructor() {
-    this.flags = 'disable-override-match-data-logging';
-    this.desc = 'Disable the Match Data Logging Override settings.';
+    this.flags = 'modify-attack-payload-logging';
+    this.desc = 'Modify the Attack Payload Logging settings.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -27,11 +27,6 @@ class DisableMatchDataLoggingOverrideCommand {
         group: 'Optional:',
         required: false
       })
-      .string('--policy <id>', {
-        desc: 'Policy ID.',
-        group: 'Required:',
-        required: true
-      })
       .check((argv, context) => {
         if (!argv['@path'].startsWith('@')) {
           return context.cliMessage("ERROR: Invalid file name, should start with '@'");
@@ -42,7 +37,7 @@ class DisableMatchDataLoggingOverrideCommand {
   run(options) {
     options.file = options['@path'].replace('@', '');
     out.print({
-      promise: new AdvancedSettings(options).disableMatchDataLoggingOverride(),
+      promise: new AdvancedSettings(options).updateAttackPayloadLogging(),
       args: options,
       success: (args, data) => {
         return JSON.stringify(data);
@@ -51,4 +46,4 @@ class DisableMatchDataLoggingOverrideCommand {
   }
 }
 
-module.exports = new DisableMatchDataLoggingOverrideCommand();
+module.exports = new ModifyAttackPayloadLoggingCommand();

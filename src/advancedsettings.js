@@ -180,16 +180,16 @@ class AdvancedSettings {
     return this._version.updateResource(URIs.EVASIVE_PATH_MATCH, [], data);
   }
 
-  getMatchDataLogging() {
+  getAttackPayloadLogging() {
     if (this._options.policy) {
       return this._policyProvider.policyId().then(policyId => {
-        return this._version.readResource(URIs.SECURITY_POLICY_MATCH_DATA_LOGGING, [policyId]);
+        return this._version.readResource(URIs.SECURITY_POLICY_ATTACK_PAYLOAD_LOGGING, [policyId]);
       });
     }
-    return this._version.readResource(URIs.MATCH_DATA_LOGGING, []);
+    return this._version.readResource(URIs.ATTACK_PAYLOAD_LOGGING, []);
   }
 
-  enableMatchDataLogging() {
+  enableAttackPayloadLogging() {
     if (fs.existsSync(this._options['file'])) {
       let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
       let data;
@@ -201,13 +201,13 @@ class AdvancedSettings {
         throw 'The input JSON is not valid';
       }
 
-      return this._version.updateResource(URIs.MATCH_DATA_LOGGING, [], data);
+      return this._version.updateResource(URIs.ATTACK_PAYLOAD_LOGGING, [], data);
     } else {
       throw `The file does not exists: ${this._options['file']}`;
     }
   }
 
-  disableMatchDataLogging() {
+  disableAttackPayloadLogging() {
     if (fs.existsSync(this._options['file'])) {
       let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
       let data;
@@ -219,13 +219,13 @@ class AdvancedSettings {
         throw 'The input JSON is not valid';
       }
 
-      return this._version.updateResource(URIs.MATCH_DATA_LOGGING, [], data);
+      return this._version.updateResource(URIs.ATTACK_PAYLOAD_LOGGING, [], data);
     } else {
       throw `The file does not exists: ${this._options['file']}`;
     }
   }
 
-  updateMatchDataLogging() {
+  updateAttackPayloadLogging() {
     if (fs.existsSync(this._options['file'])) {
       let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
       let data;
@@ -235,13 +235,13 @@ class AdvancedSettings {
         throw 'The input JSON is not valid';
       }
 
-      return this._version.updateResource(URIs.MATCH_DATA_LOGGING, [], data);
+      return this._version.updateResource(URIs.ATTACK_PAYLOAD_LOGGING, [], data);
     } else {
       throw `The file does not exists: ${this._options['file']}`;
     }
   }
 
-  enableMatchDataLoggingOverride() {
+  enableAttackPayloadLoggingOverride() {
     return this._policyProvider.policyId().then(policyId => {
       if (fs.existsSync(this._options['file'])) {
         let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
@@ -255,7 +255,7 @@ class AdvancedSettings {
         }
 
         return this._version.updateResource(
-          URIs.SECURITY_POLICY_MATCH_DATA_LOGGING,
+          URIs.SECURITY_POLICY_ATTACK_PAYLOAD_LOGGING,
           [policyId],
           data
         );
@@ -265,7 +265,7 @@ class AdvancedSettings {
     });
   }
 
-  disableMatchDataLoggingOverride() {
+  disableAttackPayloadLoggingOverride() {
     return this._policyProvider.policyId().then(policyId => {
       if (fs.existsSync(this._options['file'])) {
         let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
@@ -279,7 +279,7 @@ class AdvancedSettings {
         }
 
         return this._version.updateResource(
-          URIs.SECURITY_POLICY_MATCH_DATA_LOGGING,
+          URIs.SECURITY_POLICY_ATTACK_PAYLOAD_LOGGING,
           [policyId],
           data
         );
@@ -289,7 +289,7 @@ class AdvancedSettings {
     });
   }
 
-  updateMatchDataLoggingOverride() {
+  updateAttackPayloadLoggingOverride() {
     return this._policyProvider.policyId().then(policyId => {
       if (fs.existsSync(this._options['file'])) {
         let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
@@ -302,7 +302,7 @@ class AdvancedSettings {
         }
 
         return this._version.updateResource(
-          URIs.SECURITY_POLICY_MATCH_DATA_LOGGING,
+          URIs.SECURITY_POLICY_ATTACK_PAYLOAD_LOGGING,
           [policyId],
           data
         );

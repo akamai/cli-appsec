@@ -1,10 +1,10 @@
 let AdvancedSettings = require('../../src/advancedsettings').advancedsettings;
 let out = require('./lib/out');
 
-class EnableMatchDataLoggingOverrideCommand {
+class ModifyAttackPayloadLoggingOverrideCommand {
   constructor() {
-    this.flags = 'enable-override-match-data-logging';
-    this.desc = 'Enable the Match Data Logging Override settings.';
+    this.flags = 'modify-override-attack-payload-logging';
+    this.desc = 'Modify the Attack Payload Logging Override settings.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -42,7 +42,7 @@ class EnableMatchDataLoggingOverrideCommand {
   run(options) {
     options.file = options['@path'].replace('@', '');
     out.print({
-      promise: new AdvancedSettings(options).enableMatchDataLoggingOverride(),
+      promise: new AdvancedSettings(options).updateAttackPayloadLoggingOverride(),
       args: options,
       success: (args, data) => {
         return JSON.stringify(data);
@@ -51,4 +51,4 @@ class EnableMatchDataLoggingOverrideCommand {
   }
 }
 
-module.exports = new EnableMatchDataLoggingOverrideCommand();
+module.exports = new ModifyAttackPayloadLoggingOverrideCommand();
