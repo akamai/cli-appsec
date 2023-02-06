@@ -1,12 +1,12 @@
 ## 2.8.0 (February release)
 - New Commands:
-  - `match-data-logging` command displays match data logging settings.
-  - `enable-match-data-logging` command enables match data logging settings.
-  - `disable-match-data-logging` command disables match data logging settings.
-  - `modify-match-data-logging` command modifies an existing match data logging settings.
-  - `enable-override-match-data-logging` command enables match data logging override settings.
-  - `disable-override-match-data-logging` command disables match data logging override settings.
-  - `modify-override-match-data-logging` command modifies match data logging override settings for an existing policy.
+  - `attack-payload-logging` command displays attack payload logging settings.
+  - `enable-attack-payload-logging` command enables attack payload logging settings.
+  - `disable-attack-payload-logging` command disables attack payload logging settings.
+  - `modify-attack-payload-logging` command modifies an existing attack payload logging settings.
+  - `enable-override-attack-payload-logging` command enables attack payload logging override settings.
+  - `disable-override-attack-payload-logging` command disables attack payload logging override settings.
+  - `modify-override-attack-payload-logging` command modifies attack payload logging override settings for an existing policy.
 
 ## 2.7.0 (September Release)
 - New Commands:
