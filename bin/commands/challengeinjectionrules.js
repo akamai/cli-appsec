@@ -1,11 +1,10 @@
-let ChallengeInterceptionRules = require('../../src/challengeinterceptionrules')
-  .challengeinterceptionrules;
+let ChallengeInjectionRules = require('../../src/challengeinjectionrules').challengeinjectionrules;
 let out = require('./lib/out');
 
-class ChallengeInterceptionRulesCommand {
+class ChallengeInjectionRulesCommand {
   constructor() {
-    this.flags = 'challenge-interception-rules';
-    this.desc = '(Deprecated) Display contents of challenge interception rules.';
+    this.flags = 'challenge-injection-rules';
+    this.desc = 'Display contents of challenge injection rules.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -27,7 +26,7 @@ class ChallengeInterceptionRulesCommand {
 
   run(options) {
     out.print({
-      promise: new ChallengeInterceptionRules(options).getChallengeInterceptionRules(),
+      promise: new ChallengeInjectionRules(options).getChallengeInjectionRules(),
       args: options,
       success: (args, data) => {
         return JSON.stringify(data);
@@ -36,4 +35,4 @@ class ChallengeInterceptionRulesCommand {
   }
 }
 
-module.exports = new ChallengeInterceptionRulesCommand();
+module.exports = new ChallengeInjectionRulesCommand();
