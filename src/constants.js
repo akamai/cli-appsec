@@ -174,6 +174,8 @@ const resources = {
   CUSTOM_DENY_ACTION: '/appsec/v1/configs/%s/versions/%s/response-actions/custom-deny-actions/%s',
   CHALLENGE_INTERCEPTION_RULES:
     '/appsec/v1/configs/%s/versions/%s/response-actions/challenge-interception-rules',
+  CHALLENGE_INJECTION_RULES:
+    '/appsec/v1/configs/%s/versions/%s/response-actions/challenge-injection-rules',
   TRANSACTIONAL_ENDPOINT_PROTECTION:
     '/appsec/v1/configs/%s/versions/%s/advanced-settings/transactional-endpoint-protection',
   JAVA_SCRIPT_INJECTION_RULES:

@@ -196,8 +196,10 @@ Commands:
   challenge-action                             Display contents of challenge action.
   modify-challenge-action                      Update existing challenge action.
   challenge-action-list                        List all challenge action.
-  challenge-interception-rules                 Display contents of challenge interception rules.
-  modify-challenge-interception-rules          Update existing challenge interception rules.
+  challenge-injection-rules                    Display contents of challenge injection rules.
+  modify-challenge-injection-rules             Update existing challenge injection rules.
+  challenge-interception-rules                 (Deprecated) Display contents of challenge interception rules.
+  modify-challenge-interception-rules          (Deprecated) Update existing challenge interception rules.
   client-side-security                         Display contents of client side security.
   modify-client-side-security                  Update existing client side security.
   create-conditional-action                    Create a conditional action.

@@ -7,6 +7,11 @@
   - `enable-override-attack-payload-logging` command enables attack payload logging override settings.
   - `disable-override-attack-payload-logging` command disables attack payload logging override settings.
   - `modify-override-attack-payload-logging` command modifies attack payload logging override settings for an existing policy.
+  - `challenge-injection-rules` command displays contents of challenge injection rules.
+  - `modify-challenge-injection-rules` command updates existing challenge injection rules.
+- Deprecated Commands:
+  - `challenge-interception-rules` command displays contents of challenge interception rules.
+  - `modify-challenge-interception-rules` command updates existing challenge interception rules.
 
 ## 2.7.0 (September Release)
 - New Commands:
