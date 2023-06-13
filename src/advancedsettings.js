@@ -193,26 +193,12 @@ class AdvancedSettings {
   /* **** API PII Learning **** */
 
   getApiPiiLearning() {
-    if (this._options.policy) {
-      return this._policyProvider.policyId().then(policyId => {
-        return this._version.readResource(URIs.SECURITY_POLICY_API_PII_LEARNING, [policyId]);
-      });
-    }
     return this._version.readResource(URIs.API_PII_LEARNING, []);
   }
 
   updateApiPiiLearning(enable) {
     let data = JSON.parse(fs.readFileSync(__dirname + '/../templates/apipiilearning.json', 'utf8'));
     data.enablePiiLearning = enable;
-    if (this._options.policy) {
-      return this._policyProvider.policyId().then(policyId => {
-        return this._version.updateResource(
-          URIs.SECURITY_POLICY_API_PII_LEARNING,
-          [policyId],
-          data
-        );
-      });
-    }
     return this._version.updateResource(URIs.API_PII_LEARNING, [], data);
   }
 

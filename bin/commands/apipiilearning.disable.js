@@ -21,11 +21,6 @@ class DisableApiPiiLearningCommand {
           "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
         group: 'Optional:',
         required: false
-      })
-      .string('--policy <id>', {
-        desc: 'Policy ID. If not provided, we try to use the policy available on file.',
-        group: 'Optional:',
-        required: false
       });
   }
   run(options) {
