@@ -15,6 +15,8 @@ class AdvancedSettings {
     this._policyProvider = new PolicyProvider(options);
   }
 
+  /* **** HTTP Header Logging **** */
+
   getLogging() {
     if (this._options.policy) {
       return this._policyProvider.policyId().then(policyId => {
@@ -86,6 +88,8 @@ class AdvancedSettings {
     }
   }
 
+  /* **** Prefetch Requests **** */
+
   getPrefetch() {
     return this._version.readResource(URIs.PREFETCH, []);
   }
@@ -104,6 +108,8 @@ class AdvancedSettings {
       throw `The file does not exists: ${this._options['file']}`;
     }
   }
+
+  /* **** Pragma Headers **** */
 
   getPragmaHeader() {
     if (this._options.policy) {
@@ -134,6 +140,8 @@ class AdvancedSettings {
     }
   }
 
+  /* **** Request Body (Request Size Inspection Limit) **** */
+
   getRequestBody() {
     if (this._options.policy) {
       return this._policyProvider.policyId().then(policyId => {
@@ -153,6 +161,8 @@ class AdvancedSettings {
     }
     return this._version.updateResource(URIs.REQUEST_BODY, [], payload);
   }
+
+  /* **** Evasive Path Match **** */
 
   getEvasivePathMatch() {
     if (this._options.policy) {
@@ -179,6 +189,20 @@ class AdvancedSettings {
     }
     return this._version.updateResource(URIs.EVASIVE_PATH_MATCH, [], data);
   }
+
+  /* **** API PII Learning **** */
+
+  getApiPiiLearning() {
+    return this._version.readResource(URIs.API_PII_LEARNING, []);
+  }
+
+  updateApiPiiLearning(enable) {
+    let data = JSON.parse(fs.readFileSync(__dirname + '/../templates/apipiilearning.json', 'utf8'));
+    data.enablePiiLearning = enable;
+    return this._version.updateResource(URIs.API_PII_LEARNING, [], data);
+  }
+
+  /* **** Attack Payload Logging **** */
 
   getAttackPayloadLogging() {
     if (this._options.policy) {

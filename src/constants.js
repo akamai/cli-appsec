@@ -90,6 +90,7 @@ const resources = {
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/bypass-network-lists',
   HTTP_HEADER_LOGGING: '/appsec/v1/configs/%s/versions/%s/advanced-settings/logging',
   EVASIVE_PATH_MATCH: '/appsec/v1/configs/%s/versions/%s/advanced-settings/evasive-path-match',
+  API_PII_LEARNING: '/appsec/v1/configs/%s/versions/%s/advanced-settings/pii-learning',
   PREFETCH: '/appsec/v1/configs/%s/versions/%s/advanced-settings/prefetch',
   PRAGMA_HEADER: '/appsec/v1/configs/%s/versions/%s/advanced-settings/pragma-header',
   SECURITY_POLICY_PRAGMA_HEADER:
