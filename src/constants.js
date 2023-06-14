@@ -104,8 +104,6 @@ const resources = {
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/advanced-settings/logging',
   SECURITY_POLICY_EVASIVE_PATH_MATCH:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/advanced-settings/evasive-path-match',
-  SECURITY_POLICY_API_PII_LEARNING:
-    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/advanced-settings/pii-learning',
   SECURITY_POLICY_ATTACK_PAYLOAD_LOGGING:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/advanced-settings/logging/attack-payload',
   VERSION_NOTES: '/appsec/v1/configs/%s/versions/%s/version-notes',
