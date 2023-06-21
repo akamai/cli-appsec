@@ -1,8 +1,29 @@
-## 2.7.0 (September Release)
+## 2.8.0 (June release)
+
 - New Commands:
+  - `api-pii-learning` command displays API PII settings.
+  - `attack-payload-logging` command displays attack payload logging settings.
+  - `challenge-injection-rules` command displays contents of challenge injection rules.
+  - `disable-api-pii-learning` command disables API PII learning settings.
+  - `disable-attack-payload-logging` command disables attack payload logging settings.
+  - `disable-override-attack-payload-logging` command disables attack payload logging override settings.
+  - `enable-api-pii-learning` command enables API PII learning settings.
+  - `enable-attack-payload-logging` command enables attack payload logging settings.
+  - `enable-override-attack-payload-logging` command enables attack payload logging override settings.
+  - `modify-attack-payload-logging` command modifies an existing attack payload logging settings.
+  - `modify-challenge-injection-rules` command updates existing challenge injection rules.
+  - `modify-override-attack-payload-logging` command modifies attack payload logging override settings for an existing policy.
+- Deprecated Commands:
+  - `challenge-interception-rules` command displays contents of challenge interception rules.
+  - `modify-challenge-interception-rules` command updates existing challenge interception rules.
+
+## 2.7.0 (September Release)
+
+- New Commands:
+
   - `eval-penalty-box` command displays evaluation penalty box action in a policy.
-  - `disable-eval-penalty-box` command disable evaluation penalty box in a policy.
-  - `enable-eval-penalty-box` command enable evaluation penalty box in a policy.
+  - `disable-eval-penalty-box` command disables evaluation penalty box in a policy.
+  - `enable-eval-penalty-box` command enables evaluation penalty box in a policy.
   - `malware-policies` command lists all malware policies.
   - `malware-policy` command displays contents of a malware policy.
   - `modify-malware-policy`command modifies an existing malware policy.
@@ -12,7 +33,7 @@
   - `disable-malware-policy` command removes actions to an existing malware policy in a firewall policy.
   - `enable-malware-policy` command assigns actions to an existing malware policy in a firewall policy.
   - `malware-content-types` command lists all malware content types.
-  
+
   - Moving BOTMAN CLI commands -
     - `akamai-bot-category` command displays contents of akamai bot category.
     - `akamai-bot-category-action` command displays contents of akamai bot category action.
@@ -95,8 +116,9 @@
     - `modify-transactional-endpoint` command updates existing transactional endpoint.
     - `transactional-endpoint-list` command lists all transactional endpoint.
     - `transactional-endpoint-protection` command displays contents of transactional endpoint protection.
-    - `modify-transactional-endpoint-protection` command updates existing transactional endpoint protection. 
-- CLI Enhancements 
+    - `modify-transactional-endpoint-protection` command updates existing transactional endpoint protection.
+
+- CLI Enhancements
   - Adding "--type" parameter to recommendations command:
     - Description:Use to get active or evaluation or all recommendations. Supported values are active|evaluation|all. If type not provided, default is active
     - Usage: `akamai appsec recommendations --type=active`
@@ -105,16 +127,19 @@
 - Fixing security vulnerabilities
 
 ## 2.6.0 (February Release)
+
 - New Command:
   - `activation-history` command lists activation history for the configuration
 
 ## 2.5.0 (January Release)
+
 - New Command:
   - `evasive-path-match` command displays the evasive path match settings
   - `enable-evasive-path-match` command enables evasive path match settings
   - `disable-evasive-path-match` command disable evasive path match settings
 
 ## 2.4.0 (August Release)
+
 - New Command:
   - `recommendations` command displays recommendations in a policy
   - `accept-recommendation` command accepts a recommendation
@@ -146,6 +171,7 @@
     - Usage: `akamai appsec configs --fields id,name,targetProduct --sort id,desc`
 - Adding option to specify "rule-update" flag while cloning a config version
 - New Command:
+
   - `modify-hostnames`: Modify hostnames for the configuration version
 
 - Bugfixes:

@@ -59,6 +59,7 @@ typings/
 
 .idea
 *.sh
+settings.json
 akamai-appsec-*-linux-*
 akamai-appsec-*-mac-*
 akamai-appsec-*-windows-*

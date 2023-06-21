@@ -1,11 +1,10 @@
-let ChallengeInterceptionRules = require('../../src/challengeinterceptionrules')
-  .challengeinterceptionrules;
+let AdvancedSettings = require('../../src/advancedsettings').advancedsettings;
 let out = require('./lib/out');
 
-class ChallengeInterceptionRulesCommand {
+class GetApiPiiLearningCommand {
   constructor() {
-    this.flags = 'challenge-interception-rules';
-    this.desc = '(Deprecated) Display contents of challenge interception rules.';
+    this.flags = 'api-pii-learning';
+    this.desc = 'Display the API PII Learning settings.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -24,16 +23,18 @@ class ChallengeInterceptionRulesCommand {
         required: false
       });
   }
-
   run(options) {
     out.print({
-      promise: new ChallengeInterceptionRules(options).getChallengeInterceptionRules(),
+      promise: new AdvancedSettings(options).getApiPiiLearning(),
       args: options,
       success: (args, data) => {
-        return JSON.stringify(data);
+        let enablePiiLearning = data.enablePiiLearning;
+        let str = [];
+        str.push(enablePiiLearning);
+        return str.join(require('os').EOL);
       }
     });
   }
 }
 
-module.exports = new ChallengeInterceptionRulesCommand();
+module.exports = new GetApiPiiLearningCommand();

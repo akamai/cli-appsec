@@ -90,17 +90,22 @@ const resources = {
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/bypass-network-lists',
   HTTP_HEADER_LOGGING: '/appsec/v1/configs/%s/versions/%s/advanced-settings/logging',
   EVASIVE_PATH_MATCH: '/appsec/v1/configs/%s/versions/%s/advanced-settings/evasive-path-match',
+  API_PII_LEARNING: '/appsec/v1/configs/%s/versions/%s/advanced-settings/pii-learning',
   PREFETCH: '/appsec/v1/configs/%s/versions/%s/advanced-settings/prefetch',
   PRAGMA_HEADER: '/appsec/v1/configs/%s/versions/%s/advanced-settings/pragma-header',
   SECURITY_POLICY_PRAGMA_HEADER:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/advanced-settings/pragma-header',
   REQUEST_BODY: '/appsec/v1/configs/%s/versions/%s/advanced-settings/request-body',
+  ATTACK_PAYLOAD_LOGGING:
+    '/appsec/v1/configs/%s/versions/%s/advanced-settings/logging/attack-payload',
   SECURITY_POLICY_REQUEST_BODY:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/advanced-settings/request-body',
   SECURITY_POLICY_HTTP_HEADER_LOGGING:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/advanced-settings/logging',
   SECURITY_POLICY_EVASIVE_PATH_MATCH:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/advanced-settings/evasive-path-match',
+  SECURITY_POLICY_ATTACK_PAYLOAD_LOGGING:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/advanced-settings/logging/attack-payload',
   VERSION_NOTES: '/appsec/v1/configs/%s/versions/%s/version-notes',
   HOSTNAME_COVERAGE: '/appsec/v1/hostname-coverage',
   HOSTNAME_COVERAGE_MATCH_TARGET:
@@ -170,6 +175,8 @@ const resources = {
   CUSTOM_DENY_ACTION: '/appsec/v1/configs/%s/versions/%s/response-actions/custom-deny-actions/%s',
   CHALLENGE_INTERCEPTION_RULES:
     '/appsec/v1/configs/%s/versions/%s/response-actions/challenge-interception-rules',
+  CHALLENGE_INJECTION_RULES:
+    '/appsec/v1/configs/%s/versions/%s/response-actions/challenge-injection-rules',
   TRANSACTIONAL_ENDPOINT_PROTECTION:
     '/appsec/v1/configs/%s/versions/%s/advanced-settings/transactional-endpoint-protection',
   JAVA_SCRIPT_INJECTION_RULES:

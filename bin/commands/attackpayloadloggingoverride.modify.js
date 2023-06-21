@@ -1,11 +1,10 @@
-let ChallengeInterceptionRules = require('../../src/challengeinterceptionrules')
-  .challengeinterceptionrules;
+let AdvancedSettings = require('../../src/advancedsettings').advancedsettings;
 let out = require('./lib/out');
 
-class ModifyChallengeInterceptionRulesCommand {
+class ModifyAttackPayloadLoggingOverrideCommand {
   constructor() {
-    this.flags = 'modify-challenge-interception-rules';
-    this.desc = '(Deprecated) Update existing challenge interception rules.';
+    this.flags = 'modify-override-attack-payload-logging';
+    this.desc = 'Modify the Attack Payload Logging Override settings.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -13,7 +12,9 @@ class ModifyChallengeInterceptionRulesCommand {
   setup(sywac) {
     sywac
       .positional('<@path>', {
-        paramsDesc: 'The input file path.'
+        paramsDesc: 'The input file path.',
+        group: 'Required:',
+        required: true
       })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
@@ -26,6 +27,11 @@ class ModifyChallengeInterceptionRulesCommand {
         group: 'Optional:',
         required: false
       })
+      .string('--policy <id>', {
+        desc: 'Policy ID.',
+        group: 'Required:',
+        required: true
+      })
       .check((argv, context) => {
         if (!argv['@path'].startsWith('@')) {
           return context.cliMessage("ERROR: Invalid file name, should start with '@'");
@@ -35,9 +41,8 @@ class ModifyChallengeInterceptionRulesCommand {
 
   run(options) {
     options.file = options['@path'].replace('@', '');
-
     out.print({
-      promise: new ChallengeInterceptionRules(options).updateChallengeInterceptionRules(),
+      promise: new AdvancedSettings(options).updateAttackPayloadLoggingOverride(),
       args: options,
       success: (args, data) => {
         return JSON.stringify(data);
@@ -46,4 +51,4 @@ class ModifyChallengeInterceptionRulesCommand {
   }
 }
 
-module.exports = new ModifyChallengeInterceptionRulesCommand();
+module.exports = new ModifyAttackPayloadLoggingOverrideCommand();

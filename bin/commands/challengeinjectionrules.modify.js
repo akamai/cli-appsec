@@ -1,11 +1,10 @@
-let ChallengeInterceptionRules = require('../../src/challengeinterceptionrules')
-  .challengeinterceptionrules;
+let ChallengeInjectionRules = require('../../src/challengeinjectionrules').challengeinjectionrules;
 let out = require('./lib/out');
 
-class ModifyChallengeInterceptionRulesCommand {
+class ModifyChallengeInjectionRulesCommand {
   constructor() {
-    this.flags = 'modify-challenge-interception-rules';
-    this.desc = '(Deprecated) Update existing challenge interception rules.';
+    this.flags = 'modify-challenge-injection-rules';
+    this.desc = 'Update existing challenge injection rules.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -37,7 +36,7 @@ class ModifyChallengeInterceptionRulesCommand {
     options.file = options['@path'].replace('@', '');
 
     out.print({
-      promise: new ChallengeInterceptionRules(options).updateChallengeInterceptionRules(),
+      promise: new ChallengeInjectionRules(options).updateChallengeInjectionRules(),
       args: options,
       success: (args, data) => {
         return JSON.stringify(data);
@@ -46,4 +45,4 @@ class ModifyChallengeInterceptionRulesCommand {
   }
 }
 
-module.exports = new ModifyChallengeInterceptionRulesCommand();
+module.exports = new ModifyChallengeInjectionRulesCommand();
