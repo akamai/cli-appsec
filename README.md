@@ -94,6 +94,7 @@ Commands:
   custom-bot-category-sequence                 Display contents of custom bot category sequence.
   custom-client                                Display contents of custom client.
   custom-client-list                           List all custom client.
+  custom-client-sequence                       Display contents of custom client sequence.
   custom-defined-bot                           Display contents of custom defined bot.
   custom-defined-bot-list                      List all custom defined bot.
   custom-deny                                  Display contents of custom deny action. 
@@ -186,6 +187,7 @@ Commands:
   modify-custom-bot-category-action            Update existing custom bot category action.
   modify-custom-bot-category-sequence          Update existing custom bot category sequence.
   modify-custom-client                         Update existing custom client.
+  modify-custom-client-sequence                Update existing custom client sequence.
   modify-custom-defined-bot                    Update existing custom defined bot.
   modify-custom-deny                           Update existing custom deny action.
   modify-custom-deny-action                    Update existing custom deny action.
