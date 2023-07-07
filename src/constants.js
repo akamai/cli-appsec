@@ -188,7 +188,8 @@ const resources = {
   BOT_PROTECTION_EXCEPTIONS:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/transactional-endpoints/bot-protection-exceptions',
   BOT_ENDPOINT_COVERAGE_REPORTS: '/appsec/v1/bot-endpoint-coverage-report',
-  BOT_ENDPOINT_COVERAGE_REPORT: '/appsec/v1/configs/%s/versions/%s/bot-endpoint-coverage-report'
+  BOT_ENDPOINT_COVERAGE_REPORT: '/appsec/v1/configs/%s/versions/%s/bot-endpoint-coverage-report',
+  CUSTOM_CLIENT_SEQUENCE: '/appsec/v1/configs/%s/versions/%s/custom-client-sequence'
 };
 
 define('URIS', resources);

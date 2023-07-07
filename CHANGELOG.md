@@ -1,3 +1,9 @@
+## 2.9.0 (Upcoming release)
+
+- New Commands:
+  - `custom-client-sequence` command displays custom client sequence.
+  - `modify-custom-client-sequence` command modifies an existing custom client sequence.
+
 ## 2.8.0 (June release)
 
 - New Commands:
