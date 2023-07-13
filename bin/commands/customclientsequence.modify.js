@@ -1,4 +1,4 @@
-let CustomClientSequence = require('../../src/customClientSequence').customClientSequence;
+let CustomClientSequence = require('../../src/customclientsequence').customClientSequence;
 let out = require('./lib/out');
 
 class ModifyCustomClientSequenceCommand {
