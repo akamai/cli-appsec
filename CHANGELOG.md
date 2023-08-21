@@ -3,6 +3,8 @@
 - New Commands:
   - `custom-client-sequence` command displays custom client sequence.
   - `modify-custom-client-sequence` command modifies an existing custom client sequence.
+- Templates:
+  - Adding `clientListMatch` sample object in crbTemplate.json
 
 ## 2.8.0 (June release)
 
