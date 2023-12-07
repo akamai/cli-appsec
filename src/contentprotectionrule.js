@@ -57,6 +57,10 @@ class ContentProtectionRule {
     return this._policy.deleteResource(URIs.CONTENT_PROTECTION_RULE, [this._options['rule_id']]);
   }
 
+  getContentProtectionRuleDetections() {
+    return this._policy.readResource(URIs.CONTENT_PROTECTION_RULE_DETECTIONS, []);
+  }
+
   getContentProtectionRuleDetectionSettings() {
     return this._policy.readResource(URIs.CONTENT_PROTECTION_RULE_DETECTION_SETTINGS, [
       this._options['rule_id']

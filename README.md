@@ -69,6 +69,7 @@ Commands:
   conditional-action-list                      List all conditional action.
   configs                                      List all available configurations.
   content-protection-rule                      Display contents of content protection rule.
+  content-protection-rule-detections           Display content protection rule detections.
   content-protection-rule-detection-settings   Display overridden detection settings of content protection rule.
   content-protection-rule-list                 List all content protection rules.
   content-protection-rule-sequence             Display contents of content bot category sequence.
