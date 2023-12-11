@@ -68,11 +68,17 @@ Commands:
   conditional-action                           Display contents of conditional action.
   conditional-action-list                      List all conditional action.
   configs                                      List all available configurations.
+  content-protection-rule                      Display contents of content protection rule.
+  content-protection-rule-detections           Display content protection rule detections.
+  content-protection-rule-detection-settings   Display overridden detection settings of content protection rule.
+  content-protection-rule-list                 List all content protection rules.
+  content-protection-rule-sequence             Display contents of content bot category sequence.
   contracts-groups                             List contracts and groups with KSD/WAP line items.
   create-api-match-target                      Creates an API match target.
   create-challenge-action                      Create a challenge action.
   create-conditional-action                    Create a conditional action.
   create-config                                Create a new security config.
+  create-content-protection-rule               Create a content protection rule.
   create-custom-bot-category                   Create a custom bot category.
   create-custom-client                         Create a custom client.
   create-custom-defined-bot                    Create a custom defined bot.
@@ -107,6 +113,7 @@ Commands:
   delete-challenge-action                      Delete a challenge action.
   delete-conditional-action                    Delete a conditional action.
   delete-config                                Delete a security config.
+  delete-content-protection-rule               Delete a content protection rule.
   delete-custom-bot-category                   Delete a custom bot category.
   delete-custom-client                         Delete a custom client.
   delete-custom-defined-bot                    Delete a custom defined bot.
@@ -183,6 +190,9 @@ Commands:
   modify-challenge-interception-rules          (Deprecated) Update existing challenge interception rules.
   modify-client-side-security                  Update existing client side security.
   modify-conditional-action                    Update existing conditional action.
+  modify-content-protection-rule               Update content protection rule.
+  modify-content-protection-rule-detection-settings Update detection settings of content protection rule.
+  modify-content-protection-rule-sequence      Update existing content protection rule sequence.
   modify-custom-bot-category                   Update existing custom bot category.
   modify-custom-bot-category-action            Update existing custom bot category action.
   modify-custom-bot-category-sequence          Update existing custom bot category sequence.
