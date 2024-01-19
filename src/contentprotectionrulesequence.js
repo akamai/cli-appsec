@@ -3,16 +3,16 @@
 const untildify = require('untildify');
 let fs = require('fs');
 let URIs = require('./constants').URIS;
-let Version = require('./versionsprovider').versionProvider;
+let Policy = require('./policy').policy;
 
 class ContentProtectionRuleSequence {
   constructor(options) {
     this._options = options;
-    this._version = new Version(options);
+    this._policy = new Policy(options);
   }
 
   getContentProtectionRuleSequence() {
-    return this._version.readResource(URIs.CONTENT_PROTECTION_RULE_SEQUENCE, []);
+    return this._policy.readResource(URIs.CONTENT_PROTECTION_RULE_SEQUENCE, []);
   }
 
   updateContentProtectionRuleSequence() {
@@ -24,7 +24,7 @@ class ContentProtectionRuleSequence {
       } catch (err) {
         throw 'The input JSON is not valid';
       }
-      return this._version.updateResource(URIs.CONTENT_PROTECTION_RULE_SEQUENCE, [], data);
+      return this._policy.updateResource(URIs.CONTENT_PROTECTION_RULE_SEQUENCE, [], data);
     } else {
       throw `The file does not exists: ${this._options['file']}`;
     }
