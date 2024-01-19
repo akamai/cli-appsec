@@ -15,7 +15,7 @@
 If left to these assumptions, the commands will perform slower than when these options are provided explicitly.
 ### Credentials
 In order to use this configuration, you need to:
-* Set up your credential files as described in the [authorization](https://developer../akamai-appsec.com/introduction/Prov_Creds.html) and [credentials](https://developer.akamai.com/introduction/Conf_Client.html) sections of the getting started guide on developer.akamai.com.  
+* Set up your credential files as described in the [authorization](https://developer.akamai.com/introduction/Prov_Creds.html) and [credentials](https://developer.akamai.com/introduction/Conf_Client.html) sections of the getting started guide on developer.akamai.com.  
 * When working through this process you need to give grants for the Application Security API.  The section in your configuration file should be called 'appsec' or 'default' unless you would like to pass the section name in every command using the `--section` option.
 
 ### Account Switching
@@ -23,7 +23,7 @@ Account switching can be performed by providing the `--account-key` option with 
 * In order to use this capability, an API client needs to be setup. Detailed information is available here https://learn.akamai.com/en-us/learn_akamai/getting_started_with_akamai_developers/developer_tools/accountSwitch.html
 
 ## Overview
-The akamai appsec Kit is a set of =js libraries that wraps Akamai's {OPEN} APIs to help simplify protection to the properties delivered by Akamai. This kit can be used [as a no-fuss command line utility](#akamai-appsec) to interact with the library.
+The akamai appsec Kit is a set of nodejs libraries that wraps Akamai's {OPEN} APIs to help simplify protection to the properties delivered by Akamai. This kit can be used [as a no-fuss command line utility](#akamai-appsec) to interact with the library.
 
 ```
 $ akamai appsec
