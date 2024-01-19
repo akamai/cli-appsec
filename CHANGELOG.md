@@ -3,6 +3,16 @@
 - New Commands:
   - `custom-client-sequence` command displays custom client sequence.
   - `modify-custom-client-sequence` command modifies an existing custom client sequence.
+  - `content-protection-rule` command displays contents of content protection rule.
+  - `content-protection-detections` command displays content protection detections.
+  - `content-protection-rule-detection-settings` command displays overridden detection settings of content protection rule.
+  - `content-protection-rule-list`  command lists all content protection rules.
+  - `content-protection-rule-sequence` command displays contents of content bot category sequence.
+  - `create-content-protection-rule` command creates a content protection rule.
+  - `delete-content-protection-rule` command deletes a content protection rule.
+  - `modify-content-protection-rule` command updates content protection rule.
+  - `modify-content-protection-rule-detection-settings` command updates detection settings of content protection rule.
+  - `modify-content-protection-rule-sequence` command updates existing content protection rule sequence.
 - Templates:
   - Adding `clientListMatch` sample object in crbTemplate.json
 

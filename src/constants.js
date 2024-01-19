@@ -194,7 +194,7 @@ const resources = {
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/content-protection-rules',
   CONTENT_PROTECTION_RULE:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/content-protection-rules/%s',
-  CONTENT_PROTECTION_RULE_DETECTIONS: '/appsec/v1/content-protection-rule-detections',
+  CONTENT_PROTECTION_DETECTIONS: '/appsec/v1/content-protection-detections',
   CONTENT_PROTECTION_RULE_DETECTION_SETTINGS:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/content-protection-rules/%s/detection-settings',
   CONTENT_PROTECTION_RULE_SEQUENCE:

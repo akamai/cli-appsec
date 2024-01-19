@@ -11,8 +11,8 @@ class ModifyContentProtectionRuleCommand {
 
   setup(sywac) {
     sywac
-      .positional('<rule-id>', {
-        paramsDesc: 'Rule ID'
+      .positional('<content-protection-rule-id>', {
+        paramsDesc: 'Content protection rule ID'
       })
       .positional('<@path>', {
         paramsDesc: 'The input file path.'
@@ -42,7 +42,7 @@ class ModifyContentProtectionRuleCommand {
   }
 
   run(options) {
-    options.rule_id = options['rule-id'];
+    options.rule_id = options['content-protection-rule-id'];
     options.file = options['@path'].replace('@', '');
 
     out.print({

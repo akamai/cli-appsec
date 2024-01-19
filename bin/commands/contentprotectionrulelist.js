@@ -1,7 +1,7 @@
 let ContentProtectionRule = require('../../src/contentprotectionrule').contentProtectionRule;
 let out = require('./lib/out');
 
-const objectType = 'operations';
+const objectType = 'contentProtectionRules';
 
 class ListContentProtectionRuleCommand {
   constructor() {
@@ -39,7 +39,7 @@ class ListContentProtectionRuleCommand {
       success: (args, data) => {
         let str = [];
         data[objectType].forEach(rule => {
-          str.push(rule.ruleId);
+          str.push(rule.contentProtectionRuleId);
         });
         return str.join(require('os').EOL);
       }

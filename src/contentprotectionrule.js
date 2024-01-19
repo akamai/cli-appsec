@@ -4,11 +4,14 @@ const untildify = require('untildify');
 let fs = require('fs');
 let URIs = require('./constants').URIS;
 let Policy = require('./policy').policy;
+let Edge =
+  process.env.MOCK_AKA_SEC_API === 'true' ? require('../mock/edgeClient') : require('./edgeClient');
 
 class ContentProtectionRule {
   constructor(options) {
     this._options = options;
     this._policy = new Policy(options);
+    this._edge = new Edge(options);
   }
 
   getContentProtectionRuleList() {
@@ -57,8 +60,8 @@ class ContentProtectionRule {
     return this._policy.deleteResource(URIs.CONTENT_PROTECTION_RULE, [this._options['rule_id']]);
   }
 
-  getContentProtectionRuleDetections() {
-    return this._policy.readResource(URIs.CONTENT_PROTECTION_RULE_DETECTIONS, []);
+  getContentProtectionDetections() {
+    return this._edge.get(URIs.CONTENT_PROTECTION_DETECTIONS, []);
   }
 
   getContentProtectionRuleDetectionSettings() {
