@@ -1,4 +1,4 @@
-let PenaltyBoxConditions = require('../../src/penaltyboxconditions').conditions;
+let PenaltyBoxConditions = require('../../src/penaltyboxconditions').penaltyBoxConditions;
 let out = require('./lib/out');
 
 class PenaltyBoxConditionsCommand {
