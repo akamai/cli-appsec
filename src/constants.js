@@ -198,7 +198,15 @@ const resources = {
   CONTENT_PROTECTION_RULE_DETECTION_SETTINGS:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/content-protection-rules/%s/detection-settings',
   CONTENT_PROTECTION_RULE_SEQUENCE:
-    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/content-protection-rule-sequence'
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/content-protection-rule-sequence',
+  PENALTY_BOX_CONDITIONS:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/penalty-box/conditions',
+  PENALTY_BOX_CONDITIONS_ALL:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/penalty-box/conditions',
+  EVAL_PENALTY_BOX_CONDITIONS:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-penalty-box/conditions',
+  EVAL_PENALTY_BOX_CONDITIONS_ALL:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/eval-penalty-box/conditions'
 };
 
 define('URIS', resources);

@@ -85,8 +85,10 @@ Commands:
   create-custom-deny                           Create-custom-deny action.
   create-custom-deny-action                    Create a custom deny action.
   create-custom-rule                           Create a custom rule.
+  create-eval-penalty-box-conditions           Create evaluation penalty box conditions in a policy.
   create-malware-policy                        Create a malware policy.
   create-match-target                          Creates a website match target.
+  create-penalty-box-conditions                Create penalty box conditions in a policy.
   create-rate-policy                           Create a rate policy.
   create-recategorized-akamai-defined-bot      Create a recategorized akamai defined bot.
   create-reputation-profile                    Create a reputation profile.
@@ -120,8 +122,10 @@ Commands:
   delete-custom-deny                           Delete a custom deny action.
   delete-custom-deny-action                    Delete a custom deny action.
   delete-custom-rule                           Delete a custom rule.
+  delete-eval-penalty-box-conditions           Delete evaluation penalty box conditions in a policy.
   delete-malware-policy                        Delete an existing malware policy.
   delete-match-target                          Deletes a match target.
+  delete-penalty-box-conditions                Delete penalty box conditions in a policy.
   delete-rate-policy                           Delete a rate policy.
   delete-recategorized-akamai-defined-bot      Delete a recategorized akamai defined bot.
   delete-reputation-profile                    Delete a reputation profile.
@@ -158,6 +162,7 @@ Commands:
   end-eval                                     Stop evaluation in a policy.
   eval-hostnames                               List all hosts under evaluation.
   eval-penalty-box                             Display evaluation penalty box action in a policy.
+  eval-penalty-box-conditions                  Display evaluation penalty box conditions in a policy.
   eval-rule-action                             Display evaluation rule action in a policy.
   eval-rule-actions                            Display evaluation rules and actions in a policy.
   eval-rule-condition-exception                Display evaluation rule conditions and exceptions in a policy.
@@ -203,6 +208,7 @@ Commands:
   modify-custom-deny-action                    Update existing custom deny action.
   modify-custom-rule                           Update existing custom rule.
   modify-eval-hostnames                        Modify hostnames under evaluation.
+  modify-eval-penalty-box-conditions           Modify evaluation penalty box conditions in a policy.
   modify-eval-rule-condition-exception         Update evaluation rule conditions and exceptions in a policy.
   modify-google-recaptcha-secret-key           Update existing google recaptcha secret key.
   modify-hostnames                             Modify hostnames for the configuration version.
@@ -210,6 +216,7 @@ Commands:
   modify-javascript-injection-rules            Update existing javascript injection rules.
   modify-malware-policy                        Modify an existing malware policy.
   modify-match-target                          Updates a website match target.
+  modify-penalty-box-conditions                Modify penalty box conditions in a policy.
   modify-pragma-header                         Update Pragma Header settings.
   modify-prefetch-requests                     Update the Prefetch Requests settings.
   modify-rate-policy                           Update existing rate policy.
@@ -223,6 +230,7 @@ Commands:
   modify-transactional-endpoint-protection     Update existing transactional endpoint protection.
   modify-version-notes                         Update the version notes.
   penalty-box                                  Display penalty box action in a policy.
+  penalty-box-conditions                       Display penalty box conditions in a policy.
   policies                                     List all security policies.
   pragma-header                                Display Pragma Header settings.
   prefetch-requests                            Display the Prefetch Requests settings.

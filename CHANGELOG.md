@@ -1,4 +1,4 @@
-## 2.9.0 (Upcoming release)
+## 2.9.0 ( release)
 
 - New Commands:
   - `custom-client-sequence` command displays custom client sequence.
@@ -13,8 +13,18 @@
   - `modify-content-protection-rule` command updates content protection rule.
   - `modify-content-protection-rule-detection-settings` command updates detection settings of content protection rule.
   - `modify-content-protection-rule-sequence` command updates existing content protection rule sequence.
+  - `penalty-box-conditions` command displays conditions of penalty box.
+  - `create-penalty-box-conditions` command creates conditions of penalty box.
+  - `modify-penalty-box-conditions` command modifies conditions of penalty box.
+  - `delete-penalty-box-conditions` command deletes conditions of penalty box.
+  - `eval-penalty-box-conditions` command displays conditions of evaluation penalty box.
+  - `create-eval-penalty-box-conditions` command creates conditions of evaluation penalty box.
+  - `modify-eval-penalty-box-conditions` command modifies conditions of evaluation penalty box.
+  - `delete-eval-penalty-box-conditions` command deletes conditions of evaluation penalty box.
 - Templates:
   - Adding `clientListMatch` sample object in crbTemplate.json
+  - Adding `penalty-box-conditions` sample object in penalty-box-conditions.json
+  - Adding `eval-penalty-box-conditions` sample object in eval-penalty-box-conditions.json
 
 ## 2.8.0 (June release)
 
