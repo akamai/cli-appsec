@@ -23,8 +23,6 @@
   - `delete-eval-penalty-box-conditions` command deletes conditions of evaluation penalty box.
 - Templates:
   - Adding `clientListMatch` sample object in crbTemplate.json
-  - Adding `penalty-box-conditions` sample object in penalty-box-conditions.json
-  - Adding `eval-penalty-box-conditions` sample object in eval-penalty-box-conditions.json
 
 ## 2.8.0 (June release)
 

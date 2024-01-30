@@ -1,5 +1,4 @@
 {
   "conditionOperator": "OR",
-  "conditions": [],
-  "sharedCondition": false
+  "conditions": []
 }
