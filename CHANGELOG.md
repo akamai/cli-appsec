@@ -1,4 +1,4 @@
-## 2.9.0 ( release)
+## 2.9.0 (Upcoming release)
 
 - New Commands:
   - `custom-client-sequence` command displays custom client sequence.
