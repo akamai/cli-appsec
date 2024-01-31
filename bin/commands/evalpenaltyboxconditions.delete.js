@@ -5,7 +5,7 @@ let out = require('./lib/out');
 class DeleteEvalPenaltyBoxConditionsCommand {
   constructor() {
     this.flags = 'delete-eval-penalty-box-conditions';
-    this.desc = 'Delete evaluation penalty box conditions in a policy.';
+    this.desc = 'Delete evaluation penalty box conditions from the policy.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

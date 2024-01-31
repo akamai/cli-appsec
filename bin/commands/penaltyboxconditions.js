@@ -4,7 +4,7 @@ let out = require('./lib/out');
 class PenaltyBoxConditionsCommand {
   constructor() {
     this.flags = 'penalty-box-conditions';
-    this.desc = 'Display penalty box conditions in a policy.';
+    this.desc = 'Display penalty box conditions for a policy.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

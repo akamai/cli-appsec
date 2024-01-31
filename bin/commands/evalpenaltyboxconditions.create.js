@@ -5,7 +5,7 @@ let out = require('./lib/out');
 class CreateEvalPenaltyBoxConditionsCommand {
   constructor() {
     this.flags = 'create-eval-penalty-box-conditions';
-    this.desc = 'Create evaluation penalty box conditions in a policy.';
+    this.desc = 'Create evaluation penalty box conditions for a policy.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
