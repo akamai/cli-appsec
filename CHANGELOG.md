@@ -13,6 +13,14 @@
   - `modify-content-protection-rule` command updates content protection rule.
   - `modify-content-protection-rule-detection-settings` command updates detection settings of content protection rule.
   - `modify-content-protection-rule-sequence` command updates existing content protection rule sequence.
+  - `penalty-box-conditions` command displays conditions of penalty box.
+  - `create-penalty-box-conditions` command creates conditions of penalty box.
+  - `modify-penalty-box-conditions` command modifies conditions of penalty box.
+  - `delete-penalty-box-conditions` command deletes conditions of penalty box.
+  - `eval-penalty-box-conditions` command displays conditions of evaluation penalty box.
+  - `create-eval-penalty-box-conditions` command creates conditions of evaluation penalty box.
+  - `modify-eval-penalty-box-conditions` command modifies conditions of evaluation penalty box.
+  - `delete-eval-penalty-box-conditions` command deletes conditions of evaluation penalty box.
 - Templates:
   - Adding `clientListMatch` sample object in crbTemplate.json
 
