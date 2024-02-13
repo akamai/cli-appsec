@@ -6,7 +6,11 @@ function define(name, value) {
 }
 
 const LOG = require('pino')({
-  level: process.env.LOG_LEVEL ? process.env.LOG_LEVEL : 'fatal',
+  level: process.env.LOG_LEVEL
+    ? process.env.LOG_LEVEL
+    : process.argv.includes('--debug')
+    ? 'debug'
+    : 'fatal',
   prettyPrint: true,
   name: 'app-sec'
 });
