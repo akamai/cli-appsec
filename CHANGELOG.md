@@ -1,4 +1,7 @@
 ## 3.0.0 (Upcoming release)
+- New Commands:
+  - `custom-bot-category-item-sequence`  Display contents of custom bot category item sequence.
+  - `modify-custom-bot-category-item-sequence` Update existing custom bot category item sequence.
 
 ## 2.9.0 (February 2024 release)
 
