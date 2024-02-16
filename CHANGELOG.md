@@ -1,5 +1,7 @@
 ## 2.9.0 (Upcoming release)
 
+- CLI Enhancements
+  - "--debug" flag support to log output in the debug mode
 - New Commands:
   - `custom-client-sequence` command displays custom client sequence.
   - `modify-custom-client-sequence` command modifies an existing custom client sequence.

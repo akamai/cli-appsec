@@ -9,6 +9,37 @@ const figlet = require('figlet');
 require('sywac')
   .preface(figlet.textSync('Akamai Appsec', 'Graffiti'), 'Unleashing the power of the Akamai application security via simple and easy to use CLI!')
   .commandDirectory('./commands')
+  .string('--accountkey', {
+    desc: 'Account ID to switch to when performing the operation.',
+    group: 'Command options:',
+    required: false,
+    hidden: true
+  })
+  .string('--account-key', {
+    desc: 'Account ID to switch to when performing the operation.',
+    group: 'Command options:',
+    required: false
+  })
+  .boolean('--debug', {
+    desc: 'Logging in the debug mode.',
+    group: 'Command options:',
+    required: false
+  })
+  .string('--edgerc', {
+    desc: 'The full path to the .edgerc file.',
+    group: 'Command options:',
+    required: false
+  })
+  .string('--fields', {
+    desc: 'Fields to be displayed from the response and can be comma separated multiple fields.',
+    group: 'Command options:',
+    required: false
+  })
+  .showHelpByDefault()
+  .help('--help', {
+    group: 'Command options:',
+    desc: 'Prints help information.'
+  })
   .boolean('--json', {
     desc: 'Print the raw json response. All commands respect this option.',
     group: 'Command options:',
@@ -19,23 +50,8 @@ require('sywac')
     group: 'Command options:',
     required: false
   })
-  .string('--fields', {
-    desc: 'Fields to be displayed from the response and can be comma separated multiple fields.',
-    group: 'Command options:',
-    required: false
-  })
-  .string('--sort', {
-    desc: 'Use for the sorting the response.',
-    group: 'Command options:',
-    required: false
-  })
   .boolean('--raw', {
     desc: 'Use to get fields in raw format (requires "--fields" argument).',
-    group: 'Command options:',
-    required: false
-  })
-  .string('--edgerc', {
-    desc: 'The full path to the .edgerc file.',
     group: 'Command options:',
     required: false
   })
@@ -44,25 +60,14 @@ require('sywac')
     group: 'Command options:',
     required: false
   })
-  .showHelpByDefault()
-  .help('--help', {
+  .string('--sort', {
+    desc: 'Use for the sorting the response.',
     group: 'Command options:',
-    desc: 'Prints help information.'
+    required: false
   })
   .boolean('--version', {
     group: 'Command options:',
     desc: 'Current version of the program.'
-  })
-  .string('--account-key', {
-    desc: 'Account ID to switch to when performing the operation.',
-    group: 'Command options:',
-    required: false
-  })
-  .string('--accountkey', {
-    desc: 'Account ID to switch to when performing the operation.',
-    group: 'Command options:',
-    required: false,
-    hidden: true
   })
   .epilogue('Copyright (C) Akamai Technologies, Inc\nVisit http://github.com/akamai/cli-appsec for detailed documentation.\n')
   .outputSettings({
