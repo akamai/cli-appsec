@@ -1,3 +1,5 @@
+## 3.0.0 (Upcoming release)
+
 ## 2.9.0 (February 2024 release)
 
 - CLI Enhancements
