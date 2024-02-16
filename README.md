@@ -100,6 +100,7 @@ Commands:
   custom-bot-category-action-list              List all custom bot category action.
   custom-bot-category-list                     List all custom bot category.
   custom-bot-category-sequence                 Display contents of custom bot category sequence.
+  custom-bot-category-item-sequence            Display contents of custom bot category item sequence.
   custom-client                                Display contents of custom client.
   custom-client-list                           List all custom client.
   custom-client-sequence                       Display contents of custom client sequence.
@@ -201,6 +202,7 @@ Commands:
   modify-custom-bot-category                   Update existing custom bot category.
   modify-custom-bot-category-action            Update existing custom bot category action.
   modify-custom-bot-category-sequence          Update existing custom bot category sequence.
+  modify-custom-bot-category-item-sequence     Update existing custom bot category item sequence.
   modify-custom-client                         Update existing custom client.
   modify-custom-client-sequence                Update existing custom client sequence.
   modify-custom-defined-bot                    Update existing custom defined bot.

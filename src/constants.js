@@ -132,6 +132,8 @@ const resources = {
   CUSTOM_BOT_CATEGORYS: '/appsec/v1/configs/%s/versions/%s/custom-bot-categories',
   CUSTOM_BOT_CATEGORY: '/appsec/v1/configs/%s/versions/%s/custom-bot-categories/%s',
   CUSTOM_BOT_CATEGORY_SEQUENCE: '/appsec/v1/configs/%s/versions/%s/custom-bot-category-sequence',
+  CUSTOM_BOT_CATEGORY_ITEM_SEQUENCE:
+    '/appsec/v1/configs/%s/versions/%s/custom-bot-categories/%s/custom-bot-category-item-sequence',
   CUSTOM_DEFINED_BOTS: '/appsec/v1/configs/%s/versions/%s/custom-defined-bots',
   CUSTOM_DEFINED_BOT: '/appsec/v1/configs/%s/versions/%s/custom-defined-bots/%s',
   RECATEGORIZED_AKAMAI_DEFINED_BOTS:
