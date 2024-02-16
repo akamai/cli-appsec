@@ -1,11 +1,11 @@
 {
   "name": "akamaicliappsec",
-  "version": "2.9.0",
+  "version": "3.0.0",
   "description": "A wrapping development kit to interface common tasks with akamai's Security {OPEN} API.",
   "repository": "https://github.com/akamai/cli-appsec",
   "license": "Apache-2.0",
   "engines": {
-    "node": ">=7.0.0"
+    "node": ">=14.0.0"
   },
   "scripts": {
     "lint": "eslint src",
