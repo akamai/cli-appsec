@@ -188,6 +188,14 @@
         "ChangeMe.com",
         "ChangeMe2.com"
       ]
+    },
+    {
+      "type": "clientListMatch",
+      "positiveMatch": true,
+      "value": [
+        "ChangeMe",
+        "ChangeMe2"
+      ]
     }
   ]
 }

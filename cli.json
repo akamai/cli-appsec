@@ -1,11 +1,11 @@
 {
   "requirements": {
-    "node": "7.0.0"
+    "node": "16.0.0"
   },
   "commands": [
     {
       "name": "appsec",
-      "version": "2.8.0",
+      "version": "2.9.0",
       "description": "Akamai Security tools for protecting websites."
       }
     ]

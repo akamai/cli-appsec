@@ -1,3 +1,31 @@
+## 2.9.0 (February 2024 release)
+
+- CLI Enhancements
+  - "--debug" flag support to log output in the debug mode
+- New Commands:
+  - `custom-client-sequence` command displays custom client sequence.
+  - `modify-custom-client-sequence` command modifies an existing custom client sequence.
+  - `content-protection-rule` command displays contents of content protection rule.
+  - `content-protection-detections` command displays content protection detections.
+  - `content-protection-rule-detection-settings` command displays overridden detection settings of content protection rule.
+  - `content-protection-rule-list`  command lists all content protection rules.
+  - `content-protection-rule-sequence` command displays contents of content bot category sequence.
+  - `create-content-protection-rule` command creates a content protection rule.
+  - `delete-content-protection-rule` command deletes a content protection rule.
+  - `modify-content-protection-rule` command updates content protection rule.
+  - `modify-content-protection-rule-detection-settings` command updates detection settings of content protection rule.
+  - `modify-content-protection-rule-sequence` command updates existing content protection rule sequence.
+  - `penalty-box-conditions` command displays conditions of penalty box.
+  - `create-penalty-box-conditions` command creates conditions of penalty box.
+  - `modify-penalty-box-conditions` command modifies conditions of penalty box.
+  - `delete-penalty-box-conditions` command deletes conditions of penalty box.
+  - `eval-penalty-box-conditions` command displays conditions of evaluation penalty box.
+  - `create-eval-penalty-box-conditions` command creates conditions of evaluation penalty box.
+  - `modify-eval-penalty-box-conditions` command modifies conditions of evaluation penalty box.
+  - `delete-eval-penalty-box-conditions` command deletes conditions of evaluation penalty box.
+- Templates:
+  - Adding `clientListMatch` sample object in crbTemplate.json
+
 ## 2.8.0 (June release)
 
 - New Commands:

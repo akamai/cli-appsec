@@ -3,7 +3,7 @@
 *NOTE:* This tool is intended to be installed via the Akamai CLI package manager, which can be retrieved from the releases page of the [Akamai CLI](https://github.com/akamai/cli) tool.
 
 ### Local Install, if you choose not to use the akamai package manager
-* Node 10
+* Node 16
 * npm install after *every* update
 * Ensure that the 'bin' subdirectory is in your path
 
@@ -68,19 +68,27 @@ Commands:
   conditional-action                           Display contents of conditional action.
   conditional-action-list                      List all conditional action.
   configs                                      List all available configurations.
+  content-protection-detections                Display content protection detections.
+  content-protection-rule                      Display contents of content protection rule.
+  content-protection-rule-detection-settings   Display overridden detection settings of content protection rule.
+  content-protection-rule-list                 List all content protection rules.
+  content-protection-rule-sequence             Display contents of content bot category sequence.
   contracts-groups                             List contracts and groups with KSD/WAP line items.
   create-api-match-target                      Creates an API match target.
   create-challenge-action                      Create a challenge action.
   create-conditional-action                    Create a conditional action.
   create-config                                Create a new security config.
+  create-content-protection-rule               Create a content protection rule.
   create-custom-bot-category                   Create a custom bot category.
   create-custom-client                         Create a custom client.
   create-custom-defined-bot                    Create a custom defined bot.
   create-custom-deny                           Create-custom-deny action.
   create-custom-deny-action                    Create a custom deny action.
   create-custom-rule                           Create a custom rule.
+  create-eval-penalty-box-conditions           Create evaluation penalty box conditions in a policy.
   create-malware-policy                        Create a malware policy.
   create-match-target                          Creates a website match target.
+  create-penalty-box-conditions                Create penalty box conditions in a policy.
   create-rate-policy                           Create a rate policy.
   create-recategorized-akamai-defined-bot      Create a recategorized akamai defined bot.
   create-reputation-profile                    Create a reputation profile.
@@ -94,6 +102,7 @@ Commands:
   custom-bot-category-sequence                 Display contents of custom bot category sequence.
   custom-client                                Display contents of custom client.
   custom-client-list                           List all custom client.
+  custom-client-sequence                       Display contents of custom client sequence.
   custom-defined-bot                           Display contents of custom defined bot.
   custom-defined-bot-list                      List all custom defined bot.
   custom-deny                                  Display contents of custom deny action. 
@@ -106,14 +115,17 @@ Commands:
   delete-challenge-action                      Delete a challenge action.
   delete-conditional-action                    Delete a conditional action.
   delete-config                                Delete a security config.
+  delete-content-protection-rule               Delete a content protection rule.
   delete-custom-bot-category                   Delete a custom bot category.
   delete-custom-client                         Delete a custom client.
   delete-custom-defined-bot                    Delete a custom defined bot.
   delete-custom-deny                           Delete a custom deny action.
   delete-custom-deny-action                    Delete a custom deny action.
   delete-custom-rule                           Delete a custom rule.
+  delete-eval-penalty-box-conditions           Delete evaluation penalty box conditions in a policy.
   delete-malware-policy                        Delete an existing malware policy.
   delete-match-target                          Deletes a match target.
+  delete-penalty-box-conditions                Delete penalty box conditions in a policy.
   delete-rate-policy                           Delete a rate policy.
   delete-recategorized-akamai-defined-bot      Delete a recategorized akamai defined bot.
   delete-reputation-profile                    Delete a reputation profile.
@@ -150,6 +162,7 @@ Commands:
   end-eval                                     Stop evaluation in a policy.
   eval-hostnames                               List all hosts under evaluation.
   eval-penalty-box                             Display evaluation penalty box action in a policy.
+  eval-penalty-box-conditions                  Display evaluation penalty box conditions in a policy.
   eval-rule-action                             Display evaluation rule action in a policy.
   eval-rule-actions                            Display evaluation rules and actions in a policy.
   eval-rule-condition-exception                Display evaluation rule conditions and exceptions in a policy.
@@ -182,15 +195,20 @@ Commands:
   modify-challenge-interception-rules          (Deprecated) Update existing challenge interception rules.
   modify-client-side-security                  Update existing client side security.
   modify-conditional-action                    Update existing conditional action.
+  modify-content-protection-rule               Update content protection rule.
+  modify-content-protection-rule-detection-settings Update detection settings of content protection rule.
+  modify-content-protection-rule-sequence      Update existing content protection rule sequence.
   modify-custom-bot-category                   Update existing custom bot category.
   modify-custom-bot-category-action            Update existing custom bot category action.
   modify-custom-bot-category-sequence          Update existing custom bot category sequence.
   modify-custom-client                         Update existing custom client.
+  modify-custom-client-sequence                Update existing custom client sequence.
   modify-custom-defined-bot                    Update existing custom defined bot.
   modify-custom-deny                           Update existing custom deny action.
   modify-custom-deny-action                    Update existing custom deny action.
   modify-custom-rule                           Update existing custom rule.
   modify-eval-hostnames                        Modify hostnames under evaluation.
+  modify-eval-penalty-box-conditions           Modify evaluation penalty box conditions in a policy.
   modify-eval-rule-condition-exception         Update evaluation rule conditions and exceptions in a policy.
   modify-google-recaptcha-secret-key           Update existing google recaptcha secret key.
   modify-hostnames                             Modify hostnames for the configuration version.
@@ -198,6 +216,7 @@ Commands:
   modify-javascript-injection-rules            Update existing javascript injection rules.
   modify-malware-policy                        Modify an existing malware policy.
   modify-match-target                          Updates a website match target.
+  modify-penalty-box-conditions                Modify penalty box conditions in a policy.
   modify-pragma-header                         Update Pragma Header settings.
   modify-prefetch-requests                     Update the Prefetch Requests settings.
   modify-rate-policy                           Update existing rate policy.
@@ -211,6 +230,7 @@ Commands:
   modify-transactional-endpoint-protection     Update existing transactional endpoint protection.
   modify-version-notes                         Update the version notes.
   penalty-box                                  Display penalty box action in a policy.
+  penalty-box-conditions                       Display penalty box conditions in a policy.
   policies                                     List all security policies.
   pragma-header                                Display Pragma Header settings.
   prefetch-requests                            Display the Prefetch Requests settings.
