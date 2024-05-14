@@ -2,6 +2,11 @@
 - New Commands:
   - `custom-bot-category-item-sequence`  Display contents of custom bot category item sequence.
   - `modify-custom-bot-category-item-sequence` Update existing custom bot category item sequence.
+  - `content-protection-javascript-injection-rule-list` Display contents of content protection javascript injection rules.
+  - `content-protection-javascript-injection-rule` Display contents of content protection javascript injection rule.
+  - `create-content-protection-javascript-injection-rule` Create a content protection javascript injection rule.
+  - `modify-content-protection-javascript-injection-rule` Update a content protection JavaScript injection rule.
+  - `delete-content-protection-javascript-injection-rule` Delete a content protection JavaScript injection rule.
 
 ## 2.9.0 (February 2024 release)
 

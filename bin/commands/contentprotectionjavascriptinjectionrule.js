@@ -1,17 +1,20 @@
-let ContentProtectionRuleSequence = require('../../src/contentprotectionrulesequence')
-  .contentProtectionRuleSequence;
+let ContentProtectionJavaScriptInjectionRule = require('../../src/contentprotectionjavascriptinjectionrule')
+  .contentProtectionJavaScriptInjectionRule;
 let out = require('./lib/out');
 
-class ContentProtectionRuleSequenceCommand {
+class ContentProtectionJavaScriptInjectionRuleCommand {
   constructor() {
-    this.flags = 'content-protection-rule-sequence';
-    this.desc = 'Display contents of content protection rule sequence.';
+    this.flags = 'content-protection-javascript-injection-rule';
+    this.desc = 'Display contents of content protection javascript injection rule.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
 
   setup(sywac) {
     sywac
+      .positional('<content-protection-javascript-injection-rule-id>', {
+        paramsDesc: 'Content protection JavaScript injection rule ID'
+      })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
         group: 'Optional:',
@@ -32,8 +35,12 @@ class ContentProtectionRuleSequenceCommand {
   }
 
   run(options) {
+    options.rule_id = options['content-protection-javascript-injection-rule-id'];
+
     out.print({
-      promise: new ContentProtectionRuleSequence(options).getContentProtectionRuleSequence(),
+      promise: new ContentProtectionJavaScriptInjectionRule(
+        options
+      ).getContentProtectionJavaScriptInjectionRule(),
       args: options,
       success: (args, data) => {
         return JSON.stringify(data);
@@ -42,4 +49,4 @@ class ContentProtectionRuleSequenceCommand {
   }
 }
 
-module.exports = new ContentProtectionRuleSequenceCommand();
+module.exports = new ContentProtectionJavaScriptInjectionRuleCommand();
