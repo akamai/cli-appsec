@@ -1,17 +1,20 @@
-let ContentProtectionRuleSequence = require('../../src/contentprotectionrulesequence')
-  .contentProtectionRuleSequence;
+let ContentProtectionJavaScriptInjectionRule = require('../../src/contentprotectionjavascriptinjectionrule')
+  .contentProtectionJavaScriptInjectionRule;
 let out = require('./lib/out');
 
-class ContentProtectionRuleSequenceCommand {
+class CreateContentProtectionJavaScriptInjectionRuleCommand {
   constructor() {
-    this.flags = 'content-protection-rule-sequence';
-    this.desc = 'Display contents of content protection rule sequence.';
+    this.flags = 'create-content-protection-javascript-injection-rule';
+    this.desc = 'Create a content protection javascript injection rule.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
 
   setup(sywac) {
     sywac
+      .positional('<@path>', {
+        paramsDesc: 'The input file path.'
+      })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
         group: 'Optional:',
@@ -28,12 +31,21 @@ class ContentProtectionRuleSequenceCommand {
           'Policy ID. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
         group: 'Optional:',
         required: false
+      })
+      .check((argv, context) => {
+        if (!argv['@path'].startsWith('@')) {
+          return context.cliMessage("ERROR: Invalid file name, should start with '@'");
+        }
       });
   }
 
   run(options) {
+    options.file = options['@path'].replace('@', '');
+
     out.print({
-      promise: new ContentProtectionRuleSequence(options).getContentProtectionRuleSequence(),
+      promise: new ContentProtectionJavaScriptInjectionRule(
+        options
+      ).addContentProtectionJavaScriptInjectionRule(),
       args: options,
       success: (args, data) => {
         return JSON.stringify(data);
@@ -42,4 +54,4 @@ class ContentProtectionRuleSequenceCommand {
   }
 }
 
-module.exports = new ContentProtectionRuleSequenceCommand();
+module.exports = new CreateContentProtectionJavaScriptInjectionRuleCommand();

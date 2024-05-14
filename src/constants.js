@@ -205,6 +205,10 @@ const resources = {
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/content-protection-rules/%s/detection-settings',
   CONTENT_PROTECTION_RULE_SEQUENCE:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/content-protection-rule-sequence',
+  CONTENT_PROTECTION_JS_INJECTION_RULES:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/content-protection-javascript-injection-rules',
+  CONTENT_PROTECTION_JS_INJECTION_RULE:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/content-protection-javascript-injection-rules/%s',
   PENALTY_BOX_CONDITIONS:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/penalty-box/conditions',
   PENALTY_BOX_CONDITIONS_ALL:
