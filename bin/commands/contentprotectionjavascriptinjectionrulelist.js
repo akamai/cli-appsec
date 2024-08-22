@@ -1,11 +1,11 @@
-let ContentProtectionRuleSequence = require('../../src/contentprotectionrulesequence')
-  .contentProtectionRuleSequence;
+let ContentProtectionJavaScriptInjectionRule = require('../../src/contentprotectionjavascriptinjectionrule')
+  .contentProtectionJavaScriptInjectionRule;
 let out = require('./lib/out');
 
-class ContentProtectionRuleSequenceCommand {
+class ContentProtectionJavaScriptInjectionRuleListCommand {
   constructor() {
-    this.flags = 'content-protection-rule-sequence';
-    this.desc = 'Display contents of content protection rule sequence.';
+    this.flags = 'content-protection-javascript-injection-rule-list';
+    this.desc = 'Display contents of content protection javascript injection rules.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -33,7 +33,9 @@ class ContentProtectionRuleSequenceCommand {
 
   run(options) {
     out.print({
-      promise: new ContentProtectionRuleSequence(options).getContentProtectionRuleSequence(),
+      promise: new ContentProtectionJavaScriptInjectionRule(
+        options
+      ).getContentProtectionJavaScriptInjectionRules(),
       args: options,
       success: (args, data) => {
         return JSON.stringify(data);
@@ -42,4 +44,4 @@ class ContentProtectionRuleSequenceCommand {
   }
 }
 
-module.exports = new ContentProtectionRuleSequenceCommand();
+module.exports = new ContentProtectionJavaScriptInjectionRuleListCommand();

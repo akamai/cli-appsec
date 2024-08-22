@@ -136,6 +136,8 @@ const resources = {
   CUSTOM_BOT_CATEGORYS: '/appsec/v1/configs/%s/versions/%s/custom-bot-categories',
   CUSTOM_BOT_CATEGORY: '/appsec/v1/configs/%s/versions/%s/custom-bot-categories/%s',
   CUSTOM_BOT_CATEGORY_SEQUENCE: '/appsec/v1/configs/%s/versions/%s/custom-bot-category-sequence',
+  CUSTOM_BOT_CATEGORY_ITEM_SEQUENCE:
+    '/appsec/v1/configs/%s/versions/%s/custom-bot-categories/%s/custom-bot-category-item-sequence',
   CUSTOM_DEFINED_BOTS: '/appsec/v1/configs/%s/versions/%s/custom-defined-bots',
   CUSTOM_DEFINED_BOT: '/appsec/v1/configs/%s/versions/%s/custom-defined-bots/%s',
   RECATEGORIZED_AKAMAI_DEFINED_BOTS:
@@ -203,6 +205,10 @@ const resources = {
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/content-protection-rules/%s/detection-settings',
   CONTENT_PROTECTION_RULE_SEQUENCE:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/content-protection-rule-sequence',
+  CONTENT_PROTECTION_JS_INJECTION_RULES:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/content-protection-javascript-injection-rules',
+  CONTENT_PROTECTION_JS_INJECTION_RULE:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/content-protection-javascript-injection-rules/%s',
   PENALTY_BOX_CONDITIONS:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/penalty-box/conditions',
   PENALTY_BOX_CONDITIONS_ALL:

@@ -1,4 +1,15 @@
-## 2.9.0 (February 2024 release)
+## 3.0.0 (August 2024 Release)
+
+- New Commands:
+  - `custom-bot-category-item-sequence` Display contents of custom bot category item sequence.
+  - `modify-custom-bot-category-item-sequence` Update existing custom bot category item sequence.
+  - `content-protection-javascript-injection-rule-list` Display contents of content protection javascript injection rules.
+  - `content-protection-javascript-injection-rule` Display contents of content protection javascript injection rule.
+  - `create-content-protection-javascript-injection-rule` Create a content protection javascript injection rule.
+  - `modify-content-protection-javascript-injection-rule` Update a content protection JavaScript injection rule.
+  - `delete-content-protection-javascript-injection-rule` Delete a content protection JavaScript injection rule.
+
+## 2.9.0 (February 2024 Release)
 
 - CLI Enhancements
   - "--debug" flag support to log output in the debug mode
@@ -8,7 +19,7 @@
   - `content-protection-rule` command displays contents of content protection rule.
   - `content-protection-detections` command displays content protection detections.
   - `content-protection-rule-detection-settings` command displays overridden detection settings of content protection rule.
-  - `content-protection-rule-list`  command lists all content protection rules.
+  - `content-protection-rule-list` command lists all content protection rules.
   - `content-protection-rule-sequence` command displays contents of content bot category sequence.
   - `create-content-protection-rule` command creates a content protection rule.
   - `delete-content-protection-rule` command deletes a content protection rule.
@@ -26,7 +37,7 @@
 - Templates:
   - Adding `clientListMatch` sample object in crbTemplate.json
 
-## 2.8.0 (June release)
+## 2.8.0 (June 2023 release)
 
 - New Commands:
   - `api-pii-learning` command displays API PII settings.
@@ -45,7 +56,7 @@
   - `challenge-interception-rules` command displays contents of challenge interception rules.
   - `modify-challenge-interception-rules` command updates existing challenge interception rules.
 
-## 2.7.0 (September Release)
+## 2.7.0 (September 2022 Release)
 
 - New Commands:
 
@@ -61,7 +72,6 @@
   - `disable-malware-policy` command removes actions to an existing malware policy in a firewall policy.
   - `enable-malware-policy` command assigns actions to an existing malware policy in a firewall policy.
   - `malware-content-types` command lists all malware content types.
-
   - Moving BOTMAN CLI commands -
     - `akamai-bot-category` command displays contents of akamai bot category.
     - `akamai-bot-category-action` command displays contents of akamai bot category action.
@@ -154,19 +164,19 @@
   - Supporting "--accountkey" flag to switch the account when performing the operation
 - Fixing security vulnerabilities
 
-## 2.6.0 (February Release)
+## 2.6.0 (February 2022 Release)
 
 - New Command:
   - `activation-history` command lists activation history for the configuration
 
-## 2.5.0 (January Release)
+## 2.5.0 (January 2022 Release)
 
 - New Command:
   - `evasive-path-match` command displays the evasive path match settings
   - `enable-evasive-path-match` command enables evasive path match settings
   - `disable-evasive-path-match` command disable evasive path match settings
 
-## 2.4.0 (August Release)
+## 2.4.0 (August 2021 Release)
 
 - New Command:
   - `recommendations` command displays recommendations in a policy
@@ -175,14 +185,14 @@
   - `reset-recommendation` command resets a recommendation
 - Renaming `start-eval` command parameter - `mode` to `eval-mode`
 
-## 2.3.0 (July Release)
+## 2.3.0 (July 2021 Release)
 
 - WAP Plus support for selected-hostnames, modify-hostnames, and network-lists
 - Added "mode" parameter to support ASE (Auto and Manual) for the "start-eval" command
 - Added "threat-intel", "enable-threat-intel", and "disable-threat-intel" commands
 - Support for including hostnames ("--include-hostnames") and contract-group ("--include-contract-group") in the "configs" command
 
-## 2.2.0 (May Release)
+## 2.2.0 (May 2021 Release)
 
 - CLI Enhancements - adding "--query", "--fields", "--raw", and "--sort" flags.
   - --query:
@@ -199,15 +209,13 @@
     - Usage: `akamai appsec configs --fields id,name,targetProduct --sort id,desc`
 - Adding option to specify "rule-update" flag while cloning a config version
 - New Command:
-
   - `modify-hostnames`: Modify hostnames for the configuration version
-
 - Bugfixes:
   - When all hostnames are selected for the website match-target, command will return "ALL_HOSTNAMES" (instead of "undefined")
   - `modify-bypass-network-lists` command will return all the network lists instead of JSON (when --json option is not provided)
   - `create-security-policy` command will return policyId instead of JSON (when --json option is not provided)
 
-## 2.1.0
+## 2.1.0 (April 2021 Release)
 
 - Commands:
   - Pragma header (list and modify)

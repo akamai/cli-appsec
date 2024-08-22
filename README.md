@@ -69,6 +69,8 @@ Commands:
   conditional-action-list                      List all conditional action.
   configs                                      List all available configurations.
   content-protection-detections                Display content protection detections.
+  content-protection-javascript-injection-rule-list Display contents of content protection javascript injection rules.
+  content-protection-javascript-injection-rule  Display contents of content protection javascript injection rule.
   content-protection-rule                      Display contents of content protection rule.
   content-protection-rule-detection-settings   Display overridden detection settings of content protection rule.
   content-protection-rule-list                 List all content protection rules.
@@ -79,6 +81,7 @@ Commands:
   create-conditional-action                    Create a conditional action.
   create-config                                Create a new security config.
   create-content-protection-rule               Create a content protection rule.
+  create-content-protection-javascript-injection-rule  Create a content protection javascript injection rule.
   create-custom-bot-category                   Create a custom bot category.
   create-custom-client                         Create a custom client.
   create-custom-defined-bot                    Create a custom defined bot.
@@ -100,6 +103,7 @@ Commands:
   custom-bot-category-action-list              List all custom bot category action.
   custom-bot-category-list                     List all custom bot category.
   custom-bot-category-sequence                 Display contents of custom bot category sequence.
+  custom-bot-category-item-sequence            Display contents of custom bot category item sequence.
   custom-client                                Display contents of custom client.
   custom-client-list                           List all custom client.
   custom-client-sequence                       Display contents of custom client sequence.
@@ -116,6 +120,7 @@ Commands:
   delete-conditional-action                    Delete a conditional action.
   delete-config                                Delete a security config.
   delete-content-protection-rule               Delete a content protection rule.
+  delete-content-protection-javascript-injection-rule Delete a content protection JavaScript injection rule.
   delete-custom-bot-category                   Delete a custom bot category.
   delete-custom-client                         Delete a custom client.
   delete-custom-defined-bot                    Delete a custom defined bot.
@@ -196,11 +201,13 @@ Commands:
   modify-client-side-security                  Update existing client side security.
   modify-conditional-action                    Update existing conditional action.
   modify-content-protection-rule               Update content protection rule.
+  modify-content-protection-javascript-injection-rule Update a content protection JavaScript injection rule.
   modify-content-protection-rule-detection-settings Update detection settings of content protection rule.
   modify-content-protection-rule-sequence      Update existing content protection rule sequence.
   modify-custom-bot-category                   Update existing custom bot category.
   modify-custom-bot-category-action            Update existing custom bot category action.
   modify-custom-bot-category-sequence          Update existing custom bot category sequence.
+  modify-custom-bot-category-item-sequence     Update existing custom bot category item sequence.
   modify-custom-client                         Update existing custom client.
   modify-custom-client-sequence                Update existing custom client sequence.
   modify-custom-defined-bot                    Update existing custom defined bot.
