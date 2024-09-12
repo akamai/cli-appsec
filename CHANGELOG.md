@@ -12,6 +12,7 @@
   - `account-protection-user-allow-list-id`                        Display user allow list id for account protection.
   - `modify-account-protection-user-allow-list-id`                 Modify user allow list id for account protection.
   - `delete-account-protection-user-allow-list-id`                 Delete user allow list id for account protection.
+  - `account-protection-risk-actions`                              Display allowed risk actions for account protected endpoints.
 
 ## 3.0.0 (August 2024 Release)
 

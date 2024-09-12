@@ -288,6 +288,7 @@ Commands:
   account-protection-user-allow-list-id                            Display user allow list id for account protection.
   modify-account-protection-user-allow-list-id                     Modify user allow list id for account protection.
   delete-account-protection-user-allow-list-id                     Delete user allow list id for account protection.
+  account-protection-risk-actions                                  Display allowed risk actions for account protected endpoints.
   update-eval                                                      Update evaluation in a policy.
   upgrade-details                                                  Display rules updates.
   version                                                          Read a config version.
