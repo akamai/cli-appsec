@@ -34,6 +34,11 @@ Commands:
   activate                                                         Activate a version.
   activation                                                       Get activation status.
   activation-history                                               List activation history for the configuration.
+  account-protection-transactional-endpoint-list                   List all account protected transactional endpoints.
+  account-protection-transactional-endpoint-protection             Display account protected advanced settings for transactional endpoints.
+  account-protection-settings                                      Display account protection settings for a security policy.
+  account-protection-user-allow-list-id                            Display user allow list id for account protection.
+  account-protection-risk-actions                                  Display allowed risk actions for account protected endpoints.
   akamai-bot-category                                              Display contents of akamai bot category.
   akamai-bot-category-action                                       Display contents of akamai bot category action.
   akamai-bot-category-action-list                                  List all akamai bot category action.
@@ -77,6 +82,7 @@ Commands:
   content-protection-rule-sequence                                 Display contents of content bot category sequence.
   contracts-groups                                                 List contracts and groups with KSD/WAP line items.
   create-api-match-target                                          Creates an API match target.
+  create-account-protection-transactional-endpoints                Create List of transactional endpoints for account protection.
   create-challenge-action                                          Create a challenge action.
   create-conditional-action                                        Create a conditional action.
   create-config                                                    Create a new security config.
@@ -116,6 +122,8 @@ Commands:
   custom-rule                                                      Display contents of custom rule.
   custom-rules                                                     List all custom rules.
   decline-recommendation                                           Decline a recommendation.
+  delete-account-protection-transactional-endpoint                 Delete a account protected transactional endpoint.
+  delete-account-protection-user-allow-list-id                     Delete user allow list id for account protection.
   delete-challenge-action                                          Delete a challenge action.
   delete-conditional-action                                        Delete a conditional action.
   delete-config                                                    Delete a security config.
@@ -187,6 +195,10 @@ Commands:
   match-target-order                                               Change the match target sequence.
   match-targets                                                    List all match targets.
   mode                                                             Display the WAF Mode.
+  modify-account-protection-transactional-endpoint                 Update a transactional endpoint for account protection.
+  modify-account-protection-settings                               Modify account protection settings for a security policy.
+  modify-account-protection-user-allow-list-id                     Modify user allow list id for account protection.
+  modify-account-protection-transactional-endpoint-protection      Modify account protected advanced settings for transactional endpoints.
   modify-akamai-bot-category-action                                Update existing akamai bot category action.
   modify-api-match-target                                          Updates an API match target.
   modify-attackgroup-condition-exception                           Update attack group exceptions.    
@@ -277,18 +289,6 @@ Commands:
   transactional-endpoint                                           Display contents of transactional endpoint.
   transactional-endpoint-list                                      List all transactional endpoint.
   transactional-endpoint-protection                                Display contents of transactional endpoint protection.
-  account-protection-transactional-endpoint-list                   List all account protected transactional endpoints.
-  create-account-protection-transactional-endpoints                Create List of transactional endpoints for account protection.
-  modify-account-protection-transactional-endpoint                 Update a transactional endpoint for account protection.
-  delete-account-protection-transactional-endpoint                 Delete a account protected transactional endpoint.
-  account-protection-settings                                      Display account protection settings for a security policy.
-  modify-account-protection-settings                               Modify account protection settings for a security policy.
-  account-protection-transactional-endpoint-protection             Display account protected advanced settings for transactional endpoints.
-  modify-account-protection-transactional-endpoint-protection      Modify account protected advanced settings for transactional endpoints.
-  account-protection-user-allow-list-id                            Display user allow list id for account protection.
-  modify-account-protection-user-allow-list-id                     Modify user allow list id for account protection.
-  delete-account-protection-user-allow-list-id                     Delete user allow list id for account protection.
-  account-protection-risk-actions                                  Display allowed risk actions for account protected endpoints.
   update-eval                                                      Update evaluation in a policy.
   upgrade-details                                                  Display rules updates.
   version                                                          Read a config version.
