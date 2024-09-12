@@ -1,3 +1,18 @@
+## 3.1.0 (Sept 2024 Release)
+
+- New Commands:
+  - `account-protection-transactional-endpoint-list`               Display List of all account protected transactional endpoints.
+  - `create-account-protection-transactional-endpoints`            Create List of transactional endpoints for account protection.
+  - `modify-account-protection-transactional-endpoint`             Update a transactional endpoint for account protection.
+  - `delete-account-protection-transactional-endpoint`             Delete a account protected transactional endpoint.
+  - `account-protection-settings`                                  Display account protection settings for a security policy.
+  - `modify-account-protection-settings`                           Modify account protection settings for a security policy.
+  - `account-protection-transactional-endpoint-protection`         Display account protected advanced settings for transactional endpoints.
+  - `modify-account-protection-transactional-endpoint-protection`  Modify account protected advanced settings for transactional endpoints.
+  - `account-protection-user-allow-list-id`                        Display user allow list id for account protection.
+  - `modify-account-protection-user-allow-list-id`                 Modify user allow list id for account protection.
+  - `delete-account-protection-user-allow-list-id`                 Delete user allow list id for account protection.
+
 ## 3.0.0 (August 2024 Release)
 
 - New Commands:
