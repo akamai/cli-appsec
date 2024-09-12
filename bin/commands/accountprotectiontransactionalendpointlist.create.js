@@ -6,7 +6,7 @@ const objectType = 'operations';
 
 class CreateAccountProtectionTransactionEndpointsCommand {
   constructor() {
-    this.flags = 'create-account-protection-transactional-endpoints';
+    this.flags = 'create-account-protection-transactional-endpoint-list';
     this.desc = 'Create account protection transactional endpoints.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);

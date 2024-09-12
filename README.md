@@ -82,7 +82,7 @@ Commands:
   content-protection-rule-sequence                                 Display contents of content bot category sequence.
   contracts-groups                                                 List contracts and groups with KSD/WAP line items.
   create-api-match-target                                          Creates an API match target.
-  create-account-protection-transactional-endpoints                Create List of transactional endpoints for account protection.
+  create-account-protection-transactional-endpoint-list            Create List of transactional endpoints for account protection.
   create-challenge-action                                          Create a challenge action.
   create-conditional-action                                        Create a conditional action.
   create-config                                                    Create a new security config.
