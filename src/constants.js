@@ -218,9 +218,9 @@ const resources = {
   EVAL_PENALTY_BOX_CONDITIONS_ALL:
     '/appsec/v1/configs/%s/versions/%s/security-policies/eval-penalty-box/conditions',
   ACCOUNT_PROTECTION_TRANSACTIONAL_ENDPOINTS:
-    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/transactional-endpoints/account-protection/operations',
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/transactional-endpoints/account-protection',
   ACCOUNT_PROTECTION_TRANSACTIONAL_ENDPOINT_BY_ID:
-    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/transactional-endpoints/account-protection/operations/%s',
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/transactional-endpoints/account-protection/%s',
   ACCOUNT_PROTECTION_SETTINGS:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/account-protection-settings',
   ACCOUNT_PROTECTION_ADVANCED_SETTINGS_TEP:
