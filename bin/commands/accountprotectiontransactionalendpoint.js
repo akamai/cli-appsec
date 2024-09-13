@@ -7,7 +7,7 @@ const objectType = 'operations';
 class GetAccountProtectionTransactionEndpointCommand {
   constructor() {
     this.flags = 'account-protection-transactional-endpoint';
-    this.desc = 'Get account protection transactional endpoint by operation id.';
+    this.desc = 'Get a transactional endpoint by operation id for account protection.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

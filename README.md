@@ -34,6 +34,7 @@ Commands:
   activate                                                         Activate a version.
   activation                                                       Get activation status.
   activation-history                                               List activation history for the configuration.
+  account-protection-transactional-endpoint                        Get a transactional endpoint by operation id for account protection.
   account-protection-transactional-endpoint-list                   List all account protected transactional endpoints.
   account-protection-transactional-endpoint-protection             Display account protected advanced settings for transactional endpoints.
   account-protection-settings                                      Display account protection settings for a security policy.

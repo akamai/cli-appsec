@@ -2,6 +2,7 @@
 
 - New Commands:
   - `account-protection-transactional-endpoint-list`               Display List of all account protected transactional endpoints.
+  - `account-protection-transactional-endpoint`                    Get a transactional endpoint by operation id for account protection.
   - `create-account-protection-transactional-endpoint-list`        Create List of transactional endpoints for account protection.
   - `modify-account-protection-transactional-endpoint`             Update a transactional endpoint for account protection.
   - `delete-account-protection-transactional-endpoint`             Delete a account protected transactional endpoint.
