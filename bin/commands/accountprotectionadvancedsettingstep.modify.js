@@ -22,9 +22,16 @@ class ModifyAccountProtectionTransactionEndpointProtectionCommand {
           "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
         group: 'Optional:',
         required: false
+      })
+      .check((argv, context) => {
+        if (!argv['@path'].startsWith('@')) {
+          return context.cliMessage("ERROR: Invalid file name, should start with '@'");
+        }
       });
   }
   run(options) {
+    options.file = options['@path'].replace('@', '');
+
     out.print({
       promise: new AccountProtectionAdvancedSettings(
         options
