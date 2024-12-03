@@ -216,7 +216,19 @@ const resources = {
   EVAL_PENALTY_BOX_CONDITIONS:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-penalty-box/conditions',
   EVAL_PENALTY_BOX_CONDITIONS_ALL:
-    '/appsec/v1/configs/%s/versions/%s/security-policies/eval-penalty-box/conditions'
+    '/appsec/v1/configs/%s/versions/%s/security-policies/eval-penalty-box/conditions',
+  ACCOUNT_PROTECTION_TRANSACTIONAL_ENDPOINTS:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/transactional-endpoints/account-protection',
+  ACCOUNT_PROTECTION_TRANSACTIONAL_ENDPOINT_BY_ID:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/transactional-endpoints/account-protection/%s',
+  ACCOUNT_PROTECTION_SETTINGS:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/account-protection-settings',
+  ACCOUNT_PROTECTION_ADVANCED_SETTINGS_TEP:
+    '/appsec/v1/configs/%s/versions/%s/advanced-settings/account-protection/transactional-endpoint-protection',
+  ACCOUNT_PROTECTION_USER_ALLOW_LIST_ID:
+    '/appsec/v1/configs/%s/versions/%s/advanced-settings/account-protection/user-allow-list-id',
+  ACCOUNT_PROTECTION_RISK_ACTIONS:
+    '/appsec/v1/configs/%s/versions/%s/risk-actions/account-protection'
 };
 
 define('URIS', resources);
