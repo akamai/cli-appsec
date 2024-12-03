@@ -1,4 +1,4 @@
-## 3.1.0 (Sept 2024 Release)
+## 3.1.0 (December 2024 Release)
 
 - New Commands:
   - `account-protection-transactional-endpoint-list`               Display List of all account protected transactional endpoints.
