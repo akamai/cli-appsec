@@ -6,7 +6,8 @@ let out = require('./lib/out');
 class GetAccountProtectionTransactionEndpointProtectionCommand {
   constructor() {
     this.flags = 'account-protection-transactional-endpoint-protection';
-    this.desc = 'Display account protected advanced settings for transactional endpoints.';
+    this.desc =
+      '[Deprecated] Display account protected advanced settings for transactional endpoints.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
