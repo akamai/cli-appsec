@@ -36,7 +36,8 @@ Commands:
   activation-history                                               List activation history for the configuration.
   account-protection-transactional-endpoint                        Get a transactional endpoint by operation id for account protection.
   account-protection-transactional-endpoint-list                   List all account protected transactional endpoints.
-  account-protection-transactional-endpoint-protection             Display account protected advanced settings for transactional endpoints.
+  account-protection-user-risk-response-strategy                   Display account protected advanced settings for user risk response strategy.
+  [Deprecated] account-protection-transactional-endpoint-protection        Display account protected advanced settings for transactional endpoints.
   account-protection-settings                                      Display account protection settings for a security policy.
   account-protection-user-allow-list-id                            Display user allow list id for account protection.
   account-protection-risk-actions                                  Display allowed risk actions for account protected endpoints.
@@ -199,7 +200,8 @@ Commands:
   modify-account-protection-transactional-endpoint                 Update a transactional endpoint for account protection.
   modify-account-protection-settings                               Modify account protection settings for a security policy.
   modify-account-protection-user-allow-list-id                     Modify user allow list id for account protection.
-  modify-account-protection-transactional-endpoint-protection      Modify account protected advanced settings for transactional endpoints.
+  modify-account-protection-user-risk-response-strategy            Modify account protected advanced settings for user risk response strategy.
+  [Deprecated] modify-account-protection-transactional-endpoint-protection      Modify account protected advanced settings for transactional endpoints.
   modify-akamai-bot-category-action                                Update existing akamai bot category action.
   modify-api-match-target                                          Updates an API match target.
   modify-attackgroup-condition-exception                           Update attack group exceptions.    
