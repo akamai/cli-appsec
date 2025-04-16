@@ -1,4 +1,5 @@
 ## 3.2.0 (May 2025 Release)
+- Fix security vulnerabilities
 - New Commands:
   - `account-protection-user-risk-response-strategy`         Display account protected advanced settings for user risk response strategy.
   - `modify-account-protection-user-risk-response-strategy`  Modify account protected advanced settings for user risk response strategy.
