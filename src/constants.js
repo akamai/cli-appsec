@@ -225,6 +225,8 @@ const resources = {
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/account-protection-settings',
   ACCOUNT_PROTECTION_ADVANCED_SETTINGS_TEP:
     '/appsec/v1/configs/%s/versions/%s/advanced-settings/account-protection/transactional-endpoint-protection',
+  ACCOUNT_PROTECTION_USER_RISK_RESPONSE_STRATEGY:
+    '/appsec/v1/configs/%s/versions/%s/advanced-settings/account-protection/user-risk-response-strategy',
   ACCOUNT_PROTECTION_USER_ALLOW_LIST_ID:
     '/appsec/v1/configs/%s/versions/%s/advanced-settings/account-protection/user-allow-list-id',
   ACCOUNT_PROTECTION_RISK_ACTIONS:

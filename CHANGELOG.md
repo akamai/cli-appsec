@@ -1,3 +1,9 @@
+## 3.2.0 (April 2025 Release)
+- Fix security vulnerabilities
+- New Commands:
+  - `account-protection-user-risk-response-strategy`         Display account protected advanced settings for user risk response strategy.
+  - `modify-account-protection-user-risk-response-strategy`  Modify account protected advanced settings for user risk response strategy.
+
 ## 3.1.0 (December 2024 Release)
 
 - New Commands:
@@ -8,8 +14,8 @@
   - `delete-account-protection-transactional-endpoint`             Delete a account protected transactional endpoint.
   - `account-protection-settings`                                  Display account protection settings for a security policy.
   - `modify-account-protection-settings`                           Modify account protection settings for a security policy.
-  - `account-protection-transactional-endpoint-protection`         Display account protected advanced settings for transactional endpoints.
-  - `modify-account-protection-transactional-endpoint-protection`  Modify account protected advanced settings for transactional endpoints.
+  - [Deprecated] `account-protection-transactional-endpoint-protection`         Display account protected advanced settings for transactional endpoints.
+  - [Deprecated] `modify-account-protection-transactional-endpoint-protection`  Modify account protected advanced settings for transactional endpoints.
   - `account-protection-user-allow-list-id`                        Display user allow list id for account protection.
   - `modify-account-protection-user-allow-list-id`                 Modify user allow list id for account protection.
   - `delete-account-protection-user-allow-list-id`                 Delete user allow list id for account protection.

@@ -2,10 +2,12 @@ let AccountProtectionAdvancedSettings = require('../../src/accountprotectionadva
   .accountProtectionAdvancedSettings;
 let out = require('./lib/out');
 
+// Deprecated
 class ModifyAccountProtectionTransactionEndpointProtectionCommand {
   constructor() {
     this.flags = 'modify-account-protection-transactional-endpoint-protection';
-    this.desc = 'Modify account protected advanced settings for transactional endpoints.';
+    this.desc =
+      '[Deprecated] Modify account protected advanced settings for transactional endpoints.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }

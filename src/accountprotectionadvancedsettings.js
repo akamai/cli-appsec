@@ -11,10 +11,12 @@ class AccountProtectionAdvancedSettings {
     this._version = new Version(options);
   }
 
+  // Deprecated
   getTransactionalEndpointProtection() {
     return this._version.readResource(URIs.ACCOUNT_PROTECTION_ADVANCED_SETTINGS_TEP, []);
   }
 
+  // Deprecated
   updateTransactionalEndpointProtection() {
     if (!fs.existsSync(untildify(this._options['file']))) {
       throw `File ( ${this._options['file']} ) does not exists.`;
@@ -27,6 +29,28 @@ class AccountProtectionAdvancedSettings {
       throw `Request payload from file ( ${this._options['file']} ) is not valid json.`;
     }
     return this._version.updateResource(URIs.ACCOUNT_PROTECTION_ADVANCED_SETTINGS_TEP, [], data);
+  }
+
+  getUserRiskResponseStrategy() {
+    return this._version.readResource(URIs.ACCOUNT_PROTECTION_USER_RISK_RESPONSE_STRATEGY, []);
+  }
+
+  updateUserRiskResponseStrategy() {
+    if (!fs.existsSync(untildify(this._options['file']))) {
+      throw `File ( ${this._options['file']} ) does not exists.`;
+    }
+    let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
+    let data;
+    try {
+      data = JSON.parse(payload);
+    } catch (err) {
+      throw `Request payload from file ( ${this._options['file']} ) is not valid json.`;
+    }
+    return this._version.updateResource(
+      URIs.ACCOUNT_PROTECTION_USER_RISK_RESPONSE_STRATEGY,
+      [],
+      data
+    );
   }
 
   getUserAllowListId() {

@@ -2,12 +2,10 @@ let AccountProtectionAdvancedSettings = require('../../src/accountprotectionadva
   .accountProtectionAdvancedSettings;
 let out = require('./lib/out');
 
-// Deprecated
-class GetAccountProtectionTransactionEndpointProtectionCommand {
+class GetAccountProtectionUserRiskResponseStrategyCommand {
   constructor() {
-    this.flags = 'account-protection-transactional-endpoint-protection';
-    this.desc =
-      '[Deprecated] Display account protected advanced settings for transactional endpoints.';
+    this.flags = 'account-protection-user-risk-response-strategy';
+    this.desc = 'Display account protected advanced settings for user risk response strategy.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -28,7 +26,7 @@ class GetAccountProtectionTransactionEndpointProtectionCommand {
   }
   run(options) {
     out.print({
-      promise: new AccountProtectionAdvancedSettings(options).getTransactionalEndpointProtection(),
+      promise: new AccountProtectionAdvancedSettings(options).getUserRiskResponseStrategy(),
       args: options,
       success: (args, data) => {
         return JSON.stringify(data);
@@ -37,4 +35,4 @@ class GetAccountProtectionTransactionEndpointProtectionCommand {
   }
 }
 
-module.exports = new GetAccountProtectionTransactionEndpointProtectionCommand();
+module.exports = new GetAccountProtectionUserRiskResponseStrategyCommand();
