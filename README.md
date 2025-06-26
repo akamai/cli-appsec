@@ -67,7 +67,6 @@ Commands:
   challenge-action                                                 Display contents of challenge action.
   challenge-action-list                                            List all challenge action.
   challenge-injection-rules                                        Display contents of challenge injection rules.
-  challenge-interception-rules                                     (Deprecated) Display contents of challenge interception rules.
   client-side-security                                             Display contents of client side security.
   clone                                                            Clone a config.
   clone-policy                                                     Clone security policy.
@@ -212,7 +211,6 @@ Commands:
   modify-bypass-network-lists                                      Update bypass network lists.
   modify-challenge-action                                          Update existing challenge action.
   modify-challenge-injection-rules                                 Update existing challenge injection rules.
-  modify-challenge-interception-rules                              (Deprecated) Update existing challenge interception rules.
   modify-client-side-security                                      Update existing client side security.
   modify-conditional-action                                        Update existing conditional action.
   modify-content-protection-rule                                   Update content protection rule.
