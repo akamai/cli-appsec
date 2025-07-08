@@ -1,4 +1,8 @@
-## 3.3.0
+## 3.3.0 
+
+- Remove deprecated commands:
+  - `challenge-interception-rules`
+  - `modify-challenge-interception-rules`
 
 ## 3.2.0 (April 2025 Release)
 
