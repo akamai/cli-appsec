@@ -1,3 +1,13 @@
+## x.x.x
+
+  - `list-account-protection-rules` Display List of all account protected rules.
+  - `get-account-protection-rule`   Get an account protection rule.
+  - `create-account-protection-rule` Create an account protection rule.
+  - `modify-account-protection-rule` Update an account protection rule.
+  - `delete-account-protection-rule` Delete an account protection rule.
+  - `get-account-protection-rule-sequence` Get a sequence of account protection rule ids.
+  - `modify-account-protection-rule-sequence` Update a sequence of account protection rule ids.
+
 ## 3.3.0 
 
 - Remove deprecated commands:
