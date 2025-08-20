@@ -4,7 +4,7 @@ let out = require('./lib/out');
 
 class ModifyAccountProtectionRuleSequenceCommand {
   constructor() {
-    this.flags = 'modify-account-protection-rule-sequence';
+    this.flags = 'modify-account-protection-rules-sequence';
     this.desc = 'Modify a sequence of account protection rules with in a security policy.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
