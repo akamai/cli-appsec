@@ -1,7 +1,7 @@
 {
-    "name": "Account Protection Rule",
+    "ruleName": "Account Protection Rule",
     "clientListId": "11111_CLIENTLIST_ID",
     "actionId": "riskActionId",
-    "allProtectedOperations": false,
-    "protectedOperationIds": []
+    "areAllOperationsProtected": true,
+    "operationIds": []
 }
