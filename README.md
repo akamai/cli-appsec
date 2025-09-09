@@ -36,6 +36,9 @@ Commands:
   activation-history                                               List activation history for the configuration.
   account-protection-transactional-endpoint                        Get a transactional endpoint by operation id for account protection.
   account-protection-transactional-endpoint-list                   List all account protected transactional endpoints.
+  get-account-protection-rule                                      Get an account protection rule in a policy.
+  get-account-protection-rule-sequence                             Get sequence of account protection rules.
+  list-account-protection-rules                                    List all account protection rules in a policy.
   account-protection-user-risk-response-strategy                   Display account protected advanced settings for user risk response strategy.
   [Deprecated] account-protection-transactional-endpoint-protection        Display account protected advanced settings for transactional endpoints.
   account-protection-settings                                      Display account protection settings for a security policy.
@@ -84,6 +87,7 @@ Commands:
   contracts-groups                                                 List contracts and groups with KSD/WAP line items.
   create-api-match-target                                          Creates an API match target.
   create-account-protection-transactional-endpoint-list            Create List of transactional endpoints for account protection.
+  create-account-protection-rule                                   Create an account protection rule in a policy.
   create-challenge-action                                          Create a challenge action.
   create-conditional-action                                        Create a conditional action.
   create-config                                                    Create a new security config.
@@ -124,6 +128,7 @@ Commands:
   custom-rules                                                     List all custom rules.
   decline-recommendation                                           Decline a recommendation.
   delete-account-protection-transactional-endpoint                 Delete a account protected transactional endpoint.
+  delete-account-protection-rule                                   Delete an account protection rule in a policy.
   delete-account-protection-user-allow-list-id                     Delete user allow list id for account protection.
   delete-challenge-action                                          Delete a challenge action.
   delete-conditional-action                                        Delete a conditional action.
@@ -197,6 +202,8 @@ Commands:
   match-targets                                                    List all match targets.
   mode                                                             Display the WAF Mode.
   modify-account-protection-transactional-endpoint                 Update a transactional endpoint for account protection.
+  modify-account-protection-rule                                   Modify an account protection rule in a policy.
+  modify-account-protection-rule-sequence                          Modify sequence of account protection rules.
   modify-account-protection-settings                               Modify account protection settings for a security policy.
   modify-account-protection-user-allow-list-id                     Modify user allow list id for account protection.
   modify-account-protection-user-risk-response-strategy            Modify account protected advanced settings for user risk response strategy.
