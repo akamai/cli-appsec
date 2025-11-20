@@ -1,17 +1,19 @@
-let ChallengeInterceptionRules = require('../../src/challengeinterceptionrules')
-  .challengeinterceptionrules;
+let AccountProtectionRules = require('../../src/accountprotectionrules').accountProtectionRules;
 let out = require('./lib/out');
 
-class ModifyChallengeInterceptionRulesCommand {
+class ModifyAccountProtectionRuleCommand {
   constructor() {
-    this.flags = 'modify-challenge-interception-rules';
-    this.desc = '(Deprecated) Update existing challenge interception rules.';
+    this.flags = 'modify-account-protection-rule';
+    this.desc = 'Modify an account protection rule in a security policy.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
 
   setup(sywac) {
     sywac
+      .positional('<rule-id>', {
+        paramsDesc: 'Rule ID'
+      })
       .positional('<@path>', {
         paramsDesc: 'The input file path.'
       })
@@ -26,18 +28,24 @@ class ModifyChallengeInterceptionRulesCommand {
         group: 'Optional:',
         required: false
       })
+      .string('--policy <id>', {
+        desc:
+          'Policy ID. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
+        group: 'Optional:',
+        required: false
+      })
       .check((argv, context) => {
         if (!argv['@path'].startsWith('@')) {
           return context.cliMessage("ERROR: Invalid file name, should start with '@'");
         }
       });
   }
-
   run(options) {
+    options.rule_id = options['rule-id'];
     options.file = options['@path'].replace('@', '');
 
     out.print({
-      promise: new ChallengeInterceptionRules(options).updateChallengeInterceptionRules(),
+      promise: new AccountProtectionRules(options).modifyAccountProtectionRule(),
       args: options,
       success: (args, data) => {
         return JSON.stringify(data);
@@ -46,4 +54,4 @@ class ModifyChallengeInterceptionRulesCommand {
   }
 }
 
-module.exports = new ModifyChallengeInterceptionRulesCommand();
+module.exports = new ModifyAccountProtectionRuleCommand();
