@@ -1,4 +1,4 @@
-let AccountProtectionRuleSequence = require('../../src/accountprotectionrulesequence')
+let AccountProtectionRuleSequence = require('../../src/accountProtectionRuleSequence')
   .accountProtectionRuleSequence;
 let out = require('./lib/out');
 
