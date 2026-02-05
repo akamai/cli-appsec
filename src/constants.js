@@ -234,7 +234,9 @@ const resources = {
   ACCOUNT_PROTECTION_RULE_BY_ID:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/account-protection-rules/%s',
   ACCOUNT_PROTECTION_RULE_SEQUENCE:
-    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/account-protection-rules/sequence'
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/account-protection-rules/sequence',
+  URL_PROTECTION_RULES_ACTIONS:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/url-protections'
 };
 
 define('URIS', resources);
