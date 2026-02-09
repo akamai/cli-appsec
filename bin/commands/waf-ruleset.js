@@ -3,6 +3,9 @@ let out = require('./lib/out');
 const Table = require('easy-table');
 const chalk = require('chalk');
 
+// Force color support
+chalk.level = 3;
+
 class WafRulesetCommand {
   constructor() {
     this.flags = 'waf-ruleset';
