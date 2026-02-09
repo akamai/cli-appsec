@@ -300,6 +300,7 @@ Commands:
   update-eval                                                      Update evaluation in a policy.
   upgrade-details                                                  Display rules updates.
   url-protection-rules-actions                                     Display all url protection rules actions.
+  url-protection-rule-actions                                      Display actions of a specific url protection rule.
   version                                                          Read a config version.
   version-notes                                                    Display the version notes.
   versions                                                         List all config versions.

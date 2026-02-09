@@ -1,12 +1,12 @@
 let urlProtectionRulesActions = require('../../src/urlprotection').urlProtection;
 let out = require('./lib/out');
 
-const objectType = 'urlProtectionRulesActions';
+const objectType = 'urlProtectionRuleActions';
 
-class UrlProtectionRulesActionsCommand {
+class UrlProtectionRuleActionsCommand {
   constructor() {
-    this.flags = 'url-protection-rules-actions';
-    this.desc = 'Display all url protection rules actions.';
+    this.flags = 'url-protection-rule-actions';
+    this.desc = 'Display actions of a specific url protection rule.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -29,6 +29,11 @@ class UrlProtectionRulesActionsCommand {
           'Policy ID. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
         group: 'Optional:',
         required: false
+      })
+      .number('--url-protection-rule <id>', {
+        desc: 'Url Protection Rule ID. Mandatory if you have more than one url protection rule.',
+        group: 'Optional:',
+        required: false
       });
   }
   run(options) {
@@ -37,10 +42,18 @@ class UrlProtectionRulesActionsCommand {
       args: options,
       objectType,
       success: (args, data) => {
-        return JSON.stringify(data);
+        const matchingElement = data.urlProtectionActions.find(element => {
+          return element.policyId === args['url-protection-rule'];
+        });
+
+        if (matchingElement) {
+          return JSON.stringify(matchingElement);
+        } else {
+          throw `Please provide a valid url protection rule id.`;
+        }
       }
     });
   }
 }
 
-module.exports = new UrlProtectionRulesActionsCommand();
+module.exports = new UrlProtectionRuleActionsCommand();
