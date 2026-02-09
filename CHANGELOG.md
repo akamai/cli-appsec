@@ -10,6 +10,8 @@
 ## 3.3.1
 
 - Rename `accoutnprotectionrulesequence` file
+- `waf-ruleset` Display attack-groups and rules settings.
+
 
 ## 3.3.0
 
