@@ -1,3 +1,7 @@
+## 3.3.1
+
+- Rename `accoutnprotectionrulesequence` file
+
 ## 3.3.0
 
 - `list-account-protection-rules` Display List of all account protected rules.
