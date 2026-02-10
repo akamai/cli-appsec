@@ -3,10 +3,10 @@ let out = require('./lib/out');
 
 const objectType = 'urlProtectionRuleActions';
 
-class UrlProtectionRuleActionsEnableCommand {
+class UrlProtectionRuleActionsDisableCommand {
   constructor() {
-    this.flags = 'enable-url-protection-rule-actions';
-    this.desc = 'Assigns actions to an existing url protection rule in a policy.';
+    this.flags = 'disable-url-protection-rule-actions';
+    this.desc = 'Removes an action set to an existing url protection rule in a policy.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -34,25 +34,11 @@ class UrlProtectionRuleActionsEnableCommand {
         desc: 'Url Protection Rule ID. Mandatory if you have more than one url protection rule.',
         group: 'Optional:',
         required: false
-      })
-      .string('--action <action>', {
-        desc:
-          'The action to assign to this URL protection policy once the rate control threshold is reached.',
-        group: 'Required:',
-        hints: '[required] [alert, deny, deny_custom_{custom_deny_id}, none, challenge_{id}]',
-        required: true
-      })
-      .string('--load-shedding-action <action>', {
-        desc:
-          'The action to assign to this URL protection policy once the intelligent load shedding threshold is reached.',
-        group: 'Required:',
-        hints: '[required] [alert, deny, deny_custom_{custom_deny_id}, none, challenge_{id}]',
-        required: true
       });
   }
   run(options) {
     out.print({
-      promise: new urlProtectionRulesActions(options).enableURLProtectionRuleActions(),
+      promise: new urlProtectionRulesActions(options).disableURLProtectionRuleActions(),
       args: options,
       objectType,
       success: (args, data) => {
@@ -66,4 +52,4 @@ class UrlProtectionRuleActionsEnableCommand {
   }
 }
 
-module.exports = new UrlProtectionRuleActionsEnableCommand();
+module.exports = new UrlProtectionRuleActionsDisableCommand();

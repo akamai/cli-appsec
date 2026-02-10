@@ -34,6 +34,19 @@ class UrlProtection {
       );
     });
   }
+
+  disableURLProtectionRuleActions() {
+    return this._policyProvider.policyId().then(policyId => {
+      let protection = JSON.parse(
+        fs.readFileSync(__dirname + '/../templates/url-protection-rule-action.json', 'utf8')
+      );
+      return this._version.updateResource(
+        URIs.URL_PROTECTION_RULES_ACTIONS_BY_ID,
+        [policyId, this._options['url-protection-rule']],
+        protection
+      );
+    });
+  }
 }
 
 module.exports = {

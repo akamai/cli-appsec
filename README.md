@@ -164,6 +164,7 @@ Commands:
   disable-reputation-profile                                       Disable the action for a reputation profile.
   disable-rule-action                                              Disable rule action in a policy.
   disable-slow-post                                                Disable slow post in a policy.
+  disable-url-protection-rule-actions                              Removes an action set to an existing url protection rule in a policy.
   enable-api-request-constraints                                   Set the API Request Constraint action.
   enable-attack-group                                              Enable attack group in a policy.
   enable-custom-rule                                               Assigns an action (such as alert or deny) to an existing custom rule in a policy.
