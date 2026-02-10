@@ -3,10 +3,10 @@ let out = require('./lib/out');
 
 const objectType = 'urlProtectionRuleActions';
 
-class UrlProtectionRuleActionsCommand {
+class UrlProtectionRuleActionsEnableCommand {
   constructor() {
-    this.flags = 'url-protection-rule-actions';
-    this.desc = 'Display actions of a specific url protection rule.';
+    this.flags = 'url-protection-rule-actions-enable';
+    this.desc = 'Assigns actions to an existing url protection rule in a policy.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -34,28 +34,36 @@ class UrlProtectionRuleActionsCommand {
         desc: 'Url Protection Rule ID. Mandatory if you have more than one url protection rule.',
         group: 'Optional:',
         required: false
+      })
+      .string('--action <action>', {
+        desc:
+          'The action to assign to this URL protection policy once the rate control threshold is reached.',
+        group: 'Required:',
+        hints: '[required] [alert, deny, deny_custom_{custom_deny_id}, none, challenge_{id}]',
+        required: true
+      })
+      .string('--load-shedding-action <action>', {
+        desc:
+          'The action to assign to this URL protection policy once the intelligent load shedding threshold is reached.',
+        group: 'Required:',
+        hints: '[required] [alert, deny, deny_custom_{custom_deny_id}, none, challenge_{id}]',
+        required: true
       });
   }
   run(options) {
     out.print({
-      promise: new urlProtectionRulesActions(options).getAllURLProtectionRulesActions(),
+      promise: new urlProtectionRulesActions(options).enableURLProtectionRuleActions(),
       args: options,
       objectType,
       success: (args, data) => {
-        const matchingElement = data.urlProtectionActions.find(element => {
-          return element.policyId === args['url-protection-rule'];
-        });
-
-        if (matchingElement) {
-          matchingElement.urlProtectionRule = matchingElement.policyId;
-          delete matchingElement.policyId;
-          return JSON.stringify(matchingElement);
-        } else {
-          throw 'The requested url protection rule does not exist.';
+        if (data.policyId !== undefined) {
+          data.urlProtectionRule = data.policyId;
+          delete data.policyId;
         }
+        return JSON.stringify(data);
       }
     });
   }
 }
 
-module.exports = new UrlProtectionRuleActionsCommand();
+module.exports = new UrlProtectionRuleActionsEnableCommand();

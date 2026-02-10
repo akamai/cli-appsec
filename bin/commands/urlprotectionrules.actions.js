@@ -37,6 +37,12 @@ class UrlProtectionRulesActionsCommand {
       args: options,
       objectType,
       success: (args, data) => {
+        data.urlProtectionActions.forEach(element => {
+          if (element.policyId !== undefined) {
+            element.urlProtectionRule = element.policyId;
+            delete element.policyId;
+          }
+        });
         return JSON.stringify(data);
       }
     });

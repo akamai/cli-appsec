@@ -178,6 +178,7 @@ Commands:
   enable-reputation-profile                                        Enable and set the action for a reputation profile.
   enable-rule-action                                               Enable rule action in a policy.
   enable-slow-post                                                 Enable slow post in a policy.
+  enable-url-protection-rule-actions                               Assigns actions to an existing url protection rule in a policy.
   end-eval                                                         Stop evaluation in a policy.
   eval-hostnames                                                   List all hosts under evaluation.
   eval-penalty-box                                                 Display evaluation penalty box action in a policy.
