@@ -47,7 +47,7 @@ class UrlProtectionRuleActionsCommand {
         });
 
         if (matchingElement) {
-          matchingElement.urlProtectionRule = matchingElement.policyId;
+          matchingElement.urlProtectionRuleId = matchingElement.policyId;
           delete matchingElement.policyId;
           return JSON.stringify(matchingElement);
         } else {

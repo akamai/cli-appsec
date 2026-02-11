@@ -57,7 +57,7 @@ class UrlProtectionRuleActionsEnableCommand {
       objectType,
       success: (args, data) => {
         if (data.policyId !== undefined) {
-          data.urlProtectionRule = data.policyId;
+          data.urlProtectionRuleId = data.policyId;
           delete data.policyId;
         }
         return JSON.stringify(data);
