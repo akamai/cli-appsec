@@ -1,12 +1,6 @@
 ## 3.4.0
+
 - New Commands:
-  - `waf-ruleset` Display attack-groups and rules settings.
-  - `modify-waf-ruleset` Update WAF ruleset by patching attack groups and/or rules.
-
-## 3.3.1
-
-- New Commands: 
-
   - `url-protection-rules` Display URL protection rules.
   - `url-protection-rule` Display a specific URL protection rule.
   - `url-protection-rules-actions` Display all url protection rule actions
