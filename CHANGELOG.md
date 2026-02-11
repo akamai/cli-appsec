@@ -1,4 +1,9 @@
 ## 3.4.0
+- New Commands:
+  - `waf-ruleset` Display attack-groups and rules settings.
+  - `modify-waf-ruleset` Update WAF ruleset by patching attack groups and/or rules.
+
+## 3.3.1
 
 - New Commands: 
 
@@ -15,7 +20,6 @@
 ## 3.3.1
 
 - Rename `accoutnprotectionrulesequence` file
-
 
 ## 3.3.0
 
