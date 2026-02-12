@@ -257,6 +257,7 @@ Commands:
   modify-siem                                                      Modify the SIEM settings.
   modify-transactional-endpoint                                    Update existing transactional endpoint.
   modify-transactional-endpoint-protection                         Update existing transactional endpoint protection.
+  modify-waf-ruleset                                               Update the WAF ruleset using a composite payload
   modify-version-notes                                             Update the version notes.
   penalty-box                                                      Display penalty box action in a policy.
   penalty-box-conditions                                           Display penalty box conditions in a policy.
@@ -308,7 +309,8 @@ Commands:
   version                                                          Read a config version.
   version-notes                                                    Display the version notes.
   versions                                                         List all config versions.
-
+  waf-ruleset                                                      Retrieve the complete WAF ruleset for a configuration and policy
+  
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
   --edgerc      The full path to the .edgerc file.                                                    [string]
