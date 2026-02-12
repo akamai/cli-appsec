@@ -24,8 +24,8 @@ class URLProtectionRuleCommand {
         group: 'Optional:',
         required: false
       })
-      .number('--url-protection-id <id>', {
-        desc: 'URL Protection ID.',
+      .number('--url-protection-rule <id>', {
+        desc: 'URL Protection Rule ID.',
         group: 'Required:',
         required: true
       });

@@ -16,7 +16,9 @@ class URLProtection {
   }
 
   getURLProtectionRule() {
-    return this._version.readResource(URIs.URL_PROTECTION_RULE, [this._options['urlProtectionId']]);
+    return this._version.readResource(URIs.URL_PROTECTION_RULE, [
+      this._options['url-protection-rule']
+    ]);
   }
 }
 
