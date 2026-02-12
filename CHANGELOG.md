@@ -1,3 +1,8 @@
+## 3.4.0
+
+- `url-protection-rules` Display URL protection rules.
+- `url-protection-rule` Display a specific URL protection rule.
+
 ## 3.3.1
 
 - Rename `accoutnprotectionrulesequence` file
