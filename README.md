@@ -299,6 +299,8 @@ Commands:
   transactional-endpoint-protection                                Display contents of transactional endpoint protection.
   update-eval                                                      Update evaluation in a policy.
   upgrade-details                                                  Display rules updates.
+  url-protection-rule                                              Display a specific URL protection rule.
+  url-protection-rules                                             Display URL protection rules.
   version                                                          Read a config version.
   version-notes                                                    Display the version notes.
   versions                                                         List all config versions.
