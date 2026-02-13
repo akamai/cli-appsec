@@ -1,3 +1,11 @@
+## 3.4.0
+
+- New Commands: 
+  - `url-protection-rules-actions` Display all url protection rule actions
+  - `url-protection-rule-actions` Display actions of a specific url protection rule
+  - `enable-url-protection-rule-actions` Assigns actions to an existing url protection rule in a policy.
+  - `disable-url-protection-rule-actions` Removes an action set to an existing url protection rule in a policy.
+
 ## 3.3.1
 
 - Rename `accoutnprotectionrulesequence` file

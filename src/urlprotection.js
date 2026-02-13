@@ -1,0 +1,54 @@
+'use strict';
+
+let URIs = require('./constants').URIS;
+let fs = require('fs');
+let Config = require('./configprovider').configProvider;
+let Version = require('./versionsprovider').versionProvider;
+let PolicyProvider = require('./policy').policy;
+
+class UrlProtection {
+  constructor(options) {
+    this._config = new Config(options);
+    this._options = options;
+    this._version = new Version(options);
+    this._policyProvider = new PolicyProvider(options);
+  }
+
+  getAllURLProtectionRulesActions() {
+    return this._policyProvider.policyId().then(policyId => {
+      return this._version.readResource(URIs.URL_PROTECTION_RULES_ACTIONS, [policyId]);
+    });
+  }
+
+  enableURLProtectionRuleActions() {
+    return this._policyProvider.policyId().then(policyId => {
+      let protection = JSON.parse(
+        fs.readFileSync(__dirname + '/../templates/url-protection-rule-action.json', 'utf8')
+      );
+      protection.action = this._options['action'];
+      protection.loadSheddingAction = this._options['load-shedding-action'];
+      return this._version.updateResource(
+        URIs.URL_PROTECTION_RULES_ACTIONS_BY_ID,
+        [policyId, this._options['url-protection-rule']],
+        protection
+      );
+    });
+  }
+
+  disableURLProtectionRuleActions() {
+    return this._policyProvider.policyId().then(policyId => {
+      let protection = JSON.parse(
+        fs.readFileSync(__dirname + '/../templates/url-protection-rule-action.json', 'utf8')
+      );
+      return this._version.updateResource(
+        URIs.URL_PROTECTION_RULES_ACTIONS_BY_ID,
+        [policyId, this._options['url-protection-rule']],
+        protection
+      );
+    });
+  }
+}
+
+module.exports = {
+  urlProtection: UrlProtection
+};

@@ -164,6 +164,7 @@ Commands:
   disable-reputation-profile                                       Disable the action for a reputation profile.
   disable-rule-action                                              Disable rule action in a policy.
   disable-slow-post                                                Disable slow post in a policy.
+  disable-url-protection-rule-actions                              Removes an action set to an existing url protection rule in a policy.
   enable-api-request-constraints                                   Set the API Request Constraint action.
   enable-attack-group                                              Enable attack group in a policy.
   enable-custom-rule                                               Assigns an action (such as alert or deny) to an existing custom rule in a policy.
@@ -178,6 +179,7 @@ Commands:
   enable-reputation-profile                                        Enable and set the action for a reputation profile.
   enable-rule-action                                               Enable rule action in a policy.
   enable-slow-post                                                 Enable slow post in a policy.
+  enable-url-protection-rule-actions                               Assigns actions to an existing url protection rule in a policy.
   end-eval                                                         Stop evaluation in a policy.
   eval-hostnames                                                   List all hosts under evaluation.
   eval-penalty-box                                                 Display evaluation penalty box action in a policy.
@@ -299,6 +301,8 @@ Commands:
   transactional-endpoint-protection                                Display contents of transactional endpoint protection.
   update-eval                                                      Update evaluation in a policy.
   upgrade-details                                                  Display rules updates.
+  url-protection-rules-actions                                     Display all url protection rules actions.
+  url-protection-rule-actions                                      Display actions of a specific url protection rule.
   version                                                          Read a config version.
   version-notes                                                    Display the version notes.
   versions                                                         List all config versions.
