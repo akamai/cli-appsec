@@ -13,6 +13,14 @@ class UrlProtectionRuleActionsDisableCommand {
 
   setup(sywac) {
     sywac
+      .usage(
+        'Usage: akamai-appsec disable-url-protection-rule-actions --url-protection-rule <id> [options]'
+      )
+      .number('--url-protection-rule <id>', {
+        desc: 'Url Protection Rule ID.',
+        group: 'Required:',
+        required: true
+      })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
         group: 'Optional:',
@@ -29,11 +37,6 @@ class UrlProtectionRuleActionsDisableCommand {
           'Policy ID. If not provided, we try to use the policy available on file. If you have more than one policy, this option must be provided.',
         group: 'Optional:',
         required: false
-      })
-      .number('--url-protection-rule <id>', {
-        desc: 'Url Protection Rule ID. Mandatory if you have more than one url protection rule.',
-        group: 'Required:',
-        required: true
       });
   }
   run(options) {
