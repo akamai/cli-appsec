@@ -2,13 +2,11 @@
 
 let URIs = require('./constants').URIS;
 let fs = require('fs');
-let Config = require('./configprovider').configProvider;
 let Version = require('./versionsprovider').versionProvider;
 let PolicyProvider = require('./policy').policy;
 
 class UrlProtection {
   constructor(options) {
-    this._config = new Config(options);
     this._options = options;
     this._version = new Version(options);
     this._policyProvider = new PolicyProvider(options);

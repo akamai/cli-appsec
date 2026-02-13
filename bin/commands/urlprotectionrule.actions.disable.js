@@ -32,8 +32,8 @@ class UrlProtectionRuleActionsDisableCommand {
       })
       .number('--url-protection-rule <id>', {
         desc: 'Url Protection Rule ID. Mandatory if you have more than one url protection rule.',
-        group: 'Optional:',
-        required: false
+        group: 'Required:',
+        required: true
       });
   }
   run(options) {
