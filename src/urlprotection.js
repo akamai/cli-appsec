@@ -2,16 +2,24 @@
 
 let URIs = require('./constants').URIS;
 let fs = require('fs');
-let Config = require('./configprovider').configProvider;
 let Version = require('./versionsprovider').versionProvider;
 let PolicyProvider = require('./policy').policy;
 
 class UrlProtection {
   constructor(options) {
-    this._config = new Config(options);
     this._options = options;
     this._version = new Version(options);
     this._policyProvider = new PolicyProvider(options);
+  }
+
+  getURLProtectionRules() {
+    return this._version.readResource(URIs.URL_PROTECTION_RULES, []);
+  }
+
+  getURLProtectionRule() {
+    return this._version.readResource(URIs.URL_PROTECTION_RULE, [
+      this._options['url-protection-rule']
+    ]);
   }
 
   getAllURLProtectionRulesActions() {

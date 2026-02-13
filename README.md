@@ -301,6 +301,8 @@ Commands:
   transactional-endpoint-protection                                Display contents of transactional endpoint protection.
   update-eval                                                      Update evaluation in a policy.
   upgrade-details                                                  Display rules updates.
+  url-protection-rule                                              Display a specific URL protection rule.
+  url-protection-rules                                             Display URL protection rules.
   url-protection-rules-actions                                     Display all url protection rules actions.
   url-protection-rule-actions                                      Display actions of a specific url protection rule.
   version                                                          Read a config version.

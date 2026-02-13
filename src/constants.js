@@ -83,6 +83,8 @@ const resources = {
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-rules/%d/condition-exception',
   EVAL_MODE: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval',
   IP_GEO_FIREWALL: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/ip-geo-firewall',
+  URL_PROTECTION_RULES: '/appsec/v1/configs/%s/versions/%s/url-protections',
+  URL_PROTECTION_RULE: '/appsec/v1/configs/%s/versions/%s/url-protections/%s',
   REPUTATION_PROFILE_ACTIONS:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/reputation-profiles',
   REPUTATION_PROFILE_ACTION:
