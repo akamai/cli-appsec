@@ -55,6 +55,25 @@ class UrlProtection {
       );
     });
   }
+
+  enableURLProtection() {
+    return this._policyProvider.policyId().then(policyId => {
+      let protection = JSON.parse(
+        fs.readFileSync(__dirname + '/../templates/url-protection.json', 'utf8')
+      );
+      return this._version.updateResource(URIs.POLICY_PROTECTIONS, [policyId], protection);
+    });
+  }
+
+  disableURLProtection() {
+    return this._policyProvider.policyId().then(policyId => {
+      let protection = JSON.parse(
+        fs.readFileSync(__dirname + '/../templates/url-protection.json', 'utf8')
+      );
+      protection.applyUrlProtectionControls = false;
+      return this._version.updateResource(URIs.POLICY_PROTECTIONS, [policyId], protection);
+    });
+  }
 }
 
 module.exports = {
