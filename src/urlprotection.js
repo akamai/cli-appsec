@@ -48,6 +48,8 @@ class UrlProtection {
       let protection = JSON.parse(
         fs.readFileSync(__dirname + '/../templates/url-protection-rule-action.json', 'utf8')
       );
+      protection.action = 'none';
+      protection.loadSheddingAction = 'none';
       return this._version.updateResource(
         URIs.URL_PROTECTION_RULES_ACTIONS_BY_ID,
         [policyId, this._options['url-protection-rule']],
@@ -61,6 +63,7 @@ class UrlProtection {
       let protection = JSON.parse(
         fs.readFileSync(__dirname + '/../templates/url-protection.json', 'utf8')
       );
+      protection.applyUrlProtectionControls = true;
       return this._version.updateResource(URIs.POLICY_PROTECTIONS, [policyId], protection);
     });
   }
