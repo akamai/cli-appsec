@@ -73,6 +73,8 @@ const resources = {
   RULE_UPGRADE_DETAILS:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rules/upgrade-details',
   RULE_ACTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rules/%d',
+  WAF_RULESET:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/web-application-firewall/ruleset',
   EVAL_RULE_ACTIONS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-rules',
   EVAL_RULE_ACTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-rules/%d',
   EVAL_GROUP_ACTIONS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-groups',
