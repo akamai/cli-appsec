@@ -12,6 +12,8 @@
   - `disable-url-protection-rule-actions` Removes an action set to an existing URL protection rule in a policy.
   - `enable-url-protection` Enables the URL protection control for the security policy.
   - `disable-url-protection` Disables the URL protection control for the security policy.
+  - `waf-ruleset` Display attack-groups and rules settings.
+  - `modify-waf-ruleset` Update WAF ruleset by patching attack groups and/or rules.
 
 ## 3.3.1
 

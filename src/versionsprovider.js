@@ -52,6 +52,24 @@ class VersionProvider {
   }
 
   /**
+   * Patches a resource tied to config version using PATCH method.
+   * @param {*} uri The uri of the resource. Always starts with /configs/<id>/versions/<id>/
+   * @param {*} params the parameters that gets substituted in the uri in order(except config id and version id)
+   */
+  patchResource(uri, params, payload) {
+    let args = [];
+    return this.getConfigId()
+      .then(configId => {
+        args.push(configId);
+        return this.getVersionNumber();
+      })
+      .then(version => {
+        args.push(version);
+        return this._edge.patch(uri, payload, args.concat(params));
+      });
+  }
+
+  /**
    * Creates resources tied to config version.
    * @param {*} uri The uri of the resource. Always starts with /configs/<id>/versions/<id>/
    * @param {*} params the parameters that gets substituted in the uri in order(except config id and version id)
