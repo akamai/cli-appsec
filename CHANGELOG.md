@@ -1,15 +1,21 @@
 ## 3.4.0
 
-- `url-protection-rules` Display URL protection rules.
-- `url-protection-rule` Display a specific URL protection rule.
-  - `url-protection-rules-actions` Display all url protection rule actions
-  - `url-protection-rule-actions` Display actions of a specific url protection rule
-  - `enable-url-protection-rule-actions` Assigns actions to an existing url protection rule in a policy.
-  - `disable-url-protection-rule-actions` Removes an action set to an existing url protection rule in a policy.
+- New Commands:
+  - `url-protection-rules` Display URL protection rules.
+  - `url-protection-rule` Display a specific URL protection rule.
+  - `create-url-protection-rule` Create a URL protection rule.
+  - `modify-url-protection-rule` Update existing URL protection rule.
+  - `delete-url-protection-rule` Delete a URL protection rule.
+  - `url-protection-rules-actions` Display all URL protection rule actions.
+  - `url-protection-rule-actions` Display actions of a specific URL protection rule.
+  - `enable-url-protection-rule-actions` Assigns actions to an existing URL protection rule in a policy.
+  - `disable-url-protection-rule-actions` Removes an action set to an existing URL protection rule in a policy.
+  - `enable-url-protection` Enables the URL protection control for the security policy.
+  - `disable-url-protection` Disables the URL protection control for the security policy.
 
 ## 3.3.1
 
-- Rename `accoutnprotectionrulesequence` file
+- Rename `accountprotectionrulesequence` file
 
 ## 3.3.0
 

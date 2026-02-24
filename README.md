@@ -109,6 +109,7 @@ Commands:
   create-security-policy                                           Create a security policy.
   create-serve-alternate-action                                    Create a serve alternate action.
   create-transactional-endpoint                                    Create a transactional endpoint.
+  create-url-protection-rule                                       Create a URL protection rule.
   custom-bot-category                                              Display contents of custom bot category.
   custom-bot-category-action                                       Display contents of custom bot category action.
   custom-bot-category-action-list                                  List all custom bot category action.
@@ -151,6 +152,7 @@ Commands:
   delete-security-policy                                           Delete a security policy.
   delete-serve-alternate-action                                    Delete a serve alternate action.
   delete-transactional-endpoint                                    Delete a transactional endpoint.
+  delete-url-protection-rule                                       Delete a URL protection rule.
   disable-api-request-constraints                                  Disable API Request Constraint.
   disable-attack-group                                             Disable attack group  in a policy.
   disable-eval-penalty-box                                         Disable evaluation penalty box in a policy.
@@ -245,6 +247,7 @@ Commands:
   modify-javascript-injection-rules                                Update existing javascript injection rules.
   modify-malware-policy                                            Modify an existing malware policy.
   modify-match-target                                              Updates a website match target.
+  modify-url-protection-rule                                       Update existing URL protection rule.
   modify-penalty-box-conditions                                    Modify penalty box conditions in a policy.
   modify-pragma-header                                             Update Pragma Header settings.
   modify-prefetch-requests                                         Update the Prefetch Requests settings.
