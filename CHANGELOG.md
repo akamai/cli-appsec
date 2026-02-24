@@ -3,13 +3,14 @@
 - New Commands:
   - `url-protection-rules` Display URL protection rules.
   - `url-protection-rule` Display a specific URL protection rule.
-  - `url-protection-rules-actions` Display all url protection rule actions
-  - `url-protection-rule-actions` Display actions of a specific url protection rule
+  - `url-protection-rules-actions` Display all url protection rule actions.
+  - `url-protection-rule-actions` Display actions of a specific url protection rule.
   - `enable-url-protection-rule-actions` Assigns actions to an existing url protection rule in a policy.
   - `disable-url-protection-rule-actions` Removes an action set to an existing url protection rule in a policy.
   - `waf-ruleset` Display attack-groups and rules settings.
   - `modify-waf-ruleset` Update WAF ruleset by patching attack groups and/or rules.
-
+  - `enable-url-protection` Enables the URL protection control for the security policy.
+  - `disable-url-protection` Disables the URL protection control for the security policy.
 
 ## 3.3.1
 
