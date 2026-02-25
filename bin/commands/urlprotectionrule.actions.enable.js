@@ -14,10 +14,10 @@ class UrlProtectionRuleActionsEnableCommand {
   setup(sywac) {
     sywac
       .usage(
-        'Usage: akamai-appsec enable-url-protection-rule-actions --url-protection-rule <id> --action <action> --load-shedding-action <action> [options]'
+        'Usage: akamai-appsec enable-url-protection-rule-actions --url-protection-policy-id <id> --action <action> --load-shedding-action <action> [options]'
       )
-      .number('--url-protection-rule <id>', {
-        desc: 'Url Protection Rule ID.',
+      .number('--url-protection-policy-id <id>', {
+        desc: 'URL Protection Policy ID.',
         group: 'Required:',
         required: true
       })

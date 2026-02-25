@@ -13,9 +13,9 @@ class URLProtectionRuleCommand {
 
   setup(sywac) {
     sywac
-      .usage('Usage: akamai-appsec url-protection-rule --url-protection-rule <id> [options]')
-      .number('--url-protection-rule <id>', {
-        desc: 'URL Protection Rule ID.',
+      .usage('Usage: akamai-appsec url-protection-rule --url-protection-policy-id <id> [options]')
+      .number('--url-protection-policy-id <id>', {
+        desc: 'URL Protection Policy ID.',
         group: 'Required:',
         required: true
       })
