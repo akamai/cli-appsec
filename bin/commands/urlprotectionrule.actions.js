@@ -14,10 +14,10 @@ class UrlProtectionRuleActionsCommand {
   setup(sywac) {
     sywac
       .usage(
-        'Usage: akamai-appsec url-protection-rule-actions --url-protection-rule <id> [options]'
+        'Usage: akamai-appsec url-protection-rule-actions --url-protection-policy <id> [options]'
       )
-      .number('--url-protection-rule <id>', {
-        desc: 'Url Protection Rule ID.',
+      .number('--url-protection-policy <id>', {
+        desc: 'URL Protection Policy ID.',
         group: 'Required:',
         required: true
       })
@@ -46,12 +46,10 @@ class UrlProtectionRuleActionsCommand {
       objectType,
       success: (args, data) => {
         const matchingElement = data.urlProtectionActions.find(element => {
-          return element.policyId === args['url-protection-rule'];
+          return element.policyId === args['url-protection-policy'];
         });
 
         if (matchingElement) {
-          matchingElement.urlProtectionRuleId = matchingElement.policyId;
-          delete matchingElement.policyId;
           return JSON.stringify(matchingElement);
         } else {
           throw 'The requested url protection rule does not exist.';

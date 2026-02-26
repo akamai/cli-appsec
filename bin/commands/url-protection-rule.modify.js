@@ -1,19 +1,22 @@
 let URLProtection = require('../../src/urlprotection').urlProtection;
 let out = require('./lib/out');
 
-const objectType = 'urlProtectionRule';
-
-class URLProtectionRuleCommand {
+class ModifyURLProtectionRuleCommand {
   constructor() {
-    this.flags = 'url-protection-rule';
-    this.desc = 'Display a specific URL protection rule.';
+    this.flags = 'modify-url-protection-rule';
+    this.desc = 'Update existing URL protection rule.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
 
   setup(sywac) {
     sywac
-      .usage('Usage: akamai-appsec url-protection-rule --url-protection-policy <id> [options]')
+      .usage(
+        'Usage: akamai-appsec modify-url-protection-rule <@path> --url-protection-policy <id> [options]'
+      )
+      .positional('<@path>', {
+        paramsDesc: 'The input file path.'
+      })
       .number('--url-protection-policy <id>', {
         desc: 'URL Protection Policy ID.',
         group: 'Required:',
@@ -29,19 +32,24 @@ class URLProtectionRuleCommand {
           "Version Number. It can also take the values 'PROD' or 'PRODUCTION' or 'STAGING'. If not provided, latest version is assumed.",
         group: 'Optional:',
         required: false
+      })
+      .check((argv, context) => {
+        if (!argv['@path'].startsWith('@')) {
+          return context.cliMessage("ERROR: Invalid file name, should start with '@'");
+        }
       });
   }
 
   run(options) {
+    options.file = options['@path'].replace('@', '');
     out.print({
-      promise: new URLProtection(options).getURLProtectionRule(),
+      promise: new URLProtection(options).updateURLProtectionRule(),
       args: options,
-      objectType,
       success: (args, data) => {
-        return JSON.stringify(data);
+        return data.id;
       }
     });
   }
 }
 
-module.exports = new URLProtectionRuleCommand();
+module.exports = new ModifyURLProtectionRuleCommand();

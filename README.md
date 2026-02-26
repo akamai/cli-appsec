@@ -109,6 +109,7 @@ Commands:
   create-security-policy                                           Create a security policy.
   create-serve-alternate-action                                    Create a serve alternate action.
   create-transactional-endpoint                                    Create a transactional endpoint.
+  create-url-protection-rule                                       Create a URL protection rule.
   custom-bot-category                                              Display contents of custom bot category.
   custom-bot-category-action                                       Display contents of custom bot category action.
   custom-bot-category-action-list                                  List all custom bot category action.
@@ -151,6 +152,7 @@ Commands:
   delete-security-policy                                           Delete a security policy.
   delete-serve-alternate-action                                    Delete a serve alternate action.
   delete-transactional-endpoint                                    Delete a transactional endpoint.
+  delete-url-protection-rule                                       Delete a URL protection rule.
   disable-api-request-constraints                                  Disable API Request Constraint.
   disable-attack-group                                             Disable attack group  in a policy.
   disable-eval-penalty-box                                         Disable evaluation penalty box in a policy.
@@ -165,7 +167,7 @@ Commands:
   disable-rule-action                                              Disable rule action in a policy.
   disable-slow-post                                                Disable slow post in a policy.
   disable-url-protection                                           Disables the URL protection control for the security policy
-  disable-url-protection-rule-actions                              Removes an action set to an existing url protection rule in a policy.
+  disable-url-protection-rule-actions                              Removes an action set to an existing URL protection rule in a policy.
   enable-api-request-constraints                                   Set the API Request Constraint action.
   enable-attack-group                                              Enable attack group in a policy.
   enable-custom-rule                                               Assigns an action (such as alert or deny) to an existing custom rule in a policy.
@@ -181,7 +183,7 @@ Commands:
   enable-rule-action                                               Enable rule action in a policy.
   enable-slow-post                                                 Enable slow post in a policy.
   enable-url-protection                                            Enables the URL protection control for the security policy
-  enable-url-protection-rule-actions                               Assigns actions to an existing url protection rule in a policy.
+  enable-url-protection-rule-actions                               Assigns actions to an existing URL protection rule in a policy.
   end-eval                                                         Stop evaluation in a policy.
   eval-hostnames                                                   List all hosts under evaluation.
   eval-penalty-box                                                 Display evaluation penalty box action in a policy.
@@ -247,6 +249,7 @@ Commands:
   modify-javascript-injection-rules                                Update existing javascript injection rules.
   modify-malware-policy                                            Modify an existing malware policy.
   modify-match-target                                              Updates a website match target.
+  modify-url-protection-rule                                       Update existing URL protection rule.
   modify-penalty-box-conditions                                    Modify penalty box conditions in a policy.
   modify-pragma-header                                             Update Pragma Header settings.
   modify-prefetch-requests                                         Update the Prefetch Requests settings.
@@ -306,8 +309,8 @@ Commands:
   upgrade-details                                                  Display rules updates.
   url-protection-rule                                              Display a specific URL protection rule.
   url-protection-rules                                             Display URL protection rules.
-  url-protection-rules-actions                                     Display all url protection rules actions.
-  url-protection-rule-actions                                      Display actions of a specific url protection rule.
+  url-protection-rules-actions                                     Display all URL protection rules actions.
+  url-protection-rule-actions                                      Display actions of a specific URL protection rule.
   version                                                          Read a config version.
   version-notes                                                    Display the version notes.
   versions                                                         List all config versions.

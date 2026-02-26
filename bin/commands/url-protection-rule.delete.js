@@ -1,19 +1,19 @@
 let URLProtection = require('../../src/urlprotection').urlProtection;
 let out = require('./lib/out');
 
-const objectType = 'urlProtectionRule';
-
-class URLProtectionRuleCommand {
+class DeleteURLProtectionRuleCommand {
   constructor() {
-    this.flags = 'url-protection-rule';
-    this.desc = 'Display a specific URL protection rule.';
+    this.flags = 'delete-url-protection-rule';
+    this.desc = 'Delete a URL protection rule.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
 
   setup(sywac) {
     sywac
-      .usage('Usage: akamai-appsec url-protection-rule --url-protection-policy <id> [options]')
+      .usage(
+        'Usage: akamai-appsec delete-url-protection-rule --url-protection-policy <id> [options]'
+      )
       .number('--url-protection-policy <id>', {
         desc: 'URL Protection Policy ID.',
         group: 'Required:',
@@ -34,14 +34,13 @@ class URLProtectionRuleCommand {
 
   run(options) {
     out.print({
-      promise: new URLProtection(options).getURLProtectionRule(),
+      promise: new URLProtection(options).deleteURLProtectionRule(),
       args: options,
-      objectType,
       success: (args, data) => {
-        return JSON.stringify(data);
+        return data;
       }
     });
   }
 }
 
-module.exports = new URLProtectionRuleCommand();
+module.exports = new DeleteURLProtectionRuleCommand();

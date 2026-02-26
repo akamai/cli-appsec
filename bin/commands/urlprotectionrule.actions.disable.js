@@ -14,10 +14,10 @@ class UrlProtectionRuleActionsDisableCommand {
   setup(sywac) {
     sywac
       .usage(
-        'Usage: akamai-appsec disable-url-protection-rule-actions --url-protection-rule <id> [options]'
+        'Usage: akamai-appsec disable-url-protection-rule-actions --url-protection-policy <id> [options]'
       )
-      .number('--url-protection-rule <id>', {
-        desc: 'Url Protection Rule ID.',
+      .number('--url-protection-policy <id>', {
+        desc: 'URL Protection Policy ID.',
         group: 'Required:',
         required: true
       })
@@ -45,10 +45,6 @@ class UrlProtectionRuleActionsDisableCommand {
       args: options,
       objectType,
       success: (args, data) => {
-        if (data.policyId !== undefined) {
-          data.urlProtectionRuleId = data.policyId;
-          delete data.policyId;
-        }
         return JSON.stringify(data);
       }
     });
