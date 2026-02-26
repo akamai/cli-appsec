@@ -19,13 +19,13 @@ class UrlProtection {
 
   getURLProtectionRule() {
     return this._version.readResource(URIs.URL_PROTECTION_RULE, [
-      this._options['url-protection-policy-id']
+      this._options['url-protection-policy']
     ]);
   }
 
   deleteURLProtectionRule() {
     return this._version.deleteResource(URIs.URL_PROTECTION_RULE, [
-      this._options['url-protection-policy-id']
+      this._options['url-protection-policy']
     ]);
   }
 
@@ -55,7 +55,7 @@ class UrlProtection {
       }
       return this._version.updateResource(
         URIs.URL_PROTECTION_RULE,
-        [this._options['url-protection-policy-id']],
+        [this._options['url-protection-policy']],
         data
       );
     } else {
@@ -78,7 +78,7 @@ class UrlProtection {
       protection.loadSheddingAction = this._options['load-shedding-action'];
       return this._version.updateResource(
         URIs.URL_PROTECTION_RULES_ACTIONS_BY_ID,
-        [policyId, this._options['url-protection-policy-id']],
+        [policyId, this._options['url-protection-policy']],
         protection
       );
     });
@@ -93,7 +93,7 @@ class UrlProtection {
       protection.loadSheddingAction = 'none';
       return this._version.updateResource(
         URIs.URL_PROTECTION_RULES_ACTIONS_BY_ID,
-        [policyId, this._options['url-protection-policy-id']],
+        [policyId, this._options['url-protection-policy']],
         protection
       );
     });

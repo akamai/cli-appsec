@@ -14,9 +14,9 @@ class UrlProtectionRuleActionsCommand {
   setup(sywac) {
     sywac
       .usage(
-        'Usage: akamai-appsec url-protection-rule-actions --url-protection-policy-id <id> [options]'
+        'Usage: akamai-appsec url-protection-rule-actions --url-protection-policy <id> [options]'
       )
-      .number('--url-protection-policy-id <id>', {
+      .number('--url-protection-policy <id>', {
         desc: 'URL Protection Policy ID.',
         group: 'Required:',
         required: true
@@ -46,7 +46,7 @@ class UrlProtectionRuleActionsCommand {
       objectType,
       success: (args, data) => {
         const matchingElement = data.urlProtectionActions.find(element => {
-          return element.policyId === args['url-protection-policy-id'];
+          return element.policyId === args['url-protection-policy'];
         });
 
         if (matchingElement) {

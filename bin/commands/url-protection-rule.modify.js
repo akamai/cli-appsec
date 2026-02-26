@@ -12,12 +12,12 @@ class ModifyURLProtectionRuleCommand {
   setup(sywac) {
     sywac
       .usage(
-        'Usage: akamai-appsec modify-url-protection-rule <@path> --url-protection-policy-id <id> [options]'
+        'Usage: akamai-appsec modify-url-protection-rule <@path> --url-protection-policy <id> [options]'
       )
       .positional('<@path>', {
         paramsDesc: 'The input file path.'
       })
-      .number('--url-protection-policy-id <id>', {
+      .number('--url-protection-policy <id>', {
         desc: 'URL Protection Policy ID.',
         group: 'Required:',
         required: true
