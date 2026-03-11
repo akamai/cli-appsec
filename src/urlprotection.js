@@ -13,23 +13,23 @@ class UrlProtection {
     this._policyProvider = new PolicyProvider(options);
   }
 
-  getURLProtectionRules() {
-    return this._version.readResource(URIs.URL_PROTECTION_RULES, []);
+  getURLProtectionPolicies() {
+    return this._version.readResource(URIs.URL_PROTECTION_POLICIES, []);
   }
 
-  getURLProtectionRule() {
-    return this._version.readResource(URIs.URL_PROTECTION_RULE, [
+  getURLProtectionPolicy() {
+    return this._version.readResource(URIs.URL_PROTECTION_POLICY, [
       this._options['url-protection-policy']
     ]);
   }
 
-  deleteURLProtectionRule() {
-    return this._version.deleteResource(URIs.URL_PROTECTION_RULE, [
+  deleteURLProtectionPolicy() {
+    return this._version.deleteResource(URIs.URL_PROTECTION_POLICY, [
       this._options['url-protection-policy']
     ]);
   }
 
-  createURLProtectionRule() {
+  createURLProtectionPolicy() {
     if (fs.existsSync(this._options['file'])) {
       let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
       let data;
@@ -38,13 +38,13 @@ class UrlProtection {
       } catch (err) {
         throw 'The input JSON is not valid';
       }
-      return this._version.createResource(URIs.URL_PROTECTION_RULES, [], data);
+      return this._version.createResource(URIs.URL_PROTECTION_POLICIES, [], data);
     } else {
       throw `The file does not exists: ${this._options['file']}`;
     }
   }
 
-  updateURLProtectionRule() {
+  updateURLProtectionPolicy() {
     if (fs.existsSync(this._options['file'])) {
       let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');
       let data;
@@ -54,7 +54,7 @@ class UrlProtection {
         throw 'The input JSON is not valid';
       }
       return this._version.updateResource(
-        URIs.URL_PROTECTION_RULE,
+        URIs.URL_PROTECTION_POLICY,
         [this._options['url-protection-policy']],
         data
       );
@@ -63,36 +63,36 @@ class UrlProtection {
     }
   }
 
-  getAllURLProtectionRulesActions() {
+  getAllURLProtectionPoliciesActions() {
     return this._policyProvider.policyId().then(policyId => {
-      return this._version.readResource(URIs.URL_PROTECTION_RULES_ACTIONS, [policyId]);
+      return this._version.readResource(URIs.URL_PROTECTION_POLICIES_ACTIONS, [policyId]);
     });
   }
 
-  enableURLProtectionRuleActions() {
+  enableURLProtectionPolicyActions() {
     return this._policyProvider.policyId().then(policyId => {
       let protection = JSON.parse(
-        fs.readFileSync(__dirname + '/../templates/url-protection-rule-action.json', 'utf8')
+        fs.readFileSync(__dirname + '/../templates/url-protection-policy-action.json', 'utf8')
       );
       protection.action = this._options['action'];
       protection.loadSheddingAction = this._options['load-shedding-action'];
       return this._version.updateResource(
-        URIs.URL_PROTECTION_RULES_ACTIONS_BY_ID,
+        URIs.URL_PROTECTION_POLICIES_ACTIONS_BY_ID,
         [policyId, this._options['url-protection-policy']],
         protection
       );
     });
   }
 
-  disableURLProtectionRuleActions() {
+  disableURLProtectionPolicyActions() {
     return this._policyProvider.policyId().then(policyId => {
       let protection = JSON.parse(
-        fs.readFileSync(__dirname + '/../templates/url-protection-rule-action.json', 'utf8')
+        fs.readFileSync(__dirname + '/../templates/url-protection-policy-action.json', 'utf8')
       );
       protection.action = 'none';
       protection.loadSheddingAction = 'none';
       return this._version.updateResource(
-        URIs.URL_PROTECTION_RULES_ACTIONS_BY_ID,
+        URIs.URL_PROTECTION_POLICIES_ACTIONS_BY_ID,
         [policyId, this._options['url-protection-policy']],
         protection
       );

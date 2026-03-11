@@ -1,12 +1,12 @@
-let urlProtectionRulesActions = require('../../src/urlprotection').urlProtection;
+let urlProtectionPoliciesActions = require('../../src/urlprotection').urlProtection;
 let out = require('./lib/out');
 
-const objectType = 'urlProtectionRuleActions';
+const objectType = 'urlProtectionPolicyActions';
 
-class UrlProtectionRuleActionsDisableCommand {
+class UrlProtectionPolicyActionsCommand {
   constructor() {
-    this.flags = 'disable-url-protection-rule-actions';
-    this.desc = 'Removes an action set to an existing url protection rule in a policy.';
+    this.flags = 'url-protection-policy-actions';
+    this.desc = 'Display actions of a specific url protection policy.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -14,7 +14,7 @@ class UrlProtectionRuleActionsDisableCommand {
   setup(sywac) {
     sywac
       .usage(
-        'Usage: akamai-appsec disable-url-protection-rule-actions --url-protection-policy <id> [options]'
+        'Usage: akamai-appsec url-protection-policy-actions --url-protection-policy <id> [options]'
       )
       .number('--url-protection-policy <id>', {
         desc: 'URL Protection Policy ID.',
@@ -41,14 +41,22 @@ class UrlProtectionRuleActionsDisableCommand {
   }
   run(options) {
     out.print({
-      promise: new urlProtectionRulesActions(options).disableURLProtectionRuleActions(),
+      promise: new urlProtectionPoliciesActions(options).getAllURLProtectionPoliciesActions(),
       args: options,
       objectType,
       success: (args, data) => {
-        return JSON.stringify(data);
+        const matchingElement = data.urlProtectionActions.find(element => {
+          return element.policyId === args['url-protection-policy'];
+        });
+
+        if (matchingElement) {
+          return JSON.stringify(matchingElement);
+        } else {
+          throw 'The requested url protection policy does not exist.';
+        }
       }
     });
   }
 }
 
-module.exports = new UrlProtectionRuleActionsDisableCommand();
+module.exports = new UrlProtectionPolicyActionsCommand();
