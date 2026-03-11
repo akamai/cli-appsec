@@ -309,7 +309,7 @@ Commands:
   upgrade-details                                                  Display rules updates.
   url-protection-policy                                            Display a specific URL protection policy.
   url-protection-policies                                          Display URL protection policies.
-  url-protection-policies-actions                                  Display all URL protection policy actions.
+  url-protection-policies-actions                                  Display all URL protection policies actions.
   url-protection-policy-actions                                    Display actions of a specific URL protection policy.
   version                                                          Read a config version.
   version-notes                                                    Display the version notes.

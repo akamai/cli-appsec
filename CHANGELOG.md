@@ -6,7 +6,7 @@
   - `create-url-protection-policy` Create a URL protection policy.
   - `modify-url-protection-policy` Update existing URL protection policy.
   - `delete-url-protection-policy` Delete a URL protection policy.
-  - `url-protection-policies-actions` Display all URL protection policy actions.
+  - `url-protection-policies-actions` Display all URL protection policies actions.
   - `url-protection-policy-actions` Display actions of a specific URL protection policy.
   - `enable-url-protection-policy-actions` Assigns actions to an existing URL protection policy in a policy.
   - `disable-url-protection-policy-actions` Removes an action set to an existing URL protection policy in a policy.
