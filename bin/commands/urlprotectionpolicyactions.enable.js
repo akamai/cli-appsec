@@ -1,12 +1,12 @@
-let urlProtectionRulesActions = require('../../src/urlprotection').urlProtection;
+let urlProtectionPoliciesActions = require('../../src/urlprotection').urlProtection;
 let out = require('./lib/out');
 
-const objectType = 'urlProtectionRuleActions';
+const objectType = 'urlProtectionPolicyActions';
 
-class UrlProtectionRuleActionsEnableCommand {
+class UrlProtectionPolicyActionsEnableCommand {
   constructor() {
-    this.flags = 'enable-url-protection-rule-actions';
-    this.desc = 'Assigns actions to an existing url protection rule in a policy.';
+    this.flags = 'enable-url-protection-policy-actions';
+    this.desc = 'Assigns actions to an existing url protection policy in a policy.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
@@ -14,7 +14,7 @@ class UrlProtectionRuleActionsEnableCommand {
   setup(sywac) {
     sywac
       .usage(
-        'Usage: akamai-appsec enable-url-protection-rule-actions --url-protection-policy <id> --action <action> --load-shedding-action <action> [options]'
+        'Usage: akamai-appsec enable-url-protection-policy-actions --url-protection-policy <id> --action <action> --load-shedding-action <action> [options]'
       )
       .number('--url-protection-policy <id>', {
         desc: 'URL Protection Policy ID.',
@@ -55,7 +55,7 @@ class UrlProtectionRuleActionsEnableCommand {
   }
   run(options) {
     out.print({
-      promise: new urlProtectionRulesActions(options).enableURLProtectionRuleActions(),
+      promise: new urlProtectionPoliciesActions(options).enableURLProtectionPolicyActions(),
       args: options,
       objectType,
       success: (args, data) => {
@@ -65,4 +65,4 @@ class UrlProtectionRuleActionsEnableCommand {
   }
 }
 
-module.exports = new UrlProtectionRuleActionsEnableCommand();
+module.exports = new UrlProtectionPolicyActionsEnableCommand();

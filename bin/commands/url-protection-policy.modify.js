@@ -1,18 +1,26 @@
 let URLProtection = require('../../src/urlprotection').urlProtection;
 let out = require('./lib/out');
 
-class CreateURLProtectionRuleCommand {
+class ModifyURLProtectionPolicyCommand {
   constructor() {
-    this.flags = 'create-url-protection-rule';
-    this.desc = 'Create a URL protection rule.';
+    this.flags = 'modify-url-protection-policy';
+    this.desc = 'Update existing URL protection policy.';
     this.setup = this.setup.bind(this);
     this.run = this.run.bind(this);
   }
 
   setup(sywac) {
     sywac
+      .usage(
+        'Usage: akamai-appsec modify-url-protection-policy <@path> --url-protection-policy <id> [options]'
+      )
       .positional('<@path>', {
         paramsDesc: 'The input file path.'
+      })
+      .number('--url-protection-policy <id>', {
+        desc: 'URL Protection Policy ID.',
+        group: 'Required:',
+        required: true
       })
       .number('--config <id>', {
         desc: 'Configuration ID. Mandatory if you have more than one configuration.',
@@ -35,7 +43,7 @@ class CreateURLProtectionRuleCommand {
   run(options) {
     options.file = options['@path'].replace('@', '');
     out.print({
-      promise: new URLProtection(options).createURLProtectionRule(),
+      promise: new URLProtection(options).updateURLProtectionPolicy(),
       args: options,
       success: (args, data) => {
         return data.id;
@@ -44,4 +52,4 @@ class CreateURLProtectionRuleCommand {
   }
 }
 
-module.exports = new CreateURLProtectionRuleCommand();
+module.exports = new ModifyURLProtectionPolicyCommand();
