@@ -35,7 +35,7 @@ class CreateURLProtectionPolicyCommand {
   run(options) {
     options.file = options['@path'].replace('@', '');
     out.print({
-      promise: new URLProtection(options).createURLProtectionRule(),
+      promise: new URLProtection(options).createURLProtectionPolicy(),
       args: options,
       success: (args, data) => {
         return data.id;
