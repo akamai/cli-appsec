@@ -1,5 +1,7 @@
 ## 3.5.0
 
+- Bugfix:
+  - Fixed `url-protection-policy-actions` showing details for all URL protection policy actions when `--json` is passed.
 
 ## 3.4.0
 

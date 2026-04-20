@@ -1,8 +1,6 @@
 let urlProtectionPoliciesActions = require('../../src/urlprotection').urlProtection;
 let out = require('./lib/out');
 
-const objectType = 'urlProtectionPolicyActions';
-
 class UrlProtectionPolicyActionsCommand {
   constructor() {
     this.flags = 'url-protection-policy-actions';
@@ -41,19 +39,22 @@ class UrlProtectionPolicyActionsCommand {
   }
   run(options) {
     out.print({
-      promise: new urlProtectionPoliciesActions(options).getAllURLProtectionPoliciesActions(),
-      args: options,
-      objectType,
-      success: (args, data) => {
-        const matchingElement = data.urlProtectionActions.find(element => {
-          return element.policyId === args['url-protection-policy'];
-        });
+      promise: new urlProtectionPoliciesActions(options)
+        .getAllURLProtectionPoliciesActions()
+        .then(data => {
+          const matchingElement = data.urlProtectionActions.find(element => {
+            return String(element.policyId) === String(options['url-protection-policy']);
+          });
 
-        if (matchingElement) {
-          return JSON.stringify(matchingElement);
-        } else {
-          throw 'The requested url protection policy does not exist.';
-        }
+          if (!matchingElement) {
+            throw 'The requested url protection policy does not exist.';
+          }
+
+          return matchingElement;
+        }),
+      args: options,
+      success: (args, data) => {
+        return JSON.stringify(data);
       }
     });
   }
