@@ -164,6 +164,10 @@ const resources = {
   BOT_ANALYTICS_COOKIE: '/appsec/v1/configs/%s/versions/%s/advanced-settings/bot-analytics-cookie',
   BOT_ANALYTICS_COOKIE_VALUES: '/appsec/v1/bot-analytics-cookie/values',
   BOT_ANALYTICS_COOKIE_ROTATE_VALUES: '/appsec/v1/bot-analytics-cookie/rotate-values',
+  BOT_ANALYTICS_SETTINGS:
+    '/appsec/v1/configs/%s/versions/%s/advanced-settings/bot-analytics-settings',
+  BOT_ANALYTICS_SETTINGS_VALUES: '/appsec/v1/bot-analytics-settings/values',
+  BOT_ANALYTICS_SETTINGS_ROTATE_VALUES: '/appsec/v1/bot-analytics-settings/rotate-values',
   CUSTOM_CLIENTS: '/appsec/v1/configs/%s/versions/%s/custom-clients',
   CUSTOM_CLIENT: '/appsec/v1/configs/%s/versions/%s/custom-clients/%s',
   RESPONSE_ACTIONS: '/appsec/v1/configs/%s/versions/%s/response-actions',
