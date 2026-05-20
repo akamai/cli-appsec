@@ -58,6 +58,8 @@ Commands:
   attackgroup-condition-exception                                  Display attack group exceptions.
   bot-analytics-cookie                                             Display contents of bot analytics cookie.
   bot-analytics-cookie-values                                      Display contents of bot analytics cookie values.
+  bot-analytics-settings                                           Display contents of bot analytics settings.
+  bot-analytics-settings-values                                    Display contents of bot analytics settings values.
   bot-detection                                                    Display contents of bot detection.
   bot-detection-action                                             Display contents of bot detection action.
   bot-detection-action-list                                        List all bot detection action.
@@ -218,6 +220,7 @@ Commands:
   modify-api-match-target                                          Updates an API match target.
   modify-attackgroup-condition-exception                           Update attack group exceptions.    
   modify-bot-analytics-cookie                                      Update existing bot analytics cookie.
+  modify-bot-analytics-settings                                    Update existing bot analytics settings.
   modify-bot-detection-action                                      Update existing bot detection action.
   modify-bot-management-settings                                   Update existing bot management settings.
   modify-bot-protection-exceptions                                 Update existing bot protection exceptions.
@@ -286,6 +289,7 @@ Commands:
   response-actions-list                                            List all response actions.
   restart-eval                                                     Restart evaluation in a policy.
   rotate-bot-analytics-cookie-values                               Rotate bot analytics cookie values.
+  rotate-bot-analytics-settings-values                             Rotate bot analytics settings values.
   rule-action                                                      Display rule action in a policy.
   rule-actions                                                     List all rule actions in a policy.
   rule-condition-exception                                         Display rule conditions and exceptions in a policy.
