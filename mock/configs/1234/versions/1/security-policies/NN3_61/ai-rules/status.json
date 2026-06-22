@@ -1,0 +1,11 @@
+{
+  "responseToChoose": 0,
+  "responses": [
+    {
+      "httpStatus": 200,
+      "response": {
+        "aiRuleStatus": "enabled"
+      }
+    }
+  ]
+}
