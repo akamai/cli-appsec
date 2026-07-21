@@ -84,6 +84,10 @@ const resources = {
   EVAL_RULE_CONDITION_EXCEPTION:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-rules/%d/condition-exception',
   EVAL_MODE: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval',
+  AI_RULES: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/ai-rules',
+  AI_RULES_STATUS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/ai-rules/status',
+  AI_RULE_ACTION:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/ai-rules/%s/versions/%s/action',
   IP_GEO_FIREWALL: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/ip-geo-firewall',
   URL_PROTECTION_POLICIES: '/appsec/v1/configs/%s/versions/%s/url-protections',
   URL_PROTECTION_POLICY: '/appsec/v1/configs/%s/versions/%s/url-protections/%s',

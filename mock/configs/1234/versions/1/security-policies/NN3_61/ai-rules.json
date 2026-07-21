@@ -1,0 +1,22 @@
+{
+  "responseToChoose": 0,
+  "responses": [
+    {
+      "httpStatus": 200,
+      "response": {
+        "aiRuleStatus": "enabled",
+        "aiRules": [
+          {
+            "ruleId": 100,
+            "ruleVersion": 1,
+            "title": "Sample AI Rule",
+            "riskScoreGroup": "HIGH",
+            "ruleDescription": "Detects malicious request patterns using AI.",
+            "action": "alert",
+            "conditionExceptions": []
+          }
+        ]
+      }
+    }
+  ]
+}
