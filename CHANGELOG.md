@@ -14,6 +14,10 @@
   - `disable-url-protection` Disables the URL protection control for the security policy.
   - `waf-ruleset` Display attack-groups and rules settings.
   - `modify-waf-ruleset` Update WAF ruleset by patching attack groups and/or rules.
+  - `bot-analytics-settings` Display contents of bot analytics settings.
+  - `modify-bot-analytics-settings` Update existing bot analytics settings.
+  - `bot-analytics-settings-values` Display contents of bot analytics settings values.
+  - `rotate-bot-analytics-settings-values` Rotate bot analytics settings values.
 
 ## 3.3.1
 
