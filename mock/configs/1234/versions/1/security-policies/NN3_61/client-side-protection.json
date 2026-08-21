@@ -1,0 +1,26 @@
+{
+  "responseToChoose": 0,
+  "responses": [
+    {
+      "httpStatus": 200,
+      "response": {
+        "edgeInjection": {
+          "clientSideProtectionConfigId": 82164,
+          "loadScriptAsync": false
+        },
+        "edgeTestParameters": {
+          "disableInjectionKey": "client-side-protection",
+          "disableInjectionValue": "disable-injection-1234_319669",
+          "forceInjectionKey": "client-side-protection",
+          "forceInjectionValue": "force-injection-1234_319669"
+        },
+        "injectionCriteria": {
+          "injectionPathIncludes": "/payments /checkout/*",
+          "injectionPathExcludes": "/login /settings/*",
+          "injectionPercent": 21,
+          "injectionPolicy": "first_script"
+        }
+      }
+    }
+  ]
+}
