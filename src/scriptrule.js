@@ -15,10 +15,6 @@ class ScriptRule {
     return this._policy.readResource(URIs.SCRIPT_RULES, []);
   }
 
-  getScriptRule() {
-    return this._policy.readResource(URIs.SCRIPT_RULE, [this._options['rule-id']]);
-  }
-
   createScriptRule() {
     if (fs.existsSync(untildify(this._options['file']))) {
       let payload = fs.readFileSync(untildify(this._options['file']), 'utf8');

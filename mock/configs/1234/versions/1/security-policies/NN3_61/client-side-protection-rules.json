@@ -7,7 +7,7 @@
         {
           "ruleId": 12346789,
           "ruleName": "Block PCI Data Access from Third Parties",
-          "ruleDescription": "Prevents third-party scripts from accessing payment card data",
+          "description": "Prevents third-party scripts from accessing payment card data",
           "activityType": "DATA_ACCESS",
           "conditions": {
             "page": {
