@@ -169,6 +169,8 @@ const resources = {
   BOT_MANAGEMENT_SETTINGS:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/bot-management-settings',
   CLIENT_SIDE_SECURITY: '/appsec/v1/configs/%s/versions/%s/advanced-settings/client-side-security',
+  // ClientSideProtection (CPC)
+  CPC_CONFIG: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/client-side-protection',
   BOT_ANALYTICS_COOKIE: '/appsec/v1/configs/%s/versions/%s/advanced-settings/bot-analytics-cookie',
   BOT_ANALYTICS_COOKIE_VALUES: '/appsec/v1/bot-analytics-cookie/values',
   BOT_ANALYTICS_COOKIE_ROTATE_VALUES: '/appsec/v1/bot-analytics-cookie/rotate-values',

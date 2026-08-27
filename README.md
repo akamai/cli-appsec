@@ -387,6 +387,15 @@ Manage AI rules and their actions within a security policy.
 | `akamai appsec get-ai-rule-action --rule-id <id> --rule-version-id <id> [--config <id>] [--version <id>] [--policy <id>]` | Get the action for a specific AI rule. |
 | `akamai appsec modify-ai-rule-action --rule-id <id> --rule-version-id <id> @<filepath> [--config <id>] [--version <id>] [--policy <id>]` | Modify the action for a specific AI rule. Input file: `{"action": "alert"}` |
 
+## Client-Side Protection (CPC)
+
+Manage client-side protection (CPC) configuration settings for a security policy. Controls edge script injection behavior, test parameters, and injection criteria.
+
+| Command | Description |
+|---------|-------------|
+| `akamai appsec get-cpc-config [--config <id>] [--version <id>] [--policy <id>]` | Display client-side protection configuration for a security policy. |
+| `akamai appsec modify-cpc-config @<filepath> [--config <id>] [--version <id>] [--policy <id>]` | Update client-side protection configuration for a security policy. Input file: `templates/cpcconfig.json` |
+
 ## Caveats
 The Akamai CLI is a new tool and as such we have made some design choices worth mentioning.
 * Credentials - the tool looks for credentials in the 'appsec' section in your ~/.edgerc file. If not present, it will look for the section 'default'. Alternatively you can provide the section name using the --section option in every command. If you are unfamiliar with the authentication and provisioning for OPEN APIs, see the "Get Started" section of https://developer.akamai.com
