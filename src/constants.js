@@ -221,6 +221,11 @@ const resources = {
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/content-protection-javascript-injection-rules',
   CONTENT_PROTECTION_JS_INJECTION_RULE:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/content-protection-javascript-injection-rules/%s',
+  // Script Rules (Client-Side Protection Rules)
+  SCRIPT_RULES:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/client-side-protection-rules',
+  SCRIPT_RULE:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/client-side-protection-rules/%s',
   PENALTY_BOX_CONDITIONS:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/penalty-box/conditions',
   PENALTY_BOX_CONDITIONS_ALL:
