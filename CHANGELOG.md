@@ -1,3 +1,11 @@
+## 3.4.0
+
+- New Commands:
+  - `bot-analytics-settings` Display contents of bot analytics settings.
+  - `modify-bot-analytics-settings` Update existing bot analytics settings.
+  - `bot-analytics-settings-values` Display contents of bot analytics settings values.
+  - `rotate-bot-analytics-settings-values` Rotate bot analytics settings values.
+
 ## 3.3.1
 
 - Rename `accoutnprotectionrulesequence` file
