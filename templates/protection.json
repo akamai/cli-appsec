@@ -2,5 +2,6 @@
     "applyApplicationLayerControls": null,
     "applyRateControls": null,
     "applySlowPostControls": null,
-    "applyApiConstraints": null
+    "applyApiConstraints": null,
+    "applyClientSideProtectionControls": null
 }
