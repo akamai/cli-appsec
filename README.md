@@ -164,6 +164,7 @@ Commands:
   disable-malware-policy                                           Remove actions to an existing malware policy in a firewall policy.
   disable-override-http-header-logging                             Disable the HTTP Header Logging Override settings.
   disable-penalty-box                                              Disable penalty box in a policy.
+  disable-rapid-rules                                              Disable rapid rules in a policy.
   disable-rate-policy                                              Removes an action set to an existing rate policy in a policy.
   disable-reputation-profile                                       Disable the action for a reputation profile.
   disable-rule-action                                              Disable rule action in a policy.
@@ -180,6 +181,7 @@ Commands:
   enable-malware-policy                                            Assign actions to an existing malware policy in a firewall policy.
   enable-override-http-header-logging                              Enable the HTTP Header Logging Override settings.
   enable-penalty-box                                               Enable penalty box in a policy.
+  enable-rapid-rules                                               Enable rapid rules in a policy.
   enable-rate-policy                                               Assigns an action to an existing rate policy in a policy.
   enable-reputation-profile                                        Enable and set the action for a reputation profile.
   enable-rule-action                                               Enable rule action in a policy.
@@ -256,6 +258,7 @@ Commands:
   modify-penalty-box-conditions                                    Modify penalty box conditions in a policy.
   modify-pragma-header                                             Update Pragma Header settings.
   modify-prefetch-requests                                         Update the Prefetch Requests settings.
+  modify-rapid-rule-default-action                                 Modify rapid rules default action in a policy.
   modify-rate-policy                                               Update existing rate policy.
   modify-recategorized-akamai-defined-bot                          Update existing recategorized akamai defined bot.
   modify-reputation-profile                                        Update existing reputation profile.
@@ -274,6 +277,8 @@ Commands:
   prefetch-requests                                                Display the Prefetch Requests settings.
   protect-eval-hostnames                                           Move evaluation hostnames to protection.
   protections                                                      List all protections of a policy.
+  rapid-rule-default-action                                        Display rapid rules default action in a policy.
+  rapid-rules                                                      Display all rapid rules in a policy.
   rate-policies                                                    List all rate policies.
   rate-policies-actions                                            List all enabled rate policies actions of a policy.
   rate-policy                                                      Display contents of a rate policy.

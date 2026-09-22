@@ -257,7 +257,17 @@ const resources = {
   URL_PROTECTION_POLICIES_ACTIONS:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/url-protections',
   URL_PROTECTION_POLICIES_ACTIONS_BY_ID:
-    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/url-protections/%s'
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/url-protections/%s',
+  // Rapid Rules
+  RAPID_RULES: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rapid-rules',
+  RAPID_RULES_STATUS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rapid-rules/status',
+  RAPID_RULES_DEFAULT_ACTION:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rapid-rules/action',
+  RAPID_RULE_LOCK: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rapid-rules/%d/lock',
+  RAPID_RULE_ACTION:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rapid-rules/%d/versions/%d/action',
+  RAPID_RULE_CONDITION_EXCEPTION:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rapid-rules/%d/condition-exception'
 };
 
 define('URIS', resources);

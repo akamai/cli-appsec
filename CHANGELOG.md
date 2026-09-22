@@ -1,3 +1,12 @@
+## 3.6.0
+
+- New Commands:
+  - `rapid-rules` Display all rapid rules in a policy.
+  - `enable-rapid-rules` Enable rapid rules in a policy.
+  - `disable-rapid-rules` Disable rapid rules in a policy.
+  - `rapid-rule-default-action` Display rapid rules default action in a policy.
+  - `modify-rapid-rule-default-action` Modify rapid rules default action in a policy.
+
 ## 3.5.0
 
 - New Commands:
