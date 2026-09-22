@@ -1,4 +1,4 @@
-## 3.5.0
+## 3.6.0
 
 - New Commands:
   - `rapid-rules` Display all rapid rules in a policy.
@@ -7,7 +7,7 @@
   - `rapid-rule-default-action` Display rapid rules default action in a policy.
   - `modify-rapid-rule-default-action` Modify rapid rules default action in a policy.
 
-## 3.4.0
+## 3.5.0
 
 - New Commands:
   - `url-protection-policies` Display URL protection policies.
@@ -23,6 +23,10 @@
   - `disable-url-protection` Disables the URL protection control for the security policy.
   - `waf-ruleset` Display attack-groups and rules settings.
   - `modify-waf-ruleset` Update WAF ruleset by patching attack groups and/or rules.
+
+## 3.4.0
+
+- New Commands:
   - `bot-analytics-settings` Display contents of bot analytics settings.
   - `modify-bot-analytics-settings` Update existing bot analytics settings.
   - `bot-analytics-settings-values` Display contents of bot analytics settings values.
