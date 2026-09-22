@@ -35,6 +35,26 @@ class CpcConfig {
       throw `The file does not exist: ${this._options['file']}`;
     }
   }
+
+  enableCpc() {
+    return this._policyProvider.policyId().then(policyId => {
+      let protection = JSON.parse(
+        fs.readFileSync(__dirname + '/../templates/cpc-protection.json', 'utf8')
+      );
+      protection.applyClientSideProtectionControls = true;
+      return this._version.updateResource(URIs.POLICY_PROTECTIONS, [policyId], protection);
+    });
+  }
+
+  disableCpc() {
+    return this._policyProvider.policyId().then(policyId => {
+      let protection = JSON.parse(
+        fs.readFileSync(__dirname + '/../templates/cpc-protection.json', 'utf8')
+      );
+      protection.applyClientSideProtectionControls = false;
+      return this._version.updateResource(URIs.POLICY_PROTECTIONS, [policyId], protection);
+    });
+  }
 }
 
 module.exports = { cpcconfig: CpcConfig };
