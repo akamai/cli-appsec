@@ -1,0 +1,15 @@
+{
+  "responseToChoose": 0,
+  "responses": [
+    {
+      "httpStatus": 200,
+      "response": {
+        "applyApplicationLayerControls": true,
+        "applyRateControls": true,
+        "applySlowPostControls": true,
+        "applyApiConstraints": false,
+        "applyClientSideProtectionControls": true
+      }
+    }
+  ]
+}

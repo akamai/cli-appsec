@@ -1,0 +1,36 @@
+{
+  "responseToChoose": 0,
+  "responses": [
+    {
+      "httpStatus": 200,
+      "response": {
+        "configId": 1234,
+        "configName": "Mock Config",
+        "version": 1,
+        "basedOn": 0,
+        "production": {
+          "status": "Inactive"
+        },
+        "staging": {
+          "status": "Inactive"
+        },
+        "securityPolicies": [
+          {
+            "id": "NN3_61",
+            "name": "Mock Policy",
+            "hasRatePolicyWithApiKey": false,
+            "securityControls": {
+              "applyApplicationLayerControls": true,
+              "applyRateControls": true,
+              "applySlowPostControls": true,
+              "applyApiConstraints": false,
+              "applyNetworkLayerControls": false,
+              "applyReputationControls": false,
+              "applyClientSideProtectionControls": true
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
