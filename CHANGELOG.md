@@ -1,4 +1,4 @@
-## 3.6.0
+## 3.5.0
 
 - New Commands:
   - `rapid-rules` Display all rapid rules in a policy.
@@ -6,10 +6,12 @@
   - `disable-rapid-rules` Disable rapid rules in a policy.
   - `rapid-rule-default-action` Display rapid rules default action in a policy.
   - `modify-rapid-rule-default-action` Modify rapid rules default action in a policy.
-
-## 3.5.0
-
-- New Commands:
+  - `enable-rapid-rule-lock` Enable rapid rule's lock.
+  - `disable-rapid-rule-lock` Disable rapid rule's lock.
+  - `rapid-rule-action` Display rapid rule action in a policy.
+  - `modify-rapid-rule-action` Modify rapid rule action in a policy.
+  - `rapid-rule-condition-exception` Display rapid rule's condition exception.
+  - `modify-rapid-rule-condition-exception` Update rapid rule's condition exception.
   - `url-protection-policies` Display URL protection policies.
   - `url-protection-policy` Display a specific URL protection policy.
   - `create-url-protection-policy` Create a URL protection policy.
