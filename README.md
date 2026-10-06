@@ -404,8 +404,14 @@ Manage client-side protection (CPC) configuration settings for a security policy
 
 | Command | Description |
 |---------|-------------|
+| `akamai appsec enable-cpc [--config <id>] [--version <id>] [--policy <id>]` | Enable Client-side Protection & Compliance on the security policy. |
+| `akamai appsec disable-cpc [--config <id>] [--version <id>] [--policy <id>]` | Disable Client-side Protection & Compliance on the security policy. |
 | `akamai appsec get-cpc-config [--config <id>] [--version <id>] [--policy <id>]` | Display client-side protection configuration for a security policy. |
 | `akamai appsec modify-cpc-config @<filepath> [--config <id>] [--version <id>] [--policy <id>]` | Update client-side protection configuration for a security policy. Input file: `templates/cpcconfig.json` |
+| `akamai appsec get-script-rules [--config <id>] [--version <id>] [--policy <id>]` | List all client-side protection script rules for a security policy. |
+| `akamai appsec create-script-rule @<filepath> [--config <id>] [--version <id>] [--policy <id>]` | Create a client-side protection script rule. |
+| `akamai appsec modify-script-rule --rule-id <id> @<filepath> [--config <id>] [--version <id>] [--policy <id>]` | Update a client-side protection script rule. |
+| `akamai appsec delete-script-rule --rule-id <id> [--config <id>] [--version <id>] [--policy <id>]` | Delete a client-side protection script rule. |
 
 ## Caveats
 The Akamai CLI is a new tool and as such we have made some design choices worth mentioning.
