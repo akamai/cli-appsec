@@ -13,9 +13,9 @@ class ModifyRapidRuleDefaultActionCommand {
     sywac
       .string('--action <action>', {
         desc:
-          "Action to assign. Use - \n\t\t     • 'alert': To record the trigger of the event; \n\t\t     • 'deny': To block the request; \n\t\t       • 'deny_custom_{custom_deny_id}': To trigger a custom deny; \n\t\t     • 'none': To make the rule inactive in the policy;",
+          "Action to assign. Use - \n\t\t     • 'alert': To record the trigger of the event; \n\t\t     • 'deny': To block the request; \n\t\t       • 'deny_custom_{custom_deny_id}': To trigger a custom deny; \n\t\t     • 'none': To make the rule inactive in the policy; \n\t\t     • 'akamai_managed': To use the Akamai_managed action;",
         group: 'Required:',
-        hints: '[required] [alert, deny, deny_custom_{custom_deny_id}, none]',
+        hints: '[required] [alert, deny, deny_custom_{custom_deny_id}, none, akamai_managed]',
         required: true
       })
       .number('--config <id>', {
