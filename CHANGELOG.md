@@ -25,6 +25,14 @@
   - `disable-url-protection` Disables the URL protection control for the security policy.
   - `waf-ruleset` Display attack-groups and rules settings.
   - `modify-waf-ruleset` Update WAF ruleset by patching attack groups and/or rules.
+  - `enable-cpc` Enable Client-side Protection & Compliance on the security policy.
+  - `disable-cpc` Disable Client-side Protection & Compliance on the security policy.
+  - `get-cpc-config` Display client-side protection (CPC) configuration for a security policy.
+  - `modify-cpc-config` Update client-side protection (CPC) configuration for a security policy.
+  - `get-script-rules` List all client-side protection script rules for a security policy.
+  - `create-script-rule` Create a client-side protection script rule.
+  - `modify-script-rule` Update a client-side protection script rule.
+  - `delete-script-rule` Delete a client-side protection script rule.
 
 ## 3.4.0
 
