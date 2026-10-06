@@ -73,6 +73,8 @@ const resources = {
   RULE_UPGRADE_DETAILS:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rules/upgrade-details',
   RULE_ACTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rules/%d',
+  WAF_RULESET:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/web-application-firewall/ruleset',
   EVAL_RULE_ACTIONS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-rules',
   EVAL_RULE_ACTION: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-rules/%d',
   EVAL_GROUP_ACTIONS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-groups',
@@ -82,7 +84,13 @@ const resources = {
   EVAL_RULE_CONDITION_EXCEPTION:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval-rules/%d/condition-exception',
   EVAL_MODE: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/eval',
+  AI_RULES: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/ai-rules',
+  AI_RULES_STATUS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/ai-rules/status',
+  AI_RULE_ACTION:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/ai-rules/%s/versions/%s/action',
   IP_GEO_FIREWALL: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/ip-geo-firewall',
+  URL_PROTECTION_POLICIES: '/appsec/v1/configs/%s/versions/%s/url-protections',
+  URL_PROTECTION_POLICY: '/appsec/v1/configs/%s/versions/%s/url-protections/%s',
   REPUTATION_PROFILE_ACTIONS:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/reputation-profiles',
   REPUTATION_PROFILE_ACTION:
@@ -161,6 +169,8 @@ const resources = {
   BOT_MANAGEMENT_SETTINGS:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/bot-management-settings',
   CLIENT_SIDE_SECURITY: '/appsec/v1/configs/%s/versions/%s/advanced-settings/client-side-security',
+  // ClientSideProtection (CPC)
+  CPC_CONFIG: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/client-side-protection',
   BOT_ANALYTICS_COOKIE: '/appsec/v1/configs/%s/versions/%s/advanced-settings/bot-analytics-cookie',
   BOT_ANALYTICS_COOKIE_VALUES: '/appsec/v1/bot-analytics-cookie/values',
   BOT_ANALYTICS_COOKIE_ROTATE_VALUES: '/appsec/v1/bot-analytics-cookie/rotate-values',
@@ -211,6 +221,11 @@ const resources = {
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/content-protection-javascript-injection-rules',
   CONTENT_PROTECTION_JS_INJECTION_RULE:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/content-protection-javascript-injection-rules/%s',
+  // Script Rules (Client-Side Protection Rules)
+  SCRIPT_RULES:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/client-side-protection-rules',
+  SCRIPT_RULE:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/client-side-protection-rules/%s',
   PENALTY_BOX_CONDITIONS:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/penalty-box/conditions',
   PENALTY_BOX_CONDITIONS_ALL:
@@ -238,7 +253,21 @@ const resources = {
   ACCOUNT_PROTECTION_RULE_BY_ID:
     '/appsec/v1/configs/%s/versions/%s/security-policies/%s/account-protection-rules/%s',
   ACCOUNT_PROTECTION_RULE_SEQUENCE:
-    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/account-protection-rules/sequence'
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/account-protection-rules/sequence',
+  URL_PROTECTION_POLICIES_ACTIONS:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/url-protections',
+  URL_PROTECTION_POLICIES_ACTIONS_BY_ID:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/url-protections/%s',
+  // Rapid Rules
+  RAPID_RULES: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rapid-rules',
+  RAPID_RULES_STATUS: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rapid-rules/status',
+  RAPID_RULES_DEFAULT_ACTION:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rapid-rules/action',
+  RAPID_RULE_LOCK: '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rapid-rules/%d/lock',
+  RAPID_RULE_ACTION:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rapid-rules/%d/versions/%d/action',
+  RAPID_RULE_CONDITION_EXCEPTION:
+    '/appsec/v1/configs/%s/versions/%s/security-policies/%s/rapid-rules/%d/condition-exception'
 };
 
 define('URIS', resources);

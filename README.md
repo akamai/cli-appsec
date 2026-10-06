@@ -111,6 +111,7 @@ Commands:
   create-security-policy                                           Create a security policy.
   create-serve-alternate-action                                    Create a serve alternate action.
   create-transactional-endpoint                                    Create a transactional endpoint.
+  create-url-protection-policy                                     Create a URL protection policy.
   custom-bot-category                                              Display contents of custom bot category.
   custom-bot-category-action                                       Display contents of custom bot category action.
   custom-bot-category-action-list                                  List all custom bot category action.
@@ -153,6 +154,7 @@ Commands:
   delete-security-policy                                           Delete a security policy.
   delete-serve-alternate-action                                    Delete a serve alternate action.
   delete-transactional-endpoint                                    Delete a transactional endpoint.
+  delete-url-protection-policy                                     Delete a URL protection policy.
   disable-api-request-constraints                                  Disable API Request Constraint.
   disable-attack-group                                             Disable attack group  in a policy.
   disable-eval-penalty-box                                         Disable evaluation penalty box in a policy.
@@ -162,10 +164,14 @@ Commands:
   disable-malware-policy                                           Remove actions to an existing malware policy in a firewall policy.
   disable-override-http-header-logging                             Disable the HTTP Header Logging Override settings.
   disable-penalty-box                                              Disable penalty box in a policy.
+  disable-rapid-rule-lock                                          Disable rapid rule's lock.
+  disable-rapid-rules                                              Disable rapid rules in a policy.
   disable-rate-policy                                              Removes an action set to an existing rate policy in a policy.
   disable-reputation-profile                                       Disable the action for a reputation profile.
   disable-rule-action                                              Disable rule action in a policy.
   disable-slow-post                                                Disable slow post in a policy.
+  disable-url-protection                                           Disables the URL protection control for the security policy
+  disable-url-protection-policy-actions                            Removes an action set to an existing URL protection policy in a policy.
   enable-api-request-constraints                                   Set the API Request Constraint action.
   enable-attack-group                                              Enable attack group in a policy.
   enable-custom-rule                                               Assigns an action (such as alert or deny) to an existing custom rule in a policy.
@@ -176,10 +182,14 @@ Commands:
   enable-malware-policy                                            Assign actions to an existing malware policy in a firewall policy.
   enable-override-http-header-logging                              Enable the HTTP Header Logging Override settings.
   enable-penalty-box                                               Enable penalty box in a policy.
+  enable-rapid-rule-lock                                           Enable rapid rule's lock.
+  enable-rapid-rules                                               Enable rapid rules in a policy.
   enable-rate-policy                                               Assigns an action to an existing rate policy in a policy.
   enable-reputation-profile                                        Enable and set the action for a reputation profile.
   enable-rule-action                                               Enable rule action in a policy.
   enable-slow-post                                                 Enable slow post in a policy.
+  enable-url-protection                                            Enables the URL protection control for the security policy
+  enable-url-protection-policy-actions                             Assigns actions to an existing URL protection policy in a policy.
   end-eval                                                         Stop evaluation in a policy.
   eval-hostnames                                                   List all hosts under evaluation.
   eval-penalty-box                                                 Display evaluation penalty box action in a policy.
@@ -246,9 +256,13 @@ Commands:
   modify-javascript-injection-rules                                Update existing javascript injection rules.
   modify-malware-policy                                            Modify an existing malware policy.
   modify-match-target                                              Updates a website match target.
+  modify-url-protection-policy                                     Update existing URL protection policy.
   modify-penalty-box-conditions                                    Modify penalty box conditions in a policy.
   modify-pragma-header                                             Update Pragma Header settings.
   modify-prefetch-requests                                         Update the Prefetch Requests settings.
+  modify-rapid-rule-action                                         Modify rapid rule action in a policy.
+  modify-rapid-rule-condition-exception                            Update rapid rule's condition exception.
+  modify-rapid-rule-default-action                                 Modify rapid rules default action in a policy.
   modify-rate-policy                                               Update existing rate policy.
   modify-recategorized-akamai-defined-bot                          Update existing recategorized akamai defined bot.
   modify-reputation-profile                                        Update existing reputation profile.
@@ -258,6 +272,7 @@ Commands:
   modify-siem                                                      Modify the SIEM settings.
   modify-transactional-endpoint                                    Update existing transactional endpoint.
   modify-transactional-endpoint-protection                         Update existing transactional endpoint protection.
+  modify-waf-ruleset                                               Update the WAF ruleset using a composite payload
   modify-version-notes                                             Update the version notes.
   penalty-box                                                      Display penalty box action in a policy.
   penalty-box-conditions                                           Display penalty box conditions in a policy.
@@ -266,6 +281,10 @@ Commands:
   prefetch-requests                                                Display the Prefetch Requests settings.
   protect-eval-hostnames                                           Move evaluation hostnames to protection.
   protections                                                      List all protections of a policy.
+  rapid-rule-action                                                Display rapid rule action in a policy.
+  rapid-rule-condition-exception                                   Display rapid rule's condition exception.
+  rapid-rule-default-action                                        Display rapid rules default action in a policy.
+  rapid-rules                                                      Display all rapid rules in a policy.
   rate-policies                                                    List all rate policies.
   rate-policies-actions                                            List all enabled rate policies actions of a policy.
   rate-policy                                                      Display contents of a rate policy.
@@ -303,10 +322,15 @@ Commands:
   transactional-endpoint-protection                                Display contents of transactional endpoint protection.
   update-eval                                                      Update evaluation in a policy.
   upgrade-details                                                  Display rules updates.
+  url-protection-policy                                            Display a specific URL protection policy.
+  url-protection-policies                                          Display URL protection policies.
+  url-protection-policies-actions                                  Display all URL protection policies actions.
+  url-protection-policy-actions                                    Display actions of a specific URL protection policy.
   version                                                          Read a config version.
   version-notes                                                    Display the version notes.
   versions                                                         List all config versions.
-
+  waf-ruleset                                                      Retrieve the complete WAF ruleset for a configuration and policy
+  
 Command options:
   --json        Print the raw json response. All commands respect this option.                       [boolean]
   --edgerc      The full path to the .edgerc file.                                                    [string]
@@ -361,6 +385,33 @@ Adding or updating a custom rule to the protection of a hostname requires a chan
 |5|`akamai appsec enable-custom-rule --custom-rule <custom rule id> --policy <security policy id> --action <alert or deny>`||
 |6|`akamai appsec activate --network <activation network> --notes <activation notes> --notify <emails>`||
 |7|`akamai appsec activation --activation-id <activation id>`||
+
+## AI Rules
+
+Manage AI rules and their actions within a security policy.
+
+| Command | Description |
+|---------|-------------|
+| `akamai appsec get-ai-rules [--config <id>] [--version <id>] [--policy <id>]` | Get AI rules and their actions in a security policy. |
+| `akamai appsec get-ai-rules-status [--config <id>] [--version <id>] [--policy <id>]` | Get the AI rules status for a security policy. |
+| `akamai appsec modify-ai-rules-status @<filepath> [--config <id>] [--version <id>] [--policy <id>]` | Modify the AI rules status. Input file: `{"aiRuleStatus": "enabled"}` |
+| `akamai appsec get-ai-rule-action --rule-id <id> --rule-version-id <id> [--config <id>] [--version <id>] [--policy <id>]` | Get the action for a specific AI rule. |
+| `akamai appsec modify-ai-rule-action --rule-id <id> --rule-version-id <id> @<filepath> [--config <id>] [--version <id>] [--policy <id>]` | Modify the action for a specific AI rule. Input file: `{"action": "alert"}` |
+
+## Client-Side Protection (CPC)
+
+Manage client-side protection (CPC) configuration settings for a security policy. Controls edge script injection behavior, test parameters, and injection criteria.
+
+| Command | Description |
+|---------|-------------|
+| `akamai appsec enable-cpc [--config <id>] [--version <id>] [--policy <id>]` | Enable Client-side Protection & Compliance on the security policy. |
+| `akamai appsec disable-cpc [--config <id>] [--version <id>] [--policy <id>]` | Disable Client-side Protection & Compliance on the security policy. |
+| `akamai appsec get-cpc-config [--config <id>] [--version <id>] [--policy <id>]` | Display client-side protection configuration for a security policy. |
+| `akamai appsec modify-cpc-config @<filepath> [--config <id>] [--version <id>] [--policy <id>]` | Update client-side protection configuration for a security policy. Input file: `templates/cpcconfig.json` |
+| `akamai appsec get-script-rules [--config <id>] [--version <id>] [--policy <id>]` | List all client-side protection script rules for a security policy. |
+| `akamai appsec create-script-rule @<filepath> [--config <id>] [--version <id>] [--policy <id>]` | Create a client-side protection script rule. |
+| `akamai appsec modify-script-rule --rule-id <id> @<filepath> [--config <id>] [--version <id>] [--policy <id>]` | Update a client-side protection script rule. |
+| `akamai appsec delete-script-rule --rule-id <id> [--config <id>] [--version <id>] [--policy <id>]` | Delete a client-side protection script rule. |
 
 ## Caveats
 The Akamai CLI is a new tool and as such we have made some design choices worth mentioning.

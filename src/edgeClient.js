@@ -151,6 +151,18 @@ class Edge {
     };
     return this._send(request);
   }
+
+  patch(requestUri, payload, params) {
+    let request = {
+      method: 'PATCH',
+      path: this._resolveParams(requestUri, params),
+      body: payload,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    return this._send(request);
+  }
 }
 
 module.exports = Edge;
