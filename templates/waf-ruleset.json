@@ -1,0 +1,22 @@
+{
+  "attackGroups": [
+    {
+      "action": "deny",
+      "group": "TOOL"
+    },
+    {
+      "action": "alert",
+      "group": "SQL"
+    }
+  ],
+  "rules": [
+    {
+      "action": "alert",
+      "ruleId": 699989
+    },
+    {
+      "action": "deny",
+      "ruleId": 699990
+    }
+  ]
+}

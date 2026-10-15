@@ -92,7 +92,17 @@ class Edge {
       body: JSON.stringify(payload)
     };
     logger.debug(JSON.stringify(request));
-    return payload;
+    return this._send(request);
+  }
+
+  patch(requestUri, payload, params) {
+    let request = {
+      method: 'PATCH',
+      path: this._resolveParams(requestUri, params),
+      body: JSON.stringify(payload)
+    };
+    logger.debug(JSON.stringify(request));
+    return this._send(request);
   }
 
   _sendUpdate(request) {
